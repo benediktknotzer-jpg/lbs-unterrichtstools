@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d4e89">
+  <meta name="robots" content="noindex">
+  <title>Warenkunde-Quiz</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="kopf">
+    <div class="kopf-inhalt">
+      <h1>Warenkunde-Quiz</h1>
+      <p>LBS Theresienfeld · Fachpraktikum Großhandel</p>
+    </div>
+  </header>
+
+  <main id="inhalt" class="inhalt">
+    <noscript>
+      <div class="meldung fehler">Bitte aktivieren Sie JavaScript, damit das Quiz funktioniert.</div>
+    </noscript>
+
+    <!-- Startseite: Themenauswahl -->
+    <section id="ansicht-start" class="ansicht" aria-labelledby="start-titel">
+      <h2 id="start-titel" tabindex="-1">Thema wählen</h2>
+      <p id="start-lade" class="leise">Fragen werden geladen …</p>
+      <div id="start-meldung"></div>
+      <div id="themen-liste" class="themen-liste"></div>
+    </section>
+
+    <!-- Einstellungen für das gewählte Thema -->
+    <section id="ansicht-einstellungen" class="ansicht" aria-labelledby="einst-titel" hidden>
+      <button type="button" class="link-knopf" id="einst-zurueck">← Anderes Thema</button>
+      <h2 id="einst-titel" tabindex="-1"></h2>
+
+      <label class="feld-titel" for="einst-unterthema">Unterthema</label>
+      <select id="einst-unterthema" class="auswahl"></select>
+
+      <fieldset class="anzahl">
+        <legend class="feld-titel">Anzahl der Fragen</legend>
+        <div class="segment" id="einst-anzahl">
+          <label><input type="radio" name="anzahl" value="10" checked><span>10</span></label>
+          <label><input type="radio" name="anzahl" value="20"><span>20</span></label>
+          <label><input type="radio" name="anzahl" value="alle"><span>Alle</span></label>
+        </div>
+      </fieldset>
+
+      <p id="einst-info" class="leise" aria-live="polite"></p>
+      <button type="button" class="knopf haupt" id="einst-start">Quiz starten</button>
+    </section>
+
+    <!-- Quiz -->
+    <section id="ansicht-quiz" class="ansicht" aria-labelledby="quiz-frage" hidden>
+      <div class="quiz-leiste">
+        <span id="quiz-fortschritt" class="fortschritt-text"></span>
+        <button type="button" class="link-knopf" id="quiz-beenden">Beenden</button>
+      </div>
+      <div class="balken" role="progressbar" aria-labelledby="quiz-fortschritt" id="quiz-balken-rahmen"
+           aria-valuemin="0">
+        <div class="balken-fuellung" id="quiz-balken"></div>
+      </div>
+
+      <p id="quiz-thema" class="unterthema"></p>
+      <p id="quiz-typ" class="fragetyp"></p>
+      <h2 id="quiz-frage" class="frage" tabindex="-1"></h2>
+
+      <div id="quiz-antworten"></div>
+
+      <div id="quiz-rueckmeldung" class="rueckmeldung" aria-live="polite" hidden></div>
+      <button type="button" class="knopf haupt" id="quiz-weiter" hidden>Weiter</button>
+    </section>
+
+    <!-- Auswertung -->
+    <section id="ansicht-ergebnis" class="ansicht" aria-labelledby="erg-titel" hidden>
+      <h2 id="erg-titel" tabindex="-1">Auswertung</h2>
+      <div class="punkte">
+        <div id="erg-prozent" class="punkte-zahl"></div>
+        <div id="erg-anzahl"></div>
+        <div id="erg-text" class="punkte-text"></div>
+      </div>
+
+      <div class="knopf-reihe">
+        <button type="button" class="knopf haupt" id="erg-wiederholen">Falsche Fragen wiederholen</button>
+        <button type="button" class="knopf" id="erg-neu">Neues Quiz</button>
+      </div>
+
+      <div id="erg-falsch-bereich">
+        <h3>Falsch beantwortet</h3>
+        <ol id="erg-falsch-liste" class="falsch-liste"></ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fuss">
+    Keine Anmeldung · keine Speicherung von Daten · kein Tracking
+  </footer>
+
+  <script src="js/csv.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

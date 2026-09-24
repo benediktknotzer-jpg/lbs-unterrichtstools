@@ -1,0 +1,723 @@
+/* Warenkunde-Quiz – schlichtes, gut lesbares Design, optimiert fürs Handy */
+
+:root {
+  --hintergrund: #f3f5f8;
+  --flaeche: #ffffff;
+  --text: #1a1f29;
+  --leise: #5a6475;
+  --rand: #c9d0db;
+  --primaer: #1d4e89;
+  --primaer-text: #ffffff;
+  --primaer-hell: #e3ecf7;
+  --richtig: #1e7a3c;
+  --richtig-hell: #e2f4e8;
+  --falsch: #b3261e;
+  --falsch-hell: #fbe6e4;
+  --warnung: #8a5a00;
+  --warnung-hell: #fff4d6;
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hintergrund: #12161d;
+    --flaeche: #1d232d;
+    --text: #eef1f5;
+    --leise: #a6b0bf;
+    --rand: #3a4452;
+    --primaer: #6ea8ec;
+    --primaer-text: #0d1522;
+    --primaer-hell: #243449;
+    --richtig: #6fd08f;
+    --richtig-hell: #173323;
+    --falsch: #ff8a80;
+    --falsch-hell: #3d1c1a;
+    --warnung: #f2c35b;
+    --warnung-hell: #3a2f14;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--hintergrund);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  /* lange Fachwörter wie „Rindfleischkennzeichnungssystem“ umbrechen */
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Grid-/Flex-Kinder dürfen schmäler werden als ihr längstes Wort –
+   sonst sprengt ein langes Fachwort auf schmalen Handys die Breite */
+.themen-liste > *,
+.antworten > *,
+.zu-liste > *,
+.zu-pool > *,
+.knopf-reihe > *,
+.falsch-liste > *,
+.segment > *,
+.thema-knopf > * {
+  min-width: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+select,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primaer);
+  outline-offset: 2px;
+}
+
+/* ---------- Kopf / Fuß ---------- */
+
+.kopf {
+  background: #1d4e89;
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+
+.kopf-inhalt {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.kopf h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.kopf p {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.inhalt {
+  flex: 1;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+
+.fuss {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--leise);
+  padding: 1rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin: 0.25rem 0 1rem;
+}
+
+h2:focus,
+h2:focus-visible {
+  outline: none;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.leise {
+  color: var(--leise);
+  font-size: 0.95rem;
+}
+
+/* ---------- Knöpfe ---------- */
+
+.knopf {
+  display: block;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--primaer);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+  color: var(--primaer);
+  font-weight: 600;
+  text-align: center;
+}
+
+.knopf.haupt {
+  background: var(--primaer);
+  color: var(--primaer-text);
+}
+
+.knopf:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.knopf-reihe {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.link-knopf {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  color: var(--primaer);
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-height: 2.75rem;
+}
+
+/* ---------- Startseite ---------- */
+
+.themen-liste {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.thema-karte {
+  background: var(--flaeche);
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.thema-knopf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 4rem;
+  padding: 0.9rem 1rem;
+  border: none;
+  background: none;
+  text-align: left;
+}
+
+.thema-knopf:disabled {
+  cursor: default;
+}
+
+.thema-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.thema-anzahl {
+  color: var(--leise);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.thema-knopf:not(:disabled)::after {
+  content: "›";
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--primaer);
+}
+
+.thema-karte details {
+  border-top: 1px solid var(--rand);
+  padding: 0.5rem 1rem 0.75rem;
+  font-size: 0.9rem;
+  background: var(--warnung-hell);
+}
+
+.thema-karte details.schwer {
+  background: var(--falsch-hell);
+}
+
+.thema-karte summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--warnung);
+  padding: 0.25rem 0;
+}
+
+.thema-karte details.schwer summary {
+  color: var(--falsch);
+}
+
+.thema-karte details ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.thema-karte details li + li {
+  margin-top: 0.4rem;
+}
+
+.meldung {
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--falsch);
+  background: var(--falsch-hell);
+}
+
+.meldung h3 {
+  margin: 0 0 0.5rem;
+}
+
+.meldung p {
+  margin: 0.5rem 0 0;
+}
+
+.meldung code {
+  font-size: 0.9em;
+  background: var(--flaeche);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+/* ---------- Einstellungen ---------- */
+
+.feld-titel {
+  display: block;
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+  padding: 0;
+}
+
+.auswahl {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+}
+
+.anzahl {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.segment label {
+  position: relative;
+}
+
+.segment input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+}
+
+.segment span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.segment input:checked + span {
+  border-color: var(--primaer);
+  background: var(--primaer-hell);
+  color: var(--primaer);
+}
+
+.segment input:focus-visible + span {
+  outline: 3px solid var(--primaer);
+  outline-offset: 2px;
+}
+
+#einst-info {
+  margin: 1rem 0;
+}
+
+/* ---------- Quiz ---------- */
+
+.quiz-leiste {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fortschritt-text {
+  font-weight: 600;
+  color: var(--leise);
+}
+
+.balken {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--rand);
+  overflow: hidden;
+}
+
+.balken-fuellung {
+  height: 100%;
+  width: 0;
+  background: var(--primaer);
+  transition: width 0.3s ease;
+}
+
+.unterthema {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--leise);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fragetyp {
+  margin: 0.1rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primaer);
+}
+
+.frage {
+  font-size: 1.25rem;
+  margin: 0.35rem 0 1.25rem;
+}
+
+.antworten {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.antwort {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+  text-align: left;
+  line-height: 1.35;
+}
+
+.antwort:not(:disabled):active {
+  background: var(--primaer-hell);
+}
+
+@media (hover: hover) {
+  .antwort:not(:disabled):hover {
+    border-color: var(--primaer);
+  }
+}
+
+.antwort:disabled {
+  cursor: default;
+}
+
+.antwort-text {
+  min-width: 0;
+}
+
+.antwort .zeichen {
+  flex: none;
+  font-weight: 700;
+  width: 1.4rem;
+  text-align: center;
+}
+
+.antwort.ist-richtig {
+  border-color: var(--richtig);
+  background: var(--richtig-hell);
+}
+
+.antwort.ist-falsch {
+  border-color: var(--falsch);
+  background: var(--falsch-hell);
+}
+
+.antwort.ist-richtig .zeichen {
+  color: var(--richtig);
+}
+
+.antwort.ist-falsch .zeichen {
+  color: var(--falsch);
+}
+
+.antwort.gedimmt {
+  opacity: 0.55;
+}
+
+.antworten.rf {
+  grid-template-columns: 1fr 1fr;
+}
+
+.antworten.rf .antwort {
+  justify-content: center;
+  font-weight: 700;
+  min-height: 4rem;
+}
+
+/* Zuordnen */
+
+.zu-hilfe {
+  font-size: 0.95rem;
+  color: var(--leise);
+  margin: -0.5rem 0 1rem;
+}
+
+.zu-liste {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zu-karte {
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+  overflow: hidden;
+}
+
+.zu-karte.aktiv {
+  border-color: var(--primaer);
+  box-shadow: 0 0 0 2px var(--primaer-hell);
+}
+
+.zu-karte.ist-richtig {
+  border-color: var(--richtig);
+}
+
+.zu-karte.ist-falsch {
+  border-color: var(--falsch);
+}
+
+.zu-links {
+  padding: 0.6rem 1rem 0.2rem;
+  font-weight: 700;
+}
+
+.zu-feld {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.5rem 1rem 0.7rem;
+  border: none;
+  background: none;
+  text-align: left;
+  line-height: 1.35;
+}
+
+.zu-feld.leer {
+  color: var(--leise);
+  font-style: italic;
+}
+
+.zu-karte.aktiv .zu-feld.leer {
+  color: var(--primaer);
+}
+
+.zu-feld:disabled {
+  cursor: default;
+}
+
+.zu-karte.ist-richtig .zu-feld {
+  background: var(--richtig-hell);
+}
+
+.zu-karte.ist-falsch .zu-feld {
+  background: var(--falsch-hell);
+}
+
+.zu-feld .zeichen {
+  font-weight: 700;
+}
+
+.zu-karte.ist-richtig .zeichen {
+  color: var(--richtig);
+}
+
+.zu-karte.ist-falsch .zeichen {
+  color: var(--falsch);
+}
+
+.zu-korrektur {
+  padding: 0.5rem 1rem 0.7rem;
+  background: var(--richtig-hell);
+  border-top: 1px solid var(--rand);
+  font-size: 0.95rem;
+}
+
+.zu-pool-titel {
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.zu-pool {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.zu-pool .antwort {
+  min-height: 3rem;
+  border-style: dashed;
+  border-color: var(--primaer);
+}
+
+#zu-pruefen {
+  margin-top: 1.25rem;
+}
+
+/* Rückmeldung */
+
+.rueckmeldung {
+  margin: 1.25rem 0 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  border-left: 6px solid;
+}
+
+.rueckmeldung.gut {
+  border-color: var(--richtig);
+  background: var(--richtig-hell);
+}
+
+.rueckmeldung.schlecht {
+  border-color: var(--falsch);
+  background: var(--falsch-hell);
+}
+
+.rueckmeldung strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.rueckmeldung.gut strong {
+  color: var(--richtig);
+}
+
+.rueckmeldung.schlecht strong {
+  color: var(--falsch);
+}
+
+.rueckmeldung p {
+  margin: 0.35rem 0 0;
+}
+
+/* ---------- Auswertung ---------- */
+
+.punkte {
+  text-align: center;
+  background: var(--flaeche);
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+}
+
+.punkte-zahl {
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--primaer);
+}
+
+.punkte-text {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.falsch-liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.falsch-liste > li {
+  background: var(--flaeche);
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+}
+
+.falsch-frage {
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.falsch-liste .zeile-ihre,
+.falsch-liste .zeile-richtig {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.falsch-liste .zeile-ihre {
+  color: var(--falsch);
+}
+
+.falsch-liste .zeile-richtig {
+  color: var(--richtig);
+  font-weight: 600;
+}
+
+.falsch-liste ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.falsch-liste ul li + li {
+  margin-top: 0.3rem;
+}
+
+.falsch-liste .paar-falsch {
+  color: var(--falsch);
+}
+
+.falsch-liste .paar-richtig {
+  color: var(--richtig);
+  font-weight: 600;
+}
+
