@@ -8,6 +8,23 @@
   var DATEN = 'daten/';
   var BUCHSTABEN = ['A', 'B', 'C', 'D', 'E', 'F'];
 
+  var TYP_NAME = {
+    MC: 'Multiple Choice',
+    RF: 'Richtig oder falsch',
+    ZU: 'Zuordnen',
+    RH: 'Reihenfolge',
+    LT: 'Lückentext'
+  };
+
+  // Notenschlüssel wie bei den Schularbeiten (Prozent der Punkte)
+  var NOTEN = [
+    { ab: 91, text: 'Sehr gut (1)' },
+    { ab: 81, text: 'Gut (2)' },
+    { ab: 61, text: 'Befriedigend (3)' },
+    { ab: 51, text: 'Genügend (4)' },
+    { ab: 0, text: 'Nicht genügend (5)' }
+  ];
+
   var themen = [];          // [{titel, datei, fragen, fehler, hinweise}]
   var gewaehlt = null;      // aktuell gewähltes Thema
   var runde = null;         // laufendes Quiz
@@ -35,12 +52,22 @@
     return e;
   }
 
+  function knopf(klasse, text) {
+    var b = el('button', klasse, text);
+    b.type = 'button';
+    return b;
+  }
+
   function leere(e) {
     while (e.firstChild) e.removeChild(e.firstChild);
   }
 
   function istTastatur(ev) {
     return ev && ev.detail === 0;
+  }
+
+  function mehrzahl(n, eins, viele) {
+    return n + ' ' + (n === 1 ? eins : viele);
   }
 
   function zeige(name, verlauf) {
@@ -171,36 +198,46 @@
 
   /* ---------- Startseite ---------- */
 
+  function unterthemen(t) {
+    var zaehler = {};
+    var reihenfolge = [];
+    t.fragen.forEach(function (f) {
+      if (!zaehler[f.thema]) { zaehler[f.thema] = 0; reihenfolge.push(f.thema); }
+      zaehler[f.thema]++;
+    });
+    return reihenfolge.map(function (n) { return { name: n, anzahl: zaehler[n] }; });
+  }
+
   function zeigeThemen() {
     var liste = $('themen-liste');
     leere(liste);
     themen.forEach(function (t) {
       var karte = el('div', 'thema-karte');
-      var knopf = el('button', 'thema-knopf');
-      knopf.type = 'button';
-      var text = el('span');
-      text.appendChild(el('span', 'thema-name', t.titel));
-      text.appendChild(document.createElement('br'));
-      text.appendChild(el('span', 'thema-anzahl',
-        t.fragen.length ? t.fragen.length + ' Fragen' : 'Derzeit nicht verfügbar'));
-      knopf.appendChild(text);
+      var b = knopf('thema-knopf');
+      b.appendChild(el('span', 'thema-name', t.titel));
+      var info = t.fragen.length
+        ? mehrzahl(t.fragen.length, 'Frage', 'Fragen') + ' · ' +
+          mehrzahl(unterthemen(t).length, 'Unterthema', 'Unterthemen')
+        : 'Derzeit nicht verfügbar';
+      b.appendChild(el('span', 'thema-anzahl', info));
       if (t.fragen.length) {
-        knopf.addEventListener('click', function () { oeffneEinstellungen(t); });
+        b.appendChild(el('span', 'thema-los', 'Quiz starten ›'));
+        b.addEventListener('click', function () { oeffneEinstellungen(t); });
       } else {
-        knopf.disabled = true;
+        b.disabled = true;
       }
-      karte.appendChild(knopf);
+      karte.appendChild(b);
 
       if (t.fehler.length || t.hinweise.length) {
         var det = el('details', t.fehler.length ? 'schwer' : '');
         if (!t.fragen.length) det.open = true;
         var teile = [];
         if (t.fragen.length && t.fehler.length) {
-          teile.push(t.fehler.length === 1 ? '1 Frage übersprungen' : t.fehler.length + ' Fragen übersprungen');
+          teile.push(mehrzahl(t.fehler.length, 'Frage', 'Fragen') + ' übersprungen');
         } else if (t.fehler.length) {
           teile.push('Datei fehlerhaft');
         }
-        if (t.hinweise.length) teile.push(t.hinweise.length === 1 ? '1 Hinweis' : t.hinweise.length + ' Hinweise');
+        if (t.hinweise.length) teile.push(mehrzahl(t.hinweise.length, 'Hinweis', 'Hinweise'));
         det.appendChild(el('summary', null, '⚠ Für die Lehrkraft: ' + teile.join(', ')));
         var ul = el('ul');
         t.fehler.forEach(function (f) { ul.appendChild(el('li', null, f)); });
@@ -216,22 +253,16 @@
 
   function oeffneEinstellungen(t) {
     gewaehlt = t;
-    $('einst-titel').textContent = t.titel;
+    $('einst-titel').textContent = 'Quiz: ' + t.titel;
 
     var sel = $('einst-unterthema');
     leere(sel);
-    var zaehler = {};
-    var reihenfolge = [];
-    t.fragen.forEach(function (f) {
-      if (!zaehler[f.thema]) { zaehler[f.thema] = 0; reihenfolge.push(f.thema); }
-      zaehler[f.thema]++;
-    });
     var alle = el('option', null, 'Alle Unterthemen (' + t.fragen.length + ')');
     alle.value = '';
     sel.appendChild(alle);
-    reihenfolge.forEach(function (name) {
-      var o = el('option', null, name + ' (' + zaehler[name] + ')');
-      o.value = name;
+    unterthemen(t).forEach(function (u) {
+      var o = el('option', null, u.name + ' (' + u.anzahl + ')');
+      o.value = u.name;
       sel.appendChild(o);
     });
     sel.value = '';
@@ -270,13 +301,27 @@
 
   /* ---------- Quiz ---------- */
 
+  /* Zuordnen, Reihenfolge und Lückentext funktionieren gleich:
+     Es gibt „Felder“ (slots) mit je einer erwarteten Lösung und einen Vorrat an
+     Antwort-Kärtchen (chips). Ein Kärtchen antippen = ins markierte Feld setzen. */
   function bereite(frage) {
     var v = { q: frage };
+    var slots = null;
+    var extra = [];
     if (frage.typ === 'MC') {
       v.optionen = mische([frage.richtig].concat(frage.falsche));
     } else if (frage.typ === 'ZU') {
-      v.chips = mische(frage.paare.map(function (p, i) { return { id: i, text: p.rechts }; }));
-      v.zuordnung = frage.paare.map(function () { return null; });
+      slots = frage.paare.map(function (p) { return p.rechts; });
+    } else if (frage.typ === 'RH') {
+      slots = frage.schritte.slice();
+    } else if (frage.typ === 'LT') {
+      slots = frage.luecken.slice();
+      extra = frage.ablenker;
+    }
+    if (slots) {
+      v.slots = slots;
+      v.chips = mische(slots.concat(extra).map(function (text, i) { return { id: i, text: text }; }));
+      v.zuordnung = slots.map(function () { return null; });
       v.aktiv = 0;
     }
     return v;
@@ -306,42 +351,50 @@
     var v = runde.fragen[runde.pos];
     var f = v.q;
     setzeFortschritt(runde.pos);
-    $('quiz-thema').textContent = f.thema;
-    $('quiz-typ').textContent = f.typ === 'MC' ? 'Wählen Sie die richtige Antwort.'
-      : f.typ === 'RF' ? 'Richtig oder falsch?'
-        : 'Ordnen Sie richtig zu.';
+    $('quiz-thema').textContent = f.thema + ' · ' + TYP_NAME[f.typ];
     $('quiz-frage').textContent = f.frage;
     $('quiz-rueckmeldung').hidden = true;
     $('quiz-weiter').hidden = true;
+
+    var anleitung = {
+      MC: 'Wählen Sie die richtige Antwort.',
+      RF: 'Ist diese Aussage richtig oder falsch?',
+      ZU: 'Tippen Sie unten auf die passende Antwort – sie kommt in das markierte Feld. ' +
+        'Zum Ändern das Feld antippen.',
+      RH: 'Tippen Sie die Schritte unten in der richtigen Reihenfolge an. Zum Ändern einen Schritt antippen.',
+      LT: 'Tippen Sie unten auf das passende Wort – es kommt in die markierte Lücke. ' +
+        'Zum Ändern die Lücke antippen.' + (f.typ === 'LT' && f.ablenker.length
+          ? ' Achtung: Es gibt mehr Wörter als Lücken.' : '')
+    };
+    $('quiz-anleitung').textContent = anleitung[f.typ];
 
     var bereich = $('quiz-antworten');
     leere(bereich);
     if (f.typ === 'MC') zeigeMC(v, bereich);
     else if (f.typ === 'RF') zeigeRF(v, bereich);
-    else zeigeZU(v, bereich);
+    else zeigeTipp(v, bereich);
 
     window.scrollTo(0, 0);
     $('quiz-frage').focus({ preventScroll: true });
   }
 
   function antwortKnopf(zeichen, text) {
-    var b = el('button', 'antwort');
-    b.type = 'button';
+    var b = knopf('antwort');
     b.appendChild(el('span', 'zeichen', zeichen));
     b.appendChild(el('span', 'antwort-text', text));
     return b;
   }
 
-  function markiere(knopf, richtig) {
-    knopf.classList.add(richtig ? 'ist-richtig' : 'ist-falsch');
-    knopf.querySelector('.zeichen').textContent = richtig ? '✓' : '✗';
+  function markiere(b, richtig) {
+    b.classList.add(richtig ? 'ist-richtig' : 'ist-falsch');
+    b.querySelector('.zeichen').textContent = richtig ? '✓' : '✗';
   }
 
-  function sperre(knoepfe, gewaehlt, richtigerKnopf) {
+  function sperre(knoepfe, gewaehlterKnopf, richtigerKnopf) {
     knoepfe.forEach(function (k) {
       k.disabled = true;
       if (k === richtigerKnopf) markiere(k, true);
-      else if (k === gewaehlt) markiere(k, false);
+      else if (k === gewaehlterKnopf) markiere(k, false);
       else k.classList.add('gedimmt');
     });
   }
@@ -366,8 +419,8 @@
 
   function zeigeRF(v, bereich) {
     var box = el('div', 'antworten rf');
-    var bR = antwortKnopf('', 'Richtig');
-    var bF = antwortKnopf('', 'Falsch');
+    var bR = antwortKnopf('✓', 'Richtig');
+    var bF = antwortKnopf('✗', 'Falsch');
     box.appendChild(bR);
     box.appendChild(bF);
     var richtigerKnopf = v.q.richtig ? bR : bF;
@@ -381,50 +434,70 @@
     bereich.appendChild(box);
   }
 
-  function zeigeZU(v, bereich, fokusZiel) {
-    leere(bereich);
-    var paare = v.q.paare;
-    var chipVon = function (id) {
-      for (var i = 0; i < v.chips.length; i++) if (v.chips[i].id === id) return v.chips[i];
-      return null;
-    };
+  function chipText(v, id) {
+    for (var i = 0; i < v.chips.length; i++) if (v.chips[i].id === id) return v.chips[i].text;
+    return '';
+  }
 
-    bereich.appendChild(el('p', 'zu-hilfe',
-      'Tippen Sie unten auf eine Antwort – sie wird dem markierten Begriff zugeordnet. ' +
-      'Zum Ändern tippen Sie auf die Zuordnung.'));
-
-    var liste = el('ul', 'zu-liste');
-    var fokusElement = null;
-    paare.forEach(function (p, i) {
-      var li = el('li', 'zu-karte' + (v.aktiv === i ? ' aktiv' : ''));
-      li.appendChild(el('div', 'zu-links', p.links));
-      var belegt = v.zuordnung[i] !== null;
-      var feld = el('button', 'zu-feld' + (belegt ? '' : ' leer'));
-      feld.type = 'button';
-      if (belegt) {
-        feld.appendChild(el('span', 'zeichen', '→'));
-        feld.appendChild(el('span', null, chipVon(v.zuordnung[i]).text));
-        feld.setAttribute('aria-label', p.links + ': ' + chipVon(v.zuordnung[i]).text + ' – antippen zum Ändern');
-      } else {
-        feld.textContent = v.aktiv === i ? 'Jetzt unten eine Antwort antippen …' : 'Antippen zum Auswählen';
-        feld.setAttribute('aria-label', p.links + ': noch nicht zugeordnet');
-      }
-      feld.addEventListener('click', function (ev) {
-        v.zuordnung[i] = null;
-        v.aktiv = i;
-        zeigeZU(v, bereich, istTastatur(ev) ? 'pool' : null);
-      });
-      li.appendChild(feld);
-      liste.appendChild(li);
+  // Ein Feld (Lücke, Zuordnung oder Reihenfolge-Platz) als Knopf
+  function feldKnopf(v, i, bereich, klasse, beschriftung) {
+    var belegt = v.zuordnung[i] !== null;
+    var b = knopf('feld ' + klasse + (belegt ? ' belegt' : ' leer') + (v.aktiv === i ? ' aktiv' : ''));
+    if (belegt) {
+      b.textContent = chipText(v, v.zuordnung[i]);
+      b.setAttribute('aria-label', beschriftung + ': ' + b.textContent + ' – antippen zum Ändern');
+    } else {
+      b.textContent = v.aktiv === i ? 'hier einsetzen …' : 'antippen';
+      b.setAttribute('aria-label', beschriftung + ': noch leer' + (v.aktiv === i ? ', markiert' : ''));
+    }
+    b.addEventListener('click', function (ev) {
+      v.zuordnung[i] = null;
+      v.aktiv = i;
+      zeigeTipp(v, bereich, istTastatur(ev) ? 'vorrat' : null);
     });
-    bereich.appendChild(liste);
+    return b;
+  }
+
+  function zeigeTipp(v, bereich, fokusZiel) {
+    leere(bereich);
+    var q = v.q;
+    var fokusElement = null;
+
+    if (q.typ === 'ZU') {
+      var ul = el('ul', 'feld-liste');
+      q.paare.forEach(function (p, i) {
+        var li = el('li', 'feld-karte' + (v.aktiv === i ? ' aktiv' : ''));
+        li.appendChild(el('div', 'feld-titel', p.links));
+        li.appendChild(feldKnopf(v, i, bereich, 'zu-feld', p.links));
+        ul.appendChild(li);
+      });
+      bereich.appendChild(ul);
+    } else if (q.typ === 'RH') {
+      var ol = el('ol', 'feld-liste rh');
+      v.slots.forEach(function (s, i) {
+        var li = el('li', 'feld-karte rh-karte' + (v.aktiv === i ? ' aktiv' : ''));
+        li.appendChild(el('span', 'rh-nr', String(i + 1)));
+        li.appendChild(feldKnopf(v, i, bereich, 'rh-feld', 'Schritt ' + (i + 1)));
+        ol.appendChild(li);
+      });
+      bereich.appendChild(ol);
+    } else {
+      var p = el('p', 'lt-text');
+      q.teile.forEach(function (t) {
+        if (t.text !== undefined) p.appendChild(document.createTextNode(t.text));
+        else p.appendChild(feldKnopf(v, t.luecke, bereich, 'luecke', 'Lücke ' + (t.luecke + 1)));
+      });
+      bereich.appendChild(p);
+    }
 
     var vergeben = v.zuordnung.filter(function (x) { return x !== null; });
     var frei = v.chips.filter(function (c) { return vergeben.indexOf(c.id) < 0; });
+    var alleBelegt = vergeben.length === v.slots.length;
 
-    if (frei.length) {
-      bereich.appendChild(el('p', 'zu-pool-titel', 'Antworten zum Zuordnen'));
-      var pool = el('div', 'zu-pool');
+    if (!alleBelegt) {
+      bereich.appendChild(el('p', 'vorrat-titel',
+        q.typ === 'LT' ? 'Wörter' : q.typ === 'RH' ? 'Schritte' : 'Antworten'));
+      var vorrat = el('div', 'vorrat');
       frei.forEach(function (c, k) {
         var b = antwortKnopf('+', c.text);
         b.addEventListener('click', function (ev) {
@@ -433,61 +506,77 @@
           v.zuordnung[ziel] = c.id;
           // nächstes freies Feld nach dem aktuellen markieren
           v.aktiv = null;
-          for (var s = 1; s <= paare.length; s++) {
-            var j = (ziel + s) % paare.length;
+          for (var s = 1; s <= v.slots.length; s++) {
+            var j = (ziel + s) % v.slots.length;
             if (v.zuordnung[j] === null) { v.aktiv = j; break; }
           }
-          zeigeZU(v, bereich, istTastatur(ev) ? 'pool' : null);
+          zeigeTipp(v, bereich, istTastatur(ev) ? 'vorrat' : null);
         });
-        if (fokusZiel === 'pool' && k === 0) fokusElement = b;
-        pool.appendChild(b);
+        if (fokusZiel === 'vorrat' && k === 0) fokusElement = b;
+        vorrat.appendChild(b);
       });
-      bereich.appendChild(pool);
+      bereich.appendChild(vorrat);
     }
 
-    var pruefen = el('button', 'knopf haupt', 'Zuordnung prüfen');
-    pruefen.type = 'button';
-    pruefen.id = 'zu-pruefen';
-    pruefen.disabled = frei.length > 0;
-    pruefen.addEventListener('click', function () { pruefeZU(v, bereich); });
+    var pruefen = knopf('knopf haupt', 'Antwort prüfen');
+    pruefen.id = 'tipp-pruefen';
+    pruefen.disabled = !alleBelegt;
+    pruefen.addEventListener('click', function () { pruefeTipp(v, bereich); });
     bereich.appendChild(pruefen);
-    if (fokusZiel === 'pool' && !frei.length) fokusElement = pruefen;
+    if (fokusZiel === 'vorrat' && alleBelegt) fokusElement = pruefen;
 
     if (fokusElement) fokusElement.focus({ preventScroll: true });
   }
 
-  function pruefeZU(v, bereich) {
-    var paare = v.q.paare;
-    var gegeben = v.zuordnung.map(function (id) {
-      for (var i = 0; i < v.chips.length; i++) if (v.chips[i].id === id) return v.chips[i].text;
-      return '';
-    });
-    var anzahlRichtig = 0;
+  function pruefeTipp(v, bereich) {
+    var q = v.q;
+    var gegeben = v.zuordnung.map(function (id) { return chipText(v, id); });
+    var ok = gegeben.map(function (g, i) { return g === v.slots[i]; });
+    var anzahlRichtig = ok.filter(Boolean).length;
 
     leere(bereich);
-    var liste = el('ul', 'zu-liste');
-    paare.forEach(function (p, i) {
-      var ok = gegeben[i] === p.rechts;
-      if (ok) anzahlRichtig++;
-      var li = el('li', 'zu-karte ' + (ok ? 'ist-richtig' : 'ist-falsch'));
-      li.appendChild(el('div', 'zu-links', p.links));
-      var feld = el('div', 'zu-feld');
-      feld.appendChild(el('span', 'zeichen', ok ? '✓' : '✗'));
-      feld.appendChild(el('span', null, gegeben[i]));
-      li.appendChild(feld);
-      if (!ok) li.appendChild(el('div', 'zu-korrektur', 'Richtig: ' + p.rechts));
-      liste.appendChild(li);
-    });
-    bereich.appendChild(liste);
+    if (q.typ === 'LT') {
+      var p = el('p', 'lt-text');
+      q.teile.forEach(function (t) {
+        if (t.text !== undefined) { p.appendChild(document.createTextNode(t.text)); return; }
+        var i = t.luecke;
+        var span = el('span', 'feld luecke ' + (ok[i] ? 'ist-richtig' : 'ist-falsch'));
+        span.appendChild(el('span', 'zeichen', ok[i] ? '✓ ' : '✗ '));
+        if (ok[i]) {
+          span.appendChild(document.createTextNode(gegeben[i]));
+        } else {
+          span.appendChild(el('s', null, gegeben[i]));
+          span.appendChild(document.createTextNode(' → '));
+          span.appendChild(el('strong', null, v.slots[i]));
+        }
+        p.appendChild(span);
+      });
+      bereich.appendChild(p);
+    } else {
+      var liste = el(q.typ === 'RH' ? 'ol' : 'ul', 'feld-liste' + (q.typ === 'RH' ? ' rh' : ''));
+      v.slots.forEach(function (soll, i) {
+        var li = el('li', 'feld-karte ' + (q.typ === 'RH' ? 'rh-karte ' : '') + (ok[i] ? 'ist-richtig' : 'ist-falsch'));
+        if (q.typ === 'RH') li.appendChild(el('span', 'rh-nr', String(i + 1)));
+        else li.appendChild(el('div', 'feld-titel', q.paare[i].links));
+        var feld = el('div', 'feld belegt');
+        feld.appendChild(el('span', 'zeichen', ok[i] ? '✓' : '✗'));
+        feld.appendChild(el('span', null, gegeben[i]));
+        li.appendChild(feld);
+        if (!ok[i]) li.appendChild(el('div', 'korrektur', 'Richtig: ' + soll));
+        liste.appendChild(li);
+      });
+      bereich.appendChild(liste);
+    }
 
-    var alle = anzahlRichtig === paare.length;
-    beantwortet(alle, gegeben, anzahlRichtig + ' von ' + paare.length + ' Zuordnungen richtig.' +
-      (alle ? '' : ' Die richtigen Lösungen sind oben grün angegeben.'));
+    var alle = anzahlRichtig === v.slots.length;
+    var einheit = q.typ === 'LT' ? ['Lücke', 'Lücken'] : q.typ === 'RH' ? ['Schritt', 'Schritten'] : ['Zuordnung', 'Zuordnungen'];
+    beantwortet(alle, gegeben, anzahlRichtig + ' von ' + v.slots.length + ' ' + einheit[1] + ' richtig.' +
+      (alle ? '' : ' Die richtige Lösung steht oben grün.'));
   }
 
   function beantwortet(ok, gegeben, erklaerung) {
     var v = runde.fragen[runde.pos];
-    runde.ergebnisse.push({ q: v.q, korrekt: ok, gegeben: gegeben });
+    runde.ergebnisse.push({ q: v.q, korrekt: ok, gegeben: gegeben, slots: v.slots });
     setzeFortschritt(runde.pos + 1);
 
     var box = $('quiz-rueckmeldung');
@@ -523,51 +612,79 @@
 
   function rfText(wert) { return wert ? 'richtig' : 'falsch'; }
 
+  function zeile(klasse, text) { return el('p', klasse, text); }
+
+  function falschEintrag(e, nr) {
+    var q = e.q;
+    var li = el('li', 'tabelle');
+    li.appendChild(el('div', 'tabelle-kopf', 'Frage ' + nr + ' · ' + q.thema));
+    var inhalt = el('div', 'tabelle-inhalt');
+    inhalt.appendChild(zeile('falsch-frage', q.frage));
+
+    if (q.typ === 'MC') {
+      inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Antwort: ' + e.gegeben));
+      inhalt.appendChild(zeile('zeile-richtig', '✓ Richtig: ' + q.richtig));
+    } else if (q.typ === 'RF') {
+      inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Antwort: ' + rfText(e.gegeben)));
+      inhalt.appendChild(zeile('zeile-richtig', '✓ Die Aussage ist ' + rfText(q.richtig) + '.'));
+    } else if (q.typ === 'LT') {
+      var p = el('p', 'zeile-richtig lt-loesung');
+      p.appendChild(document.createTextNode('✓ '));
+      q.teile.forEach(function (t) {
+        if (t.text !== undefined) p.appendChild(document.createTextNode(t.text));
+        else p.appendChild(el('strong', null, q.luecken[t.luecke]));
+      });
+      inhalt.appendChild(p);
+      var ul = el('ul');
+      q.luecken.forEach(function (soll, i) {
+        if (e.gegeben[i] !== soll) {
+          ul.appendChild(el('li', 'paar-falsch', '✗ Lücke ' + (i + 1) + ': „' + e.gegeben[i] + '“ statt „' + soll + '“'));
+        }
+      });
+      inhalt.appendChild(ul);
+    } else {
+      var liste = el(q.typ === 'RH' ? 'ol' : 'ul');
+      e.slots.forEach(function (soll, i) {
+        var links = q.typ === 'ZU' ? q.paare[i].links + ' = ' : '';
+        if (e.gegeben[i] === soll) {
+          liste.appendChild(el('li', null, '✓ ' + links + soll));
+        } else {
+          var item = el('li');
+          item.appendChild(el('span', 'paar-falsch', '✗ ' + links + e.gegeben[i]));
+          item.appendChild(document.createElement('br'));
+          item.appendChild(el('span', 'paar-richtig', '✓ Richtig: ' + soll));
+          liste.appendChild(item);
+        }
+      });
+      inhalt.appendChild(liste);
+    }
+    li.appendChild(inhalt);
+    return li;
+  }
+
   function zeigeErgebnis() {
     letzteRunde = runde;
     var erg = runde.ergebnisse;
     runde = null;
 
     var richtig = erg.filter(function (e) { return e.korrekt; }).length;
-    var prozent = Math.round(richtig / erg.length * 100);
-    $('erg-prozent').textContent = prozent + ' %';
+    var anteil = richtig / erg.length * 100;
+    var note = NOTEN.filter(function (n) { return anteil >= n.ab; })[0];
+    $('erg-titel').textContent = 'Auswertung: ' + letzteRunde.thema.titel;
+    $('erg-prozent').textContent = Math.round(anteil) + ' %';
     $('erg-anzahl').textContent = richtig + ' von ' + erg.length + ' Fragen richtig';
+    $('erg-note').textContent = note.text;
     $('erg-text').textContent =
-      prozent === 100 ? 'Ausgezeichnet – alles richtig!'
-        : prozent >= 90 ? 'Ausgezeichnet!'
-          : prozent >= 75 ? 'Sehr gut!'
-            : prozent >= 50 ? 'Gut – da geht noch mehr.'
+      richtig === erg.length ? 'Ausgezeichnet – alles richtig!'
+        : anteil >= 91 ? 'Ausgezeichnet!'
+          : anteil >= 81 ? 'Sehr gut gemacht!'
+            : anteil >= 61 ? 'Gut – da geht noch mehr.'
               : 'Weiter üben – wiederholen Sie die falschen Fragen.';
 
     var falsch = erg.filter(function (e) { return !e.korrekt; });
     var liste = $('erg-falsch-liste');
     leere(liste);
-    falsch.forEach(function (e) {
-      var li = el('li');
-      li.appendChild(el('p', 'falsch-frage', e.q.frage));
-      if (e.q.typ === 'MC') {
-        li.appendChild(el('p', 'zeile-ihre', '✗ Ihre Antwort: ' + e.gegeben));
-        li.appendChild(el('p', 'zeile-richtig', '✓ Richtig: ' + e.q.richtig));
-      } else if (e.q.typ === 'RF') {
-        li.appendChild(el('p', 'zeile-ihre', '✗ Ihre Antwort: ' + rfText(e.gegeben)));
-        li.appendChild(el('p', 'zeile-richtig', '✓ Die Aussage ist ' + rfText(e.q.richtig) + '.'));
-      } else {
-        var ul = el('ul');
-        e.q.paare.forEach(function (p, i) {
-          if (e.gegeben[i] === p.rechts) {
-            ul.appendChild(el('li', null, '✓ ' + p.links + ' = ' + p.rechts));
-          } else {
-            var item = el('li');
-            item.appendChild(el('span', 'paar-falsch', '✗ ' + p.links + ' = ' + e.gegeben[i]));
-            item.appendChild(document.createElement('br'));
-            item.appendChild(el('span', 'paar-richtig', '✓ Richtig: ' + p.rechts));
-            ul.appendChild(item);
-          }
-        });
-        li.appendChild(ul);
-      }
-      liste.appendChild(li);
-    });
+    falsch.forEach(function (e, i) { liste.appendChild(falschEintrag(e, i + 1)); });
 
     $('erg-falsch-bereich').hidden = !falsch.length;
     $('erg-wiederholen').hidden = !falsch.length;

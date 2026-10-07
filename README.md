@@ -8,8 +8,12 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
 - Themenauswahl, optional Filter nach Unterthema, 10 / 20 / alle Fragen
 - Fragen und Antworten werden bei jedem Durchgang gemischt
 - Sofortige Rückmeldung mit richtiger Lösung
-- Auswertung in Prozent, Liste der falschen Fragen, „Falsche Fragen wiederholen“
-- Drei Fragetypen: Multiple Choice (MC), Richtig/Falsch (RF), Zuordnen (ZU)
+- Auswertung in Prozent mit Note laut Notenschlüssel der Schularbeiten (91/81/61/51 %),
+  Liste der falschen Fragen mit Lösung, „Falsche Fragen wiederholen“
+- Fünf Fragetypen: Multiple Choice (MC), Richtig/Falsch (RF), Zuordnen (ZU),
+  Reihenfolge (RH) und Lückentext (LT) – alles per Antippen, ohne Tippen auf der Tastatur
+- Themen derzeit: **Fleisch & Rindfleisch** (77 Fragen), **Käse** (78 Fragen)
+- Gestaltet im Stil der knb-Arbeitsblätter (siehe unten „Einheitlicher Stil“)
 - Keine Anmeldung, keine Speicherung, kein Tracking, keine externen Dateien –
   reines HTML/CSS/JavaScript
 
@@ -17,7 +21,9 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
 
 ```
 index.html              Die App
-css/style.css           Aussehen
+css/knb-stil.css        Grundstil (Schrift, Farben, Kopf, Fußzeile) – für alle Tools
+css/quiz.css            Aussehen speziell für das Quiz
+bilder/lbs-logo.png     Logo der LBS Theresienfeld
 js/csv.js               Einlesen und Prüfen der Fragen-Dateien
 js/app.js               Ablauf des Quiz
 daten/themen.json       Liste der Themen
@@ -100,13 +106,13 @@ nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
 |---------|-----------|
 | nr      | laufende Nummer (hilft bei Fehlermeldungen) |
 | thema   | Unterthema, danach kann im Quiz gefiltert werden (z. B. „Lagerung“) |
-| typ     | `MC`, `RF` oder `ZU` |
+| typ     | `MC`, `RF`, `ZU`, `RH` oder `LT` |
 | frage   | Fragetext bzw. Aussage |
 | richtig | richtige Antwort (je nach Typ, siehe unten) |
-| falsch1–falsch3 | falsche Antworten (nur bei MC) |
-| quelle  | nur für Sie – wird im Quiz nicht angezeigt |
+| falsch1–falsch3 | falsche Antworten (MC) bzw. zusätzliche Ablenkwörter (LT) |
+| quelle  | nur für Sie – wird im Quiz nicht angezeigt (z. B. „SA1 FOOD“, „AA Milch“, „Lehrbuch S. 45“) |
 
-### Beispiele für die drei Fragetypen
+### Beispiele für die fünf Fragetypen
 
 **MC – Multiple Choice:** In `richtig` steht die richtige Antwort, in `falsch1` bis `falsch3`
 die falschen. Die Reihenfolge wird im Quiz gemischt.
@@ -129,6 +135,30 @@ im Quiz gemischt und müssen durch Antippen zugeordnet werden.
 ```
 80;Teilstücke Rind;ZU;Ordnen Sie die Teilstücke der Verwendung zu.;Tafelspitz = Sieden | Beiried = Kurzbraten | Wadschinken = Gulasch;;;;AMA
 ```
+
+**RH – Reihenfolge:** In `richtig` stehen die Schritte **in der richtigen Reihenfolge**, getrennt
+durch `|`. Mindestens drei Schritte. Im Quiz werden sie gemischt und müssen der Reihe nach
+angetippt werden. Ideal für Arbeitsabläufe (Herstellung, Warenannahme, Verkostung …).
+
+```
+81;Käseherstellung;RH;Bringen Sie die Schritte in die richtige Reihenfolge.;Milch vorbereiten | Lab zugeben | Käsebruch schneiden | Molke abtrennen | Pressen | Salzen | Reifen;;;;Film Käse
+```
+
+**LT – Lückentext:** In `frage` steht die Aufgabe, in `richtig` der Text – die Wörter für die
+Lücken stehen in **eckigen Klammern** `[ ]` (Tastatur: `AltGr` + `8` und `AltGr` + `9`).
+In `falsch1` bis `falsch3` können Sie bis zu drei **Ablenkwörter** angeben, die zusätzlich zur
+Auswahl stehen (optional – macht die Aufgabe schwieriger).
+
+```
+82;Fettgehalt;LT;Ergänzen Sie den Text.;F.i.T. bedeutet Fett in der [Trockenmasse]. Für die Ernährung ist der Fettgehalt [absolut] aussagekräftiger.;Eiweiß;relativ;;SA1 FOOD
+```
+
+So sieht die Lücke im Quiz aus: wie eine graue Antwortlinie auf dem Arbeitsblatt. Die Lehrlinge
+tippen ein Wort aus der Liste darunter an, und es wandert in die markierte Lücke.
+
+**Tipp für gute Fragen:** Nehmen Sie die Inhalte direkt aus Ihren Arbeitsaufträgen, Lösungsblättern
+und Schularbeiten – dann ist das Quiz eine echte Wiederholung des Unterrichts. Tragen Sie in
+`quelle` ein, woher die Frage stammt; so finden Sie sie später schnell wieder.
 
 ### Neue Fragen zu einem bestehenden Thema
 
@@ -168,10 +198,38 @@ ZU-Paar ohne `=`) werden übersprungen, alle anderen Fragen funktionieren weiter
 erscheint beim betroffenen Thema ein aufklappbarer Hinweis **„⚠ Für die Lehrkraft“** mit Zeilennummer
 und Beschreibung des Problems, z. B.:
 
-> Zeile 3 (Nr. 2): Unbekannter Fragetyp „XY“. Erlaubt sind MC, RF oder ZU.
+> Zeile 3 (Nr. 2): Unbekannter Fragetyp „XY“. Erlaubt sind MC, RF, ZU, LT oder RH.
 
 Wer Node.js installiert hat, kann alle Themen auch ohne Browser prüfen:
 
 ```
 node tests/csv-test.js
 ```
+
+---
+
+## Einheitlicher Stil (für dieses und alle weiteren Tools)
+
+Das Aussehen folgt den Arbeits- und Infoblättern von Benedikt Knotzer (knb):
+
+| Element | Umsetzung |
+|---------|-----------|
+| Schrift | ausschließlich Arial |
+| Titel | fett, Blau `#003399`, Format „Typ: Thema“ (z. B. „Quiz: Käse“, „Auswertung: Käse“) |
+| Logo | LBS-Logo rechts neben dem Titel |
+| Überschriften | fett, Blau `#003399` |
+| Anleitungen | kursiv, wie „Anleitung: …“ auf den Arbeitsblättern |
+| Lücken / leere Felder | graue Antwortlinie `#808080` |
+| Tabellen / Karten | Kopf weiße Schrift auf Blau `#003399`, Rahmen Blau |
+| Fußzeile | Trennlinie, „Benedikt Knotzer \| knb“ in Blau |
+
+Alle Grundregeln stehen in `css/knb-stil.css`. Ein neues Tool bindet diese Datei ein und ergänzt
+nur, was es zusätzlich braucht – so sieht alles einheitlich aus.
+
+### Fragen mit Vermerk „bitte prüfen“
+
+Im Käse-Katalog steht bei manchen Fragen in der Spalte `quelle` der Vermerk **„Lehrbuch – bitte prüfen“**
+oder **„Faktoren bitte prüfen“**. Diese Inhalte stammen nicht direkt aus Ihren Unterlagen
+(Schularbeit FOOD, AA Milch, Sensorik-Protokoll, Wochenplanung), sondern aus allgemeinem
+Warenkunde-Wissen. Bitte vor dem Einsatz mit Ihrem Lehrbuch bzw. dem AA „Käse allgemein“
+abgleichen – vor allem die Umrechnungsfaktoren F.i.T. → Fett absolut.

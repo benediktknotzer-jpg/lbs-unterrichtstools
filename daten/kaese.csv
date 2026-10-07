@@ -1,0 +1,79 @@
+nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
+1;Milch als Rohstoff;MC;Wie viel Wasser enthält österreichische Vollmilch ungefähr?;87 %;50 %;65 %;97 %;AA Milch & Milchprodukte
+2;Milch als Rohstoff;ZU;Ordnen Sie die Milchsorte der richtigen Behandlung zu.;Rohmilch = unbehandelt | Frischmilch = pasteurisiert bei 72–75 °C | ESL-Milch = 123–127 °C, ca. 3 Wochen haltbar | H-Milch = ultrahocherhitzt bei 135–150 °C;;;;AA Milch & Milchprodukte
+3;Milch als Rohstoff;RH;Ordnen Sie die Milchsorten nach der Erhitzungstemperatur – von der niedrigsten zur höchsten.;Rohmilch | Frischmilch | ESL-Milch | H-Milch;;;;AA Milch & Milchprodukte
+4;Milch als Rohstoff;MC;Eine Kundin fragt: „Was heißt homogenisiert?“ Was antworten Sie?;Das Milchfett wird unter Druck fein zerteilt, damit die Milch nicht aufrahmt;Die Milch wird kurz erhitzt, damit Keime abgetötet werden;Der Milch wird ein Teil des Wassers entzogen;Der Milchzucker wird aufgespalten;SA1 FOOD / AA Milch
+5;Milch als Rohstoff;MC;Was bewirkt das Pasteurisieren der Milch?;Keime werden durch kurzes Erhitzen abgetötet, Vitamine und Nährstoffe bleiben großteils erhalten;Das Fett wird gleichmäßig verteilt;Die Milch wird ungekühlt monatelang haltbar;Der Fettgehalt wird auf genau 3,5 % eingestellt;SA1 FOOD / AA Milch
+6;Milch als Rohstoff;LT;Ergänzen Sie den Text zur Heumilch.;Heumilch-Kühe bekommen kein [Silofutter]. Im Sommer fressen sie Gräser und Kräuter auf der [Weide] oder Alm, im Winter bekommen sie [Heu] und Getreideschrot.;Fischmehl;Stall;Kraftfutter;AA Milch & Milchprodukte
+7;Milch als Rohstoff;MC;Warum eignet sich Heumilch besonders gut für Rohmilchkäse?;Weil ohne Silofutter keine Fehlgärungen im Käse entstehen;Weil Heumilch mehr Wasser enthält;Weil Heumilch bereits pasteurisiert ist;Weil Heumilch keinen Milchzucker enthält;SA1 FOOD
+8;Milch als Rohstoff;RF;Heumilch ist selbstverständlich gentechnikfrei.;richtig;;;;AA Milch & Milchprodukte
+9;Milch als Rohstoff;RF;Wenn das AMA-Bio-Siegel rot statt schwarz ist, stammen die Rohstoffe zu 100 % aus Österreich.;richtig;;;;AA Milch & Milchprodukte
+10;Käseherstellung;LT;Ergänzen Sie den Text zur Milchgerinnung.;Damit Milch gerinnt, gibt man [Lab] oder [Säure] (Milchsäurebakterien) dazu. Dabei entstehen fester [Käsebruch] und flüssige [Molke].;Hefe;Rahm;Salz;SA1 FOOD
+11;Käseherstellung;RH;Bringen Sie die Schritte der Käseherstellung in die richtige Reihenfolge.;Milch vorbereiten (z. B. pasteurisieren) | Milchsäurebakterien und Lab zugeben – die Milch wird dick | Die dicke Milch (Gallerte) zu Käsebruch schneiden | Molke abtrennen | Käsebruch in Formen füllen und pressen | Im Salzbad salzen | Reifen lassen;;;;Film „Goldene Gaumenfreude Käse“ / Lehrbuch
+12;Käseherstellung;MC;Was ist Lab?;Ein Enzym, das die Milch dick werden lässt;Ein Bakterium, das die Löcher im Käse bildet;Die Flüssigkeit, die beim Käsen übrig bleibt;Ein Salz zum Haltbarmachen;SA1 FOOD
+13;Käseherstellung;MC;Wie nennt man die gelblich-grüne Flüssigkeit, die bei der Käseherstellung übrig bleibt?;Molke;Buttermilch;Rahm;Lab;SA1 FOOD
+14;Käseherstellung;MC;Wie wird der Käsebruch bei Hartkäse im Vergleich zu Weichkäse geschnitten?;Sehr fein (etwa weizenkorngroß) – so tritt mehr Molke aus und der Käse wird fester;Gar nicht – er bleibt im Ganzen;Grob in faustgroße Stücke;Genauso wie bei Weichkäse;Lehrbuch – bitte prüfen
+15;Käseherstellung;RF;Je mehr Molke beim Käsen abgetrennt wird, desto fester und länger haltbar wird der Käse.;richtig;;;;Lehrbuch – bitte prüfen
+16;Käseherstellung;MC;Wodurch wird Sauermilchkäse (z. B. Tiroler Graukäse) dickgelegt?;Nur durch Milchsäurebakterien – ohne Lab;Nur durch Lab;Durch Erhitzen auf über 100 °C;Durch Zugabe von Essig;Lehrbuch – bitte prüfen
+17;Käseherstellung;LT;Ergänzen Sie den Text zum Mozzarella.;Bei Mozzarella wird der Käsebruch mit heißem Wasser [gebrüht] und dann lang [gezogen]. Man nennt diese Käse „Pasta filata“.;geräuchert;gepresst;;Lehrbuch – bitte prüfen
+18;Käseherstellung;MC;Wozu dient das Salzbad bei der Käseherstellung?;Es entzieht Wasser, bildet die Rinde, würzt und schützt vor unerwünschten Keimen;Es färbt den Käse gelb;Es lässt die Milch gerinnen;Es erzeugt die Löcher;Lehrbuch – bitte prüfen
+19;Käseherstellung;RF;Schmelzkäse wird aus fertigem Käse hergestellt, der mit Schmelzsalzen erhitzt wird.;richtig;;;;Lehrbuch – bitte prüfen
+20;Käsegruppen;ZU;Ordnen Sie jede Käsesorte ihrer Käsegruppe zu.;Emmentaler = Hartkäse | Gouda = Schnittkäse | Camembert = Weichkäse | Topfen = Frischkäse | Tiroler Graukäse = Sauermilchkäse;;;;AA Käse allgemein / Woche 2
+21;Käsegruppen;RH;Ordnen Sie die Käsegruppen nach dem Wassergehalt – vom wenigsten zum meisten Wasser.;Hartkäse | Schnittkäse | Halbfester Schnittkäse | Weichkäse | Frischkäse;;;;AA Käse allgemein / Woche 2
+22;Käsegruppen;MC;Welche Käsegruppe hat den größten Anteil an Trockenmasse?;Hartkäse;Frischkäse;Weichkäse;Schnittkäse;SA1 FOOD
+23;Käsegruppen;MC;Wie lange reift Frischkäse?;Gar nicht – er ist sofort verzehrfertig;Etwa 2 Wochen;Mindestens 3 Monate;Etwa 1 Jahr;SA1 FOOD
+24;Käsegruppen;MC;Wie lange reift Vorarlberger Bergkäse g.U. mindestens?;3 Monate;3 Tage;3 Wochen;3 Jahre;SA1 FOOD
+25;Käsegruppen;MC;Welcher Käse ist ein Hartkäse?;Parmigiano Reggiano;Mozzarella;Brie;Topfen;Lehrbuch – bitte prüfen
+26;Käsegruppen;MC;Welcher Käse ist ein Frischkäse?;Topfen;Edamer;Camembert;Emmentaler;Lehrbuch – bitte prüfen
+27;Käsegruppen;RF;Je länger ein Käse reift, desto weniger Wasser enthält er und desto würziger wird er meist.;richtig;;;;SA1 FOOD
+28;Käsegruppen;RF;Weichkäse reift in der Regel länger als Hartkäse.;falsch;;;;Lehrbuch – bitte prüfen
+29;Käsegruppen;MC;Nach welchem Merkmal werden Käse vor allem in Gruppen (Hart-, Schnitt-, Weich-, Frischkäse) eingeteilt?;Nach dem Wassergehalt bzw. der Festigkeit;Nach der Farbe der Rinde;Nach dem Herkunftsland;Nach dem Preis;Woche 2
+30;Fettgehalt;MC;Wofür steht die Abkürzung F.i.T.?;Fett in der Trockenmasse;Fett im Teig;Fettanteil im Topfen;Fett in der Tagesration;SA1 FOOD
+31;Fettgehalt;LT;Ergänzen Sie den Text zum Fettgehalt.;F.i.T. gibt an, wie viel Fett der Käse hätte, wenn man ihm das gesamte [Wasser] entzieht. Weil Käse bei der Lagerung Wasser verliert, bleibt der F.i.T.-Wert [konstant]. Für die Ernährung ist der Fettgehalt [absolut] aussagekräftiger.;steigend;Eiweiß;;SA1 FOOD
+32;Fettgehalt;RF;Ein Käse mit 45 % F.i.T. enthält tatsächlich 45 % Fett.;falsch;;;;SA1 FOOD
+33;Fettgehalt;ZU;Ordnen Sie jeder Käsegruppe den Umrechnungsfaktor zu (F.i.T. × Faktor = Fett absolut).;Hartkäse = 0,7 | Schnittkäse = 0,6 | Weichkäse = 0,5 | Frischkäse = 0,3;;;;AA Käse allgemein – Faktoren bitte prüfen
+34;Fettgehalt;MC;Ein Bergkäse hat 45 % F.i.T. Wie viel Fett hat er absolut? (Faktor Hartkäse 0,7);ca. 32 %;ca. 45 %;ca. 22 %;ca. 64 %;SA1 FOOD
+35;Fettgehalt;MC;Ein Gouda hat 48 % F.i.T. Wie viel Fett hat er absolut? (Faktor Schnittkäse 0,6);ca. 29 %;ca. 48 %;ca. 24 %;ca. 34 %;AA Käse allgemein – Faktoren bitte prüfen
+36;Fettgehalt;MC;Ein Camembert hat 45 % F.i.T. Wie viel Fett hat er absolut? (Faktor Weichkäse 0,5);ca. 22,5 %;ca. 45 %;ca. 31,5 %;ca. 13,5 %;AA Käse allgemein – Faktoren bitte prüfen
+37;Fettgehalt;MC;Eine Kundin achtet auf die Kalorien. Welche Angabe hilft ihr beim Käsekauf am meisten?;Der Fettgehalt absolut;Der F.i.T.-Wert;Die Reifezeit;Die Käsegruppe;SA1 FOOD
+38;Sorten & Herkunft;ZU;Ordnen Sie den Käse seinem Herkunftsland zu.;Gouda = Niederlande | Feta = Griechenland | Roquefort = Frankreich | Gorgonzola = Italien | Emmentaler = Schweiz;;;;Lehrbuch – bitte prüfen
+39;Sorten & Herkunft;MC;Aus welcher Milch wird echter Feta hergestellt?;Aus Schafmilch (mit höchstens 30 % Ziegenmilch);Nur aus Kuhmilch;Aus Büffelmilch;Aus Ziegenmilch mit Kuhmilch gemischt;SA1 FOOD
+40;Sorten & Herkunft;MC;Aus welcher Milch wird Roquefort hergestellt?;Schafmilch;Kuhmilch;Ziegenmilch;Büffelmilch;Lehrbuch – bitte prüfen
+41;Sorten & Herkunft;MC;Aus welcher Milch wird Vorarlberger Bergkäse g.U. hergestellt?;Aus Rohmilch (Heumilch) von der Kuh;Aus pasteurisierter Schafmilch;Aus Ziegenmilch;Aus H-Milch;SA1 FOOD
+42;Sorten & Herkunft;MC;Was bedeutet „g.U.“ auf einem Käse wie dem Tiroler Bergkäse g.U.?;Geschützte Ursprungsbezeichnung – alle Schritte erfolgen in der genannten Region;Garantiert ungekühlt;Gesetzlich untersucht;Gütesiegel für Umweltschutz;Lehrbuch – bitte prüfen
+43;Sorten & Herkunft;LT;Ergänzen Sie den Text zur Herkunftsangabe.;Bei einem Käse mit [g.U.] müssen Erzeugung, Verarbeitung und Reifung in der [Herkunftsregion] erfolgen. Die Milch für Vorarlberger Bergkäse kommt daher aus [Vorarlberg].;ganz Europa;Tirol;;Lehrbuch – bitte prüfen
+44;Sorten & Herkunft;MC;Welcher Käse ist ein österreichischer Sauermilchkäse mit g.U.?;Ennstaler Steirerkas;Emmentaler;Gouda;Brie;Lehrbuch – bitte prüfen
+45;Sorten & Herkunft;MC;Aus welchem Bundesland kommt der Gailtaler Almkäse g.U.?;Kärnten;Tirol;Vorarlberg;Niederösterreich;Lehrbuch – bitte prüfen
+46;Sorten & Herkunft;RF;Mozzarella wird traditionell aus Büffelmilch hergestellt, heute aber oft auch aus Kuhmilch.;richtig;;;;Lehrbuch – bitte prüfen
+47;Sorten & Herkunft;RF;Gorgonzola ist ein Weißschimmelkäse aus Frankreich.;falsch;;;;Lehrbuch – bitte prüfen
+48;Sorten & Herkunft;MC;Welcher Käse wird traditionell für Kässpätzle verwendet?;Bergkäse;Mozzarella;Feta;Topfen;SA1 FOOD
+49;Schimmel, Rinde & Reifung;ZU;Ordnen Sie die Rinde bzw. den Schimmel einem typischen Käse zu.;Weißschimmel = Camembert | Blauschimmel = Roquefort | Rotschmiere = Limburger | Wachs- oder Kunststoffrinde = Gouda;;;;Lehrbuch – bitte prüfen
+50;Schimmel, Rinde & Reifung;LT;Ergänzen Sie den Text zu den Löchern im Emmentaler.;Die Löcher im Emmentaler entstehen während der [Reifung]. [Propionsäurebakterien] bilden dabei das Gas [Kohlendioxid], das sich im Teig sammelt.;Luft;Hefepilze;Sauerstoff;Lehrbuch – bitte prüfen
+51;Schimmel, Rinde & Reifung;RF;Die Wachs- oder Kunststoffrinde eines Gouda kann man mitessen.;falsch;;;;Lehrbuch – bitte prüfen
+52;Schimmel, Rinde & Reifung;RF;Der weiße Schimmel auf Camembert und Brie ist ein Edelschimmel und kann mitgegessen werden.;richtig;;;;Lehrbuch – bitte prüfen
+53;Schimmel, Rinde & Reifung;MC;Wie erkennt man Blauschimmelkäse?;Am blau-grünen Schimmel, der den Teig durchzieht;An der roten, klebrigen Rinde;An der weißen, flaumigen Außenschicht;An den großen Löchern;Lehrbuch – bitte prüfen
+54;Schimmel, Rinde & Reifung;MC;Woran erkennt man Rotschmierkäse wie Limburger oder Romadur?;An der rötlich-braunen, feuchten Rinde und dem kräftigen Geruch;Am blauen Schimmel im Inneren;An der Wachsrinde;An den großen Löchern;Lehrbuch – bitte prüfen
+55;Schimmel, Rinde & Reifung;RF;Lange gereifter Hartkäse enthält kaum noch Laktose.;richtig;;;;SA1 FOOD
+56;Schimmel, Rinde & Reifung;MC;Was passiert mit dem Geschmack von Bergkäse bei längerer Reifung?;Er wird würziger und pikanter;Er wird milder und süßer;Er bleibt immer gleich;Er wird säuerlich wie Joghurt;SA1 FOOD
+57;Ernährung & Kennzeichnung;MC;Warum gilt Käse als wertvolles Lebensmittel?;Er liefert viel Kalzium, hochwertiges Eiweiß und Vitamine (A, B2, B12);Er enthält keine Kalorien;Er besteht hauptsächlich aus Ballaststoffen;Er enthält viel Vitamin C;SA1 FOOD
+58;Ernährung & Kennzeichnung;ZU;Ordnen Sie den Nährstoff seiner Aufgabe im Körper zu.;Kalzium = Aufbau von Knochen und Zähnen | Eiweiß = Aufbau von Muskeln und Gewebe | Vitamin B12 = Bildung roter Blutkörperchen | Magnesium = Muskeln und Nerven;;;;SA1 FOOD / AA Milch
+59;Ernährung & Kennzeichnung;LT;Ergänzen Sie den Text zur Laktoseintoleranz.;Laktose ist [Milchzucker]. Bei einer Laktoseintoleranz fehlt im Darm das Enzym [Laktase]. Lange gereifter [Hartkäse] enthält fast keine Laktose.;Lab;Frischkäse;Molke;SA1 FOOD / AA Milch
+60;Ernährung & Kennzeichnung;RF;Laktoseintoleranz ist eine Allergie gegen Milcheiweiß.;falsch;;;;AA Milch & Milchprodukte
+61;Ernährung & Kennzeichnung;MC;Ein Kunde mit Laktoseintoleranz möchte Käse. Was empfehlen Sie?;Lange gereiften Hartkäse wie Bergkäse oder Parmesan;Topfen;Frischkäse;Mascarpone;SA1 FOOD
+62;Ernährung & Kennzeichnung;MC;Welche Angaben gehören zu den „Big Seven“ der Nährwertkennzeichnung?;Energie, Fett, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Eiweiß, Salz;Energie, Fett, Vitamine, Mineralstoffe, Wasser, Eiweiß, Salz;Kalzium, Eisen, Zink, Magnesium, Jod, Fluor, Salz;Zutaten, Allergene, MHD, Preis, Gewicht, Herkunft, Hersteller;Woche 2 (LMIV)
+63;Ernährung & Kennzeichnung;MC;Wie müssen Allergene wie Milch in der Zutatenliste gekennzeichnet sein?;Hervorgehoben, z. B. fett gedruckt;Gar nicht – Milch ist kein Allergen;Nur mit einem Symbol auf der Vorderseite;In Klammern am Ende der Zutatenliste;Woche 2 (LMIV)
+64;Ernährung & Kennzeichnung;RF;Käse aus Rohmilch muss mit dem Hinweis „mit Rohmilch hergestellt“ gekennzeichnet sein.;richtig;;;;Lehrbuch – bitte prüfen
+65;Lagerung & Service;LT;Ergänzen Sie die Lagertipps.;Käse wird in [Käsepapier] oder in der Originalverpackung gelagert, weil er „atmen“ muss. Am besten liegt er im [Gemüsefach] des Kühlschranks. Stark riechende Sorten kommen in eine eigene [Dose].;Alufolie;Gefrierfach;;SA1 FOOD
+66;Lagerung & Service;RF;Verschiedene Käsesorten sollten direkt aneinander gelagert werden, damit sie ihr Aroma tauschen.;falsch;;;;SA1 FOOD
+67;Lagerung & Service;MC;Warum nimmt man Käse vor dem Servieren rechtzeitig aus dem Kühlschrank?;Damit sich das volle Aroma und die Textur entfalten;Damit er schneller reift;Damit er sich leichter einfrieren lässt;Damit die Rinde weich wird;SA1 FOOD
+68;Lagerung & Service;MC;Welcher Käse wird NICHT temperiert, sondern kühl serviert?;Frischkäse;Bergkäse;Camembert;Gouda;SA1 FOOD
+69;Lagerung & Service;ZU;Ordnen Sie die Griff-Farbe des Käsemessers der Käseart zu.;Weißer Griff = milder Käse | Blauer Griff = Blauschimmelkäse | Roter Griff = Rotschmierkäse;;;;SA1 FOOD
+70;Lagerung & Service;MC;Warum hat das Weichkäsemesser (Lochmesser) Löcher in der Klinge?;Damit weicher Käse wie Brie nicht an der Klinge kleben bleibt;Damit es leichter ist;Damit man es aufhängen kann;Damit der Käse besser atmet;SA1 FOOD
+71;Lagerung & Service;MC;Warum verwendet man für verschiedene Käsearten Messer mit unterschiedlichen Farben?;Aus Hygienegründen (HACCP) – damit Schimmelkulturen nicht übertragen werden;Damit die Käseplatte schöner aussieht;Weil jede Farbe eine andere Schärfe hat;Damit man den Preis erkennt;SA1 FOOD
+72;Lagerung & Service;RH;In welcher Reihenfolge verkosten Sie eine Käseplatte? Von mild nach kräftig.;Frischkäse | Weichkäse mit Weißschimmel | Schnittkäse | Hartkäse | Blauschimmelkäse;;;;Verkostung / Lehrbuch – bitte prüfen
+73;Beratung & Sensorik;RH;In welcher Reihenfolge beurteilen Sie einen Käse bei der Verkostung (wie im Sensorik-Protokoll)?;Aussehen | Geruch | Konsistenz | Geschmack;;;;Verkostungsblatt Käse-Sensorik
+74;Beratung & Sensorik;ZU;Ordnen Sie den Fachbegriff dem Prüfkriterium aus dem Sensorik-Protokoll zu.;Lochung = Aussehen | pilzig = Geruch | schnittfest = Konsistenz | rahmig = Geschmack;;;;Verkostungsblatt Käse-Sensorik
+75;Beratung & Sensorik;MC;Was empfehlen Sie einem Gastwirt zu einem kräftigen Vorarlberger Bergkäse?;Bauernbrot und einen kräftigen Rotwein wie Blaufränkisch oder ein dunkles Bier;Toastbrot und Orangensaft;Süßes Gebäck und Milch;Knäckebrot und Mineralwasser;SA1 FOOD
+76;Beratung & Sensorik;MC;Welche Formulierung entspricht dem „Sie-Standpunkt“ im Verkaufsgespräch?;„Mit diesem Bergkäse bieten Sie Ihren Gästen ein echtes Stück Vorarlberg.“;„Wir haben diesen Bergkäse schon lange im Sortiment.“;„Ich esse diesen Käse auch gern.“;„Der Käse kostet 18,90 Euro pro Kilo.“;Woche 2 (Sie-Standpunkt)
+77;Beratung & Sensorik;MC;Welcher Begriff beschreibt die Konsistenz (den Teig) eines Käses?;bröckelig;nussig;pikant;fruchtig;Verkostungsblatt Käse-Sensorik
+78;Beratung & Sensorik;MC;Ein Kunde möchte einen milden Käse für Kinder. Was passt am besten?;Ein junger, milder Schnittkäse wie Gouda;Ein Blauschimmelkäse wie Roquefort;Ein Rotschmierkäse wie Limburger;Ein drei Jahre alter Bergkäse;Lehrbuch – bitte prüfen

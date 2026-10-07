@@ -1,3 +1,4 @@
 [
-  { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv" }
+  { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv" },
+  { "titel": "Käse", "datei": "kaese.csv" }
 ]

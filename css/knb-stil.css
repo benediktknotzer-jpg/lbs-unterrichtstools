@@ -1,0 +1,271 @@
+/*
+ * Grundstil für alle Unterrichtstools – angelehnt an die Arbeits- und Infoblätter
+ * von Benedikt Knotzer (knb), LBS Theresienfeld:
+ *   - Schrift ausschließlich Arial
+ *   - Titel und Überschriften fett in Blau #003399, Fließtext schwarz
+ *   - LBS-Logo rechts neben dem Titel
+ *   - Antwortlinien grau #808080
+ *   - Tabellenkopf: weiße Schrift auf Blau #003399, Rahmen in Blau
+ *   - Fußzeile mit Trennlinie und „Benedikt Knotzer | knb“ in Blau
+ * Für neue Tools diese Datei einbinden und nur Ergänzungen in einer eigenen CSS-Datei schreiben.
+ */
+
+:root {
+  --knb-blau: #003399;
+  --knb-blau-hell: #e8edf8;
+  --knb-blau-mittel: #b9c6e6;
+  --knb-grau: #808080;
+  --knb-grau-hell: #f2f2f2;
+  --knb-text: #000000;
+  --knb-text-leise: #4d4d4d;
+  --knb-weiss: #ffffff;
+  --knb-richtig: #1b7a35;
+  --knb-richtig-hell: #e6f4ea;
+  --knb-falsch: #c0251b;
+  --knb-falsch-hell: #fbe9e7;
+  --knb-warnung-hell: #fff6d9;
+  --knb-warnung: #7a5200;
+  --knb-radius: 4px;
+  --knb-breite: 42rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--knb-weiss);
+  color: var(--knb-text);
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  /* lange Fachwörter wie „Rindfleischkennzeichnungssystem“ umbrechen */
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+button,
+select,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--knb-blau);
+  outline-offset: 2px;
+}
+
+/* ---------- Kopf: Titel links, LBS-Logo rechts (wie erste Zeile der Arbeitsblätter) ---------- */
+
+.knb-kopf {
+  border-bottom: 1px solid var(--knb-blau);
+  padding: 0.75rem 1rem 0.6rem;
+}
+
+.knb-kopf-inhalt {
+  max-width: var(--knb-breite);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.knb-kopf-text {
+  min-width: 0;
+}
+
+.knb-kopf-fach {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--knb-text-leise);
+}
+
+.knb-titel {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--knb-blau);
+}
+
+.knb-logo {
+  flex: none;
+  display: block;
+  width: 7.5rem;
+  height: auto;
+}
+
+/* ---------- Inhalt ---------- */
+
+.knb-inhalt {
+  flex: 1;
+  width: 100%;
+  max-width: calc(var(--knb-breite) + 2rem);
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+
+/* Seitentitel im Format „Typ: Thema“ (z. B. „Quiz: Käse“) */
+.knb-seitentitel {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--knb-blau);
+  margin: 0.25rem 0 0.75rem;
+}
+
+/* Abschnittsüberschrift wie „Aufgabe 1: …“ */
+.knb-abschnitt {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--knb-blau);
+  margin: 1.25rem 0 0.4rem;
+}
+
+.knb-seitentitel:focus,
+.knb-abschnitt:focus {
+  outline: none;
+}
+
+/* Anleitung kursiv wie auf den Arbeitsblättern */
+.knb-anleitung {
+  font-style: italic;
+  color: var(--knb-text-leise);
+  font-size: 0.95rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+/* graue Antwortlinie */
+.knb-linie {
+  border-bottom: 1px solid var(--knb-grau);
+}
+
+/* ---------- Tabelle mit blauem Kopf (wie Phasentabellen / Bewertungsraster) ---------- */
+
+.tabelle {
+  border: 1px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  overflow: hidden;
+  background: var(--knb-weiss);
+}
+
+.tabelle-kopf {
+  background: var(--knb-blau);
+  color: var(--knb-weiss);
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+}
+
+.tabelle-inhalt {
+  padding: 0.75rem 0.9rem;
+}
+
+/* ---------- Knöpfe ---------- */
+
+.knopf {
+  display: block;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  background: var(--knb-weiss);
+  color: var(--knb-blau);
+  font-weight: 700;
+  text-align: center;
+}
+
+.knopf.haupt {
+  background: var(--knb-blau);
+  color: var(--knb-weiss);
+}
+
+.knopf:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.link-knopf {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  min-height: 2.75rem;
+  color: var(--knb-blau);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ---------- Meldungen ---------- */
+
+.meldung {
+  border: 1px solid var(--knb-falsch);
+  border-left-width: 6px;
+  border-radius: var(--knb-radius);
+  background: var(--knb-falsch-hell);
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.meldung h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--knb-falsch);
+}
+
+.meldung p {
+  margin: 0.5rem 0 0;
+}
+
+.meldung code {
+  font-size: 0.9em;
+  background: var(--knb-weiss);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  word-break: break-all;
+}
+
+/* ---------- Fußzeile wie auf den Arbeitsblättern ---------- */
+
+.knb-fuss {
+  padding: 0 1rem 1rem;
+}
+
+.knb-fuss-inhalt {
+  max-width: var(--knb-breite);
+  margin: 0 auto;
+  border-top: 1px solid var(--knb-text);
+  padding-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  font-size: 0.75rem;
+  color: var(--knb-blau);
+}
+
+.knb-fuss-inhalt > * {
+  margin: 0;
+}

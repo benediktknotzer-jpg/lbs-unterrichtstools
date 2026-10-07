@@ -3,28 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1d4e89">
+  <meta name="theme-color" content="#003399">
+  <meta name="color-scheme" content="light">
   <meta name="robots" content="noindex">
-  <title>Warenkunde-Quiz</title>
+  <title>Warenkunde-Quiz · LBS Theresienfeld</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/knb-stil.css">
+  <link rel="stylesheet" href="css/quiz.css">
 </head>
 <body>
-  <header class="kopf">
-    <div class="kopf-inhalt">
-      <h1>Warenkunde-Quiz</h1>
-      <p>LBS Theresienfeld · Fachpraktikum Großhandel</p>
+  <header class="knb-kopf">
+    <div class="knb-kopf-inhalt">
+      <div class="knb-kopf-text">
+        <p class="knb-kopf-fach">Fachpraktikum · 2. Klasse Großhandel</p>
+        <h1 class="knb-titel">Warenkunde-Quiz</h1>
+      </div>
+      <img class="knb-logo" src="bilder/lbs-logo.png" width="286" height="109"
+           alt="Landesberufsschule Theresienfeld">
     </div>
   </header>
 
-  <main id="inhalt" class="inhalt">
+  <main id="inhalt" class="knb-inhalt">
     <noscript>
-      <div class="meldung fehler">Bitte aktivieren Sie JavaScript, damit das Quiz funktioniert.</div>
+      <div class="meldung">Bitte aktivieren Sie JavaScript, damit das Quiz funktioniert.</div>
     </noscript>
 
     <!-- Startseite: Themenauswahl -->
     <section id="ansicht-start" class="ansicht" aria-labelledby="start-titel">
-      <h2 id="start-titel" tabindex="-1">Thema wählen</h2>
+      <h2 id="start-titel" class="knb-seitentitel" tabindex="-1">Thema wählen</h2>
+      <p class="knb-anleitung">Wählen Sie eine Warengruppe. Die Fragen wiederholen den Stoff aus dem Unterricht.</p>
       <p id="start-lade" class="leise">Fragen werden geladen …</p>
       <div id="start-meldung"></div>
       <div id="themen-liste" class="themen-liste"></div>
@@ -33,13 +40,13 @@
     <!-- Einstellungen für das gewählte Thema -->
     <section id="ansicht-einstellungen" class="ansicht" aria-labelledby="einst-titel" hidden>
       <button type="button" class="link-knopf" id="einst-zurueck">← Anderes Thema</button>
-      <h2 id="einst-titel" tabindex="-1"></h2>
+      <h2 id="einst-titel" class="knb-seitentitel" tabindex="-1"></h2>
 
-      <label class="feld-titel" for="einst-unterthema">Unterthema</label>
+      <label class="knb-abschnitt feld-titel" for="einst-unterthema">Unterthema</label>
       <select id="einst-unterthema" class="auswahl"></select>
 
       <fieldset class="anzahl">
-        <legend class="feld-titel">Anzahl der Fragen</legend>
+        <legend class="knb-abschnitt feld-titel">Anzahl der Fragen</legend>
         <div class="segment" id="einst-anzahl">
           <label><input type="radio" name="anzahl" value="10" checked><span>10</span></label>
           <label><input type="radio" name="anzahl" value="20"><span>20</span></label>
@@ -47,7 +54,7 @@
         </div>
       </fieldset>
 
-      <p id="einst-info" class="leise" aria-live="polite"></p>
+      <p id="einst-info" class="knb-anleitung" aria-live="polite"></p>
       <button type="button" class="knopf haupt" id="einst-start">Quiz starten</button>
     </section>
 
@@ -62,9 +69,9 @@
         <div class="balken-fuellung" id="quiz-balken"></div>
       </div>
 
-      <p id="quiz-thema" class="unterthema"></p>
-      <p id="quiz-typ" class="fragetyp"></p>
+      <p id="quiz-thema" class="knb-abschnitt quiz-thema"></p>
       <h2 id="quiz-frage" class="frage" tabindex="-1"></h2>
+      <p id="quiz-anleitung" class="knb-anleitung"></p>
 
       <div id="quiz-antworten"></div>
 
@@ -74,11 +81,16 @@
 
     <!-- Auswertung -->
     <section id="ansicht-ergebnis" class="ansicht" aria-labelledby="erg-titel" hidden>
-      <h2 id="erg-titel" tabindex="-1">Auswertung</h2>
-      <div class="punkte">
-        <div id="erg-prozent" class="punkte-zahl"></div>
-        <div id="erg-anzahl"></div>
-        <div id="erg-text" class="punkte-text"></div>
+      <h2 id="erg-titel" class="knb-seitentitel" tabindex="-1">Auswertung</h2>
+
+      <div class="tabelle punkte">
+        <div class="tabelle-kopf">Ergebnis</div>
+        <div class="tabelle-inhalt">
+          <div id="erg-prozent" class="punkte-zahl"></div>
+          <div id="erg-anzahl"></div>
+          <div class="punkte-note">Note laut Notenschlüssel: <strong id="erg-note"></strong></div>
+          <div id="erg-text" class="punkte-text"></div>
+        </div>
       </div>
 
       <div class="knopf-reihe">
@@ -87,14 +99,17 @@
       </div>
 
       <div id="erg-falsch-bereich">
-        <h3>Falsch beantwortet</h3>
+        <h3 class="knb-abschnitt">Falsch beantwortet – so ist es richtig</h3>
         <ol id="erg-falsch-liste" class="falsch-liste"></ol>
       </div>
     </section>
   </main>
 
-  <footer class="fuss">
-    Keine Anmeldung · keine Speicherung von Daten · kein Tracking
+  <footer class="knb-fuss">
+    <div class="knb-fuss-inhalt">
+      <p>Benedikt Knotzer | knb</p>
+      <p>Keine Anmeldung · keine Datenspeicherung</p>
+    </div>
   </footer>
 
   <script src="js/csv.js"></script>

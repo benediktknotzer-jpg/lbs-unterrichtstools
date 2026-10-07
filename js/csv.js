@@ -11,7 +11,8 @@
   'use strict';
 
   var PFLICHTSPALTEN = ['nr', 'thema', 'typ', 'frage', 'richtig', 'falsch1', 'falsch2', 'falsch3'];
-  var TYPEN = ['MC', 'RF', 'ZU'];
+  var TYPEN = ['MC', 'RF', 'ZU', 'LT', 'RH'];
+  var TYPEN_TEXT = 'Erlaubt sind MC, RF, ZU, LT oder RH.';
 
   /* Bytes -> Text. Bevorzugt UTF-8; eine in Excel als „CSV (Trennzeichen-getrennt)“
      gespeicherte Datei ist meist Windows-1252 – die wird trotzdem gelesen, mit Hinweis. */
@@ -159,9 +160,9 @@
       if (!thema) hinweise.push('Kein Unterthema (Spalte „thema“) angegeben – die Frage erscheint unter „Ohne Unterthema“.');
 
       if (!typRoh) {
-        probleme.push('Der Fragetyp (Spalte „typ“) fehlt. Erlaubt sind MC, RF oder ZU.');
+        probleme.push('Der Fragetyp (Spalte „typ“) fehlt. ' + TYPEN_TEXT);
       } else if (TYPEN.indexOf(typ) < 0) {
-        probleme.push('Unbekannter Fragetyp ' + zitat(typRoh) + '. Erlaubt sind MC, RF oder ZU.');
+        probleme.push('Unbekannter Fragetyp ' + zitat(typRoh) + '. ' + TYPEN_TEXT);
       } else if (typ === 'MC') {
         if (!richtig) probleme.push('Die richtige Antwort (Spalte „richtig“) fehlt.');
         var falsche = [];
@@ -216,6 +217,58 @@
           paare.push({ links: links, rechts: rechts });
         });
         frage.paare = paare;
+      } else if (typ === 'LT') {
+        // Lückentext: Lücken stehen in eckigen Klammern, z. B. „Milch wird mit [Lab] dickgelegt.“
+        var teileLT = [];
+        var luecken = [];
+        var rest = richtig;
+        if (!richtig) {
+          probleme.push('Bei LT-Fragen steht in Spalte „richtig“ der Text mit den Lücken in eckigen Klammern, ' +
+            'z. B. „Milch wird mit [Lab] dickgelegt.“');
+        } else if ((richtig.match(/\[/g) || []).length !== (richtig.match(/\]/g) || []).length ||
+                   /\[[^\]]*\[|\][^\[]*\]/.test(richtig)) {
+          probleme.push('Die eckigen Klammern im Lückentext passen nicht zusammen – jede Lücke braucht [ und ].');
+        } else {
+          var re = /\[([^\]]*)\]/g;
+          var m;
+          var letzte = 0;
+          while ((m = re.exec(rest)) !== null) {
+            if (m.index > letzte) teileLT.push({ text: rest.slice(letzte, m.index) });
+            var wort = m[1].trim();
+            if (!wort) probleme.push('Im Lückentext gibt es eine leere Lücke „[]“.');
+            teileLT.push({ luecke: luecken.length });
+            luecken.push(wort);
+            letzte = re.lastIndex;
+          }
+          if (letzte < rest.length) teileLT.push({ text: rest.slice(letzte) });
+          if (!luecken.length) {
+            probleme.push('Der Lückentext enthält keine Lücke. Lücken in eckige Klammern setzen, z. B. [Lab].');
+          }
+        }
+        var ablenker = [];
+        ['falsch1', 'falsch2', 'falsch3'].forEach(function (s) {
+          var w = f(s);
+          if (!w) return;
+          if (luecken.some(function (l) { return l.toLowerCase() === w.toLowerCase(); })) {
+            hinweise.push('Das Ablenkwort ' + zitat(w) + ' ist auch eine richtige Lösung und wird weggelassen.');
+          } else if (ablenker.indexOf(w) < 0) {
+            ablenker.push(w);
+          }
+        });
+        frage.teile = teileLT;
+        frage.luecken = luecken;
+        frage.ablenker = ablenker;
+      } else if (typ === 'RH') {
+        // Reihenfolge: Schritte in der richtigen Reihenfolge, getrennt durch |
+        var schritte = richtig.split('|').map(function (t) { return t.trim(); }).filter(Boolean);
+        if (schritte.length < 3) {
+          probleme.push('Bei RH-Fragen braucht Spalte „richtig“ mindestens drei Schritte in der richtigen ' +
+            'Reihenfolge, getrennt durch „|“.');
+        }
+        schritte.forEach(function (t, i) {
+          if (schritte.indexOf(t) !== i) probleme.push('Der Schritt ' + zitat(t) + ' kommt doppelt vor.');
+        });
+        frage.schritte = schritte;
       }
 
       if (probleme.length) {

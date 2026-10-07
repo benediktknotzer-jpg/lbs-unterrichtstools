@@ -1,0 +1,608 @@
+/* Warenkunde-Quiz – Ergänzungen zum Grundstil (knb-stil.css) */
+
+.leise {
+  color: var(--knb-text-leise);
+  font-size: 0.95rem;
+}
+
+/* Grid-/Flex-Kinder dürfen schmäler werden als ihr längstes Wort –
+   sonst sprengt ein langes Fachwort auf schmalen Handys die Breite */
+.themen-liste > *,
+.antworten > *,
+.feld-liste > *,
+.vorrat > *,
+.knopf-reihe > *,
+.falsch-liste > *,
+.segment > *,
+.thema-knopf > * {
+  min-width: 0;
+}
+
+/* ---------- Startseite ---------- */
+
+.themen-liste {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.thema-karte {
+  border: 1px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  overflow: hidden;
+}
+
+.thema-knopf {
+  display: grid;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: var(--knb-weiss);
+  text-align: left;
+}
+
+.thema-knopf:disabled {
+  cursor: default;
+}
+
+.thema-name {
+  background: var(--knb-blau);
+  color: var(--knb-weiss);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.6rem 1rem;
+}
+
+.thema-knopf:disabled .thema-name {
+  background: var(--knb-grau);
+}
+
+.thema-anzahl {
+  padding: 0.6rem 1rem 0;
+  color: var(--knb-text-leise);
+  font-size: 0.95rem;
+}
+
+.thema-los {
+  padding: 0.25rem 1rem 0.75rem;
+  color: var(--knb-blau);
+  font-weight: 700;
+}
+
+@media (hover: hover) {
+  .thema-knopf:not(:disabled):hover .thema-los {
+    text-decoration: underline;
+  }
+}
+
+.thema-karte details {
+  border-top: 1px solid var(--knb-blau-mittel);
+  padding: 0.4rem 1rem 0.7rem;
+  font-size: 0.9rem;
+  background: var(--knb-warnung-hell);
+}
+
+.thema-karte details.schwer {
+  background: var(--knb-falsch-hell);
+}
+
+.thema-karte summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--knb-warnung);
+  padding: 0.25rem 0;
+}
+
+.thema-karte details.schwer summary {
+  color: var(--knb-falsch);
+}
+
+.thema-karte details ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.thema-karte details li + li {
+  margin-top: 0.4rem;
+}
+
+/* ---------- Einstellungen ---------- */
+
+.feld-titel {
+  display: block;
+  padding: 0;
+}
+
+.auswahl {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  background: var(--knb-weiss);
+}
+
+.anzahl {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.segment label {
+  position: relative;
+}
+
+.segment input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+}
+
+.segment span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  border: 1px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  background: var(--knb-weiss);
+  color: var(--knb-blau);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.segment input:checked + span {
+  background: var(--knb-blau);
+  color: var(--knb-weiss);
+}
+
+.segment input:focus-visible + span {
+  outline: 3px solid var(--knb-blau);
+  outline-offset: 2px;
+}
+
+#einst-info {
+  margin: 1rem 0;
+}
+
+/* ---------- Quiz ---------- */
+
+.quiz-leiste {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fortschritt-text {
+  font-weight: 700;
+  color: var(--knb-blau);
+}
+
+.balken {
+  height: 0.4rem;
+  background: var(--knb-blau-hell);
+  border: 1px solid var(--knb-blau-mittel);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.balken-fuellung {
+  height: 100%;
+  width: 0;
+  background: var(--knb-blau);
+  transition: width 0.3s ease;
+}
+
+.quiz-thema {
+  margin: 1.1rem 0 0.2rem;
+  font-size: 0.9rem;
+}
+
+.frage {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 700;
+  margin: 0;
+}
+
+.frage:focus {
+  outline: none;
+}
+
+.antworten {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.antwort {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.55rem 0.8rem 0.55rem 0.55rem;
+  border: 1px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  background: var(--knb-weiss);
+  text-align: left;
+  line-height: 1.35;
+}
+
+.antwort-text {
+  min-width: 0;
+}
+
+/* Buchstabe wie ein kleiner blauer Tabellenkopf */
+.antwort .zeichen {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3px;
+  background: var(--knb-blau);
+  color: var(--knb-weiss);
+  font-weight: 700;
+}
+
+.antwort:not(:disabled):active {
+  background: var(--knb-blau-hell);
+}
+
+@media (hover: hover) {
+  .antwort:not(:disabled):hover {
+    background: var(--knb-blau-hell);
+  }
+}
+
+.antwort:disabled {
+  cursor: default;
+  color: var(--knb-text);
+}
+
+.antwort.ist-richtig {
+  border: 2px solid var(--knb-richtig);
+  background: var(--knb-richtig-hell);
+}
+
+.antwort.ist-richtig .zeichen {
+  background: var(--knb-richtig);
+}
+
+.antwort.ist-falsch {
+  border: 2px solid var(--knb-falsch);
+  background: var(--knb-falsch-hell);
+}
+
+.antwort.ist-falsch .zeichen {
+  background: var(--knb-falsch);
+}
+
+.antwort.gedimmt {
+  opacity: 0.5;
+}
+
+.antworten.rf {
+  grid-template-columns: 1fr 1fr;
+}
+
+.antworten.rf .antwort {
+  justify-content: center;
+  font-weight: 700;
+  min-height: 4rem;
+}
+
+/* ---------- Felder für Zuordnen, Reihenfolge, Lückentext ---------- */
+
+.feld-liste {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feld-karte {
+  border: 1px solid var(--knb-blau-mittel);
+  border-radius: var(--knb-radius);
+  padding: 0.5rem 0.8rem 0.6rem;
+}
+
+.feld-karte.aktiv {
+  border-color: var(--knb-blau);
+  box-shadow: 0 0 0 1px var(--knb-blau);
+}
+
+.feld-karte.ist-richtig {
+  border-color: var(--knb-richtig);
+  background: var(--knb-richtig-hell);
+}
+
+.feld-karte.ist-falsch {
+  border-color: var(--knb-falsch);
+  background: var(--knb-falsch-hell);
+}
+
+.feld-titel {
+  font-weight: 700;
+  color: var(--knb-blau);
+}
+
+.rh-karte {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 0.7rem;
+}
+
+.rh-karte .korrektur {
+  grid-column: 2;
+}
+
+.rh-nr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3px;
+  background: var(--knb-blau);
+  color: var(--knb-weiss);
+  font-weight: 700;
+}
+
+/* Ein leeres Feld sieht aus wie eine graue Antwortlinie */
+.feld {
+  display: block;
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.35rem 0.1rem;
+  border: none;
+  border-bottom: 1px solid var(--knb-grau);
+  background: none;
+  text-align: left;
+  line-height: 1.35;
+  min-width: 0;
+}
+
+button.feld.leer {
+  color: var(--knb-grau);
+  font-style: italic;
+}
+
+button.feld.aktiv {
+  border-bottom: 2px solid var(--knb-blau);
+  color: var(--knb-blau);
+  background: var(--knb-blau-hell);
+}
+
+button.feld.belegt {
+  font-weight: 700;
+}
+
+.feld-karte .feld .zeichen {
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+
+.feld-karte.ist-richtig .zeichen,
+.luecke.ist-richtig .zeichen {
+  color: var(--knb-richtig);
+}
+
+.feld-karte.ist-falsch .zeichen,
+.luecke.ist-falsch .zeichen {
+  color: var(--knb-falsch);
+}
+
+.feld-karte.ist-richtig .feld,
+.feld-karte.ist-falsch .feld {
+  border-bottom: none;
+  min-height: 0;
+}
+
+.korrektur {
+  margin-top: 0.3rem;
+  color: var(--knb-richtig);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Lückentext: Lücken stehen im Fließtext */
+.lt-text {
+  font-size: 1.1rem;
+  line-height: 2.4;
+  margin: 0;
+  padding: 0.25rem 0.9rem 0.5rem;
+  border: 1px solid var(--knb-blau-mittel);
+  border-radius: var(--knb-radius);
+}
+
+.feld.luecke {
+  display: inline;
+  width: auto;
+  min-height: 0;
+  padding: 0.2rem 0.4rem;
+  margin: 0 0.1rem;
+  font-size: inherit;
+  line-height: 1.6;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+button.feld.luecke.leer {
+  display: inline-block;
+  min-width: 6.5rem;
+}
+
+span.feld.luecke {
+  border-bottom: none;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+span.feld.luecke.ist-richtig {
+  background: var(--knb-richtig-hell);
+  color: var(--knb-richtig);
+}
+
+span.feld.luecke.ist-falsch {
+  background: var(--knb-falsch-hell);
+  color: var(--knb-falsch);
+}
+
+span.feld.luecke.ist-falsch strong {
+  color: var(--knb-richtig);
+}
+
+/* Vorrat an Antworten / Wörtern / Schritten */
+.vorrat-titel {
+  font-weight: 700;
+  color: var(--knb-blau);
+  margin: 1.1rem 0 0.45rem;
+}
+
+.vorrat {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.vorrat .antwort {
+  min-height: 3rem;
+  border-style: dashed;
+}
+
+.vorrat .antwort .zeichen {
+  width: 1.6rem;
+  height: 1.6rem;
+  background: var(--knb-blau-hell);
+  color: var(--knb-blau);
+}
+
+#tipp-pruefen {
+  margin-top: 1.1rem;
+}
+
+/* ---------- Rückmeldung ---------- */
+
+.rueckmeldung {
+  margin: 1.1rem 0 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid;
+  border-left-width: 6px;
+  border-radius: var(--knb-radius);
+}
+
+.rueckmeldung.gut {
+  border-color: var(--knb-richtig);
+  background: var(--knb-richtig-hell);
+}
+
+.rueckmeldung.schlecht {
+  border-color: var(--knb-falsch);
+  background: var(--knb-falsch-hell);
+}
+
+.rueckmeldung strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.rueckmeldung.gut strong {
+  color: var(--knb-richtig);
+}
+
+.rueckmeldung.schlecht strong {
+  color: var(--knb-falsch);
+}
+
+.rueckmeldung p {
+  margin: 0.3rem 0 0;
+}
+
+/* ---------- Auswertung ---------- */
+
+.punkte .tabelle-inhalt {
+  text-align: center;
+  padding: 1rem;
+}
+
+.punkte-zahl {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--knb-blau);
+}
+
+.punkte-note {
+  margin-top: 0.5rem;
+}
+
+.punkte-text {
+  margin-top: 0.4rem;
+  font-style: italic;
+  color: var(--knb-text-leise);
+}
+
+.knopf-reihe {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.1rem;
+}
+
+.falsch-liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.falsch-frage {
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.zeile-ihre,
+.zeile-richtig {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.zeile-ihre,
+.paar-falsch {
+  color: var(--knb-falsch);
+}
+
+.zeile-richtig,
+.paar-richtig {
+  color: var(--knb-richtig);
+  font-weight: 700;
+}
+
+.lt-loesung {
+  font-weight: 400;
+  color: var(--knb-text);
+}
+
+.lt-loesung strong {
+  color: var(--knb-richtig);
+}
+
+.falsch-liste ul,
+.falsch-liste ol {
+  margin: 0.3rem 0 0;
+  padding-left: 1.3rem;
+  font-size: 0.95rem;
+}
+
+.falsch-liste li li + li {
+  margin-top: 0.3rem;
+}

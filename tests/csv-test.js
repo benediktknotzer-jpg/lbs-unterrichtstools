@@ -42,7 +42,7 @@ themen.forEach(function (t) {
   });
 });
 
-test('Fleisch & Rindfleisch: 77 Fragen, alle drei Typen', function () {
+test('Fleisch & Rindfleisch: 77 Fragen (MC, RF, ZU)', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'fleisch-rindfleisch.csv'), 'utf8'));
   assert.strictEqual(erg.fragen.length, 77);
   var typen = {};
@@ -85,7 +85,53 @@ test('Windows-1252-Datei wird mit Hinweis gelesen', function () {
   assert.ok(d.hinweis && d.hinweis.indexOf('UTF-8') >= 0);
 });
 
+test('Käse: 78 Fragen, alle fünf Typen', function () {
+  var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'kaese.csv'), 'utf8'));
+  assert.strictEqual(erg.fragen.length, 78);
+  var typen = {};
+  erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
+  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'RF', 'RH', 'ZU']);
+});
+
+test('LT: Lücken, Text und Ablenkwörter', function () {
+  var erg = Q.ladeFragen(KOPF + '1;Käse;LT;Ergänzen Sie.;Milch wird mit [Lab] dick, es entsteht [Molke].;Hefe;Lab;;\n');
+  assert.deepStrictEqual(erg.fehler, []);
+  var f = erg.fragen[0];
+  assert.deepStrictEqual(f.luecken, ['Lab', 'Molke']);
+  assert.deepStrictEqual(f.ablenker, ['Hefe']);
+  assert.deepStrictEqual(f.teile, [{ text: 'Milch wird mit ' }, { luecke: 0 }, { text: ' dick, es entsteht ' },
+    { luecke: 1 }, { text: '.' }]);
+  enthaelt(erg.hinweise, 'Ablenkwort „Lab“');
+});
+
+test('RH: Schritte in Reihenfolge', function () {
+  var erg = Q.ladeFragen(KOPF + '1;Käse;RH;Reihenfolge?;Eins | Zwei | Drei;;;;\n');
+  assert.deepStrictEqual(erg.fehler, []);
+  assert.deepStrictEqual(erg.fragen[0].schritte, ['Eins', 'Zwei', 'Drei']);
+});
+
 console.log('Formatfehler werden erkannt');
+test('LT ohne Lücke', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;LT;Ergänzen.;Text ohne Lücke.;;;;\n').fehler, 'keine Lücke');
+});
+
+test('LT mit nicht geschlossener Klammer', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;LT;Ergänzen.;Milch mit [Lab dick.;;;;\n').fehler, 'Klammern');
+  enthaelt(Q.ladeFragen(KOPF + '1;A;LT;Ergänzen.;Milch [mit [Lab] dick.;;;;\n').fehler, 'Klammern');
+});
+
+test('LT mit leerer Lücke', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;LT;Ergänzen.;Milch mit [ ] dick.;;;;\n').fehler, 'leere Lücke');
+});
+
+test('RH mit zu wenigen Schritten', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;RH;Reihenfolge?;Eins | Zwei;;;;\n').fehler, 'mindestens drei');
+});
+
+test('RH mit doppeltem Schritt', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;RH;Reihenfolge?;Eins | Zwei | Eins;;;;\n').fehler, 'doppelt');
+});
+
 test('falscher Typ', function () {
   var erg = Q.ladeFragen(KOPF + '1;A;XY;Frage?;Ja;Nein;;;\n');
   assert.strictEqual(erg.fragen.length, 0);
