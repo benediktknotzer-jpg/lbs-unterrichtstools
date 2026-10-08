@@ -1,5 +1,7 @@
 [
   { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv", "klassen": ["2"] },
   { "titel": "Käse", "datei": "kaese.csv", "klassen": ["2"] },
-  { "titel": "Feinkost, Fertigkost & Zusatzverkauf", "datei": "feinkost-zusatzverkauf.csv", "klassen": ["2"] }
+  { "titel": "Feinkost, Fertigkost & Zusatzverkauf", "datei": "feinkost-zusatzverkauf.csv", "klassen": ["2"] },
+  { "titel": "Eier", "datei": "eier.csv", "klassen": ["2"] },
+  { "titel": "Fische, Krusten- & Weichtiere", "datei": "fische.csv", "klassen": ["2"] }
 ]
