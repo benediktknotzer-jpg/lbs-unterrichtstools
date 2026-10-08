@@ -3,6 +3,12 @@
 Interaktive Web-Tools für den Unterricht von Benedikt Knotzer (knb) an der LBS Theresienfeld
 (Fachpraktikum FOOD / Großhandel, BLAM). Derzeit: Warenkunde-Quiz (`index.html`).
 
+## Aktueller Plan
+
+Siehe **`docs/KONZEPT.md`**: 1. PC einrichten und Bestandsaufnahme von VFW_Claude →
+2. Freigabe-System mit Klassen-Codes und QR-Codes (Variante A: Ordnung, keine Geheimhaltung) →
+3. weitere Themen (zuerst Milch & Milchprodukte). Dort stehen auch die offenen Punkte.
+
 ## Oberste Regel: VFW_Claude ist schreibgeschützt
 
 Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Projekt) darf nur
