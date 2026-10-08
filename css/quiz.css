@@ -1,5 +1,10 @@
 /* Warenkunde-Quiz – Ergänzungen zum Grundstil (knb-stil.css) */
 
+/* Das Quiz zählt zum aktiven Arbeiten: grüner Dokumenttyp-Marker wie beim Arbeitsblatt */
+:root {
+  --knb-marker: var(--knb-gruen);
+}
+
 .leise {
   color: var(--knb-text-leise);
   font-size: 0.95rem;
@@ -26,7 +31,7 @@
 }
 
 .thema-karte {
-  border: 1px solid var(--knb-blau);
+  border: 1px solid var(--knb-rahmen);
   border-radius: var(--knb-radius);
   overflow: hidden;
 }
@@ -44,16 +49,25 @@
   cursor: default;
 }
 
+/* Themenname wie ein Tabellenkopf: fett blau auf Hellblau */
 .thema-name {
-  background: var(--knb-blau);
-  color: var(--knb-weiss);
+  background: var(--knb-blau-hell);
+  color: var(--knb-blau);
+  border-bottom: 1px solid var(--knb-rahmen);
   font-weight: 700;
   font-size: 1.1rem;
   padding: 0.6rem 1rem;
 }
 
 .thema-knopf:disabled .thema-name {
-  background: var(--knb-grau);
+  background: var(--knb-zebra);
+  color: var(--knb-grau);
+}
+
+@media (hover: hover) {
+  .thema-karte:has(.thema-knopf:not(:disabled):hover) {
+    border-color: var(--knb-blau);
+  }
 }
 
 .thema-anzahl {

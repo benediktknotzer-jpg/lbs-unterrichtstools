@@ -214,14 +214,15 @@ Das Aussehen folgt den Arbeits- und Infoblättern von Benedikt Knotzer (knb):
 
 | Element | Umsetzung |
 |---------|-----------|
-| Schrift | ausschließlich Arial |
-| Titel | fett, Blau `#003399`, Format „Typ: Thema“ (z. B. „Quiz: Käse“, „Auswertung: Käse“) |
-| Logo | LBS-Logo rechts neben dem Titel |
-| Überschriften | fett, Blau `#003399` |
+| Schrift | Aptos, Fallback Calibri, Arial (Aptos gibt es nur mit aktuellem Office) |
+| Titel | fett, Logo-Blau `#005090`, Format „Typ: Thema“ (z. B. „Quiz: Käse“, „Auswertung: Käse“) |
+| Kopf | Titel mit farbigem Marker-Balken links (Quiz: Grün wie Arbeitsblatt), Klasse darunter, LBS-Logo rechts, gelbe Linie `#FFD600` |
+| Überschriften | fett, Logo-Blau `#005090` |
 | Anleitungen | kursiv, wie „Anleitung: …“ auf den Arbeitsblättern |
-| Lücken / leere Felder | graue Antwortlinie `#808080` |
-| Tabellen / Karten | Kopf weiße Schrift auf Blau `#003399`, Rahmen Blau |
-| Fußzeile | Trennlinie, „Benedikt Knotzer \| knb“ in Blau |
+| Lücken / leere Felder | graue Antwortlinie `#808080`, Antwortflächen grau gestrichelt auf `#FAFAFA` |
+| Tabellen / Karten | Kopf fett blau auf Hellblau `#E7EFF7`, Rahmen grau `#BFBFBF` |
+| Infokästen | Tipp (blau), Merke (orange), Hinweis (grün) |
+| Fußzeile | gelbe Trennlinie, „Benedikt Knotzer \| knb“ in Blau |
 
 Alle Grundregeln stehen in `css/knb-stil.css`. Ein neues Tool bindet diese Datei ein und ergänzt
 nur, was es zusätzlich braucht – so sieht alles einheitlich aus.

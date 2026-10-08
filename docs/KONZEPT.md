@@ -13,9 +13,15 @@ Klassen-Code, den die Lehrkraft austeilt.
 
 - Geheimhaltung ist **nicht** nötig. Die Fragen sind Übungsmaterial und dürfen öffentlich sein.
 - Klassen-Code dient der **Ordnung**: Jede Klasse sieht nur ihren Stoff (Variante A).
-- Gearbeitet wird **lokal am PC**. Der Ordner `C:\Users\Bened\VFW_Claude` wird nur gelesen,
+- Gearbeitet wird **lokal am PC**. Der Ordner `C:\Users\bened\VFW_Claude` wird nur gelesen,
   nie verändert (siehe `CLAUDE.md`).
 - Reihenfolge: 1. PC einrichten und Bestandsaufnahme → 2. Freigabe-System → 3. Themen.
+- **Geändert am 8.10.2026:** Zuerst die Themen der 2. Schularbeit (Fr 23.10.2026) für 2GH1b,
+  fertig und geprüft bis etwa 16.10. Danach das Freigabe-System, dann Milch und die übrigen
+  Themen. Grund: Das Quiz soll der Klasse jetzt bei der Vorbereitung helfen. Das Freigabe-System
+  wird erst gebraucht, wenn mehrere Klassen das Quiz nutzen.
+- **Code-Rhythmus:** ein neuer Code **pro Lehrgang**. Ein Lehrgang dauert 10 Wochen, danach kommt
+  eine neue Klasse. Der alte Code wird gesperrt.
 
 ---
 
@@ -23,12 +29,15 @@ Klassen-Code, den die Lehrkraft austeilt.
 
 **Einrichtung** (Anleitung im Chat vom 8.10.):
 
-1. `git clone` des Quiz nach `C:\Users\Bened\lbs-unterrichtstools`. Das Quiz liegt neben
-   VFW_Claude, nicht darin.
-2. `.claude\settings.local.json` mit Lesezugriff auf VFW_Claude und Schreibsperre
-   (`deny` für Edit/Write).
-3. Test: Datei in VFW_Claude anlegen → muss abgelehnt werden. Ordner auflisten → muss
-   funktionieren.
+1. `git clone` des Quiz nach `C:\Users\bened\Claude-Projekte\lbs-unterrichtstools`. Das Quiz
+   liegt außerhalb von VFW_Claude, nicht darin. ✔ erledigt 8.10.
+2. `.claude\settings.local.json` (nicht im Repository, steht in `.gitignore`) mit Lesezugriff
+   auf VFW_Claude und Schreibsperre: `deny` für Edit/Write/NotebookEdit sowie für **jeden**
+   Bash- oder PowerShell-Befehl, der VFW_Claude enthält. ✔ erledigt 8.10.
+3. Test: Ordner auflisten → muss funktionieren. Schreibtest bewusst **nicht** durch Anlegen
+   einer Datei in VFW_Claude, sondern durch einen harmlosen Shell-Befehl (z. B. `ls` auf
+   VFW_Claude), der abgelehnt werden muss. ✔ erledigt 8.10. (Ergebnis in `docs/BESTANDSAUFNAHME.md`)
+4. Node.js installieren (`winget install OpenJS.NodeJS.LTS`) für `tests/csv-test.js`.
 
 **Bestandsaufnahme VFW_Claude**, nur lesen. Ergebnis kommt als `docs/BESTANDSAUFNAHME.md` ins
 Quiz-Projekt, **ohne Schülerdaten**:
@@ -132,6 +141,8 @@ Ablauf für jedes neue Thema:
 
 **Reihenfolge der Themen:**
 
+0. Zuerst der Stoff der 2. Schularbeit 2GH1b (23.10.2026): Feinkost/Fertigkost, Eier, Fische,
+   Speisefette/Öle, Kakao/Schokolade, Diätetische LM, Biowaren, Kindernährmittel.
 1. Milch & Milchprodukte (2. Klasse)
 2. Käse mit den aktuellen Unterlagen abgleichen. Die Umrechnungsfaktoren F.i.T. → Fett absolut
    prüfen.
@@ -143,8 +154,9 @@ Ablauf für jedes neue Thema:
 
 | Punkt | Wann klären |
 |-------|-------------|
-| Code-Rhythmus: pro Lehrgang oder pro Schuljahr? | Phase 2 |
+| ✔ Code-Rhythmus: pro Lehrgang (10 Wochen) | entschieden 8.10. |
 | Code-Format: z. B. `FP2-KAESE` oder neutral `FP2-7K4M`? | Phase 2 |
-| Welche Themen gehören zu welcher Klasse? | nach der Bestandsaufnahme (Phase 1) |
-| Ist das aktuelle Layout gleich wie in `knb-stil.css` oder geändert? | Phase 1 |
+| ✔ Themen → Klasse: laut Lehrstoffverteilung, Tabelle in `docs/BESTANDSAUFNAHME.md` Abschnitt 3 | erledigt 8.10. |
+| ✔ Layout umgestellt (Aptos, #005090, Gelb #FFD600) in `css/knb-stil.css` | erledigt 8.10. |
+| ✔ .docx/.pptx lesen: `tools/vfw_lesen.py` (reines Lese-Skript, einzige Shell-Ausnahme) | erledigt 8.10. |
 | Soll die Druckversion (Arbeitsblatt / Lösungsblatt aus der CSV) später dazukommen? | nach Phase 3 |

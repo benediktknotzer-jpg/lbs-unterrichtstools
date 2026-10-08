@@ -1,30 +1,52 @@
 /*
- * Grundstil für alle Unterrichtstools – angelehnt an die Arbeits- und Infoblätter
- * von Benedikt Knotzer (knb), LBS Theresienfeld:
- *   - Schrift ausschließlich Arial
- *   - Titel und Überschriften fett in Blau #003399, Fließtext schwarz
- *   - LBS-Logo rechts neben dem Titel
- *   - Antwortlinien grau #808080
- *   - Tabellenkopf: weiße Schrift auf Blau #003399, Rahmen in Blau
- *   - Fußzeile mit Trennlinie und „Benedikt Knotzer | knb“ in Blau
+ * Grundstil für alle Unterrichtstools – nach dem aktuellen Dokumentstil von Benedikt Knotzer (knb),
+ * LBS Theresienfeld (Quelle: VFW_Claude/Markenkit und lbs-lehrer-plugin/skills/dokument-stil):
+ *   - Schrift Aptos (Fallback Calibri, Arial)
+ *   - Titel und Überschriften fett in Logo-Blau #005090, Fließtext schwarz
+ *   - gelbe Akzentlinien #FFD600 in Kopf und Fuß, LBS-Logo rechts
+ *   - Dokumenttyp-Marker: farbiger Balken links vom Titel
+ *   - Tabellenkopf fett blau auf Hellblau #E7EFF7, Rahmen grau #BFBFBF
+ *   - Antwortflächen grau gestrichelt auf #FAFAFA, Callouts Tipp / Merke / Hinweis
+ *   - Fußzeile „Benedikt Knotzer | knb“ in Blau
  * Für neue Tools diese Datei einbinden und nur Ergänzungen in einer eigenen CSS-Datei schreiben.
  */
 
 :root {
-  --knb-blau: #003399;
-  --knb-blau-hell: #e8edf8;
-  --knb-blau-mittel: #b9c6e6;
-  --knb-grau: #808080;
-  --knb-grau-hell: #f2f2f2;
+  /* Primärfarben */
+  --knb-blau: #005090;
+  --knb-gelb: #ffd600;
   --knb-text: #000000;
-  --knb-text-leise: #4d4d4d;
   --knb-weiss: #ffffff;
+
+  /* Struktur */
+  --knb-blau-hell: #e7eff7;
+  --knb-blau-mittel: #b3cbe0;
+  --knb-grau: #808080;
+  --knb-rahmen: #bfbfbf;
+  --knb-zebra: #f0f0f0;
+  --knb-antwortflaeche: #fafafa;
+  --knb-text-leise: #4d4d4d;
+
+  /* Dokumenttyp-Marker (Balken links vom Titel) */
+  --knb-gruen: #2e7d32;
+  --knb-rot: #b71c1c;
+  --knb-teal: #00796b;
+  --knb-lila: #5e35b1;
+  --knb-marker: var(--knb-blau);
+
+  /* Callouts */
+  --knb-merke: #e65100;
+  --knb-merke-hell: #fff4e5;
+  --knb-hinweis-hell: #e8f5e9;
+
+  /* Rückmeldung im Quiz (eigene Funktion, nicht Teil des Dokumentstils) */
   --knb-richtig: #1b7a35;
   --knb-richtig-hell: #e6f4ea;
   --knb-falsch: #c0251b;
   --knb-falsch-hell: #fbe9e7;
   --knb-warnung-hell: #fff6d9;
   --knb-warnung: #7a5200;
+
   --knb-radius: 4px;
   --knb-breite: 42rem;
 }
@@ -47,7 +69,8 @@ body {
   flex-direction: column;
   background: var(--knb-weiss);
   color: var(--knb-text);
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  /* Aptos ist eine Microsoft-Schrift: am PC mit aktuellem Office vorhanden, sonst Calibri / Arial */
+  font-family: Aptos, Calibri, Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.5;
   /* lange Fachwörter wie „Rindfleischkennzeichnungssystem“ umbrechen */
@@ -77,10 +100,10 @@ button {
   outline-offset: 2px;
 }
 
-/* ---------- Kopf: Titel links, LBS-Logo rechts (wie erste Zeile der Arbeitsblätter) ---------- */
+/* ---------- Kopf: Titel links mit Marker, Klasse darunter, LBS-Logo rechts, gelbe Linie ---------- */
 
 .knb-kopf {
-  border-bottom: 1px solid var(--knb-blau);
+  border-bottom: 2px solid var(--knb-gelb);
   padding: 0.75rem 1rem 0.6rem;
 }
 
@@ -95,12 +118,8 @@ button {
 
 .knb-kopf-text {
   min-width: 0;
-}
-
-.knb-kopf-fach {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--knb-text-leise);
+  border-left: 5px solid var(--knb-marker);
+  padding-left: 0.6rem;
 }
 
 .knb-titel {
@@ -108,6 +127,13 @@ button {
   font-size: 1.4rem;
   line-height: 1.2;
   font-weight: 700;
+  color: var(--knb-blau);
+}
+
+/* Kopfzeile sekundär: Fach und Klasse unter dem Titel */
+.knb-kopf-fach {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
   color: var(--knb-blau);
 }
 
@@ -137,7 +163,7 @@ button {
   margin: 0.25rem 0 0.75rem;
 }
 
-/* Abschnittsüberschrift wie „Aufgabe 1: …“ */
+/* Abschnittsüberschrift */
 .knb-abschnitt {
   font-size: 1.05rem;
   font-weight: 700;
@@ -150,7 +176,17 @@ button {
   outline: none;
 }
 
-/* Anleitung kursiv wie auf den Arbeitsblättern */
+/* Aufgaben-Tag wie „AUFGABE 1“: klein, fett, grau, Großbuchstaben */
+.knb-tag {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--knb-grau);
+}
+
+/* Anleitung kursiv */
 .knb-anleitung {
   font-style: italic;
   color: var(--knb-text-leise);
@@ -158,29 +194,65 @@ button {
   margin: 0.25rem 0 0.75rem;
 }
 
-/* graue Antwortlinie */
+/* graue Antwortlinie (für Felder im Fließtext) */
 .knb-linie {
   border-bottom: 1px solid var(--knb-grau);
 }
 
-/* ---------- Tabelle mit blauem Kopf (wie Phasentabellen / Bewertungsraster) ---------- */
+/* Antwortfläche wie auf den Arbeitsblättern */
+.knb-antwortbox {
+  border: 1px dashed var(--knb-rahmen);
+  border-radius: var(--knb-radius);
+  background: var(--knb-antwortflaeche);
+  padding: 0.6rem 0.8rem;
+}
+
+/* ---------- Tabelle: Kopf fett blau auf Hellblau, Rahmen grau ---------- */
 
 .tabelle {
-  border: 1px solid var(--knb-blau);
+  border: 1px solid var(--knb-rahmen);
   border-radius: var(--knb-radius);
   overflow: hidden;
   background: var(--knb-weiss);
 }
 
 .tabelle-kopf {
-  background: var(--knb-blau);
-  color: var(--knb-weiss);
+  background: var(--knb-blau-hell);
+  color: var(--knb-blau);
   font-weight: 700;
   padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid var(--knb-rahmen);
 }
 
 .tabelle-inhalt {
   padding: 0.75rem 0.9rem;
+}
+
+/* ---------- Callouts (Infokästen) ---------- */
+
+.knb-tipp,
+.knb-merke,
+.knb-hinweis {
+  border: 1px solid;
+  border-left-width: 5px;
+  border-radius: var(--knb-radius);
+  padding: 0.7rem 0.9rem;
+  margin: 0.75rem 0;
+}
+
+.knb-tipp {
+  border-color: var(--knb-blau);
+  background: var(--knb-blau-hell);
+}
+
+.knb-merke {
+  border-color: var(--knb-merke);
+  background: var(--knb-merke-hell);
+}
+
+.knb-hinweis {
+  border-color: var(--knb-gruen);
+  background: var(--knb-hinweis-hell);
 }
 
 /* ---------- Knöpfe ---------- */
@@ -247,7 +319,7 @@ button {
   word-break: break-all;
 }
 
-/* ---------- Fußzeile wie auf den Arbeitsblättern ---------- */
+/* ---------- Fußzeile: gelbe Linie, „Benedikt Knotzer | knb“ in Blau ---------- */
 
 .knb-fuss {
   padding: 0 1rem 1rem;
@@ -256,7 +328,7 @@ button {
 .knb-fuss-inhalt {
   max-width: var(--knb-breite);
   margin: 0 auto;
-  border-top: 1px solid var(--knb-text);
+  border-top: 2px solid var(--knb-gelb);
   padding-top: 0.4rem;
   display: flex;
   flex-wrap: wrap;

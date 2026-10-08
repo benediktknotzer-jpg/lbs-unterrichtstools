@@ -1,4 +1,4 @@
 [
-  { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv" },
-  { "titel": "Käse", "datei": "kaese.csv" }
+  { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv", "klassen": ["2"] },
+  { "titel": "Käse", "datei": "kaese.csv", "klassen": ["2"] }
 ]

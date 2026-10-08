@@ -16,8 +16,11 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
 
 - Dort **nie** Dateien anlegen, ändern, verschieben, umbenennen oder löschen – auch keine
   temporären Dateien, keine Konvertierungen „neben“ den Originalen, kein `git` in diesem Ordner.
-- Zum Auslesen von .docx/.pptx/.pdf: Inhalte in den Speicher oder in einen Ordner **außerhalb**
-  von VFW_Claude lesen (z. B. Temp-Ordner).
+- .docx/.pptx **nur** mit dem Lese-Skript auslesen (Pfad relativ zu VFW_Claude, Ausgabe nur am
+  Bildschirm): `python tools/vfw_lesen.py "01_Lehrgang_…/Woche_…/datei.docx"`. Das ist die
+  einzige freigegebene Shell-Ausnahme (`.claude/settings.local.json`). Alle anderen
+  Shell-Befehle auf VFW_Claude bleiben gesperrt – nicht umgehen. Das Skript darf nie schreiben.
+- .pdf, .md, .txt und Bilder mit dem Read-Werkzeug lesen. Alte .doc/.ppt gehen nicht.
 - Geschrieben wird ausschließlich in diesem Repository (`lbs-unterrichtstools`).
 - Schülerdaten (Namen, Noten, Beurteilungen) aus VFW_Claude **nie** in dieses Repository
   übernehmen – das Repository ist öffentlich.
@@ -39,8 +42,11 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
 ## Stil (wie Benedikts Arbeits- und Infoblätter)
 
 Grundstil in `css/knb-stil.css` – für alle Tools einbinden, nur Ergänzungen in eigener CSS:
-Arial, Titel/Überschriften fett #003399, Titel „Typ: Thema“, LBS-Logo rechts, Anleitungen kursiv,
-Antwortlinien grau #808080, Tabellenkopf weiß auf #003399, Fußzeile „Benedikt Knotzer | knb“.
+Aptos (Fallback Calibri, Arial), Titel/Überschriften fett Logo-Blau #005090, gelbe Akzentlinien
+#FFD600 in Kopf und Fuß, Titel „Typ: Thema“ mit farbigem Marker-Balken links, LBS-Logo rechts,
+Anleitungen kursiv, Tabellenkopf fett blau auf Hellblau #E7EFF7 mit grauem Rahmen #BFBFBF,
+Antwortflächen grau gestrichelt, Callouts Tipp/Merke/Hinweis, Fußzeile „Benedikt Knotzer | knb“.
+Quelle: `VFW_Claude/Markenkit/` und `lbs-lehrer-plugin/skills/dokument-stil/` (Stand 8.10.2026).
 Wenn sich das Layout in den aktuellen Unterlagen (VFW_Claude) geändert hat, gilt das aktuelle
 Layout – dann `css/knb-stil.css` anpassen.
 
