@@ -82,7 +82,7 @@ kommen in jeder Klasse Non-Food-Warengruppen (NF) dazu.
 | 6 | Eier | IB, AB, LB, zusätzlich AB/LB „aus Turnus 1“ (.doc) | vorhanden (`eier.csv`) |
 | 6 | Fische, Krusten- und Weichtiere | IB, AB, LB, PRÄ, **LAP-Fragen Teil 1 + 2 mit Lösung** | vorhanden (`fische.csv`) |
 | 7 | Speisefette und Öle | IB, AB, LB, PRÄ | vorhanden (`speisefette-oele.csv`) |
-| 7 | Kakao und Schokolade | IB, AB, LB | fehlt |
+| 7 | Kakao und Schokolade | IB, AB, LB, PRÄ, LAP-Fragen + Lösung | vorhanden (`kakao-schokolade.csv`) |
 | 8 | Diätetische Lebensmittel (Diabetikerwaren) | IB, AB, LB | fehlt |
 | 8 | Biowaren | IB, AB, LB | fehlt |
 | 8 | Kindernährmittel | IB, AB, LB | fehlt |

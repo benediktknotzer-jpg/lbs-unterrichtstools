@@ -14,7 +14,7 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
   Reihenfolge (RH) und Lückentext (LT) – alles per Antippen, ohne Tippen auf der Tastatur
 - Themen derzeit: **Fleisch & Rindfleisch** (77 Fragen), **Käse** (78), **Feinkost, Fertigkost &
   Zusatzverkauf** (72), **Eier** (43), **Fische, Krusten- & Weichtiere** (59),
-  **Speisefette & Speiseöle** (68)
+  **Speisefette & Speiseöle** (68), **Kakao & Schokolade** (72)
 - Gestaltet im Stil der knb-Arbeitsblätter (siehe unten „Einheitlicher Stil“)
 - Keine Anmeldung, keine Speicherung, kein Tracking, keine externen Dateien –
   reines HTML/CSS/JavaScript

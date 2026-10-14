@@ -18,11 +18,14 @@ Danach Freigabe-System (Phase 2).
 | Eier | `eier.csv` | 43 | fertig (SA2) |
 | Fische, Krusten- & Weichtiere | `fische.csv` | 59 | fertig (SA2) |
 | Speisefette & Speiseöle | `speisefette-oele.csv` | 68 | fertig (SA2), 2 Fragen „bitte prüfen“ (aus AA III. LG) |
-| Kakao & Schokolade | – | – | **als Nächstes** (SA2) |
+| Kakao & Schokolade | `kakao-schokolade.csv` | 72 | fertig (SA2) |
 | Diätetische Lebensmittel | – | – | offen (SA2) |
 | Biowaren | – | – | offen (SA2) |
 | Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
 | Milch & Milchprodukte | – | – | offen, nach SA2 |
+
+**Als Nächstes (Benedikt 14.10.):** Quiz am Handy ausprobieren, dann klären, wie die Lehrlinge
+zugreifen (GitHub Pages, QR-Code, was sie bekommen). Danach Diätetische LM und Biowaren.
 
 ## Ziel
 
