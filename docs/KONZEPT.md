@@ -1,6 +1,28 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 8. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 14. Oktober 2026 · für Benedikt Knotzer (knb)
+
+## Stand
+
+Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
+Bei jedem Commit aktualisieren.
+
+**Woran wir arbeiten:** Themen der 2. Schularbeit 2GH1b (Fr 23.10.2026), fertig bis etwa 16.10.
+Danach Freigabe-System (Phase 2).
+
+| Thema | Datei | Fragen | Stand |
+|-------|-------|--------|-------|
+| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 77 | fertig (Vorgabe, nicht ändern) |
+| Käse | `kaese.csv` | 78 | im Quiz, 29 Fragen „bitte prüfen“, Abgleich mit aktuellen Unterlagen offen |
+| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 72 | fertig (SA2) |
+| Eier | `eier.csv` | 43 | fertig (SA2) |
+| Fische, Krusten- & Weichtiere | `fische.csv` | 59 | fertig (SA2) |
+| Speisefette & Speiseöle | `speisefette-oele.csv` | 68 | fertig (SA2), 2 Fragen „bitte prüfen“ (aus AA III. LG) |
+| Kakao & Schokolade | – | – | **als Nächstes** (SA2) |
+| Diätetische Lebensmittel | – | – | offen (SA2) |
+| Biowaren | – | – | offen (SA2) |
+| Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
+| Milch & Milchprodukte | – | – | offen, nach SA2 |
 
 ## Ziel
 
@@ -38,6 +60,7 @@ Klassen-Code, den die Lehrkraft austeilt.
    einer Datei in VFW_Claude, sondern durch einen harmlosen Shell-Befehl (z. B. `ls` auf
    VFW_Claude), der abgelehnt werden muss. ✔ erledigt 8.10. (Ergebnis in `docs/BESTANDSAUFNAHME.md`)
 4. Node.js installieren (`winget install OpenJS.NodeJS.LTS`) für `tests/csv-test.js`.
+   ✔ erledigt (Node v24, geprüft 14.10.)
 
 **Bestandsaufnahme VFW_Claude**, nur lesen. Ergebnis kommt als `docs/BESTANDSAUFNAHME.md` ins
 Quiz-Projekt, **ohne Schülerdaten**:
@@ -160,3 +183,5 @@ Ablauf für jedes neue Thema:
 | ✔ Layout umgestellt (Aptos, #005090, Gelb #FFD600) in `css/knb-stil.css` | erledigt 8.10. |
 | ✔ .docx/.pptx lesen: `tools/vfw_lesen.py` (reines Lese-Skript, einzige Shell-Ausnahme) | erledigt 8.10. |
 | Soll die Druckversion (Arbeitsblatt / Lösungsblatt aus der CSV) später dazukommen? | nach Phase 3 |
+| Kollegenmaterial / AA aus dem III. LG als Quelle zulassen? Bis dahin mit „bitte prüfen“ markiert. Achtung: AA Fette/Öle III. LG nennt nur drei Olivenöl-Stufen, das aktuelle IB vier. | Benedikt |
+| „bitte prüfen“-Fragen durchsehen: Käse (29), Speisefette (2) | Benedikt, vor 23.10. |

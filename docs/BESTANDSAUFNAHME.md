@@ -78,10 +78,10 @@ kommen in jeder Klasse Non-Food-Warengruppen (NF) dazu.
 | 1 | Milch und Milchprodukte | IB, AB, LB, **FRAGEN + Lösung**, PRÄ | **fehlt – nächstes Thema** |
 | 2–3 | Käse (Käseprojekt) | IB, AB, LB, **FRAGEN + Lösung**, PRÄ, Projektauftrag, Bewertungsbogen | vorhanden (`kaese.csv`), abgleichen |
 | 4 | Fleisch, Rindfleisch | IB, AB, LB (je Fleisch und Rindfleisch), PRÄ, AMA-Frageblatt + Lösung, AMA-Broschüre (PDF) | vorhanden (`fleisch-rindfleisch.csv`) |
-| 5 | Feinkost, Fertigkost (+ Zusatzverkauf) | IB, AB, LB, AB/LB Film Schinken | fehlt |
-| 6 | Eier | IB, AB, LB, zusätzlich AB/LB „aus Turnus 1“ (.doc) | fehlt |
-| 6 | Fische, Krusten- und Weichtiere | IB, AB, LB, PRÄ, **LAP-Fragen Teil 1 + 2 mit Lösung** | fehlt |
-| 7 | Speisefette und Öle | IB, AB, LB | fehlt |
+| 5 | Feinkost, Fertigkost (+ Zusatzverkauf) | IB, AB, LB, AB/LB Film Schinken | vorhanden (`feinkost-zusatzverkauf.csv`) |
+| 6 | Eier | IB, AB, LB, zusätzlich AB/LB „aus Turnus 1“ (.doc) | vorhanden (`eier.csv`) |
+| 6 | Fische, Krusten- und Weichtiere | IB, AB, LB, PRÄ, **LAP-Fragen Teil 1 + 2 mit Lösung** | vorhanden (`fische.csv`) |
+| 7 | Speisefette und Öle | IB, AB, LB, PRÄ | vorhanden (`speisefette-oele.csv`) |
 | 7 | Kakao und Schokolade | IB, AB, LB | fehlt |
 | 8 | Diätetische Lebensmittel (Diabetikerwaren) | IB, AB, LB | fehlt |
 | 8 | Biowaren | IB, AB, LB | fehlt |
@@ -229,7 +229,7 @@ Die Umstellung ist am 8.10.2026 umgesetzt. Die rechte Spalte zeigt den alten Sta
 | Punkt | Wann |
 |-------|------|
 | ✔ `.docx`/`.pptx` lesen: entschieden 8.10. – reines Lese-Skript `tools/vfw_lesen.py`, einzige Shell-Ausnahme in `settings.local.json`. Getestet mit Fragenkatalog Käse und PRÄ Käse. | erledigt |
-| Node.js ist noch nicht installiert (`node` nicht gefunden). Ohne Node läuft `tests/csv-test.js` nicht. | jetzt |
+| ✔ Node.js installiert (v24, geprüft 14.10.). | erledigt |
 | ✔ `knb-stil.css` auf das aktuelle Layout umgestellt (8.10.). | erledigt |
 | ✔ Klassen-Zuordnung: laut Lehrstoffverteilung (Abschnitt 3). | erledigt |
 | Kollegenmaterial (z. B. `_har`) als Quelle zulassen? Dann `quelle` mit Kürzel kennzeichnen. | Phase 3 |
