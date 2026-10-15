@@ -32,6 +32,14 @@ console.log('Alle Themen aus daten/themen.json');
 var daten = path.join(__dirname, '..', 'daten');
 var themen = JSON.parse(fs.readFileSync(path.join(daten, 'themen.json'), 'utf8'));
 themen.forEach(function (t) {
+  if (t.mix) {
+    test(t.titel + ': alle gemischten Themen stehen in themen.json', function () {
+      t.mix.forEach(function (datei) {
+        assert.ok(themen.some(function (x) { return x.datei === datei; }), datei + ' fehlt in themen.json');
+      });
+    });
+    return;
+  }
   test(t.titel + ' (' + t.datei + ') lädt ohne Fehler', function () {
     var d = Q.dekodiere(fs.readFileSync(path.join(daten, t.datei)));
     assert.strictEqual(d.hinweis, null, 'Datei ist nicht UTF-8');
@@ -88,12 +96,12 @@ test('Windows-1252-Datei wird mit Hinweis gelesen', function () {
   assert.ok(d.hinweis && d.hinweis.indexOf('UTF-8') >= 0);
 });
 
-test('Käse: 78 Fragen, alle fünf Typen', function () {
+test('Käse: 86 Fragen, alle sechs Typen', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'kaese.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 78);
+  assert.strictEqual(erg.fragen.length, 86);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
-  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'RF', 'RH', 'ZU']);
+  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'MM', 'RF', 'RH', 'ZU']);
 });
 
 test('LT: Lücken, Text und Ablenkwörter', function () {

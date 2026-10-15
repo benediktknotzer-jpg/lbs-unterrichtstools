@@ -126,6 +126,13 @@
 
   function ladeThema(eintrag, nr) {
     var thema = { titel: '', datei: '', fragen: [], fehler: [], hinweise: [] };
+    // Mischung aus anderen Themen: wird erst nach dem Laden aller Themen zusammengestellt
+    if (eintrag && typeof eintrag === 'object' && Array.isArray(eintrag.mix) &&
+        typeof eintrag.titel === 'string' && eintrag.titel.trim()) {
+      thema.titel = eintrag.titel.trim();
+      thema.mix = eintrag.mix;
+      return Promise.resolve(thema);
+    }
     if (!eintrag || typeof eintrag !== 'object' ||
         typeof eintrag.titel !== 'string' || typeof eintrag.datei !== 'string' ||
         !eintrag.titel.trim() || !eintrag.datei.trim()) {
@@ -147,6 +154,23 @@
     }, function (e) {
       thema.fehler.push(e.message);
       return thema;
+    });
+  }
+
+  // Fragen der genannten Themen übernehmen; Unterthema ist dann das ursprüngliche Thema
+  function stelleMischungZusammen(mischung, alle) {
+    mischung.mix.forEach(function (datei) {
+      var quelle = alle.filter(function (t) { return t.datei === datei; })[0];
+      if (!quelle) {
+        mischung.fehler.push('Das Thema „' + datei + '“ aus „mix“ steht nicht in themen.json.');
+        return;
+      }
+      quelle.fragen.forEach(function (f) {
+        var kopie = {};
+        for (var k in f) if (Object.prototype.hasOwnProperty.call(f, k)) kopie[k] = f[k];
+        kopie.thema = quelle.titel;
+        mischung.fragen.push(kopie);
+      });
     });
   }
 
@@ -197,6 +221,7 @@
         return Promise.all(liste.map(function (e, i) { return ladeThema(e, i + 1); }));
       })
       .then(function (geladen) {
+        geladen.forEach(function (t) { if (t.mix) stelleMischungZusammen(t, geladen); });
         themen = geladen;
         $('start-lade').hidden = true;
         zeigeThemen();
@@ -222,12 +247,13 @@
     var liste = $('themen-liste');
     leere(liste);
     themen.forEach(function (t) {
-      var karte = el('div', 'thema-karte');
+      var karte = el('div', 'thema-karte' + (t.mix ? ' mischung' : ''));
       var b = knopf('thema-knopf');
       b.appendChild(el('span', 'thema-name', t.titel));
       var info = t.fragen.length
         ? mehrzahl(t.fragen.length, 'Frage', 'Fragen') + ' · ' +
-          mehrzahl(unterthemen(t).length, 'Unterthema', 'Unterthemen')
+          (t.mix ? mehrzahl(unterthemen(t).length, 'Thema', 'Themen') + ' gemischt'
+            : mehrzahl(unterthemen(t).length, 'Unterthema', 'Unterthemen'))
         : 'Derzeit nicht verfügbar';
       b.appendChild(el('span', 'thema-anzahl', info));
       if (t.fragen.length) {
@@ -267,7 +293,7 @@
 
     var sel = $('einst-unterthema');
     leere(sel);
-    var alle = el('option', null, 'Alle Unterthemen (' + t.fragen.length + ')');
+    var alle = el('option', null, (t.mix ? 'Alle Themen (' : 'Alle Unterthemen (') + t.fragen.length + ')');
     alle.value = '';
     sel.appendChild(alle);
     unterthemen(t).forEach(function (u) {

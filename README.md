@@ -204,6 +204,20 @@ und Schularbeiten – dann ist das Quiz eine echte Wiederholung des Unterrichts.
    ```
 3. Die Themen erscheinen auf der Startseite in dieser Reihenfolge.
 
+### Gemischtes Quiz (z. B. Schularbeits-Wiederholung)
+
+Statt `"datei"` steht `"mix"` mit einer Liste von Dateien, die schon als eigene Themen in
+`themen.json` stehen. Das Quiz mischt deren Fragen; als Unterthema erscheint das jeweilige Thema.
+Auf der Startseite hat die Karte einen gelben Rand.
+
+```json
+{ "titel": "Wiederholung zur 2. Schularbeit", "mix": ["eier.csv", "fische.csv"] }
+```
+
+**Achtung bei Lückentexten (LT):** Jede Lücke wird an ihrer Stelle geprüft. Wörter, die man
+fachlich vertauschen könnte („aus [Samen], [Früchten] oder Keimen“), nicht beide als Lücke setzen –
+sonst wird eine richtige Antwort als falsch gewertet.
+
 ### Bearbeiten mit Excel oder einem Texteditor
 
 - **Excel:** Datei öffnen, bearbeiten, dann **Datei → Speichern unter → „CSV UTF-8 (durch

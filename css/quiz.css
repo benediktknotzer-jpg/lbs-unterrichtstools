@@ -59,6 +59,11 @@
   padding: 0.6rem 1rem;
 }
 
+/* Gemischtes Quiz (z. B. Schularbeits-Wiederholung): gelber Akzent wie im Kopf */
+.thema-karte.mischung {
+  border-left: 6px solid var(--knb-gelb);
+}
+
 .thema-knopf:disabled .thema-name {
   background: var(--knb-zebra);
   color: var(--knb-grau);

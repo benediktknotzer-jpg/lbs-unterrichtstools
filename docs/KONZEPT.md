@@ -12,17 +12,35 @@ Danach Freigabe-System (Phase 2).
 
 | Thema | Datei | Fragen | Stand |
 |-------|-------|--------|-------|
+| Wiederholung zur 2. Schularbeit | `"mix"` in `themen.json` | 467 | gemischt aus den 8 SA2-Themen (seit 15.10.) |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | fertig (seit 15.10. bearbeitbar) |
-| Käse | `kaese.csv` | 78 | im Quiz, 29 Fragen „bitte prüfen“, Abgleich mit aktuellen Unterlagen offen |
-| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 78 | fertig (SA2) |
-| Eier | `eier.csv` | 48 | fertig (SA2) |
-| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | fertig (SA2) |
-| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | fertig (SA2), 2 Fragen „bitte prüfen“ (aus AA III. LG) |
-| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | fertig (SA2) |
-| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | fertig (SA2) |
-| Biowaren | `biowaren.csv` | 42 | fertig (SA2) |
+| Käse | `kaese.csv` | 86 | an IB/Fragenkatalog W2 angeglichen (15.10.), 18 Fragen „bitte prüfen“ (nur im Buch belegbar) |
+| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | fertig (SA2), geprüft 15.10. |
+| Eier | `eier.csv` | 48 | fertig (SA2), geprüft 15.10. |
+| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | fertig (SA2), geprüft 15.10. |
+| Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | neu 15.10. (SA2-Aufgabe 4, 10 Punkte) |
+| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | fertig (SA2), geprüft 15.10.; Nr. 10 und 35 Zusatzwissen aus AA III. LG |
+| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | fertig (SA2), geprüft 15.10. |
+| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | fertig (SA2), geprüft 15.10. |
+| Biowaren | `biowaren.csv` | 42 | fertig (SA2), geprüft 15.10. |
 | Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
 | Milch & Milchprodukte | – | – | offen, nach SA2 |
+
+**15.10. nachmittags (Überarbeitung, noch nicht online):** Alle SA2-Themen Frage für Frage gegen
+IB, LB, SA2-Lösung und LAP-Fragen geprüft. Keine falsche Lösung gefunden, aber korrigiert:
+widersprüchliches Fisch-Etikett (Nr. 31: Aquakultur mit Fanggebiet), mehrdeutige Lückentexte mit
+vertauschbaren Wörtern (Fette 21, 34, 38; Eier 30; Feinkost 47, 63; Käse 10), unscharfe
+Erklärungen und Ablenker (Diät 9, 11, 18, 42, 58; Bio 13, 23; Kakao 23, 45, 66; Fische 7, 20,
+37, 49; Feinkost 12, 13, 29, 46), doppelte Fragen (Eier 7/44, Feinkost 24 gestrichen),
+Feinkost-Unterthemen vereinheitlicht. Käse: Umrechnungsfaktoren (0,7/0,6/0,5/0,3) passten weder
+zum Buch noch zum AA (0,6/0,5/0,4/0,3) – ersetzt durch die Faustformel F. i. T. × Trockenmasse
+÷ 100 und die Buchwerte (Emmentaler 45 % F. i. T. = 31 % Fett); neu: Fettstufen, „leicht“,
+Pflichtangaben, Reifezeiten, Reifung außen/innen, Milch je kg, Schafmilchkäse 50 %.
+SA2-Abdeckung: alles außer dem Beratungsfall (Aufgabe 8, 14 P) hat ein Quiz-Thema; der
+Beratungsfall ist über Diät Nr. 56–61 teilweise abgedeckt.
+
+**Benedikt 15.10.:** Unterlagen von Kolleginnen, Kollegen und Rektorin sind zulässige Quelle.
+Bei Widerspruch gilt das aktuelle eigene Infoblatt (z. B. Olivenöl: vier Güteklassen).
 
 **15.10.:** Klasse hat das Quiz am Smartboard getestet, gefällt. Umgesetzt: Fragetyp MM
 (mehrere richtige Antworten, je 5–6 pro SA2-Thema), Berichtigung bei Richtig/Falsch (Spalte
@@ -196,5 +214,6 @@ Ablauf für jedes neue Thema:
 | ✔ Layout umgestellt (Aptos, #005090, Gelb #FFD600) in `css/knb-stil.css` | erledigt 8.10. |
 | ✔ .docx/.pptx lesen: `tools/vfw_lesen.py` (reines Lese-Skript, einzige Shell-Ausnahme) | erledigt 8.10. |
 | Soll die Druckversion (Arbeitsblatt / Lösungsblatt aus der CSV) später dazukommen? | nach Phase 3 |
-| Kollegenmaterial / AA aus dem III. LG als Quelle zulassen? Bis dahin mit „bitte prüfen“ markiert. Achtung: AA Fette/Öle III. LG nennt nur drei Olivenöl-Stufen, das aktuelle IB vier. | Benedikt |
-| „bitte prüfen“-Fragen durchsehen: Käse (29), Speisefette (2) | Benedikt, vor 23.10. |
+| ✔ Kollegenmaterial / AA aus dem III. LG als Quelle zulassen: ja, bei Widerspruch gilt das aktuelle IB | entschieden 15.10. |
+| Käse: 18 Fragen „Lehrbuch – bitte prüfen“ (Sorten, Herkunft, Schimmel) am Westermann-Buch S. 104–113 abgleichen – Buch online, Zugang klären | Benedikt |
+| Überarbeitung vom 15.10. online stellen (git push) | Benedikt, vor Fr 16.10. |
