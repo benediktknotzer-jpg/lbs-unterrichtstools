@@ -14,7 +14,7 @@ Danach Freigabe-System (Phase 2).
 |-------|-------|--------|-------|
 | Wiederholung zur 2. Schularbeit | `"mix"` in `themen.json` | 467 | gemischt aus den 8 SA2-Themen (seit 15.10.) |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | fertig (seit 15.10. bearbeitbar) |
-| Käse | `kaese.csv` | 86 | an IB/Fragenkatalog W2 angeglichen (15.10.), 18 Fragen „bitte prüfen“ (nur im Buch belegbar) |
+| Käse | `kaese.csv` | 86 | an IB/Fragenkatalog W2 und am Buch S. 100–113 geprüft (15.10.), keine „bitte prüfen“ mehr |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | fertig (SA2), geprüft 15.10. |
 | Eier | `eier.csv` | 48 | fertig (SA2), geprüft 15.10. |
 | Fische, Krusten- & Weichtiere | `fische.csv` | 64 | fertig (SA2), geprüft 15.10. |
@@ -215,5 +215,5 @@ Ablauf für jedes neue Thema:
 | ✔ .docx/.pptx lesen: `tools/vfw_lesen.py` (reines Lese-Skript, einzige Shell-Ausnahme) | erledigt 8.10. |
 | Soll die Druckversion (Arbeitsblatt / Lösungsblatt aus der CSV) später dazukommen? | nach Phase 3 |
 | ✔ Kollegenmaterial / AA aus dem III. LG als Quelle zulassen: ja, bei Widerspruch gilt das aktuelle IB | entschieden 15.10. |
-| Käse: 18 Fragen „Lehrbuch – bitte prüfen“ (Sorten, Herkunft, Schimmel) am Westermann-Buch S. 104–113 abgleichen – Buch online, Zugang klären | Benedikt |
+| ✔ Käse am Buch geprüft (digi4school, E-Book 16967, Seite = Buchseite + 2). Abweichend vom Buch, bewusst gelassen: Nr. 65 „Käsepapier“ (Buch: Folie, Dose, Originalverpackung), Nr. 68 Frischkäse kühl servieren (Buch nennt Schmelzkäse) | erledigt 15.10. |
 | Überarbeitung vom 15.10. online stellen (git push) | Benedikt, vor Fr 16.10. |
