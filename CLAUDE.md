@@ -38,7 +38,7 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   Prozent abgerundet. Quelle: `VFW_Claude/00_START_NEUER_LEHRGANG_I_2026-27.md`.
 - Zugang für die Lehrlinge: `zugang.html` (QR-Code `bilder/qr-quiz.svg`, erzeugt mit
   `python tools/qr_code.py <adresse> bilder/qr-quiz.svg`).
-- `daten/fleisch-rindfleisch.csv` nicht verändern (Vorgabe von Benedikt).
+- `daten/fleisch-rindfleisch.csv` darf seit 15.10.2026 bearbeitet werden (Freigabe Benedikt).
 - Spalte `quelle`: woher die Frage stammt (z. B. „SA1 FOOD“, „AA Milch“). Inhalte, die nicht aus
   Benedikts Unterlagen stammen, mit „… – bitte prüfen“ markieren.
 - Fragen sollen den Unterrichtsstoff wiederholen: aus Arbeitsaufträgen, Lösungen, Infoblättern,

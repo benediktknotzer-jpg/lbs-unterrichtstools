@@ -42,12 +42,15 @@ themen.forEach(function (t) {
   });
 });
 
-test('Fleisch & Rindfleisch: 77 Fragen (MC, RF, ZU)', function () {
+test('Fleisch & Rindfleisch: 82 Fragen (MC, RF, ZU, MM), alle RF mit Erklärung', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'fleisch-rindfleisch.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 77);
+  assert.strictEqual(erg.fragen.length, 82);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
-  assert.deepStrictEqual(typen, { MC: 57, RF: 11, ZU: 9 });
+  assert.deepStrictEqual(typen, { MC: 57, RF: 11, ZU: 9, MM: 5 });
+  erg.fragen.filter(function (f) { return f.typ === 'RF'; }).forEach(function (f) {
+    assert.ok(f.erklaerung, 'RF Nr. ' + f.nr + ' ohne Erklärung');
+  });
   var zu = erg.fragen.filter(function (f) { return f.nr === '18'; })[0];
   assert.deepStrictEqual(zu.paare[0], { links: 'A', rechts: 'Jungstier' });
   assert.strictEqual(zu.paare.length, 5);

@@ -12,7 +12,7 @@ Danach Freigabe-System (Phase 2).
 
 | Thema | Datei | Fragen | Stand |
 |-------|-------|--------|-------|
-| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 77 | fertig (Vorgabe, nicht ändern) |
+| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | fertig (seit 15.10. bearbeitbar) |
 | Käse | `kaese.csv` | 78 | im Quiz, 29 Fragen „bitte prüfen“, Abgleich mit aktuellen Unterlagen offen |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 78 | fertig (SA2) |
 | Eier | `eier.csv` | 48 | fertig (SA2) |
@@ -26,7 +26,7 @@ Danach Freigabe-System (Phase 2).
 
 **15.10.:** Klasse hat das Quiz am Smartboard getestet, gefällt. Umgesetzt: Fragetyp MM
 (mehrere richtige Antworten, je 5–6 pro SA2-Thema), Berichtigung bei Richtig/Falsch (Spalte
-`erklaerung`, Fleisch ausgenommen – Vorgabedatei), Notenschlüssel der LBS in der Auswertung,
+`erklaerung`, alle Themen), Notenschlüssel der LBS in der Auswertung,
 Zugangsblatt `zugang.html` mit QR-Code. Zugang vorerst ohne Klassen-Code: eine Adresse für alle.
 
 **Als Nächstes:** Fr 16.10. QR-Code an 2GH1b austeilen. Dann Diätetische LM und Biowaren
@@ -188,6 +188,7 @@ Ablauf für jedes neue Thema:
 |-------|-------------|
 | ✔ Code-Rhythmus: pro Lehrgang (10 Wochen) | entschieden 8.10. |
 | Code-Format: z. B. `FP2-KAESE` oder neutral `FP2-7K4M`? | Phase 2 |
+| Zugang befristen? Empfehlung 15.10.: jetzt ohne Code (Übungsmaterial, keine Schülerdaten). Klassen-Code pro Lehrgang mit Phase 2, spätestens vor dem nächsten Lehrgang. Echter Schutz bräuchte Server/Anmeldung – nicht empfohlen. | Benedikt entscheidet |
 | ✔ Themen → Klasse: laut Lehrstoffverteilung, Tabelle in `docs/BESTANDSAUFNAHME.md` Abschnitt 3 | erledigt 8.10. |
 | ✔ Layout umgestellt (Aptos, #005090, Gelb #FFD600) in `css/knb-stil.css` | erledigt 8.10. |
 | ✔ .docx/.pptx lesen: `tools/vfw_lesen.py` (reines Lese-Skript, einzige Shell-Ausnahme) | erledigt 8.10. |

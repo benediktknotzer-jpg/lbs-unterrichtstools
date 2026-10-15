@@ -14,7 +14,7 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
   Dazu die Liste der falschen Fragen mit Lösung und „Falsche Fragen wiederholen“
 - Sechs Fragetypen: Multiple Choice (MC), Mehrfachauswahl mit mehreren richtigen Antworten (MM),
   Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH) und Lückentext (LT) – alles per Antippen
-- Themen derzeit: **Fleisch & Rindfleisch** (77 Fragen), **Käse** (78), **Feinkost, Fertigkost &
+- Themen derzeit: **Fleisch & Rindfleisch** (82 Fragen), **Käse** (78), **Feinkost, Fertigkost &
   Zusatzverkauf** (78), **Eier** (48), **Fische, Krusten- & Weichtiere** (64),
   **Speisefette & Speiseöle** (73), **Kakao & Schokolade** (77)
 - Zugangsblatt mit QR-Code für Ausdruck und Smartboard: `zugang.html`
