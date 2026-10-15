@@ -204,6 +204,14 @@ und Schularbeiten – dann ist das Quiz eine echte Wiederholung des Unterrichts.
    ```
 3. Die Themen erscheinen auf der Startseite in dieser Reihenfolge.
 
+### Nach Änderungen an CSS oder JavaScript
+
+In `index.html` (und `zugang.html`) hängt an jeder CSS- und JS-Datei eine Versionsnummer, z. B.
+`js/app.js?v=2026-10-15`. Nach jeder Änderung an `css/` oder `js/` diese Nummer überall auf das
+neue Datum setzen – sonst können Handys bis zu 10 Minuten lang die alte Datei aus dem
+Zwischenspeicher mit den neuen Fragen-Dateien mischen. Für Änderungen nur an `daten/` ist das
+nicht nötig, die Fragen werden immer frisch geladen.
+
 ### Gemischtes Quiz (z. B. Schularbeits-Wiederholung)
 
 Statt `"datei"` steht `"mix"` mit einer Liste von Dateien, die schon als eigene Themen in
