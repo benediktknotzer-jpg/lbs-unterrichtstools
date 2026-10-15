@@ -30,9 +30,14 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
 - Reines HTML/CSS/JavaScript, keine Build-Tools, keine externen Abhängigkeiten, kein Tracking,
   keine Speicherung (auch kein localStorage).
 - Themen: `daten/themen.json` + je eine CSV (UTF-8, Semikolon):
-  `nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle`
-- Fragetypen: MC, RF, ZU (`links = rechts | …`), RH (Schritte in richtiger Reihenfolge, `|`),
+  `nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle;erklaerung` (erklaerung freiwillig)
+- Fragetypen: MC, MM (mehrere richtige, `|`), RF (mit Berichtigung in `erklaerung`),
+  ZU (`links = rechts | …`), RH (Schritte in richtiger Reihenfolge, `|`),
   LT (Text mit Lücken in `[eckigen Klammern]`, falsch1–3 = Ablenkwörter). Details: README.
+- Notenschlüssel der LBS (wie Schularbeit, nicht ändern): 100–91 / 90–81 / 80–61 / 60–51 / 50–0 %,
+  Prozent abgerundet. Quelle: `VFW_Claude/00_START_NEUER_LEHRGANG_I_2026-27.md`.
+- Zugang für die Lehrlinge: `zugang.html` (QR-Code `bilder/qr-quiz.svg`, erzeugt mit
+  `python tools/qr_code.py <adresse> bilder/qr-quiz.svg`).
 - `daten/fleisch-rindfleisch.csv` nicht verändern (Vorgabe von Benedikt).
 - Spalte `quelle`: woher die Frage stammt (z. B. „SA1 FOOD“, „AA Milch“). Inhalte, die nicht aus
   Benedikts Unterlagen stammen, mit „… – bitte prüfen“ markieren.

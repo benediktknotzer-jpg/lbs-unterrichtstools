@@ -7,14 +7,17 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
 
 - Themenauswahl, optional Filter nach Unterthema, 10 / 20 / alle Fragen
 - Fragen und Antworten werden bei jedem Durchgang gemischt
-- Sofortige Rückmeldung mit richtiger Lösung
-- Auswertung in Prozent mit Note laut Notenschlüssel der Schularbeiten (91/81/61/51 %),
-  Liste der falschen Fragen mit Lösung, „Falsche Fragen wiederholen“
-- Fünf Fragetypen: Multiple Choice (MC), Richtig/Falsch (RF), Zuordnen (ZU),
-  Reihenfolge (RH) und Lückentext (LT) – alles per Antippen, ohne Tippen auf der Tastatur
+- Sofortige Rückmeldung mit richtiger Lösung, bei Richtig/Falsch mit Berichtigung (Spalte `erklaerung`)
+- Auswertung in Prozent mit Note laut Notenschlüssel der LBS Theresienfeld wie bei der
+  Schularbeit: 100–91 % Sehr gut · 90–81 % Gut · 80–61 % Befriedigend · 60–51 % Genügend ·
+  50–0 % Nicht genügend. Der Prozentwert wird abgerundet (90,9 % zählt als 90 % = Gut).
+  Dazu die Liste der falschen Fragen mit Lösung und „Falsche Fragen wiederholen“
+- Sechs Fragetypen: Multiple Choice (MC), Mehrfachauswahl mit mehreren richtigen Antworten (MM),
+  Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH) und Lückentext (LT) – alles per Antippen
 - Themen derzeit: **Fleisch & Rindfleisch** (77 Fragen), **Käse** (78), **Feinkost, Fertigkost &
-  Zusatzverkauf** (72), **Eier** (43), **Fische, Krusten- & Weichtiere** (59),
-  **Speisefette & Speiseöle** (68), **Kakao & Schokolade** (72)
+  Zusatzverkauf** (78), **Eier** (48), **Fische, Krusten- & Weichtiere** (64),
+  **Speisefette & Speiseöle** (73), **Kakao & Schokolade** (77)
+- Zugangsblatt mit QR-Code für Ausdruck und Smartboard: `zugang.html`
 - Gestaltet im Stil der knb-Arbeitsblätter (siehe unten „Einheitlicher Stil“)
 - Keine Anmeldung, keine Speicherung, kein Tracking, keine externen Dateien –
   reines HTML/CSS/JavaScript
@@ -23,14 +26,18 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
 
 ```
 index.html              Die App
+zugang.html             Zugangsblatt mit QR-Code (Ausdruck A4, Vollbild fürs Smartboard)
 css/knb-stil.css        Grundstil (Schrift, Farben, Kopf, Fußzeile) – für alle Tools
 css/quiz.css            Aussehen speziell für das Quiz
 bilder/lbs-logo.png     Logo der LBS Theresienfeld
+bilder/qr-quiz.svg      QR-Code zur Quiz-Adresse (erzeugt mit tools/qr_code.py)
 js/csv.js               Einlesen und Prüfen der Fragen-Dateien
 js/app.js               Ablauf des Quiz
 daten/themen.json       Liste der Themen
 daten/*.csv             Fragen, eine Datei pro Thema
 tests/csv-test.js       Automatische Prüfung der Fragen-Dateien
+tools/qr_code.py        QR-Code als SVG erzeugen (nur Python, ohne Zusatzpakete)
+tools/vfw_lesen.py      Unterlagen aus VFW_Claude lesen (nur lesen)
 ```
 
 ---
@@ -101,20 +108,23 @@ das ja gewünscht). Die Seite ist für Suchmaschinen als `noindex` markiert.
 Jedes Thema ist eine CSV-Datei im Ordner `daten/`. Die erste Zeile (Kopfzeile) ist immer:
 
 ```
-nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
+nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle;erklaerung
 ```
+
+Die Spalte `erklaerung` ist freiwillig. Fehlt sie in einer Datei, funktioniert das Quiz trotzdem.
 
 | Spalte  | Bedeutung |
 |---------|-----------|
 | nr      | laufende Nummer (hilft bei Fehlermeldungen) |
 | thema   | Unterthema, danach kann im Quiz gefiltert werden (z. B. „Lagerung“) |
-| typ     | `MC`, `RF`, `ZU`, `RH` oder `LT` |
+| typ     | `MC`, `MM`, `RF`, `ZU`, `RH` oder `LT` |
 | frage   | Fragetext bzw. Aussage |
 | richtig | richtige Antwort (je nach Typ, siehe unten) |
-| falsch1–falsch3 | falsche Antworten (MC) bzw. zusätzliche Ablenkwörter (LT) |
+| falsch1–falsch3 | falsche Antworten (MC, MM) bzw. zusätzliche Ablenkwörter (LT) |
 | quelle  | nur für Sie – wird im Quiz nicht angezeigt (z. B. „SA1 FOOD“, „AA Milch“, „Lehrbuch S. 45“) |
+| erklaerung | freiwillig – erscheint nach dem Beantworten und in der Auswertung. Bei RF die Berichtigung, z. B. „Falsch: Aufgetautes Fleisch darf nicht wieder eingefroren werden.“ |
 
-### Beispiele für die fünf Fragetypen
+### Beispiele für die sechs Fragetypen
 
 **MC – Multiple Choice:** In `richtig` steht die richtige Antwort, in `falsch1` bis `falsch3`
 die falschen. Die Reihenfolge wird im Quiz gemischt.
@@ -123,11 +133,22 @@ die falschen. Die Reihenfolge wird im Quiz gemischt.
 78;Lagerung;MC;Bei welcher Temperatur wird Tiefkühlware gelagert?;−18 °C oder kälter;0 bis +2 °C;−5 °C;+4 °C;Lehrbuch S. 12
 ```
 
-**RF – Richtig/Falsch:** In `frage` steht eine Aussage, in `richtig` das Wort `richtig` oder
-`falsch`. Die Spalten `falsch1` bis `falsch3` bleiben leer.
+**MM – Mehrfachauswahl:** Wie MC, aber mit **mehreren richtigen Antworten**. In `richtig` stehen
+alle richtigen Antworten, getrennt durch `|`. In `falsch1` bis `falsch3` stehen die falschen
+(mindestens eine). Höchstens sechs Antworten insgesamt. Die Lehrlinge sehen den Hinweis, dass
+mehrere Antworten richtig sein können, kreuzen an und tippen auf „Antwort prüfen“. Die Frage
+zählt nur als richtig, wenn genau alle richtigen Antworten angekreuzt sind.
 
 ```
-79;Lagerung;RF;Aufgetautes Fleisch darf wieder eingefroren werden.;falsch;;;;Lehrbuch S. 13
+83;Einteilung;MM;Welche Fette sind tierisch?;Butterschmalz | Rindertalg | Fischöle;Kokosfett;Palmfett;Rapsöl;IB W7
+```
+
+**RF – Richtig/Falsch:** In `frage` steht eine Aussage, in `richtig` das Wort `richtig` oder
+`falsch`. Die Spalten `falsch1` bis `falsch3` bleiben leer. In `erklaerung` steht am besten die
+Berichtigung – sie erscheint nach dem Antippen, damit die Lehrlinge sehen, was richtig ist.
+
+```
+79;Lagerung;RF;Aufgetautes Fleisch darf wieder eingefroren werden.;falsch;;;;Lehrbuch S. 13;Falsch: Aufgetautes Fleisch darf nicht wieder eingefroren werden.
 ```
 
 **ZU – Zuordnen:** In `richtig` stehen die Paare im Format `links = rechts`, getrennt durch `|`

@@ -10,20 +10,30 @@
 
   var TYP_NAME = {
     MC: 'Multiple Choice',
+    MM: 'Mehrfachauswahl',
     RF: 'Richtig oder falsch',
     ZU: 'Zuordnen',
     RH: 'Reihenfolge',
     LT: 'Lückentext'
   };
 
-  // Notenschlüssel wie bei den Schularbeiten (Prozent der Punkte)
+  // Notenschlüssel der LBS Theresienfeld wie bei den Schularbeiten (100 Punkte = 100 %):
+  // 100–91 Sehr gut · 90–81 Gut · 80–61 Befriedigend · 60–51 Genügend · 50–0 Nicht genügend
   var NOTEN = [
-    { ab: 91, text: 'Sehr gut (1)' },
-    { ab: 81, text: 'Gut (2)' },
-    { ab: 61, text: 'Befriedigend (3)' },
-    { ab: 51, text: 'Genügend (4)' },
-    { ab: 0, text: 'Nicht genügend (5)' }
+    { ab: 91, bis: 100, text: 'Sehr gut (1)' },
+    { ab: 81, bis: 90, text: 'Gut (2)' },
+    { ab: 61, bis: 80, text: 'Befriedigend (3)' },
+    { ab: 51, bis: 60, text: 'Genügend (4)' },
+    { ab: 0, bis: 50, text: 'Nicht genügend (5)' }
   ];
+
+  // Prozent wird abgerundet, nie aufgerundet: 90,9 % zählt wie 90 Punkte, also „Gut“.
+  // So passen angezeigte Zahl und Note immer zusammen.
+  function bewerte(richtig, gesamt) {
+    var prozent = Math.floor(richtig / gesamt * 100 + 1e-9);
+    var note = NOTEN.filter(function (n) { return prozent >= n.ab; })[0];
+    return { prozent: prozent, note: note };
+  }
 
   var themen = [];          // [{titel, datei, fragen, fehler, hinweise}]
   var gewaehlt = null;      // aktuell gewähltes Thema
@@ -310,6 +320,9 @@
     var extra = [];
     if (frage.typ === 'MC') {
       v.optionen = mische([frage.richtig].concat(frage.falsche));
+    } else if (frage.typ === 'MM') {
+      v.optionen = mische(frage.richtige.concat(frage.falsche));
+      v.auswahl = v.optionen.map(function () { return false; });
     } else if (frage.typ === 'ZU') {
       slots = frage.paare.map(function (p) { return p.rechts; });
     } else if (frage.typ === 'RH') {
@@ -358,6 +371,8 @@
 
     var anleitung = {
       MC: 'Wählen Sie die richtige Antwort.',
+      MM: 'Achtung: Hier können mehrere Antworten richtig sein. Wählen Sie alle richtigen aus und ' +
+        'tippen Sie dann auf „Antwort prüfen“.',
       RF: 'Ist diese Aussage richtig oder falsch?',
       ZU: 'Tippen Sie unten auf die passende Antwort – sie kommt in das markierte Feld. ' +
         'Zum Ändern das Feld antippen.',
@@ -371,6 +386,7 @@
     var bereich = $('quiz-antworten');
     leere(bereich);
     if (f.typ === 'MC') zeigeMC(v, bereich);
+    else if (f.typ === 'MM') zeigeMM(v, bereich);
     else if (f.typ === 'RF') zeigeRF(v, bereich);
     else zeigeTipp(v, bereich);
 
@@ -417,6 +433,55 @@
     bereich.appendChild(box);
   }
 
+  function zeigeMM(v, bereich) {
+    var box = el('div', 'antworten mm');
+    var pruefen = knopf('knopf haupt', 'Antwort prüfen');
+    pruefen.id = 'mm-pruefen';
+    pruefen.disabled = true;
+    var knoepfe = v.optionen.map(function (text, i) {
+      var b = antwortKnopf(BUCHSTABEN[i], text);
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', function () {
+        v.auswahl[i] = !v.auswahl[i];
+        b.classList.toggle('gewaehlt', v.auswahl[i]);
+        b.setAttribute('aria-pressed', String(v.auswahl[i]));
+        b.querySelector('.zeichen').textContent = v.auswahl[i] ? '✓' : BUCHSTABEN[i];
+        pruefen.disabled = v.auswahl.indexOf(true) < 0;
+      });
+      box.appendChild(b);
+      return b;
+    });
+    pruefen.addEventListener('click', function () {
+      var gegeben = [];
+      var ok = true;
+      knoepfe.forEach(function (b, i) {
+        var soll = v.q.richtige.indexOf(v.optionen[i]) >= 0;
+        b.disabled = true;
+        b.classList.remove('gewaehlt');
+        b.removeAttribute('aria-pressed');
+        if (v.auswahl[i]) gegeben.push(v.optionen[i]);
+        if (soll && v.auswahl[i]) {
+          markiere(b, true);
+        } else if (soll) {
+          ok = false;
+          markiere(b, true);
+          b.classList.add('fehlend');
+          b.querySelector('.antwort-text').appendChild(el('span', 'fehlend-hinweis', ' – übersehen'));
+        } else if (v.auswahl[i]) {
+          ok = false;
+          markiere(b, false);
+        } else {
+          b.classList.add('gedimmt');
+        }
+      });
+      pruefen.remove();
+      beantwortet(ok, gegeben, ok ? null : 'Richtig ' + (v.q.richtige.length === 1 ? 'ist: ' : 'sind: ') +
+        v.q.richtige.join(' · '));
+    });
+    bereich.appendChild(box);
+    bereich.appendChild(pruefen);
+  }
+
   function zeigeRF(v, bereich) {
     var box = el('div', 'antworten rf');
     var bR = antwortKnopf('✓', 'Richtig');
@@ -428,7 +493,8 @@
       paar[0].addEventListener('click', function () {
         var ok = paar[1] === v.q.richtig;
         sperre([bR, bF], paar[0], richtigerKnopf);
-        beantwortet(ok, paar[1], 'Die Aussage ist ' + (v.q.richtig ? 'richtig.' : 'falsch.'));
+        // Mit Erklärung („Falsch: …“) steht nur die Erklärung da, sonst der kurze Satz
+        beantwortet(ok, paar[1], v.q.erklaerung ? null : 'Die Aussage ist ' + (v.q.richtig ? 'richtig.' : 'falsch.'));
       });
     });
     bereich.appendChild(box);
@@ -584,6 +650,7 @@
     box.className = 'rueckmeldung ' + (ok ? 'gut' : 'schlecht');
     box.appendChild(el('strong', null, ok ? '✓ Richtig!' : '✗ Leider falsch.'));
     if (erklaerung) box.appendChild(el('p', null, erklaerung));
+    if (v.q.erklaerung) box.appendChild(el('p', 'erklaerung', v.q.erklaerung));
     box.hidden = false;
 
     var weiter = $('quiz-weiter');
@@ -624,9 +691,12 @@
     if (q.typ === 'MC') {
       inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Antwort: ' + e.gegeben));
       inhalt.appendChild(zeile('zeile-richtig', '✓ Richtig: ' + q.richtig));
+    } else if (q.typ === 'MM') {
+      inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Auswahl: ' + e.gegeben.join(' · ')));
+      inhalt.appendChild(zeile('zeile-richtig', '✓ Richtig: ' + q.richtige.join(' · ')));
     } else if (q.typ === 'RF') {
       inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Antwort: ' + rfText(e.gegeben)));
-      inhalt.appendChild(zeile('zeile-richtig', '✓ Die Aussage ist ' + rfText(q.richtig) + '.'));
+      inhalt.appendChild(zeile('zeile-richtig', '✓ ' + (q.erklaerung || 'Die Aussage ist ' + rfText(q.richtig) + '.')));
     } else if (q.typ === 'LT') {
       var p = el('p', 'zeile-richtig lt-loesung');
       p.appendChild(document.createTextNode('✓ '));
@@ -658,6 +728,7 @@
       });
       inhalt.appendChild(liste);
     }
+    if (q.erklaerung && q.typ !== 'RF') inhalt.appendChild(zeile('erklaerung', q.erklaerung));
     li.appendChild(inhalt);
     return li;
   }
@@ -668,18 +739,26 @@
     runde = null;
 
     var richtig = erg.filter(function (e) { return e.korrekt; }).length;
-    var anteil = richtig / erg.length * 100;
-    var note = NOTEN.filter(function (n) { return anteil >= n.ab; })[0];
+    var b = bewerte(richtig, erg.length);
     $('erg-titel').textContent = 'Auswertung: ' + letzteRunde.thema.titel;
-    $('erg-prozent').textContent = Math.round(anteil) + ' %';
+    $('erg-prozent').textContent = b.prozent + ' %';
     $('erg-anzahl').textContent = richtig + ' von ' + erg.length + ' Fragen richtig';
-    $('erg-note').textContent = note.text;
+    $('erg-note').textContent = b.note.text;
     $('erg-text').textContent =
       richtig === erg.length ? 'Ausgezeichnet – alles richtig!'
-        : anteil >= 91 ? 'Ausgezeichnet!'
-          : anteil >= 81 ? 'Sehr gut gemacht!'
-            : anteil >= 61 ? 'Gut – da geht noch mehr.'
+        : b.prozent >= 91 ? 'Ausgezeichnet!'
+          : b.prozent >= 81 ? 'Sehr gut gemacht!'
+            : b.prozent >= 61 ? 'Gut – da geht noch mehr.'
               : 'Weiter üben – wiederholen Sie die falschen Fragen.';
+
+    var schluessel = $('erg-schluessel');
+    leere(schluessel);
+    NOTEN.forEach(function (n) {
+      var tr = el('tr', n === b.note ? 'erreicht' : '');
+      tr.appendChild(el('td', null, n.bis + '–' + n.ab + ' %'));
+      tr.appendChild(el('td', null, n.text));
+      schluessel.appendChild(tr);
+    });
 
     var falsch = erg.filter(function (e) { return !e.korrekt; });
     var liste = $('erg-falsch-liste');

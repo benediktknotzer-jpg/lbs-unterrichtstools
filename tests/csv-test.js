@@ -206,4 +206,38 @@ test('gute Fragen bleiben trotz fehlerhafter Nachbarzeile erhalten', function ()
   assert.strictEqual(erg.fehler.length, 1);
 });
 
+console.log('Mehrfachauswahl (MM) und Erklärung');
+test('MM: mehrere richtige und falsche Antworten', function () {
+  var erg = Q.ladeFragen(KOPF + '1;Öl;MM;Welche sind tierisch?;Rindertalg | Butterschmalz;Rapsöl;Kokosfett;;IB\n');
+  assert.deepStrictEqual(erg.fehler, []);
+  assert.deepStrictEqual(erg.fragen[0].richtige, ['Rindertalg', 'Butterschmalz']);
+  assert.deepStrictEqual(erg.fragen[0].falsche, ['Rapsöl', 'Kokosfett']);
+});
+
+test('MM ohne falsche Antwort ist ein Fehler', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;MM;Welche?;A | B;;;;\n').fehler, 'falsche Antwort');
+});
+
+test('MM: Antwort gleichzeitig richtig und falsch ist ein Fehler', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;MM;Welche?;A | B;B;C;;\n').fehler, 'auch bei den richtigen');
+});
+
+test('MM mit mehr als sechs Antworten ist ein Fehler', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;MM;Welche?;A | B | C | D;E;F;G;\n').fehler, 'sechs');
+});
+
+test('MM mit nur einer richtigen Antwort gibt einen Hinweis', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;MM;Welche?;A;B;C;;\n').hinweise, 'MC');
+});
+
+test('Spalte „erklaerung“ ist freiwillig und wird gelesen', function () {
+  var mit = Q.ladeFragen(KOPF.replace('\n', ';erklaerung\n') +
+    '1;A;RF;Aussage.;falsch;;;;LB;Falsch: So ist es richtig.\n2;A;RF;Aussage 2.;richtig;;;;LB\n');
+  assert.deepStrictEqual(mit.fehler, []);
+  assert.strictEqual(mit.fragen[0].erklaerung, 'Falsch: So ist es richtig.');
+  assert.strictEqual(mit.fragen[1].erklaerung, '');
+  var ohne = Q.ladeFragen(KOPF + '1;A;RF;Aussage.;falsch;;;;LB\n');
+  assert.strictEqual(ohne.fragen[0].erklaerung, '');
+});
+
 console.log('\n' + bestanden + ' Tests bestanden' + (process.exitCode ? ', es gibt FEHLER.' : '.'));

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="noindex">
+  <title>Quiz-Zugang · LBS Theresienfeld</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/knb-stil.css">
+  <style>
+    /* Zugangsblatt: zum Ausdrucken (A4) und zum Zeigen am Smartboard */
+    .zugang-qr {
+      display: block;
+      width: min(80vw, 22rem);
+      height: auto;
+      margin: 1rem auto 0.4rem;
+      border: 1px solid var(--knb-rahmen);
+    }
+    .zugang-adresse {
+      text-align: center;
+      font-weight: 700;
+      color: var(--knb-blau);
+      word-break: break-all;
+      margin: 0 0 1.2rem;
+    }
+    .zugang-schritte {
+      padding-left: 1.4rem;
+      line-height: 1.5;
+    }
+    .zugang-schritte li + li {
+      margin-top: 0.4rem;
+    }
+    .zugang-vollbild {
+      margin-top: 1.2rem;
+    }
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      .zugang-vollbild { display: none; }
+      .zugang-qr { width: 9cm; }
+    }
+    /* Vollbild für das Smartboard: nur der QR-Code */
+    body.vollbild .knb-kopf,
+    body.vollbild .knb-fuss,
+    body.vollbild .nur-blatt { display: none; }
+    body.vollbild .zugang-qr { width: min(90vw, 85vh); border: 0; }
+  </style>
+</head>
+<body>
+  <header class="knb-kopf">
+    <div class="knb-kopf-inhalt">
+      <div class="knb-kopf-text">
+        <h1 class="knb-titel">Quiz-Zugang: Warenkunde-Quiz</h1>
+        <p class="knb-kopf-fach">Fachpraktikum Food · 2. Klasse Großhandel</p>
+      </div>
+      <img class="knb-logo" src="bilder/lbs-logo.png" width="286" height="109"
+           alt="Landesberufsschule Theresienfeld">
+    </div>
+  </header>
+
+  <main class="knb-inhalt">
+    <p class="knb-anleitung nur-blatt">Scannen Sie den QR-Code mit der Handy-Kamera und tippen Sie auf den Link.</p>
+    <img class="zugang-qr" src="bilder/qr-quiz.svg" width="330" height="330"
+         alt="QR-Code zum Warenkunde-Quiz">
+    <p class="zugang-adresse">benediktknotzer-jpg.github.io/lbs-unterrichtstools</p>
+
+    <div class="nur-blatt">
+      <h2 class="knb-abschnitt">So geht’s</h2>
+      <ol class="zugang-schritte">
+        <li>QR-Code mit der Kamera scannen oder die Adresse oben im Browser eingeben.</li>
+        <li>Thema wählen, bei Bedarf ein Unterthema und die Anzahl der Fragen, dann „Quiz starten“.</li>
+        <li>Nach jeder Frage sehen Sie sofort, ob Sie richtig liegen – und was richtig ist.</li>
+        <li>Am Ende bekommen Sie Prozent und Note nach dem Notenschlüssel der Schularbeit.
+          Mit „Falsche Fragen wiederholen“ üben Sie gezielt, was noch nicht sitzt.</li>
+      </ol>
+
+      <div class="knb-tipp">
+        <strong>Tipp:</strong> Seite auf den Startbildschirm legen – Android/Chrome: Menü ⋮ →
+        „Zum Startbildschirm hinzufügen“. iPhone/Safari: Teilen → „Zum Home-Bildschirm“.
+      </div>
+      <div class="knb-hinweis">
+        <strong>Hinweis:</strong> Keine Anmeldung, keine Speicherung, kein Tracking.
+        Das Quiz funktioniert mit WLAN und mit mobilen Daten.
+      </div>
+
+      <button type="button" class="knopf zugang-vollbild" id="vollbild">QR-Code groß anzeigen (Smartboard)</button>
+    </div>
+  </main>
+
+  <footer class="knb-fuss">
+    <div class="knb-fuss-inhalt">
+      <p>Benedikt Knotzer | knb</p>
+      <p>LBS Theresienfeld</p>
+    </div>
+  </footer>
+
+  <script>
+    // Vollbild-Ansicht des QR-Codes; Klick auf den Code oder Esc schaltet zurück
+    (function () {
+      var body = document.body;
+      function an() { body.classList.add('vollbild'); }
+      function aus() { body.classList.remove('vollbild'); }
+      document.getElementById('vollbild').addEventListener('click', an);
+      document.querySelector('.zugang-qr').addEventListener('click', aus);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') aus(); });
+    })();
+  </script>
+</body>
+</html>

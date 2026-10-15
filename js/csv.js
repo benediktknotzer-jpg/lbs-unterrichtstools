@@ -2,7 +2,8 @@
  * Warenkunde-Quiz – Einlesen und Prüfen der Fragen-Dateien (CSV)
  *
  * Erwartetes Format (UTF-8, Trennzeichen Semikolon):
- *   nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
+ *   nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle;erklaerung
+ *   (Spalte „erklaerung“ ist freiwillig: Sie erscheint nach dem Beantworten.)
  *
  * Läuft im Browser (window.QuizDaten) und in Node.js (require) –
  * so kann die Prüfung auch ohne Browser getestet werden.
@@ -11,8 +12,8 @@
   'use strict';
 
   var PFLICHTSPALTEN = ['nr', 'thema', 'typ', 'frage', 'richtig', 'falsch1', 'falsch2', 'falsch3'];
-  var TYPEN = ['MC', 'RF', 'ZU', 'LT', 'RH'];
-  var TYPEN_TEXT = 'Erlaubt sind MC, RF, ZU, LT oder RH.';
+  var TYPEN = ['MC', 'MM', 'RF', 'ZU', 'LT', 'RH'];
+  var TYPEN_TEXT = 'Erlaubt sind MC, MM, RF, ZU, LT oder RH.';
 
   /* Bytes -> Text. Bevorzugt UTF-8; eine in Excel als „CSV (Trennzeichen-getrennt)“
      gespeicherte Datei ist meist Windows-1252 – die wird trotzdem gelesen, mit Hinweis. */
@@ -123,6 +124,7 @@
       idx[name] = kopf.indexOf(name);
       if (idx[name] < 0) fehlend.push(name);
     });
+    idx.erklaerung = kopf.indexOf('erklaerung');
     if (fehlend.length) {
       erg.fehler.push('In der Kopfzeile (Zeile 1) fehlt: ' + fehlend.map(zitat).join(', ') +
         '. Erwartet wird: nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle');
@@ -135,7 +137,7 @@
       var felder = satz.felder;
       function f(name) {
         var j = idx[name];
-        return j < felder.length ? felder[j].trim() : '';
+        return j >= 0 && j < felder.length ? felder[j].trim() : '';
       }
 
       var nr = f('nr');
@@ -154,7 +156,8 @@
       var frageText = f('frage');
       var thema = f('thema');
       var richtig = f('richtig');
-      var frage = { nr: nr, zeile: satz.zeile, thema: thema || 'Ohne Unterthema', typ: typ, frage: frageText };
+      var frage = { nr: nr, zeile: satz.zeile, thema: thema || 'Ohne Unterthema', typ: typ, frage: frageText,
+        erklaerung: f('erklaerung') };
 
       if (!frageText) probleme.push('Der Fragetext (Spalte „frage“) fehlt.');
       if (!thema) hinweise.push('Kein Unterthema (Spalte „thema“) angegeben – die Frage erscheint unter „Ohne Unterthema“.');
@@ -184,6 +187,34 @@
         }
         frage.richtig = richtig;
         frage.falsche = falsche;
+      } else if (typ === 'MM') {
+        // Mehrfachauswahl: alle richtigen Antworten in „richtig“, getrennt durch |
+        var richtige = richtig.split('|').map(function (t) { return t.trim(); }).filter(Boolean);
+        if (!richtige.length) {
+          probleme.push('Bei MM-Fragen stehen in Spalte „richtig“ alle richtigen Antworten, getrennt durch „|“.');
+        } else if (richtige.length === 1) {
+          hinweise.push('Nur eine richtige Antwort – für eine einzige richtige Antwort ist MC gedacht.');
+        }
+        richtige.forEach(function (t, i) {
+          if (richtige.indexOf(t) !== i) probleme.push('Die richtige Antwort ' + zitat(t) + ' kommt doppelt vor.');
+        });
+        var falscheMM = [];
+        ['falsch1', 'falsch2', 'falsch3'].forEach(function (s) {
+          var w = f(s);
+          if (!w) return;
+          if (richtige.some(function (x) { return x.toLowerCase() === w.toLowerCase(); })) {
+            probleme.push('Die Antwort in Spalte „' + s + '“ steht auch bei den richtigen Antworten.');
+          } else if (falscheMM.indexOf(w) < 0) {
+            falscheMM.push(w);
+          }
+        });
+        if (!falscheMM.length && !probleme.length) {
+          probleme.push('Es fehlt mindestens eine falsche Antwort (Spalten falsch1 bis falsch3).');
+        } else if (richtige.length + falscheMM.length > 6) {
+          probleme.push('Eine MM-Frage darf höchstens sechs Antworten haben (richtige und falsche zusammen).');
+        }
+        frage.richtige = richtige;
+        frage.falsche = falscheMM;
       } else if (typ === 'RF') {
         var rf = richtig.toLowerCase();
         if (rf !== 'richtig' && rf !== 'falsch') {

@@ -1,18 +1,18 @@
-nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
+nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle;erklaerung
 1;Aufbau und Zusammensetzung;MC;Wie viele Eier legt eine Legehenne pro Jahr ungefähr?;Rund 300;Rund 50;Rund 100;Rund 700;IB Eier W6
 2;Aufbau und Zusammensetzung;MC;Wie viele Hühnereier werden in Österreich pro Kopf und Jahr ungefähr verbraucht?;Etwa 248;Etwa 12;Etwa 48;Etwa 1.000;IB Eier W6
 3;Aufbau und Zusammensetzung;MC;Wie verteilt sich der Inhalt eines Eies?;Zwei Drittel Eiklar, ein Drittel Eidotter;Halb Eiklar, halb Eidotter;Ein Drittel Eiklar, zwei Drittel Eidotter;Drei Viertel Eidotter, ein Viertel Eiklar;IB Eier W6
 4;Aufbau und Zusammensetzung;ZU;Ordnen Sie die Zusammensetzung richtig zu.;Eiklar = Rund 87 % Wasser, 11 % Eiweiß, kein Fett | Eidotter = Rund 50 % Wasser, 16 % Eiweiß, 32 % Fett | Ganzes Hühnerei = Rund 13 % Eiweiß, 11 % Fett, je 1 % Mineralstoffe und Kohlenhydrate;;;;IB Eier W6
-5;Aufbau und Zusammensetzung;RF;Das Eiklar enthält kein Fett.;richtig;;;;IB Eier W6
+5;Aufbau und Zusammensetzung;RF;Das Eiklar enthält kein Fett.;richtig;;;;IB Eier W6;Richtig: Eiklar besteht aus rund 87 % Wasser und 11 % Eiweiß. Das Fett steckt im Eidotter (rund 32 %).
 6;Aufbau und Zusammensetzung;MC;Welche Vitamine enthält das Hühnerei?;A, D und Vitamine der B-Gruppe;Nur Vitamin C;Nur Vitamin K;Gar keine Vitamine;IB Eier W6
 7;Aufbau und Zusammensetzung;MC;Was schützt das Ei vor dem Eindringen von Keimen?;Die Kutikula außen auf der Schale und die Eischalenmembran;Die Luftkammer;Der Stempel auf der Schale;Das Eidotter;IB Eier W6
 8;Aufbau und Zusammensetzung;MC;Woran lässt sich das Alter eines Eies bestimmen?;An der Größe der Luftkammer – je älter das Ei, desto größer die Luftkammer;An der Farbe der Schale;An der Farbe des Dotters;Am Gewicht der Schale;IB Eier W6
-9;Aufbau und Zusammensetzung;RF;Je älter ein Ei ist, desto kleiner wird die Luftkammer.;falsch;;;;IB Eier W6
+9;Aufbau und Zusammensetzung;RF;Je älter ein Ei ist, desto kleiner wird die Luftkammer.;falsch;;;;IB Eier W6;Falsch: Je älter das Ei, desto größer wird die Luftkammer.
 10;Aufbau und Zusammensetzung;MC;Warum ist das Ei ernährungsphysiologisch besonders wertvoll?;Seine Nährstoffe sind fast zu 100 % verwertbar;Es enthält kein Fett;Es besteht fast nur aus Kohlenhydraten;Es ist ungekühlt unbegrenzt haltbar;IB Eier W6
 11;Aufbau und Zusammensetzung;LT;Ergänzen Sie den Text: Was kommt als Eier in den Handel?;Eier von [Hausgeflügel] wie Huhn, Ente, Gans und Pute, von Wildgeflügel wie [Wachtel] und Taube sowie von Fischen als [Rogen] beziehungsweise Kaviar.;Schildkröte;Molke;Schale;IB Eier W6
 12;Güte- und Gewichtsklassen;MC;Wofür sind Eier der Güteklasse A bestimmt?;Frische Eier für den Verkauf an Endverbraucherinnen und Endverbraucher;Für die Industrie zur Weiterverarbeitung;Nur für den Export;Nur für Bio-Fachgeschäfte;IB Eier W6
 13;Güte- und Gewichtsklassen;MC;Wohin gehen Eier der Güteklasse B?;An die Industrie zur Weiterverarbeitung;In den Lebensmitteleinzelhandel;Direkt an Endverbraucher;In die Entsorgung;IB Eier W6
-14;Güte- und Gewichtsklassen;RF;Eier der Güteklasse A dürfen gewaschen werden, wenn sie verschmutzt sind.;falsch;;;;IB Eier W6
+14;Güte- und Gewichtsklassen;RF;Eier der Güteklasse A dürfen gewaschen werden, wenn sie verschmutzt sind.;falsch;;;;IB Eier W6;Falsch: Eier der Güteklasse A dürfen weder gewaschen noch gereinigt oder konserviert werden.
 15;Güte- und Gewichtsklassen;ZU;Ordnen Sie jeder Gewichtsklasse die richtigen Grenzen zu.;XL – sehr groß = 73 g und darüber | L – groß = 63 g bis unter 73 g | M – mittel = 53 g bis unter 63 g | S – klein = unter 53 g;;;;IB Eier W6 / SA2 FP
 16;Güte- und Gewichtsklassen;RH;Ordnen Sie die Gewichtsklassen vom leichtesten zum schwersten Ei.;S | M | L | XL;;;;IB Eier W6
 17;Güte- und Gewichtsklassen;MC;Ein Ei wiegt genau 63 g. Zu welcher Gewichtsklasse gehört es?;L;M;XL;S;IB Eier W6
@@ -27,13 +27,13 @@ nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
 26;Kennzeichnung und Stempel;MC;Wie lange nach dem Legedatum darf das Mindesthaltbarkeitsdatum höchstens liegen?;28 Tage;14 Tage;42 Tage;90 Tage;IB Eier W6
 27;Kennzeichnung und Stempel;MC;Legedatum 01.10. Welches Mindesthaltbarkeitsdatum ist höchstens erlaubt?;29.10.;02.11.;15.10.;31.12.;LB Eier W6 Aufgabe 1
 28;Kennzeichnung und Stempel;MC;Was muss auf der Eierverpackung stehen?;Güte- und Gewichtsklasse, Haltungsart, Mindesthaltbarkeitsdatum und regionale Herkunft;Rasse der Henne und Futtermittel;Stückpreis und Farbe der Schale;Name des Bauern und Gewicht jedes Eies;IB Eier W6
-29;Kennzeichnung und Stempel;RF;Bei biologischer Erzeugung muss die Biokontrollnummer auf der Verpackung stehen.;richtig;;;;IB Eier W6
+29;Kennzeichnung und Stempel;RF;Bei biologischer Erzeugung muss die Biokontrollnummer auf der Verpackung stehen.;richtig;;;;IB Eier W6;Richtig: Bio-Eier tragen außerdem vorne im Stempel die 0.
 30;Kennzeichnung und Stempel;LT;Ergänzen Sie die vorgeschriebenen Angaben zur Haltungsart.;Auf der Verpackung steht „Eier aus [Freilandhaltung]“, „Eier aus [Bodenhaltung]“ oder „Eier aus [Käfighaltung]“.;Stallhaltung;Weidehaltung;Gruppenhaltung;IB Eier W6
 31;Kennzeichnung und Stempel;MC;Auf der Packung steht „Bio-Eier“, auf den Eiern 1-AT-1360403. Was stimmt?;Das passt nicht: 1 bedeutet Freilandhaltung, Bio-Eier tragen vorne die 0;Alles in Ordnung – 1 bedeutet erste Wahl;Alles in Ordnung – 1 ist die Güteklasse;Das passt nicht: Bio-Eier tragen vorne die 3;LB Eier W6 Aufgabe 1
 32;Kennzeichnung und Stempel;MC;Ein Kunde hat Bio-Eier bestellt, laut Stempel sind es Freilandeier. Was tun Sie?;Nicht als Bio ausliefern, beim Lieferanten reklamieren und den Kunden informieren;Ausliefern – der Kunde merkt es nicht;Ausliefern und einen kleinen Rabatt geben;Den Stempel mit einem Bio-Etikett überkleben;LB Eier W6 Aufgabe 1
 33;Lagerung;MC;Welche Lagertemperatur ist für Eier ideal?;5 bis 8 °C;0 bis 2 °C;−18 °C;15 bis 20 °C;IB Eier W6
 34;Lagerung;MC;Wie lange dürfen Eier im Handel höchstens bei unter +5 °C aufbewahrt werden?;24 Stunden;3 Tage;28 Tage;Unbegrenzt;IB Eier W6
-35;Lagerung;RF;Ein Kollege meint: „Je kälter, desto besser“ – Eier können daher ruhig drei Tage bei 2 °C im Kühlraum stehen.;falsch;;;;LB Eier W6 Aufgabe 3
+35;Lagerung;RF;Ein Kollege meint: „Je kälter, desto besser“ – Eier können daher ruhig drei Tage bei 2 °C im Kühlraum stehen.;falsch;;;;LB Eier W6 Aufgabe 3;Falsch: Ideal sind 5 bis 8 °C. Unter +5 °C dürfen Eier im Handel höchstens 24 Stunden aufbewahrt werden.
 36;Lagerung;MC;Warum soll man Eier vor dem Lagern nicht waschen?;Beim Waschen wird die Kutikula entfernt, die vor Keimen schützt;Weil sonst der Stempel verschwindet;Weil die Eier dadurch schwerer werden;Weil sonst die Luftkammer kleiner wird;IB/LB Eier W6
 37;Lagerung;MC;Was zeichnet Vital-Eier aus?;Ein erhöhter Gehalt an Omega-3-Fettsäuren durch die Fütterung, unter anderem mit Algenpulver;Sie stammen immer aus Bio-Haltung;Sie enthalten kein Fett;Sie sind ungekühlt doppelt so lange haltbar;IB Eier W6
 38;Lagerung;MC;Frischeprüfung im Wasserglas: Wie verhält sich ein frisches Ei?;Es bleibt am Boden liegen;Es stellt sich auf;Es schwimmt oben;Es dreht sich im Kreis;IB Eier W6 (Zum Nachschlagen)
@@ -42,3 +42,8 @@ nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle
 41;Beratung und Rechnen;MC;Ein Tray mit 30 Eiern der Klasse L (je 68 g) kostet 6,30 €. Was kostet 1 kg ungefähr?;3,09 €;0,21 €;6,30 €;4,28 €;LB Eier W6 Aufgabe 2
 42;Beratung und Rechnen;MC;Die Küche braucht 6 kg Ei. Wie viele Eier der Klasse S (je 50 g) sind das?;120;89;60;300;LB Eier W6 Aufgabe 2
 43;Beratung und Rechnen;MC;Welche Gewichtsklasse empfehlen Sie der Großküche für Rührei?;L – je Kilogramm günstiger als S und weniger Eier aufzuschlagen;S – weil der Stückpreis am niedrigsten ist;Egal – Ei ist Ei;S – weil kleine Eier frischer sind;LB Eier W6 Aufgabe 2
+44;Kennzeichnung und Stempel;MM;Was muss auf der Eierverpackung stehen?;Güteklasse | Gewichtsklasse | Haltungsart | Mindesthaltbarkeitsdatum;Rasse der Henne;Stückpreis;;IB Eier W6;Dazu kommt die regionale Herkunft, bei Bio-Eiern die Biokontrollnummer.
+45;Güte- und Gewichtsklassen;MM;Was gilt für Eier der Güteklasse A?;Frische Eier für Endverbraucherinnen und Endverbraucher | Weder gewaschen noch gereinigt | Nicht konserviert;Für die Industrie zur Weiterverarbeitung;Vor dem Verkauf gründlich gewaschen;;IB Eier W6 / SA2 FP;Eier der Güteklasse B gehen an die Industrie zur Weiterverarbeitung.
+46;Aufbau und Zusammensetzung;MM;Was schützt das Ei vor dem Eindringen von Keimen?;Die Kutikula außen auf der Schale | Die Eischalenmembran;Die Luftkammer;Der Stempel;Das Eidotter;IB Eier W6;Deshalb werden Eier nicht gewaschen – sonst geht die Kutikula verloren.
+47;Kennzeichnung und Stempel;MM;Ein Kunde will keine Eier aus Käfighaltung. Mit welcher Ziffer darf der Stempel beginnen?;0 | 1 | 2;3;;;IB Eier W6 / SA2 FP;0 = Bio, 1 = Freiland, 2 = Boden, 3 = Käfig.
+48;Lagerung;MM;Welche Regeln gelten für die Lagerung von Eiern im Handel?;Bei 5 bis 8 °C lagern | Vor dem Lagern nicht waschen | Höchstens 24 Stunden unter +5 °C;Je kälter, desto besser – ruhig tagelang bei 2 °C;Vor dem Lagern gründlich waschen;;IB/LB Eier W6;

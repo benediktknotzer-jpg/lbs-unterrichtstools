@@ -620,3 +620,75 @@ span.feld.luecke.ist-falsch strong {
 .falsch-liste li li + li {
   margin-top: 0.3rem;
 }
+
+/* ---------- Mehrfachauswahl (MM) ---------- */
+
+.antwort.gewaehlt {
+  border: 2px solid var(--knb-blau);
+  background: var(--knb-blau-hell);
+}
+
+.antwort.gewaehlt .zeichen {
+  background: var(--knb-blau);
+}
+
+/* richtige Antwort, die nicht angetippt wurde */
+.antwort.fehlend {
+  border-style: dashed;
+}
+
+.fehlend-hinweis {
+  font-style: italic;
+  color: var(--knb-richtig);
+}
+
+#mm-pruefen {
+  margin-top: 1.1rem;
+}
+
+/* ---------- Erklärung nach dem Beantworten ---------- */
+
+.rueckmeldung p.erklaerung,
+.falsch-liste .erklaerung {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--knb-rahmen);
+  color: var(--knb-text);
+}
+
+.falsch-liste .erklaerung {
+  font-size: 0.95rem;
+}
+
+/* ---------- Notenschlüssel ---------- */
+
+.notenschluessel {
+  width: 100%;
+  margin-top: 1.1rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.notenschluessel caption {
+  text-align: left;
+  font-weight: 700;
+  color: var(--knb-blau);
+  margin-bottom: 0.4rem;
+}
+
+.notenschluessel th,
+.notenschluessel td {
+  border: 1px solid var(--knb-rahmen);
+  padding: 0.35rem 0.6rem;
+  text-align: left;
+}
+
+.notenschluessel th {
+  background: var(--knb-blau-hell);
+  color: var(--knb-blau);
+}
+
+.notenschluessel tr.erreicht td {
+  background: var(--knb-gelb);
+  font-weight: 700;
+}

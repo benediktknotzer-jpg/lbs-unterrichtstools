@@ -1,6 +1,6 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 14. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 15. Oktober 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
@@ -14,18 +14,24 @@ Danach Freigabe-System (Phase 2).
 |-------|-------|--------|-------|
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 77 | fertig (Vorgabe, nicht ändern) |
 | Käse | `kaese.csv` | 78 | im Quiz, 29 Fragen „bitte prüfen“, Abgleich mit aktuellen Unterlagen offen |
-| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 72 | fertig (SA2) |
-| Eier | `eier.csv` | 43 | fertig (SA2) |
-| Fische, Krusten- & Weichtiere | `fische.csv` | 59 | fertig (SA2) |
-| Speisefette & Speiseöle | `speisefette-oele.csv` | 68 | fertig (SA2), 2 Fragen „bitte prüfen“ (aus AA III. LG) |
-| Kakao & Schokolade | `kakao-schokolade.csv` | 72 | fertig (SA2) |
+| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 78 | fertig (SA2) |
+| Eier | `eier.csv` | 48 | fertig (SA2) |
+| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | fertig (SA2) |
+| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | fertig (SA2), 2 Fragen „bitte prüfen“ (aus AA III. LG) |
+| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | fertig (SA2) |
 | Diätetische Lebensmittel | – | – | offen (SA2) |
 | Biowaren | – | – | offen (SA2) |
 | Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
 | Milch & Milchprodukte | – | – | offen, nach SA2 |
 
-**Als Nächstes (Benedikt 14.10.):** Quiz am Handy ausprobieren, dann klären, wie die Lehrlinge
-zugreifen (GitHub Pages, QR-Code, was sie bekommen). Danach Diätetische LM und Biowaren.
+**15.10.:** Klasse hat das Quiz am Smartboard getestet, gefällt. Umgesetzt: Fragetyp MM
+(mehrere richtige Antworten, je 5–6 pro SA2-Thema), Berichtigung bei Richtig/Falsch (Spalte
+`erklaerung`, Fleisch ausgenommen – Vorgabedatei), Notenschlüssel der LBS in der Auswertung,
+Zugangsblatt `zugang.html` mit QR-Code. Zugang vorerst ohne Klassen-Code: eine Adresse für alle.
+
+**Als Nächstes:** Fr 16.10. QR-Code an 2GH1b austeilen. Dann Diätetische LM und Biowaren
+(SA2-Stoff, Unterricht Mo 19./Di 20.10.) – erscheinen automatisch unter derselben Adresse.
+Klassen-Codes (Phase 2) erst, wenn mehrere Klassen das Quiz nutzen.
 
 ## Ziel
 
