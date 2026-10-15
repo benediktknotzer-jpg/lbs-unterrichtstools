@@ -5,5 +5,7 @@
   { "titel": "Eier", "datei": "eier.csv", "klassen": ["2"] },
   { "titel": "Fische, Krusten- & Weichtiere", "datei": "fische.csv", "klassen": ["2"] },
   { "titel": "Speisefette & Speiseöle", "datei": "speisefette-oele.csv", "klassen": ["2"] },
-  { "titel": "Kakao & Schokolade", "datei": "kakao-schokolade.csv", "klassen": ["2"] }
+  { "titel": "Kakao & Schokolade", "datei": "kakao-schokolade.csv", "klassen": ["2"] },
+  { "titel": "Diätetische Lebensmittel", "datei": "diaetetische-lebensmittel.csv", "klassen": ["2"] },
+  { "titel": "Biowaren", "datei": "biowaren.csv", "klassen": ["2"] }
 ]

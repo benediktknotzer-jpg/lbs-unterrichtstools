@@ -19,8 +19,8 @@ Danach Freigabe-System (Phase 2).
 | Fische, Krusten- & Weichtiere | `fische.csv` | 64 | fertig (SA2) |
 | Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | fertig (SA2), 2 Fragen „bitte prüfen“ (aus AA III. LG) |
 | Kakao & Schokolade | `kakao-schokolade.csv` | 77 | fertig (SA2) |
-| Diätetische Lebensmittel | – | – | offen (SA2) |
-| Biowaren | – | – | offen (SA2) |
+| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | fertig (SA2) |
+| Biowaren | `biowaren.csv` | 42 | fertig (SA2) |
 | Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
 | Milch & Milchprodukte | – | – | offen, nach SA2 |
 
@@ -29,9 +29,12 @@ Danach Freigabe-System (Phase 2).
 `erklaerung`, alle Themen), Notenschlüssel der LBS in der Auswertung,
 Zugangsblatt `zugang.html` mit QR-Code. Zugang vorerst ohne Klassen-Code: eine Adresse für alle.
 
-**Als Nächstes:** Fr 16.10. QR-Code an 2GH1b austeilen. Dann Diätetische LM und Biowaren
-(SA2-Stoff, Unterricht Mo 19./Di 20.10.) – erscheinen automatisch unter derselben Adresse.
-Klassen-Codes (Phase 2) erst, wenn mehrere Klassen das Quiz nutzen.
+**Entscheidung Benedikt 15.10.:** Zugang jetzt ohne Code (Variante A). Klassen-Code pro Lehrgang
+(Variante B, Phase 2) als Nächstes. Echte Sperre mit Anmeldung (Variante C) kommt nicht.
+
+**Als Nächstes:** Fr 16.10. QR-Code an 2GH1b austeilen (`zugang.html`). Alle SA2-Themen sind
+online (Kindernährmittel ist kein SA-Stoff). Dann Phase 2 Klassen-Codes, spätestens vor dem
+nächsten Lehrgang (I. LG endet 6.11.), danach Kindernährmittel und Milch.
 
 ## Ziel
 
@@ -188,7 +191,7 @@ Ablauf für jedes neue Thema:
 |-------|-------------|
 | ✔ Code-Rhythmus: pro Lehrgang (10 Wochen) | entschieden 8.10. |
 | Code-Format: z. B. `FP2-KAESE` oder neutral `FP2-7K4M`? | Phase 2 |
-| Zugang befristen? Empfehlung 15.10.: jetzt ohne Code (Übungsmaterial, keine Schülerdaten). Klassen-Code pro Lehrgang mit Phase 2, spätestens vor dem nächsten Lehrgang. Echter Schutz bräuchte Server/Anmeldung – nicht empfohlen. | Benedikt entscheidet |
+| ✔ Zugang befristen: jetzt ohne Code, Klassen-Code pro Lehrgang mit Phase 2, keine Anmeldung | entschieden 15.10. |
 | ✔ Themen → Klasse: laut Lehrstoffverteilung, Tabelle in `docs/BESTANDSAUFNAHME.md` Abschnitt 3 | erledigt 8.10. |
 | ✔ Layout umgestellt (Aptos, #005090, Gelb #FFD600) in `css/knb-stil.css` | erledigt 8.10. |
 | ✔ .docx/.pptx lesen: `tools/vfw_lesen.py` (reines Lese-Skript, einzige Shell-Ausnahme) | erledigt 8.10. |
