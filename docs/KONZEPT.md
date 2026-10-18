@@ -1,6 +1,6 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 15. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 18. Oktober 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
@@ -26,7 +26,7 @@ Danach Freigabe-System (Phase 2).
 | Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
 | Milch & Milchprodukte | – | – | offen, nach SA2 |
 
-**15.10. nachmittags (Überarbeitung, noch nicht online):** Alle SA2-Themen Frage für Frage gegen
+**15.10. nachmittags (Überarbeitung, seit 15.10. online):** Alle SA2-Themen Frage für Frage gegen
 IB, LB, SA2-Lösung und LAP-Fragen geprüft. Keine falsche Lösung gefunden, aber korrigiert:
 widersprüchliches Fisch-Etikett (Nr. 31: Aquakultur mit Fanggebiet), mehrdeutige Lückentexte mit
 vertauschbaren Wörtern (Fette 21, 34, 38; Eier 30; Feinkost 47, 63; Käse 10), unscharfe
@@ -50,9 +50,14 @@ Zugangsblatt `zugang.html` mit QR-Code. Zugang vorerst ohne Klassen-Code: eine A
 **Entscheidung Benedikt 15.10.:** Zugang jetzt ohne Code (Variante A). Klassen-Code pro Lehrgang
 (Variante B, Phase 2) als Nächstes. Echte Sperre mit Anmeldung (Variante C) kommt nicht.
 
-**Als Nächstes:** Fr 16.10. QR-Code an 2GH1b austeilen (`zugang.html`). Alle SA2-Themen sind
-online (Kindernährmittel ist kein SA-Stoff). Dann Phase 2 Klassen-Codes, spätestens vor dem
-nächsten Lehrgang (I. LG endet 6.11.), danach Kindernährmittel und Milch.
+**18.10. geprüft:** Alles committet und gepusht, die Online-Fassung (GitHub Pages) stimmt mit
+dem letzten Commit überein (Unterschiede nur Windows-Zeilenenden), `tests/csv-test.js` grün,
+Quiz live bei 360 px ohne Konsolenfehler. QR-Code am Fr 16.10. an die 2GH1b ausgeteilt.
+
+**Als Nächstes:** Die Klasse nutzt das Quiz in der Woche vor der SA2 (Mo 19.10. Quiz-Duell im
+FP, Mi 21.10. Wiederholung, SA2 FP Fr 23.10.). Am Quiz in dieser Woche nichts Größeres ändern.
+Dann Phase 2 Klassen-Codes, spätestens vor dem nächsten Lehrgang (I. LG endet 6.11.), danach
+Kindernährmittel und Milch.
 
 ## Ziel
 
@@ -216,4 +221,5 @@ Ablauf für jedes neue Thema:
 | Soll die Druckversion (Arbeitsblatt / Lösungsblatt aus der CSV) später dazukommen? | nach Phase 3 |
 | ✔ Kollegenmaterial / AA aus dem III. LG als Quelle zulassen: ja, bei Widerspruch gilt das aktuelle IB | entschieden 15.10. |
 | ✔ Käse am Buch geprüft (digi4school, E-Book 16967, Seite = Buchseite + 2). Abweichend vom Buch, bewusst gelassen: Nr. 65 „Käsepapier“ (Buch: Folie, Dose, Originalverpackung), Nr. 68 Frischkäse kühl servieren (Buch nennt Schmelzkäse) | erledigt 15.10. |
-| Überarbeitung vom 15.10. online stellen (git push) | Benedikt, vor Fr 16.10. |
+| ✔ Überarbeitung vom 15.10. online stellen (git push) | erledigt 15.10., geprüft 18.10. |
+| ✔ QR-Code (`zugang.html`) an 2GH1b austeilen | erledigt Fr 16.10. |
