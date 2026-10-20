@@ -1,6 +1,6 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 18. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 20. Oktober 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
@@ -24,7 +24,7 @@ Danach Freigabe-System (Phase 2).
 | Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | fertig (SA2), geprüft 15.10. |
 | Biowaren | `biowaren.csv` | 42 | fertig (SA2), geprüft 15.10. |
 | Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
-| Milch & Milchprodukte | – | – | offen, nach SA2 |
+| Milch & Milchprodukte | `milch-milchprodukte.csv` | 80 | Entwurf 20.10., **noch nicht in `themen.json`** (erst nach SA2 23.10.), gebraucht Di 10.11. für 2GH2b |
 
 **15.10. nachmittags (Überarbeitung, seit 15.10. online):** Alle SA2-Themen Frage für Frage gegen
 IB, LB, SA2-Lösung und LAP-Fragen geprüft. Keine falsche Lösung gefunden, aber korrigiert:
@@ -53,6 +53,13 @@ Zugangsblatt `zugang.html` mit QR-Code. Zugang vorerst ohne Klassen-Code: eine A
 **18.10. geprüft:** Alles committet und gepusht, die Online-Fassung (GitHub Pages) stimmt mit
 dem letzten Commit überein (Unterschiede nur Windows-Zeilenenden), `tests/csv-test.js` grün,
 Quiz live bei 360 px ohne Konsolenfehler. QR-Code am Fr 16.10. an die 2GH1b ausgeteilt.
+
+**20.10. Milch-Entwurf:** 80 Fragen aus IB, LB, Fragenkatalog W1, SA1 und AA Milch III. LG,
+8 Unterthemen, alle sechs Typen, 73 mit Erklärung. Bei 22 % der MC-Fragen ist die richtige
+Antwort die längste (Bestand: 61 %, siehe Offene Punkte). Bei Widerspruch gilt das IB:
+Pasteurisieren 71–74 °C (AA III. LG: 72–75 °C). Nur aus dem AA III. LG: Kalorien, Laktase,
+AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalte, B-Vitamin-Verlust, MOPRO-Abteilung.
+Freischalten nach der SA2: Eintrag in `themen.json` (Klasse 2), Benedikt sieht die Fragen vorher durch.
 
 **Als Nächstes:** Die Klasse nutzt das Quiz in der Woche vor der SA2 (Mo 19.10. Quiz-Duell im
 FP, Mi 21.10. Wiederholung, SA2 FP Fr 23.10.). Am Quiz in dieser Woche nichts Größeres ändern.
@@ -223,3 +230,6 @@ Ablauf für jedes neue Thema:
 | ✔ Käse am Buch geprüft (digi4school, E-Book 16967, Seite = Buchseite + 2). Abweichend vom Buch, bewusst gelassen: Nr. 65 „Käsepapier“ (Buch: Folie, Dose, Originalverpackung), Nr. 68 Frischkäse kühl servieren (Buch nennt Schmelzkäse) | erledigt 15.10. |
 | ✔ Überarbeitung vom 15.10. online stellen (git push) | erledigt 15.10., geprüft 18.10. |
 | ✔ QR-Code (`zugang.html`) an 2GH1b austeilen | erledigt Fr 16.10. |
+| Milch durchsehen und in `themen.json` eintragen | Benedikt, nach SA2 (ab Sa 24.10.), spätestens vor Di 10.11. |
+| MC-Bestand: Bei 61 % ist die richtige Antwort die längste (Raten möglich). Ablenker angleichen, Warnung in `tests/csv-test.js` | nach SA2, vor II. LG |
+| Für 2GH2b fehlen noch: Mischquiz SA1 (Milch, Käse, Fleisch), Verkaufsthemen SA1 (9 Phasen, Bedarfsermittlung, CI, Verpackung), Kindernährmittel | bis 02.12. bzw. 18.01. |
