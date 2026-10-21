@@ -56,16 +56,28 @@ themen.forEach(function (t) {
 var LAENGE_GRENZE = 35;
 var LAENGE_SCHARF = true;
 
+// Zweite Regel: Auch keine andere Längen-Position darf über 50 % liegen – sonst wird
+// „immer die zweitlängste nehmen“ zur neuen Rate-Strategie.
+var POSITION_GRENZE = 50;
+
 function laengenQuote(fragen) {
   var mc = fragen.filter(function (f) { return f.typ === 'MC'; });
   var laengste = mc.filter(function (f) {
     return f.falsche.every(function (x) { return f.richtig.length > x.length; });
   });
+  // Position = Anzahl der falschen Antworten, die länger sind als die richtige (0 = längste)
+  var position = [0, 0, 0, 0];
+  mc.forEach(function (f) {
+    position[f.falsche.filter(function (x) { return x.length > f.richtig.length; }).length]++;
+  });
+  var maxPos = 0;
+  position.forEach(function (n, i) { if (n > position[maxPos]) maxPos = i; });
   return { mc: mc.length, nummern: laengste.map(function (f) { return f.nr; }),
-    prozent: mc.length ? Math.round(laengste.length / mc.length * 100) : 0 };
+    prozent: mc.length ? Math.round(laengste.length / mc.length * 100) : 0,
+    maxPosition: maxPos + 1, maxPositionProzent: mc.length ? Math.round(position[maxPos] / mc.length * 100) : 0 };
 }
 
-console.log('Längen-Prüfung (richtige MC-Antwort ist die längste, Grenze ' + LAENGE_GRENZE + ' %' +
+console.log('Längen-Prüfung (richtige MC-Antwort höchstens ' + LAENGE_GRENZE + ' % die längste, keine Position über ' + POSITION_GRENZE + ' %' +
   (LAENGE_SCHARF ? ')' : ', derzeit nur Warnung)'));
 var dateien = themen.filter(function (t) { return t.datei; }).map(function (t) { return t.datei; });
 fs.readdirSync(daten).filter(function (d) { return /\.csv$/.test(d) && dateien.indexOf(d) < 0; })
@@ -73,10 +85,13 @@ fs.readdirSync(daten).filter(function (d) { return /\.csv$/.test(d) && dateien.i
 dateien.forEach(function (datei) {
   var q = laengenQuote(Q.ladeFragen(fs.readFileSync(path.join(daten, datei), 'utf8')).fragen);
   if (q.mc < 10) return;
-  var zuViel = q.prozent > LAENGE_GRENZE;
+  var zuViel = q.prozent > LAENGE_GRENZE || q.maxPositionProzent > POSITION_GRENZE;
   if (!zuViel || LAENGE_SCHARF) {
-    test(datei + ': ' + q.prozent + ' % von ' + q.mc + ' MC-Fragen', function () {
-      assert.ok(!zuViel, 'zu oft ist die richtige Antwort die längste, Nr. ' + q.nummern.join(', '));
+    test(datei + ': ' + q.prozent + ' % von ' + q.mc + ' MC-Fragen, häufigste Position ' +
+        q.maxPosition + ' mit ' + q.maxPositionProzent + ' %', function () {
+      assert.ok(q.prozent <= LAENGE_GRENZE, 'zu oft ist die richtige Antwort die längste, Nr. ' + q.nummern.join(', '));
+      assert.ok(q.maxPositionProzent <= POSITION_GRENZE, 'die richtige Antwort steht zu oft an Längen-Position ' +
+        q.maxPosition + ' (' + q.maxPositionProzent + ' %)');
     });
   } else {
     console.log('  WARNUNG ' + datei + ': ' + q.prozent + ' % von ' + q.mc + ' MC-Fragen');
