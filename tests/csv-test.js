@@ -51,10 +51,10 @@ themen.forEach(function (t) {
 });
 
 /* Längen-Prüfung: Ist bei MC die richtige Antwort meist die längste, kann man nach der Länge raten.
-   Erlaubt sind höchstens 35 % je Datei (Zufall wären etwa 25 %). Solange LAENGE_SCHARF false ist,
-   gibt es nur eine Warnung – scharf geschaltet wird, wenn alle Themen überarbeitet sind. */
+   Erlaubt sind höchstens 35 % je Datei (Zufall wären etwa 25 %). Ist LAENGE_SCHARF false,
+   gibt es nur eine Warnung (scharf seit 21.10.2026, alle Themen überarbeitet). */
 var LAENGE_GRENZE = 35;
-var LAENGE_SCHARF = false;
+var LAENGE_SCHARF = true;
 
 function laengenQuote(fragen) {
   var mc = fragen.filter(function (f) { return f.typ === 'MC'; });
