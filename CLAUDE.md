@@ -33,11 +33,20 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   `nr;thema;typ;frage;richtig;falsch1;falsch2;falsch3;quelle;erklaerung` (erklaerung freiwillig)
 - Fragetypen: MC, MM (mehrere richtige, `|`), RF (mit Berichtigung in `erklaerung`),
   ZU (`links = rechts | …`), RH (Schritte in richtiger Reihenfolge, `|`),
-  LT (Text mit Lücken in `[eckigen Klammern]`, falsch1–3 = Ablenkwörter). Details: README.
+  LT (Text mit Lücken in `[eckigen Klammern]`, falsch1–3 = Ablenkwörter),
+  OF (offene Frage, `richtig` = Musterantwort, nur in der Art „Karteikarten“). Details: README.
+- Arten in der App: Quiz (Handy, mit Note), Karteikarten (OF), Klasse (Smartboard, nur MC/RF,
+  30-s-Countdown, zwei Teams). „Alle Themen gemischt“ stellt die App selbst zusammen.
+- Qualität: Bei MC die falschen Antworten so lang wie die richtige – `tests/csv-test.js` erlaubt
+  höchstens 35 % „richtige ist die längste“ je Datei. Jede Frage mit Erklärung.
+- Klassen-Codes: `daten/zugaenge.json` (Format „Klasse + Wort“, z. B. `2GH2B-MILCH`, pro Lehrgang neu,
+  alter Code `aktiv: false`). Jedes Thema in `themen.json` braucht `klassen`. QR je Code:
+  `bilder/qr-<CODE>.svg` mit `tools/qr_code.py`, Blatt: `zugang.html?code=<CODE>`.
 - Notenschlüssel der LBS (wie Schularbeit, nicht ändern): 100–91 / 90–81 / 80–61 / 60–51 / 50–0 %,
   Prozent abgerundet. Quelle: `VFW_Claude/00_START_NEUER_LEHRGANG_I_2026-27.md`.
 - Zugang für die Lehrlinge: `zugang.html` (QR-Code `bilder/qr-quiz.svg`, erzeugt mit
-  `python tools/qr_code.py <adresse> bilder/qr-quiz.svg`).
+  `python tools/qr_code.py <adresse> bilder/qr-quiz.svg`). Die Adresse ohne Code zeigt bis
+  06.11.2026 die 2. Klasse (`ohneCode` in `zugaenge.json`), danach nur mit Code.
 - `daten/fleisch-rindfleisch.csv` darf seit 15.10.2026 bearbeitet werden (Freigabe Benedikt).
 - Spalte `quelle`: woher die Frage stammt (z. B. „SA1 FOOD“, „AA Milch“). Inhalte, die nicht aus
   Benedikts Unterlagen stammen, mit „… – bitte prüfen“ markieren.

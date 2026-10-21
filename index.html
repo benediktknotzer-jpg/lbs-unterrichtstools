@@ -8,15 +8,15 @@
   <meta name="robots" content="noindex">
   <title>Warenkunde-Quiz · LBS Theresienfeld</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="css/knb-stil.css?v=2026-10-15">
-  <link rel="stylesheet" href="css/quiz.css?v=2026-10-15">
+  <link rel="stylesheet" href="css/knb-stil.css?v=2026-10-24">
+  <link rel="stylesheet" href="css/quiz.css?v=2026-10-24">
 </head>
 <body>
   <header class="knb-kopf">
     <div class="knb-kopf-inhalt">
       <div class="knb-kopf-text">
         <h1 class="knb-titel">Warenkunde-Quiz</h1>
-        <p class="knb-kopf-fach">Fachpraktikum · 2. Klasse Großhandel</p>
+        <p class="knb-kopf-fach" id="kopf-fach">Fachpraktikum · 2. Klasse Großhandel</p>
       </div>
       <img class="knb-logo" src="bilder/lbs-logo.png" width="286" height="109"
            alt="Landesberufsschule Theresienfeld">
@@ -34,6 +34,16 @@
       <p class="knb-anleitung">Wählen Sie eine Warengruppe. Die Fragen wiederholen den Stoff aus dem Unterricht.</p>
       <p id="start-lade" class="leise">Fragen werden geladen …</p>
       <div id="start-meldung"></div>
+      <form id="start-code" class="code-form" hidden>
+        <label class="knb-abschnitt feld-titel" for="code-eingabe">Klassen-Code eingeben</label>
+        <p class="knb-anleitung">Den Code finden Sie unter dem QR-Code auf Ihrem Zugangsblatt, z. B. 2GH2B-MILCH.</p>
+        <p id="code-meldung" class="code-meldung" role="alert" hidden></p>
+        <div class="code-zeile">
+          <input id="code-eingabe" class="auswahl" type="text" autocomplete="off" autocapitalize="characters"
+                 spellcheck="false" required>
+          <button type="submit" class="knopf haupt">Weiter</button>
+        </div>
+      </form>
       <div id="themen-liste" class="themen-liste"></div>
     </section>
 
@@ -42,12 +52,22 @@
       <button type="button" class="link-knopf" id="einst-zurueck">← Anderes Thema</button>
       <h2 id="einst-titel" class="knb-seitentitel" tabindex="-1"></h2>
 
+      <fieldset class="anzahl">
+        <legend class="knb-abschnitt feld-titel">Art</legend>
+        <div class="segment" id="einst-modus">
+          <label><input type="radio" name="modus" value="ueben" checked><span>Quiz</span></label>
+          <label id="modus-karten"><input type="radio" name="modus" value="karten"><span>Karteikarten</span></label>
+          <label id="modus-klasse"><input type="radio" name="modus" value="klasse"><span>Klasse</span></label>
+        </div>
+      </fieldset>
+
       <label class="knb-abschnitt feld-titel" for="einst-unterthema">Unterthema</label>
       <select id="einst-unterthema" class="auswahl"></select>
 
       <fieldset class="anzahl">
         <legend class="knb-abschnitt feld-titel">Anzahl der Fragen</legend>
         <div class="segment" id="einst-anzahl">
+          <label><input type="radio" name="anzahl" value="5"><span>5</span></label>
           <label><input type="radio" name="anzahl" value="10" checked><span>10</span></label>
           <label><input type="radio" name="anzahl" value="20"><span>20</span></label>
           <label><input type="radio" name="anzahl" value="alle"><span>Alle</span></label>
@@ -64,6 +84,10 @@
         <span id="quiz-fortschritt" class="fortschritt-text"></span>
         <button type="button" class="link-knopf" id="quiz-beenden">Beenden</button>
       </div>
+      <div class="klasse-leiste" id="quiz-klasse-leiste" hidden>
+        <span id="quiz-stand" class="klasse-stand"></span>
+        <span id="quiz-uhr" class="klasse-uhr" aria-live="off"></span>
+      </div>
       <div class="balken" role="progressbar" aria-labelledby="quiz-fortschritt" id="quiz-balken-rahmen"
            aria-valuemin="0">
         <div class="balken-fuellung" id="quiz-balken"></div>
@@ -76,6 +100,7 @@
       <div id="quiz-antworten"></div>
 
       <div id="quiz-rueckmeldung" class="rueckmeldung" aria-live="polite" hidden></div>
+      <div id="quiz-aktionen" class="knopf-reihe team-knoepfe" hidden></div>
       <button type="button" class="knopf haupt" id="quiz-weiter" hidden>Weiter</button>
     </section>
 
@@ -88,12 +113,18 @@
         <div class="tabelle-inhalt">
           <div id="erg-prozent" class="punkte-zahl"></div>
           <div id="erg-anzahl"></div>
-          <div class="punkte-note">Note laut Notenschlüssel: <strong id="erg-note"></strong></div>
+          <div class="punkte-note" id="erg-note-zeile">Note laut Notenschlüssel: <strong id="erg-note"></strong></div>
           <div id="erg-text" class="punkte-text"></div>
         </div>
       </div>
 
-      <table class="notenschluessel">
+      <table class="notenschluessel unterthemen" id="erg-unterthemen" hidden>
+        <caption>So lief es in den Unterthemen – das Schwächste zuerst</caption>
+        <thead><tr><th scope="col">Unterthema</th><th scope="col" id="erg-unterthemen-spalte">Richtig</th><th scope="col">%</th></tr></thead>
+        <tbody id="erg-unterthemen-liste"></tbody>
+      </table>
+
+      <table class="notenschluessel" id="erg-schluessel-tabelle">
         <caption>Notenschlüssel der LBS Theresienfeld (wie bei der Schularbeit)</caption>
         <thead><tr><th scope="col">Prozent</th><th scope="col">Note</th></tr></thead>
         <tbody id="erg-schluessel"></tbody>
@@ -105,7 +136,7 @@
       </div>
 
       <div id="erg-falsch-bereich">
-        <h3 class="knb-abschnitt">Falsch beantwortet – so ist es richtig</h3>
+        <h3 class="knb-abschnitt" id="erg-falsch-titel">Falsch beantwortet – so ist es richtig</h3>
         <ol id="erg-falsch-liste" class="falsch-liste"></ol>
       </div>
     </section>
@@ -118,7 +149,7 @@
     </div>
   </footer>
 
-  <script src="js/csv.js?v=2026-10-15"></script>
-  <script src="js/app.js?v=2026-10-15"></script>
+  <script src="js/csv.js?v=2026-10-24"></script>
+  <script src="js/app.js?v=2026-10-24"></script>
 </body>
 </html>

@@ -14,8 +14,12 @@
     RF: 'Richtig oder falsch',
     ZU: 'Zuordnen',
     RH: 'Reihenfolge',
-    LT: 'Lückentext'
+    LT: 'Lückentext',
+    OF: 'Karteikarte'
   };
+
+  // Klassenmodus: so viele Sekunden haben die Teams je Frage
+  var KLASSE_SEKUNDEN = 30;
 
   // Notenschlüssel der LBS Theresienfeld wie bei den Schularbeiten (100 Punkte = 100 %):
   // 100–91 Sehr gut · 90–81 Gut · 80–61 Befriedigend · 60–51 Genügend · 50–0 Nicht genügend
@@ -40,6 +44,7 @@
   var runde = null;         // laufendes Quiz
   var letzteRunde = null;   // für Auswertung / Wiederholen
   var aktuelleAnsicht = 'start';
+  var uhr = null;           // Countdown im Klassenmodus
 
   function $(id) { return document.getElementById(id); }
 
@@ -80,10 +85,49 @@
     return n + ' ' + (n === 1 ? eins : viele);
   }
 
+  // Welche Fragen eine Art verwendet: Quiz ohne Karteikarten, Karteikarten nur OF,
+  // Klassenquiz nur Fragen, die sich mit A-B-C-D-Karten beantworten lassen
+  function poolFuer(fragen, art) {
+    return fragen.filter(function (f) {
+      if (art === 'karten') return f.typ === 'OF';
+      if (art === 'klasse') return f.typ === 'MC' || f.typ === 'RF';
+      return f.typ !== 'OF';
+    });
+  }
+
+  function heute() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+
+  function stoppeUhr() {
+    if (uhr) { clearInterval(uhr); uhr = null; }
+  }
+
+  function starteUhr(sekunden, fertig) {
+    stoppeUhr();
+    var rest = sekunden;
+    var anzeige = $('quiz-uhr');
+    anzeige.classList.remove('abgelaufen');
+    anzeige.textContent = rest + ' s';
+    uhr = setInterval(function () {
+      rest--;
+      if (rest > 0) { anzeige.textContent = rest + ' s'; return; }
+      stoppeUhr();
+      anzeige.textContent = 'Zeit!';
+      anzeige.classList.add('abgelaufen');
+      fertig();
+    }, 1000);
+  }
+
   function zeige(name, verlauf) {
     ['start', 'einstellungen', 'quiz', 'ergebnis'].forEach(function (n) {
       $('ansicht-' + n).hidden = n !== name;
     });
+    if (name !== 'quiz') stoppeUhr();
+    // Große Schrift fürs Smartboard nur während des Klassenquiz
+    document.body.classList.toggle('klassenmodus', name === 'quiz' && !!runde && runde.art === 'klasse');
     aktuelleAnsicht = name;
     if (verlauf === 'push') history.pushState({ ansicht: name }, '');
     else if (verlauf === 'replace') history.replaceState({ ansicht: name }, '');
@@ -203,7 +247,12 @@
       return;
     }
 
-    holeDatei(DATEN + 'themen.json')
+    var zugaenge = null;
+    ladeZugaenge()
+      .then(function (z) {
+        zugaenge = z;
+        return holeDatei(DATEN + 'themen.json');
+      })
       .then(function (buffer) {
         var text = window.QuizDaten.dekodiere(buffer).text;
         var liste;
@@ -218,12 +267,28 @@
           throw new Error('Die Datei daten/themen.json muss eine Liste von Themen enthalten, z. B. ' +
             '[ { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv" } ]');
         }
-        return Promise.all(liste.map(function (e, i) { return ladeThema(e, i + 1); }));
+        return Promise.all(liste.map(function (e, i) {
+          return ladeThema(e, i + 1).then(function (t) {
+            t.klassen = (e && Array.isArray(e.klassen)) ? e.klassen.map(String) : [];
+            return t;
+          });
+        }));
       })
       .then(function (geladen) {
         geladen.forEach(function (t) { if (t.mix) stelleMischungZusammen(t, geladen); });
-        themen = geladen;
         $('start-lade').hidden = true;
+
+        var zugang = bestimmeZugang(zugaenge);
+        if (zugang.sperre !== undefined) {
+          zeigeCodeFeld(zugang.sperre);
+          return;
+        }
+        if (zugang.name) $('kopf-fach').textContent = 'Fachpraktikum · ' + zugang.name;
+        themen = geladen.filter(function (t) {
+          if (zugang.alle) return true;
+          return t.klassen.indexOf(zugang.klasse) >= 0 && (!zugang.themen || zugang.themen.indexOf(t.titel) >= 0);
+        });
+        ergaenzeGesamtMischung();
         zeigeThemen();
       })
       .catch(function (e) {
@@ -231,12 +296,64 @@
       });
   }
 
+  /* ---------- Klassen-Codes (daten/zugaenge.json) ---------- */
+
+  // Fehlt die Datei, sieht man wie bisher alle Themen
+  function ladeZugaenge() {
+    return fetch(DATEN + 'zugaenge.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  }
+
+  /* Ergebnis: { alle: true } · { klasse, themen, name } · { sperre: Meldung oder null } (Code nötig) */
+  function bestimmeZugang(z) {
+    if (!z || typeof z !== 'object') return { alle: true };
+    var code = (new URLSearchParams(location.search).get('code') || '').trim().toUpperCase();
+    if (code) {
+      var zug = (z.zugaenge || []).filter(function (x) {
+        return String(x.code || '').toUpperCase() === code;
+      })[0];
+      if (!zug) return { sperre: 'Den Klassen-Code „' + code + '“ gibt es nicht. Bitte prüfen Sie die Schreibweise.' };
+      if (zug.aktiv !== true) return { sperre: 'Dieser Zugang ist derzeit nicht freigegeben.' };
+      return { klasse: String(zug.klasse), themen: zug.themen || null, name: zug.name || '' };
+    }
+    var oc = z.ohneCode;
+    if (oc && oc.klasse && (!oc.bis || heute() <= oc.bis)) {
+      return { klasse: String(oc.klasse), themen: oc.themen || null };
+    }
+    return { sperre: null };
+  }
+
+  function zeigeCodeFeld(meldung) {
+    var form = $('start-code');
+    form.hidden = false;
+    $('code-meldung').hidden = !meldung;
+    $('code-meldung').textContent = meldung || '';
+    $('code-eingabe').focus({ preventScroll: true });
+  }
+
+  $('start-code').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var code = $('code-eingabe').value.trim().toUpperCase();
+    if (code) location.search = '?code=' + encodeURIComponent(code);
+  });
+
+  // Einstieg: alle Themen der Klasse gemischt (z. B. 5 Fragen zum Stundenbeginn)
+  function ergaenzeGesamtMischung() {
+    var quellen = themen.filter(function (t) { return !t.mix && t.fragen.length; });
+    if (quellen.length < 2) return;
+    var mischung = { titel: 'Alle Themen gemischt', mix: quellen.map(function (t) { return t.datei; }),
+      fragen: [], fehler: [], hinweise: [], klassen: [], gesamt: true };
+    stelleMischungZusammen(mischung, quellen);
+    themen.unshift(mischung);
+  }
+
   /* ---------- Startseite ---------- */
 
-  function unterthemen(t) {
+  function unterthemen(fragen) {
     var zaehler = {};
     var reihenfolge = [];
-    t.fragen.forEach(function (f) {
+    fragen.forEach(function (f) {
       if (!zaehler[f.thema]) { zaehler[f.thema] = 0; reihenfolge.push(f.thema); }
       zaehler[f.thema]++;
     });
@@ -247,14 +364,20 @@
     var liste = $('themen-liste');
     leere(liste);
     themen.forEach(function (t) {
-      var karte = el('div', 'thema-karte' + (t.mix ? ' mischung' : ''));
+      var karte = el('div', 'thema-karte' + (t.mix ? ' mischung' : '') + (t.gesamt ? ' gesamt' : ''));
       var b = knopf('thema-knopf');
       b.appendChild(el('span', 'thema-name', t.titel));
-      var info = t.fragen.length
-        ? mehrzahl(t.fragen.length, 'Frage', 'Fragen') + ' · ' +
-          (t.mix ? mehrzahl(unterthemen(t).length, 'Thema', 'Themen') + ' gemischt'
-            : mehrzahl(unterthemen(t).length, 'Unterthema', 'Unterthemen'))
-        : 'Derzeit nicht verfügbar';
+      var quiz = poolFuer(t.fragen, 'ueben');
+      var karten = poolFuer(t.fragen, 'karten');
+      var teile = [];
+      if (quiz.length) {
+        teile.push(mehrzahl(quiz.length, 'Frage', 'Fragen'));
+        teile.push(t.mix ? mehrzahl(unterthemen(quiz).length, 'Thema', 'Themen') + ' gemischt'
+          : mehrzahl(unterthemen(quiz).length, 'Unterthema', 'Unterthemen'));
+      }
+      if (karten.length) teile.push(mehrzahl(karten.length, 'Karteikarte', 'Karteikarten'));
+      var info = t.fragen.length ? teile.join(' · ') : 'Derzeit nicht verfügbar';
+      if (t.gesamt && t.fragen.length) info += ' · ideal als Einstieg mit 5 Fragen';
       b.appendChild(el('span', 'thema-anzahl', info));
       if (t.fragen.length) {
         b.appendChild(el('span', 'thema-los', 'Quiz starten ›'));
@@ -287,29 +410,56 @@
 
   /* ---------- Einstellungen ---------- */
 
+  function gewaehlteArt() {
+    var r = document.querySelector('input[name="modus"]:checked');
+    return r ? r.value : 'ueben';
+  }
+
+  function setzeArt(art) {
+    document.querySelector('input[name="modus"][value="' + art + '"]').checked = true;
+  }
+
+  function fuelleUnterthemen() {
+    var t = gewaehlt;
+    var pool = poolFuer(t.fragen, gewaehlteArt());
+    var sel = $('einst-unterthema');
+    var vorher = sel.value;
+    leere(sel);
+    var alle = el('option', null, (t.mix ? 'Alle Themen (' : 'Alle Unterthemen (') + pool.length + ')');
+    alle.value = '';
+    sel.appendChild(alle);
+    var namen = [];
+    unterthemen(pool).forEach(function (u) {
+      var o = el('option', null, u.name + ' (' + u.anzahl + ')');
+      o.value = u.name;
+      sel.appendChild(o);
+      namen.push(u.name);
+    });
+    sel.value = namen.indexOf(vorher) >= 0 ? vorher : '';
+  }
+
   function oeffneEinstellungen(t) {
     gewaehlt = t;
     $('einst-titel').textContent = 'Quiz: ' + t.titel;
 
-    var sel = $('einst-unterthema');
-    leere(sel);
-    var alle = el('option', null, (t.mix ? 'Alle Themen (' : 'Alle Unterthemen (') + t.fragen.length + ')');
-    alle.value = '';
-    sel.appendChild(alle);
-    unterthemen(t).forEach(function (u) {
-      var o = el('option', null, u.name + ' (' + u.anzahl + ')');
-      o.value = u.name;
-      sel.appendChild(o);
-    });
-    sel.value = '';
+    // Karteikarten und Klassenquiz nur anbieten, wenn das Thema passende Fragen hat
+    var hatQuiz = poolFuer(t.fragen, 'ueben').length > 0;
+    $('modus-karten').hidden = !poolFuer(t.fragen, 'karten').length;
+    $('modus-klasse').hidden = !poolFuer(t.fragen, 'klasse').length;
+    $('einst-modus').closest('fieldset').hidden = $('modus-karten').hidden && $('modus-klasse').hidden;
+    $('einst-modus').querySelector('input[value="ueben"]').closest('label').hidden = !hatQuiz;
+    setzeArt(hatQuiz ? 'ueben' : 'karten');
 
+    $('einst-unterthema').value = '';
+    fuelleUnterthemen();
     aktualisiereInfo();
     zeige('einstellungen', 'push');
   }
 
   function gefilterteFragen() {
     var filter = $('einst-unterthema').value;
-    return gewaehlt.fragen.filter(function (f) { return !filter || f.thema === filter; });
+    return poolFuer(gewaehlt.fragen, gewaehlteArt())
+      .filter(function (f) { return !filter || f.thema === filter; });
   }
 
   function gewaehlteAnzahl(verfuegbar) {
@@ -320,19 +470,32 @@
 
   function aktualisiereInfo() {
     if (!gewaehlt) return;
+    var art = gewaehlteArt();
     var n = gefilterteFragen().length;
     var anzahl = gewaehlteAnzahl(n);
-    $('einst-info').textContent = anzahl === n
-      ? 'Sie bekommen alle ' + n + ' Fragen in zufälliger Reihenfolge.'
-      : 'Sie bekommen ' + anzahl + ' von ' + n + ' Fragen in zufälliger Reihenfolge.';
+    var wort = art === 'karten' ? ['Karteikarte', 'Karteikarten'] : ['Frage', 'Fragen'];
+    var text = anzahl === n
+      ? 'Sie bekommen ' + (n === 1 ? '' : 'alle ') + mehrzahl(n, wort[0], wort[1]) + ' in zufälliger Reihenfolge.'
+      : 'Sie bekommen ' + anzahl + ' von ' + mehrzahl(n, wort[0], wort[1]) + ' in zufälliger Reihenfolge.';
+    if (art === 'karten') {
+      text += ' Überlegen Sie die Antwort selbst, dann decken Sie die Musterantwort auf – wie beim Fragenkatalog.';
+    } else if (art === 'klasse') {
+      text += ' Für das Smartboard: nur Multiple Choice und Richtig/Falsch, ' + KLASSE_SEKUNDEN +
+        ' Sekunden je Frage, zwei Teams mit A-B-C-D-Karten.';
+    }
+    $('einst-info').textContent = text;
+    $('einst-start').textContent = art === 'karten' ? 'Karteikarten starten'
+      : art === 'klasse' ? 'Klassenquiz starten' : 'Quiz starten';
+    $('einst-start').disabled = !n;
   }
 
+  $('einst-modus').addEventListener('change', function () { fuelleUnterthemen(); aktualisiereInfo(); });
   $('einst-unterthema').addEventListener('change', aktualisiereInfo);
   $('einst-anzahl').addEventListener('change', aktualisiereInfo);
   $('einst-zurueck').addEventListener('click', function () { zeige('start', 'push'); });
   $('einst-start').addEventListener('click', function () {
     var pool = mische(gefilterteFragen());
-    starteRunde(pool.slice(0, gewaehlteAnzahl(pool.length)), 'push');
+    starteRunde(pool.slice(0, gewaehlteAnzahl(pool.length)), 'push', gewaehlteArt());
   });
 
   /* ---------- Quiz ---------- */
@@ -366,15 +529,30 @@
     return v;
   }
 
-  function starteRunde(fragen, verlauf) {
+  // art: 'ueben' (Quiz am Handy), 'karten' (Karteikarten) oder 'klasse' (Klassenquiz am Smartboard)
+  function starteRunde(fragen, verlauf, art) {
     runde = {
       thema: gewaehlt,
+      art: art || 'ueben',
       fragen: mische(fragen).map(bereite),
       pos: 0,
-      ergebnisse: []
+      ergebnisse: [],
+      punkte: { 1: 0, 2: 0 }
     };
+    $('quiz-klasse-leiste').hidden = runde.art !== 'klasse';
+    zeigeStand();
     zeige('quiz', verlauf);
     zeigeFrage();
+  }
+
+  function zeigeStand() {
+    $('quiz-stand').textContent = 'Team 1: ' + runde.punkte[1] + ' · Team 2: ' + runde.punkte[2];
+  }
+
+  function naechsteFrage() {
+    runde.pos++;
+    if (runde.pos < runde.fragen.length) zeigeFrage();
+    else zeigeErgebnis();
   }
 
   function setzeFortschritt(erledigt) {
@@ -390,10 +568,27 @@
     var v = runde.fragen[runde.pos];
     var f = v.q;
     setzeFortschritt(runde.pos);
+    stoppeUhr();
     $('quiz-thema').textContent = f.thema + ' · ' + TYP_NAME[f.typ];
     $('quiz-frage').textContent = f.frage;
     $('quiz-rueckmeldung').hidden = true;
     $('quiz-weiter').hidden = true;
+    $('quiz-aktionen').hidden = true;
+
+    if (runde.art === 'karten' || runde.art === 'klasse') {
+      $('quiz-anleitung').textContent = runde.art === 'karten'
+        ? 'Überlegen Sie die Antwort – laut, im Kopf oder auf einem Zettel. Dann tippen Sie auf „Antwort zeigen“.'
+        : f.typ === 'RF'
+          ? 'Richtig oder falsch? Jedes Team hält seine Karte hoch: A = richtig, B = falsch.'
+          : 'Jedes Team hält seine Karte hoch: A, B, C oder D.';
+      var feld = $('quiz-antworten');
+      leere(feld);
+      if (runde.art === 'karten') zeigeKarte(v, feld);
+      else zeigeKlasse(v, feld);
+      window.scrollTo(0, 0);
+      $('quiz-frage').focus({ preventScroll: true });
+      return;
+    }
 
     var anleitung = {
       MC: 'Wählen Sie die richtige Antwort.',
@@ -524,6 +719,99 @@
       });
     });
     bereich.appendChild(box);
+  }
+
+  /* Karteikarte: Frage → Musterantwort aufdecken → selbst einschätzen */
+  var STUFEN = [
+    { wert: 'gewusst', text: 'Gewusst', zeichen: '✓' },
+    { wert: 'teilweise', text: 'Teilweise', zeichen: '~' },
+    { wert: 'nicht', text: 'Nicht gewusst', zeichen: '✗' }
+  ];
+
+  function zeigeKarte(v, bereich) {
+    var zeigen = knopf('knopf haupt', 'Antwort zeigen');
+    zeigen.id = 'karte-zeigen';
+    zeigen.addEventListener('click', function () {
+      zeigen.remove();
+      $('quiz-anleitung').textContent = 'Vergleichen Sie mit Ihrer Antwort. Wie gut wussten Sie es?';
+      var box = el('div', 'tabelle karte-loesung');
+      box.appendChild(el('div', 'tabelle-kopf', 'Musterantwort'));
+      var inhalt = el('div', 'tabelle-inhalt');
+      inhalt.appendChild(el('p', null, v.q.richtig));
+      if (v.q.erklaerung) inhalt.appendChild(el('p', 'erklaerung', v.q.erklaerung));
+      box.appendChild(inhalt);
+      bereich.appendChild(box);
+
+      var reihe = el('div', 'antworten selbst');
+      STUFEN.forEach(function (s) {
+        var b = antwortKnopf(s.zeichen, s.text);
+        b.classList.add('selbst-' + s.wert);
+        b.addEventListener('click', function () {
+          runde.ergebnisse.push({ q: v.q, korrekt: s.wert === 'gewusst', stufe: s.wert });
+          naechsteFrage();
+        });
+        reihe.appendChild(b);
+      });
+      bereich.appendChild(reihe);
+      reihe.firstChild.focus({ preventScroll: true });
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+    bereich.appendChild(zeigen);
+  }
+
+  /* Klassenquiz: Antworten nur anzeigen, die Teams antworten mit Karten,
+     die Lehrkraft löst auf und vergibt die Punkte */
+  function zeigeKlasse(v, bereich) {
+    var q = v.q;
+    var optionen = q.typ === 'RF' ? ['Richtig', 'Falsch'] : v.optionen;
+    var richtigIdx = q.typ === 'RF' ? (q.richtig ? 0 : 1) : optionen.indexOf(q.richtig);
+    var box = el('div', 'antworten klasse' + (q.typ === 'RF' ? ' rf' : ''));
+    var felder = optionen.map(function (text, i) {
+      var d = el('div', 'antwort');
+      d.appendChild(el('span', 'zeichen', BUCHSTABEN[i]));
+      d.appendChild(el('span', 'antwort-text', text));
+      box.appendChild(d);
+      return d;
+    });
+    bereich.appendChild(box);
+
+    var aufloesen = knopf('knopf haupt', 'Auflösen');
+    aufloesen.id = 'klasse-aufloesen';
+    bereich.appendChild(aufloesen);
+    starteUhr(KLASSE_SEKUNDEN, function () { aufloesen.classList.add('dringend'); });
+
+    aufloesen.addEventListener('click', function () {
+      stoppeUhr();
+      aufloesen.remove();
+      felder.forEach(function (d, i) {
+        if (i === richtigIdx) markiere(d, true);
+        else d.classList.add('gedimmt');
+      });
+      var rm = $('quiz-rueckmeldung');
+      leere(rm);
+      rm.className = 'rueckmeldung gut';
+      rm.appendChild(el('strong', null, 'Lösung: ' + BUCHSTABEN[richtigIdx] + ' – ' + optionen[richtigIdx]));
+      if (q.erklaerung) rm.appendChild(el('p', 'erklaerung', q.erklaerung));
+      rm.hidden = false;
+
+      var akt = $('quiz-aktionen');
+      leere(akt);
+      [['Punkt für Team 1', [1]], ['Punkt für Team 2', [2]], ['Beide Teams richtig', [1, 2]], ['Kein Punkt', []]]
+        .forEach(function (p) {
+          var b = knopf('knopf' + (p[1].length === 1 ? ' haupt' : ''), p[0]);
+          b.addEventListener('click', function () {
+            p[1].forEach(function (team) { runde.punkte[team]++; });
+            runde.ergebnisse.push({ q: q, korrekt: p[1].length > 0, teams: p[1] });
+            zeigeStand();
+            naechsteFrage();
+          });
+          akt.appendChild(b);
+        });
+      akt.hidden = false;
+      setzeFortschritt(runde.pos + 1);
+      akt.firstChild.focus({ preventScroll: true });
+      akt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
   }
 
   function chipText(v, id) {
@@ -687,15 +975,12 @@
     weiter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  $('quiz-weiter').addEventListener('click', function () {
-    runde.pos++;
-    if (runde.pos < runde.fragen.length) zeigeFrage();
-    else zeigeErgebnis();
-  });
+  $('quiz-weiter').addEventListener('click', naechsteFrage);
 
   $('quiz-beenden').addEventListener('click', function () {
     if (runde.ergebnisse.length &&
         !window.confirm('Quiz wirklich beenden? Ihr Fortschritt geht verloren.')) return;
+    stoppeUhr();
     runde = null;
     aktualisiereInfo();
     zeige('einstellungen', 'replace');
@@ -759,41 +1044,120 @@
     return li;
   }
 
+  // Karteikarte oder Klassenquiz: Frage mit Lösung (ohne „Ihre Antwort“)
+  var STUFE_TEXT = { teilweise: 'Ihre Einschätzung: teilweise gewusst', nicht: 'Ihre Einschätzung: nicht gewusst' };
+
+  function loesungEintrag(e, nr) {
+    var q = e.q;
+    var li = el('li', 'tabelle');
+    li.appendChild(el('div', 'tabelle-kopf', 'Frage ' + nr + ' · ' + q.thema));
+    var inhalt = el('div', 'tabelle-inhalt');
+    inhalt.appendChild(zeile('falsch-frage', q.frage));
+    if (e.stufe && STUFE_TEXT[e.stufe]) inhalt.appendChild(zeile('zeile-ihre', STUFE_TEXT[e.stufe]));
+    var loesung = q.typ === 'RF' ? (q.erklaerung || 'Die Aussage ist ' + rfText(q.richtig) + '.') : q.richtig;
+    inhalt.appendChild(zeile('zeile-richtig', '✓ ' + loesung));
+    if (q.erklaerung && q.typ !== 'RF') inhalt.appendChild(zeile('erklaerung', q.erklaerung));
+    li.appendChild(inhalt);
+    return li;
+  }
+
+  // Tabelle je Unterthema, das Schwächste zuerst (unter 61 % = unter „Befriedigend“ markiert)
+  function zeigeUnterthemen(erg) {
+    var gruppen = {};
+    var namen = [];
+    erg.forEach(function (e) {
+      var n = e.q.thema;
+      if (!gruppen[n]) { gruppen[n] = { richtig: 0, gesamt: 0 }; namen.push(n); }
+      gruppen[n].gesamt++;
+      if (e.korrekt) gruppen[n].richtig++;
+    });
+    var tabelle = $('erg-unterthemen');
+    var body = $('erg-unterthemen-liste');
+    leere(body);
+    tabelle.hidden = namen.length < 2;
+    namen.map(function (n) {
+      var g = gruppen[n];
+      return { name: n, richtig: g.richtig, gesamt: g.gesamt, prozent: bewerte(g.richtig, g.gesamt).prozent };
+    }).sort(function (a, b) {
+      return a.prozent - b.prozent || a.name.localeCompare(b.name, 'de');
+    }).forEach(function (z) {
+      var tr = el('tr', z.prozent < 61 ? 'schwach' : '');
+      tr.appendChild(el('td', null, z.name));
+      tr.appendChild(el('td', null, z.richtig + ' von ' + z.gesamt));
+      tr.appendChild(el('td', null, z.prozent + ' %'));
+      body.appendChild(tr);
+    });
+  }
+
   function zeigeErgebnis() {
     letzteRunde = runde;
     var erg = runde.ergebnisse;
+    var art = runde.art;
     runde = null;
+    stoppeUhr();
 
     var richtig = erg.filter(function (e) { return e.korrekt; }).length;
-    var b = bewerte(richtig, erg.length);
-    $('erg-titel').textContent = 'Auswertung: ' + letzteRunde.thema.titel;
-    $('erg-prozent').textContent = b.prozent + ' %';
-    $('erg-anzahl').textContent = richtig + ' von ' + erg.length + ' Fragen richtig';
-    $('erg-note').textContent = b.note.text;
-    $('erg-text').textContent =
-      richtig === erg.length ? 'Ausgezeichnet – alles richtig!'
-        : b.prozent >= 91 ? 'Ausgezeichnet!'
-          : b.prozent >= 81 ? 'Sehr gut gemacht!'
-            : b.prozent >= 61 ? 'Gut – da geht noch mehr.'
-              : 'Weiter üben – wiederholen Sie die falschen Fragen.';
-
-    var schluessel = $('erg-schluessel');
-    leere(schluessel);
-    NOTEN.forEach(function (n) {
-      var tr = el('tr', n === b.note ? 'erreicht' : '');
-      tr.appendChild(el('td', null, n.bis + '–' + n.ab + ' %'));
-      tr.appendChild(el('td', null, n.text));
-      schluessel.appendChild(tr);
-    });
-
-    var falsch = erg.filter(function (e) { return !e.korrekt; });
+    var offen = erg.filter(function (e) { return !e.korrekt; });
     var liste = $('erg-falsch-liste');
     leere(liste);
-    falsch.forEach(function (e, i) { liste.appendChild(falschEintrag(e, i + 1)); });
+    $('erg-note-zeile').hidden = art !== 'ueben';
+    $('erg-schluessel-tabelle').hidden = art !== 'ueben';
 
-    $('erg-falsch-bereich').hidden = !falsch.length;
-    $('erg-wiederholen').hidden = !falsch.length;
-    $('erg-wiederholen').textContent = 'Falsche Fragen wiederholen (' + falsch.length + ')';
+    if (art === 'karten') {
+      var teilweise = erg.filter(function (e) { return e.stufe === 'teilweise'; }).length;
+      $('erg-titel').textContent = 'Karteikarten: ' + letzteRunde.thema.titel;
+      $('erg-prozent').textContent = richtig + ' von ' + erg.length;
+      $('erg-anzahl').textContent = 'gewusst · teilweise: ' + teilweise + ' · nicht gewusst: ' +
+        (erg.length - richtig - teilweise);
+      $('erg-text').textContent = richtig === erg.length
+        ? 'Alles gewusst – so sind Sie für die Schularbeit gerüstet.'
+        : 'Lesen Sie die Musterantworten unten und wiederholen Sie, was noch nicht sitzt.';
+      $('erg-falsch-titel').textContent = 'Noch üben – die Musterantworten';
+      $('erg-wiederholen').textContent = 'Noch nicht Gewusstes wiederholen (' + offen.length + ')';
+      offen.forEach(function (e, i) { liste.appendChild(loesungEintrag(e, i + 1)); });
+      zeigeUnterthemen(erg);
+      $('erg-unterthemen-spalte').textContent = 'Gewusst';
+    } else if (art === 'klasse') {
+      var p1 = letzteRunde.punkte[1];
+      var p2 = letzteRunde.punkte[2];
+      $('erg-titel').textContent = 'Klassenquiz: ' + letzteRunde.thema.titel;
+      $('erg-prozent').textContent = p1 + ' : ' + p2;
+      $('erg-anzahl').textContent = 'Team 1 : Team 2 nach ' + mehrzahl(erg.length, 'Frage', 'Fragen');
+      $('erg-text').textContent = p1 === p2 ? 'Unentschieden!' : 'Team ' + (p1 > p2 ? '1' : '2') + ' gewinnt!';
+      $('erg-falsch-titel').textContent = 'Diese Fragen konnte kein Team – bitte nochmals besprechen';
+      $('erg-wiederholen').textContent = 'Diese Fragen nochmals spielen (' + offen.length + ')';
+      offen.forEach(function (e, i) { liste.appendChild(loesungEintrag(e, i + 1)); });
+      $('erg-unterthemen').hidden = true;
+    } else {
+      var b = bewerte(richtig, erg.length);
+      $('erg-titel').textContent = 'Auswertung: ' + letzteRunde.thema.titel;
+      $('erg-prozent').textContent = b.prozent + ' %';
+      $('erg-anzahl').textContent = richtig + ' von ' + erg.length + ' Fragen richtig';
+      $('erg-note').textContent = b.note.text;
+      $('erg-text').textContent =
+        richtig === erg.length ? 'Ausgezeichnet – alles richtig!'
+          : b.prozent >= 91 ? 'Ausgezeichnet!'
+            : b.prozent >= 81 ? 'Sehr gut gemacht!'
+              : b.prozent >= 61 ? 'Gut – da geht noch mehr.'
+                : 'Weiter üben – wiederholen Sie die falschen Fragen.';
+
+      var schluessel = $('erg-schluessel');
+      leere(schluessel);
+      NOTEN.forEach(function (n) {
+        var tr = el('tr', n === b.note ? 'erreicht' : '');
+        tr.appendChild(el('td', null, n.bis + '–' + n.ab + ' %'));
+        tr.appendChild(el('td', null, n.text));
+        schluessel.appendChild(tr);
+      });
+      $('erg-falsch-titel').textContent = 'Falsch beantwortet – so ist es richtig';
+      $('erg-wiederholen').textContent = 'Falsche Fragen wiederholen (' + offen.length + ')';
+      offen.forEach(function (e, i) { liste.appendChild(falschEintrag(e, i + 1)); });
+      zeigeUnterthemen(erg);
+      $('erg-unterthemen-spalte').textContent = 'Richtig';
+    }
+
+    $('erg-falsch-bereich').hidden = !offen.length;
+    $('erg-wiederholen').hidden = !offen.length;
     zeige('ergebnis', 'replace');
   }
 
@@ -801,7 +1165,7 @@
     var falsch = letzteRunde.ergebnisse
       .filter(function (e) { return !e.korrekt; })
       .map(function (e) { return e.q; });
-    if (falsch.length) starteRunde(falsch, 'replace');
+    if (falsch.length) starteRunde(falsch, 'replace', letzteRunde.art);
   });
 
   $('erg-neu').addEventListener('click', function () {

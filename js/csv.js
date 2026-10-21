@@ -12,8 +12,8 @@
   'use strict';
 
   var PFLICHTSPALTEN = ['nr', 'thema', 'typ', 'frage', 'richtig', 'falsch1', 'falsch2', 'falsch3'];
-  var TYPEN = ['MC', 'MM', 'RF', 'ZU', 'LT', 'RH'];
-  var TYPEN_TEXT = 'Erlaubt sind MC, MM, RF, ZU, LT oder RH.';
+  var TYPEN = ['MC', 'MM', 'RF', 'ZU', 'LT', 'RH', 'OF'];
+  var TYPEN_TEXT = 'Erlaubt sind MC, MM, RF, ZU, LT, RH oder OF.';
 
   /* Bytes -> Text. Bevorzugt UTF-8; eine in Excel als „CSV (Trennzeichen-getrennt)“
      gespeicherte Datei ist meist Windows-1252 – die wird trotzdem gelesen, mit Hinweis. */
@@ -300,6 +300,13 @@
           if (schritte.indexOf(t) !== i) probleme.push('Der Schritt ' + zitat(t) + ' kommt doppelt vor.');
         });
         frage.schritte = schritte;
+      } else if (typ === 'OF') {
+        // Offene Frage (Karteikarte): in „richtig“ steht die Musterantwort
+        if (!richtig) probleme.push('Bei OF-Fragen steht in Spalte „richtig“ die Musterantwort – die Spalte ist leer.');
+        if (['falsch1', 'falsch2', 'falsch3'].some(function (s) { return f(s); })) {
+          hinweise.push('Bei OF-Fragen bleiben die Spalten falsch1 bis falsch3 leer – sie werden nicht angezeigt.');
+        }
+        frage.richtig = richtig;
       }
 
       if (probleme.length) {

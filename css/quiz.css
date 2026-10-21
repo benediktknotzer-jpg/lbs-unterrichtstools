@@ -148,8 +148,14 @@
 
 .segment {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: 0.5rem;
+}
+
+.segment [hidden],
+.anzahl[hidden] {
+  display: none;
 }
 
 .segment label {
@@ -696,4 +702,161 @@ span.feld.luecke.ist-falsch strong {
 .notenschluessel tr.erreicht td {
   background: var(--knb-gelb);
   font-weight: 700;
+}
+
+/* ---------- Klassen-Code auf der Startseite ---------- */
+
+.code-zeile {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.code-zeile > * {
+  min-width: 0;
+}
+
+#code-eingabe {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.code-meldung {
+  padding: 0.6rem 0.8rem;
+  border-left: 6px solid var(--knb-falsch);
+  background: var(--knb-falsch-hell);
+  color: var(--knb-falsch);
+  font-weight: 700;
+}
+
+/* Einstieg „Alle Themen gemischt“: blauer statt gelber Akzent */
+.thema-karte.gesamt {
+  border-left: 6px solid var(--knb-blau);
+}
+
+/* ---------- Auswertung nach Unterthemen ---------- */
+
+.unterthemen td:nth-child(2),
+.unterthemen td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.unterthemen tr.schwach td {
+  background: var(--knb-falsch-hell);
+  color: var(--knb-falsch);
+  font-weight: 700;
+}
+
+/* ---------- Karteikarten ---------- */
+
+#karte-zeigen {
+  margin-top: 0.4rem;
+}
+
+.karte-loesung {
+  margin-bottom: 1rem;
+}
+
+.karte-loesung .tabelle-inhalt p {
+  margin: 0;
+}
+
+.karte-loesung .tabelle-inhalt p + p {
+  margin-top: 0.5rem;
+}
+
+.antworten.selbst .antwort {
+  font-weight: 700;
+}
+
+.antwort.selbst-gewusst .zeichen { background: var(--knb-richtig); }
+.antwort.selbst-teilweise .zeichen { background: var(--knb-warnung); }
+.antwort.selbst-nicht .zeichen { background: var(--knb-falsch); }
+
+/* ---------- Klassenquiz (Smartboard) ---------- */
+
+.klasse-leiste {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.6rem;
+  font-weight: 700;
+  color: var(--knb-blau);
+}
+
+.klasse-uhr {
+  min-width: 4.5rem;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.klasse-uhr.abgelaufen {
+  border-color: var(--knb-falsch);
+  background: var(--knb-falsch-hell);
+  color: var(--knb-falsch);
+}
+
+#klasse-aufloesen {
+  margin-top: 1.1rem;
+}
+
+#klasse-aufloesen.dringend {
+  outline: 4px solid var(--knb-gelb);
+  outline-offset: 2px;
+}
+
+.team-knoepfe {
+  grid-template-columns: 1fr 1fr;
+}
+
+body.klassenmodus {
+  --knb-breite: 64rem;
+}
+
+body.klassenmodus .frage {
+  font-size: 2.1rem;
+}
+
+body.klassenmodus .quiz-thema,
+body.klassenmodus .knb-anleitung,
+body.klassenmodus .klasse-leiste {
+  font-size: 1.3rem;
+}
+
+body.klassenmodus .klasse-uhr {
+  font-size: 2rem;
+}
+
+body.klassenmodus .antwort {
+  font-size: 1.6rem;
+  min-height: 5rem;
+}
+
+body.klassenmodus .antwort .zeichen {
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 1.8rem;
+}
+
+body.klassenmodus .rueckmeldung {
+  font-size: 1.3rem;
+}
+
+body.klassenmodus .rueckmeldung strong {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 48rem) {
+  body.klassenmodus .antworten.klasse:not(.rf) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+body.klassenmodus .knopf {
+  font-size: 1.35rem;
+  min-height: 3.8rem;
 }

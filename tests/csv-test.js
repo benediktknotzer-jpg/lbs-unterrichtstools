@@ -50,6 +50,72 @@ themen.forEach(function (t) {
   });
 });
 
+/* Längen-Prüfung: Ist bei MC die richtige Antwort meist die längste, kann man nach der Länge raten.
+   Erlaubt sind höchstens 35 % je Datei (Zufall wären etwa 25 %). Solange LAENGE_SCHARF false ist,
+   gibt es nur eine Warnung – scharf geschaltet wird, wenn alle Themen überarbeitet sind. */
+var LAENGE_GRENZE = 35;
+var LAENGE_SCHARF = false;
+
+function laengenQuote(fragen) {
+  var mc = fragen.filter(function (f) { return f.typ === 'MC'; });
+  var laengste = mc.filter(function (f) {
+    return f.falsche.every(function (x) { return f.richtig.length > x.length; });
+  });
+  return { mc: mc.length, nummern: laengste.map(function (f) { return f.nr; }),
+    prozent: mc.length ? Math.round(laengste.length / mc.length * 100) : 0 };
+}
+
+console.log('Längen-Prüfung (richtige MC-Antwort ist die längste, Grenze ' + LAENGE_GRENZE + ' %' +
+  (LAENGE_SCHARF ? ')' : ', derzeit nur Warnung)'));
+var dateien = themen.filter(function (t) { return t.datei; }).map(function (t) { return t.datei; });
+fs.readdirSync(daten).filter(function (d) { return /\.csv$/.test(d) && dateien.indexOf(d) < 0; })
+  .forEach(function (d) { dateien.push(d); });
+dateien.forEach(function (datei) {
+  var q = laengenQuote(Q.ladeFragen(fs.readFileSync(path.join(daten, datei), 'utf8')).fragen);
+  if (q.mc < 10) return;
+  var zuViel = q.prozent > LAENGE_GRENZE;
+  if (!zuViel || LAENGE_SCHARF) {
+    test(datei + ': ' + q.prozent + ' % von ' + q.mc + ' MC-Fragen', function () {
+      assert.ok(!zuViel, 'zu oft ist die richtige Antwort die längste, Nr. ' + q.nummern.join(', '));
+    });
+  } else {
+    console.log('  WARNUNG ' + datei + ': ' + q.prozent + ' % von ' + q.mc + ' MC-Fragen');
+  }
+});
+
+console.log('Klassen und Zugänge (daten/themen.json, daten/zugaenge.json)');
+test('Jedes Thema in themen.json hat mindestens eine Klasse', function () {
+  themen.forEach(function (t) {
+    assert.ok(Array.isArray(t.klassen) && t.klassen.length, '„' + t.titel + '“ ohne „klassen“');
+  });
+});
+
+test('zugaenge.json: gültig, keine doppelten Codes, Klassen und Themen vorhanden', function () {
+  var z = JSON.parse(fs.readFileSync(path.join(daten, 'zugaenge.json'), 'utf8'));
+  var klassen = {};
+  themen.forEach(function (t) { (t.klassen || []).forEach(function (k) { klassen[String(k)] = true; }); });
+  var titel = themen.map(function (t) { return t.titel; });
+  assert.ok(Array.isArray(z.zugaenge), '„zugaenge“ muss eine Liste sein');
+  var gesehen = {};
+  z.zugaenge.forEach(function (zug) {
+    var code = String(zug.code || '');
+    assert.ok(/^[A-Z0-9-]+$/.test(code), 'Code „' + code + '“: nur Großbuchstaben, Ziffern und Bindestrich');
+    assert.ok(!gesehen[code], 'Code „' + code + '“ kommt doppelt vor');
+    gesehen[code] = true;
+    assert.ok(klassen[String(zug.klasse)], 'Code „' + code + '“: Klasse „' + zug.klasse + '“ hat kein Thema');
+    assert.strictEqual(typeof zug.aktiv, 'boolean', 'Code „' + code + '“: „aktiv“ muss true oder false sein');
+    (zug.themen || []).forEach(function (t) {
+      assert.ok(titel.indexOf(t) >= 0, 'Code „' + code + '“: Thema „' + t + '“ steht nicht in themen.json');
+    });
+    assert.ok(fs.existsSync(path.join(__dirname, '..', 'bilder', 'qr-' + code + '.svg')),
+      'Code „' + code + '“: QR-Code bilder/qr-' + code + '.svg fehlt');
+  });
+  if (z.ohneCode) {
+    assert.ok(klassen[String(z.ohneCode.klasse)], '„ohneCode“: Klasse fehlt oder hat kein Thema');
+    assert.ok(!z.ohneCode.bis || /^\d{4}-\d{2}-\d{2}$/.test(z.ohneCode.bis), '„ohneCode.bis“ im Format JJJJ-MM-TT');
+  }
+});
+
 test('Fleisch & Rindfleisch: 82 Fragen (MC, RF, ZU, MM), alle RF mit Erklärung', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'fleisch-rindfleisch.csv'), 'utf8'));
   assert.strictEqual(erg.fragen.length, 82);
@@ -249,6 +315,23 @@ test('Spalte „erklaerung“ ist freiwillig und wird gelesen', function () {
   assert.strictEqual(mit.fragen[1].erklaerung, '');
   var ohne = Q.ladeFragen(KOPF + '1;A;RF;Aussage.;falsch;;;;LB\n');
   assert.strictEqual(ohne.fragen[0].erklaerung, '');
+});
+
+console.log('Offene Fragen (OF, Karteikarten)');
+test('OF: Frage und Musterantwort', function () {
+  var erg = Q.ladeFragen(KOPF + '1;Milch;OF;Was ist Laktose?;Milchzucker.;;;;FRAGEN\n');
+  assert.deepStrictEqual(erg.fehler, []);
+  assert.deepStrictEqual(erg.hinweise, []);
+  assert.strictEqual(erg.fragen[0].typ, 'OF');
+  assert.strictEqual(erg.fragen[0].richtig, 'Milchzucker.');
+});
+
+test('OF ohne Musterantwort ist ein Fehler', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;OF;Frage?;;;;;\n').fehler, 'Musterantwort');
+});
+
+test('OF mit Antworten in falsch1 gibt einen Hinweis', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;OF;Frage?;Antwort;Nein;;;\n').hinweise, 'leer');
 });
 
 console.log('\n' + bestanden + ' Tests bestanden' + (process.exitCode ? ', es gibt FEHLER.' : '.'));

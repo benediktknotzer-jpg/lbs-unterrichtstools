@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex">
   <title>Quiz-Zugang · LBS Theresienfeld</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="css/knb-stil.css?v=2026-10-15">
+  <link rel="stylesheet" href="css/knb-stil.css?v=2026-10-24">
   <style>
     /* Zugangsblatt: zum Ausdrucken (A4) und zum Zeigen am Smartboard */
     .zugang-qr {
@@ -23,6 +23,22 @@
       color: var(--knb-blau);
       word-break: break-all;
       margin: 0 0 1.2rem;
+    }
+    .zugang-code {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--knb-blau);
+      margin: -0.6rem 0 1.2rem;
+    }
+    .zugang-code span {
+      display: block;
+      font-size: 0.9rem;
+      letter-spacing: 0;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--knb-text-leise);
     }
     .zugang-schritte {
       padding-left: 1.4rem;
@@ -60,18 +76,25 @@
 
   <main class="knb-inhalt">
     <p class="knb-anleitung nur-blatt">Scannen Sie den QR-Code mit der Handy-Kamera und tippen Sie auf den Link.</p>
+    <div id="zugang-fehler" class="knb-hinweis" hidden></div>
     <img class="zugang-qr" src="bilder/qr-quiz.svg" width="330" height="330"
          alt="QR-Code zum Warenkunde-Quiz">
-    <p class="zugang-adresse">benediktknotzer-jpg.github.io/lbs-unterrichtstools</p>
+    <p class="zugang-adresse" id="zugang-adresse">benediktknotzer-jpg.github.io/lbs-unterrichtstools</p>
+    <p class="zugang-code" id="zugang-code" hidden></p>
 
     <div class="nur-blatt">
       <h2 class="knb-abschnitt">So geht’s</h2>
       <ol class="zugang-schritte">
-        <li>QR-Code mit der Kamera scannen oder die Adresse oben im Browser eingeben.</li>
-        <li>Thema wählen, bei Bedarf ein Unterthema und die Anzahl der Fragen, dann „Quiz starten“.</li>
-        <li>Nach jeder Frage sehen Sie sofort, ob Sie richtig liegen – und was richtig ist.</li>
-        <li>Am Ende bekommen Sie Prozent und Note nach dem Notenschlüssel der Schularbeit.
-          Mit „Falsche Fragen wiederholen“ üben Sie gezielt, was noch nicht sitzt.</li>
+        <li>QR-Code mit der Kamera scannen oder die Adresse oben im Browser eingeben.
+          <span id="zugang-code-hinweis" hidden>Fragt die Seite nach dem Klassen-Code, tippen Sie den Code unter
+          dem QR-Code ein.</span></li>
+        <li>Thema wählen, bei Bedarf ein Unterthema und die Anzahl der Fragen, dann „Quiz starten“.
+          „Alle Themen gemischt“ mit 5 Fragen ist ideal für zwischendurch.</li>
+        <li>Nach jeder Frage sehen Sie sofort, ob Sie richtig liegen – und warum.</li>
+        <li>Am Ende bekommen Sie Prozent und Note nach dem Notenschlüssel der Schularbeit und sehen, welches
+          Unterthema noch nicht sitzt. Mit „Falsche Fragen wiederholen“ üben Sie gezielt nach.</li>
+        <li>Bei Themen mit Fragenkatalog gibt es die Art „Karteikarten“: Antwort selbst überlegen, Musterantwort
+          aufdecken – so wie bei der Schularbeit.</li>
       </ol>
 
       <div class="knb-tipp">
@@ -95,6 +118,51 @@
   </footer>
 
   <script>
+    // Zugangsblatt für einen Klassen-Code: zugang.html?code=2GH2B-MILCH
+    // Der QR-Code liegt als bilder/qr-<CODE>.svg bereit (erzeugt mit tools/qr_code.py).
+    (function () {
+      var code = (new URLSearchParams(location.search).get('code') || '').trim().toUpperCase();
+      if (!code) return;
+      var fehler = document.getElementById('zugang-fehler');
+      if (!/^[A-Z0-9-]+$/.test(code)) {
+        fehler.textContent = 'Der Code darf nur Buchstaben, Ziffern und Bindestriche enthalten.';
+        fehler.hidden = false;
+        return;
+      }
+      var qr = document.querySelector('.zugang-qr');
+      qr.src = 'bilder/qr-' + code + '.svg';
+      qr.alt = 'QR-Code zum Warenkunde-Quiz mit Klassen-Code ' + code;
+      qr.addEventListener('error', function () {
+        fehler.textContent = 'Für den Code ' + code + ' fehlt der QR-Code bilder/qr-' + code + '.svg. ' +
+          'Erzeugen mit: python tools/qr_code.py "https://benediktknotzer-jpg.github.io/lbs-unterrichtstools/?code=' +
+          code + '" bilder/qr-' + code + '.svg';
+        fehler.hidden = false;
+      });
+      var feld = document.getElementById('zugang-code');
+      feld.textContent = code;
+      var unter = document.createElement('span');
+      unter.textContent = 'Ihr Klassen-Code';
+      feld.appendChild(unter);
+      feld.hidden = false;
+      document.getElementById('zugang-code-hinweis').hidden = false;
+      fetch('daten/zugaenge.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (z) {
+          var zug = z && (z.zugaenge || []).filter(function (x) { return String(x.code).toUpperCase() === code; })[0];
+          if (!zug) {
+            fehler.textContent = 'Den Code ' + code + ' gibt es in daten/zugaenge.json nicht.';
+            fehler.hidden = false;
+            return;
+          }
+          if (zug.name) document.querySelector('.knb-kopf-fach').textContent = 'Fachpraktikum Food · ' + zug.name;
+          if (zug.aktiv !== true) {
+            fehler.textContent = 'Achtung: Dieser Zugang ist in daten/zugaenge.json gesperrt (aktiv: false).';
+            fehler.hidden = false;
+          }
+        })
+        .catch(function () {});
+    })();
+
     // Vollbild-Ansicht des QR-Codes; Klick auf den Code oder Esc schaltet zurück
     (function () {
       var body = document.body;

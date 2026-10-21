@@ -5,15 +5,26 @@ Interaktive Web-Tools für den Unterricht an der LBS Theresienfeld (BLAM, FP)
 
 Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), optimiert fürs Handy.
 
-- Themenauswahl, optional Filter nach Unterthema, 10 / 20 / alle Fragen
+- Themenauswahl, optional Filter nach Unterthema, 5 / 10 / 20 / alle Fragen
+- **„Alle Themen gemischt“** steht automatisch oben – mit 5 Fragen ideal als Einstieg in die Stunde
 - Fragen und Antworten werden bei jedem Durchgang gemischt
-- Sofortige Rückmeldung mit richtiger Lösung, bei Richtig/Falsch mit Berichtigung (Spalte `erklaerung`)
+- Sofortige Rückmeldung mit richtiger Lösung und Erklärung (Spalte `erklaerung`)
 - Auswertung in Prozent mit Note laut Notenschlüssel der LBS Theresienfeld wie bei der
   Schularbeit: 100–91 % Sehr gut · 90–81 % Gut · 80–61 % Befriedigend · 60–51 % Genügend ·
   50–0 % Nicht genügend. Der Prozentwert wird abgerundet (90,9 % zählt als 90 % = Gut).
-  Dazu die Liste der falschen Fragen mit Lösung und „Falsche Fragen wiederholen“
-- Sechs Fragetypen: Multiple Choice (MC), Mehrfachauswahl mit mehreren richtigen Antworten (MM),
-  Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH) und Lückentext (LT) – alles per Antippen
+  Dazu eine Tabelle **je Unterthema** (das Schwächste zuerst, unter 61 % rot), die Liste der
+  falschen Fragen mit Lösung und „Falsche Fragen wiederholen“
+- Drei **Arten** (in den Einstellungen):
+  - **Quiz** – üben am Handy, mit Note
+  - **Karteikarten** – offene Fragen wie im Fragenkatalog und in der Schularbeit: Antwort selbst
+    überlegen, Musterantwort aufdecken, selbst einschätzen (gewusst / teilweise / nicht gewusst)
+  - **Klasse** – Klassenquiz am Smartboard: große Schrift, nur MC und Richtig/Falsch, 30 Sekunden
+    Countdown, zwei Teams mit A-B-C-D-Karten, Lehrkraft löst auf und vergibt die Punkte, am Ende
+    Teamstand und die Fragen, die kein Team konnte
+- Sieben Fragetypen: Multiple Choice (MC), Mehrfachauswahl mit mehreren richtigen Antworten (MM),
+  Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH), Lückentext (LT) – alles per Antippen –
+  und offene Fragen (OF) für die Karteikarten
+- **Klassen-Codes**: Jede Klasse sieht nur die Themen ihrer Klasse (`daten/zugaenge.json`)
 - Themen derzeit: **Fleisch & Rindfleisch** (82 Fragen), **Käse** (78), **Feinkost, Fertigkost &
   Zusatzverkauf** (78), **Eier** (48), **Fische, Krusten- & Weichtiere** (64),
   **Speisefette & Speiseöle** (73), **Kakao & Schokolade** (77), **Diätetische Lebensmittel** (62),
@@ -27,14 +38,17 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
 
 ```
 index.html              Die App
-zugang.html             Zugangsblatt mit QR-Code (Ausdruck A4, Vollbild fürs Smartboard)
+zugang.html             Zugangsblatt mit QR-Code (Ausdruck A4, Vollbild fürs Smartboard),
+                        für einen Klassen-Code: zugang.html?code=2GH2B-MILCH
 css/knb-stil.css        Grundstil (Schrift, Farben, Kopf, Fußzeile) – für alle Tools
 css/quiz.css            Aussehen speziell für das Quiz
 bilder/lbs-logo.png     Logo der LBS Theresienfeld
 bilder/qr-quiz.svg      QR-Code zur Quiz-Adresse (erzeugt mit tools/qr_code.py)
+bilder/qr-<CODE>.svg    QR-Code je Klassen-Code
 js/csv.js               Einlesen und Prüfen der Fragen-Dateien
 js/app.js               Ablauf des Quiz
-daten/themen.json       Liste der Themen
+daten/themen.json       Liste der Themen (mit Klasse)
+daten/zugaenge.json     Klassen-Codes
 daten/*.csv             Fragen, eine Datei pro Thema
 tests/csv-test.js       Automatische Prüfung der Fragen-Dateien
 tools/qr_code.py        QR-Code als SVG erzeugen (nur Python, ohne Zusatzpakete)
@@ -118,7 +132,7 @@ Die Spalte `erklaerung` ist freiwillig. Fehlt sie in einer Datei, funktioniert d
 |---------|-----------|
 | nr      | laufende Nummer (hilft bei Fehlermeldungen) |
 | thema   | Unterthema, danach kann im Quiz gefiltert werden (z. B. „Lagerung“) |
-| typ     | `MC`, `MM`, `RF`, `ZU`, `RH` oder `LT` |
+| typ     | `MC`, `MM`, `RF`, `ZU`, `RH`, `LT` oder `OF` |
 | frage   | Fragetext bzw. Aussage |
 | richtig | richtige Antwort (je nach Typ, siehe unten) |
 | falsch1–falsch3 | falsche Antworten (MC, MM) bzw. zusätzliche Ablenkwörter (LT) |
@@ -180,9 +194,22 @@ Auswahl stehen (optional – macht die Aufgabe schwieriger).
 So sieht die Lücke im Quiz aus: wie eine graue Antwortlinie auf dem Arbeitsblatt. Die Lehrlinge
 tippen ein Wort aus der Liste darunter an, und es wandert in die markierte Lücke.
 
-**Tipp für gute Fragen:** Nehmen Sie die Inhalte direkt aus Ihren Arbeitsaufträgen, Lösungsblättern
-und Schularbeiten – dann ist das Quiz eine echte Wiederholung des Unterrichts. Tragen Sie in
-`quelle` ein, woher die Frage stammt; so finden Sie sie später schnell wieder.
+**OF – offene Frage (Karteikarte):** In `frage` steht die Frage, in `richtig` die Musterantwort
+(wie im Lösungsblatt zum Fragenkatalog). `falsch1` bis `falsch3` bleiben leer. OF-Fragen
+erscheinen nur in der Art „Karteikarten“, nicht im Quiz und nicht im Klassenquiz.
+
+```
+90;Hitzeverfahren;OF;Was ist H-Milch, und wie lange ist sie haltbar?;Ultrahocherhitzte Milch (135 bis 150 °C) ohne vermehrungsfähige Keime, bei Zimmertemperatur bis 6 Monate haltbar.;;;;FRAGEN Milch W1
+```
+
+**Tipp für gute Fragen:**
+- Die falschen Antworten bei MC und MM so lang und so fachlich formulieren wie die richtige.
+  Sonst raten die Lehrlinge einfach die längste Antwort. `node tests/csv-test.js` prüft das: Bei
+  höchstens 35 % der MC-Fragen einer Datei darf die richtige Antwort die längste sein.
+- Jede Frage bekommt in `erklaerung` ein bis zwei Sätze, warum die Lösung stimmt.
+- Nehmen Sie die Inhalte direkt aus Ihren Arbeitsaufträgen, Lösungsblättern
+  und Schularbeiten – dann ist das Quiz eine echte Wiederholung des Unterrichts. Tragen Sie in
+  `quelle` ein, woher die Frage stammt; so finden Sie sie später schnell wieder.
 
 ### Neue Fragen zu einem bestehenden Thema
 
@@ -222,9 +249,44 @@ Auf der Startseite hat die Karte einen gelben Rand.
 { "titel": "Wiederholung zur 2. Schularbeit", "mix": ["eier.csv", "fische.csv"] }
 ```
 
+„Alle Themen gemischt“ braucht keinen Eintrag: Die App stellt diese Mischung aus allen Themen der
+Klasse selbst zusammen (blauer Rand).
+
 **Achtung bei Lückentexten (LT):** Jede Lücke wird an ihrer Stelle geprüft. Wörter, die man
 fachlich vertauschen könnte („aus [Samen], [Früchten] oder Keimen“), nicht beide als Lücke setzen –
 sonst wird eine richtige Antwort als falsch gewertet.
+
+### Klassen-Codes und Zugangsblatt
+
+Jedes Thema in `themen.json` hat `"klassen"`, z. B. `["2"]`. Die Codes stehen in `daten/zugaenge.json`:
+
+```json
+{
+  "ohneCode": { "klasse": "2", "bis": "2026-11-06" },
+  "zugaenge": [
+    { "code": "2GH2B-MILCH", "name": "2GH2b · II. Lehrgang 2026/27", "klasse": "2", "aktiv": true }
+  ]
+}
+```
+
+- Mit `?code=2GH2B-MILCH` in der Adresse sieht man nur die Themen der Klasse 2. Groß- und
+  Kleinschreibung ist egal, der Code kann auch auf der Startseite eingetippt werden.
+- `"aktiv": false` sperrt einen Code („Dieser Zugang ist derzeit nicht freigegeben.“).
+- Optional `"themen": ["Milch & Milchprodukte", "Käse"]`: Die Klasse sieht nur diese Themen –
+  so lässt sich Thema für Thema freischalten.
+- `ohneCode`: Bis zum Datum `bis` sieht man ohne Code die Themen dieser Klasse. Danach verlangt die
+  Startseite einen Code. Ohne `ohneCode` braucht man immer einen Code.
+- **Neuer Lehrgang:** neuen Code eintragen (Klasse + Wort, z. B. `2GH3B-KAESE`), den alten auf
+  `false` setzen, QR-Code erzeugen und das Blatt drucken:
+
+  ```
+  python tools/qr_code.py "https://benediktknotzer-jpg.github.io/lbs-unterrichtstools/?code=2GH3B-KAESE" bilder/qr-2GH3B-KAESE.svg
+  ```
+
+  Zugangsblatt: `zugang.html?code=2GH3B-KAESE` öffnen und drucken (A4) oder am Smartboard zeigen.
+- `node tests/csv-test.js` prüft die Datei: doppelte Codes, unbekannte Klasse oder unbekanntes Thema,
+  fehlender QR-Code.
+- Der Code ordnet nur zu, er schützt nichts: Die Fragen sind öffentlich (so gewollt).
 
 ### Bearbeiten mit Excel oder einem Texteditor
 
