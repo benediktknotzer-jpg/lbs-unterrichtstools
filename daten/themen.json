@@ -1,9 +1,14 @@
 [
+  { "titel": "Wiederholung zur 1. Schularbeit", "klassen": ["2"],
+    "mix": ["milch-milchprodukte.csv", "kaese.csv", "fleisch-rindfleisch.csv", "verkauf-marketing.csv"] },
   { "titel": "Wiederholung zur 2. Schularbeit", "klassen": ["2"],
     "mix": ["feinkost-zusatzverkauf.csv", "eier.csv", "fische.csv", "inventurdifferenzen.csv",
-            "speisefette-oele.csv", "kakao-schokolade.csv", "diaetetische-lebensmittel.csv", "biowaren.csv"] },
-  { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv", "klassen": ["2"] },
+            "speisefette-oele.csv", "kakao-schokolade.csv", "diaetetische-lebensmittel.csv", "biowaren.csv",
+            "beratungsfaelle.csv"] },
+  { "titel": "Milch & Milchprodukte", "datei": "milch-milchprodukte.csv", "klassen": ["2"] },
   { "titel": "Käse", "datei": "kaese.csv", "klassen": ["2"] },
+  { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv", "klassen": ["2"] },
+  { "titel": "Verkaufsgespräch, CI & Verpackung", "datei": "verkauf-marketing.csv", "klassen": ["2"] },
   { "titel": "Feinkost, Fertigkost & Zusatzverkauf", "datei": "feinkost-zusatzverkauf.csv", "klassen": ["2"] },
   { "titel": "Eier", "datei": "eier.csv", "klassen": ["2"] },
   { "titel": "Fische, Krusten- & Weichtiere", "datei": "fische.csv", "klassen": ["2"] },
@@ -11,5 +16,9 @@
   { "titel": "Speisefette & Speiseöle", "datei": "speisefette-oele.csv", "klassen": ["2"] },
   { "titel": "Kakao & Schokolade", "datei": "kakao-schokolade.csv", "klassen": ["2"] },
   { "titel": "Diätetische Lebensmittel", "datei": "diaetetische-lebensmittel.csv", "klassen": ["2"] },
-  { "titel": "Biowaren", "datei": "biowaren.csv", "klassen": ["2"] }
+  { "titel": "Biowaren", "datei": "biowaren.csv", "klassen": ["2"] },
+  { "titel": "Kindernährmittel", "datei": "kindernaehrmittel.csv", "klassen": ["2"] },
+  { "titel": "Beratungsfälle", "datei": "beratungsfaelle.csv", "klassen": ["2"] },
+  { "titel": "Textilien (Non-Food)", "datei": "textilien.csv", "klassen": ["2"] },
+  { "titel": "Spielzeug & Prüfsiegel (Non-Food)", "datei": "spielzeug.csv", "klassen": ["2"] }
 ]

@@ -1,30 +1,50 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 20. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 21. Oktober 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
 
-**Woran wir arbeiten:** Themen der 2. Schularbeit 2GH1b (Fr 23.10.2026), fertig bis etwa 16.10.
-Danach Freigabe-System (Phase 2).
+**Woran wir arbeiten:** Das Quiz ist für den II. Lehrgang (2GH2b ab Mo 09.11.) ausgebaut und
+**lokal committet, nicht gepusht**. Online geht es erst nach der SA2 FP (Fr 23.10.), wenn Benedikt
+„pushen“ sagt (Entscheidung 21.10.).
 
-| Thema | Datei | Fragen | Stand |
-|-------|-------|--------|-------|
-| Wiederholung zur 2. Schularbeit | `"mix"` in `themen.json` | 467 | gemischt aus den 8 SA2-Themen (seit 15.10.) |
-| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | fertig (seit 15.10. bearbeitbar) |
-| Käse | `kaese.csv` | 86 | an IB/Fragenkatalog W2 und am Buch S. 100–113 geprüft (15.10.), keine „bitte prüfen“ mehr |
-| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | fertig (SA2), geprüft 15.10. |
-| Eier | `eier.csv` | 48 | fertig (SA2), geprüft 15.10. |
-| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | fertig (SA2), geprüft 15.10. |
-| Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | neu 15.10. (SA2-Aufgabe 4, 10 Punkte) |
-| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | fertig (SA2), geprüft 15.10.; Nr. 10 und 35 Zusatzwissen aus AA III. LG |
-| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | fertig (SA2), geprüft 15.10. |
-| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | fertig (SA2), geprüft 15.10. |
-| Biowaren | `biowaren.csv` | 42 | fertig (SA2), geprüft 15.10. |
-| Kindernährmittel | – | – | offen, laut SA2-Lösung **nicht** SA-Stoff (Mi 21.10.) |
-| Milch & Milchprodukte | `milch-milchprodukte.csv` | 80 | Entwurf 20.10., **noch nicht in `themen.json`** (erst nach SA2 23.10.), gebraucht Di 10.11. für 2GH2b |
+| Thema | Datei | Quiz | Karten | Stand |
+|-------|-------|------|--------|-------|
+| Wiederholung zur 1. Schularbeit | `"mix"` | 298 | 59 | neu 21.10.: Milch, Käse, Fleisch, Verkauf |
+| Wiederholung zur 2. Schularbeit | `"mix"` | 494 | 59 | + Beratungsfälle (SA2 Aufgabe 8) |
+| Milch & Milchprodukte | `milch-milchprodukte.csv` | 80 | 15 | neu 20.10., **Durchsicht Benedikt offen** |
+| Käse | `kaese.csv` | 86 | 16 | überarbeitet 21.10. (Nr. 2 Temperaturen laut IB Milch) |
+| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 10 | überarbeitet 21.10. |
+| Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 50 | 18 | neu 21.10. (SA1 ohne Warenkunde), **Durchsicht offen** |
+| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 3 | überarbeitet 21.10. |
+| Eier | `eier.csv` | 48 | 3 | überarbeitet 21.10. |
+| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | 18 | überarbeitet 21.10. |
+| Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | 2 | überarbeitet 21.10. |
+| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | 3 | überarbeitet 21.10. |
+| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | 20 | überarbeitet 21.10. |
+| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | 4 | überarbeitet 21.10. |
+| Biowaren | `biowaren.csv` | 42 | 3 | überarbeitet 21.10. |
+| Kindernährmittel | `kindernaehrmittel.csv` | 42 | 5 | neu 21.10. (kein SA-Stoff), **Durchsicht offen** |
+| Beratungsfälle | `beratungsfaelle.csv` | 27 | 3 | neu 21.10., **Durchsicht offen** |
+| Textilien (Non-Food) | `textilien.csv` | 42 | 6 | neu 21.10., Flächengebilde laut IB „bitte prüfen“ |
+| Spielzeug & Prüfsiegel (Non-Food) | `spielzeug.csv` | 41 | 8 | neu 21.10., **Durchsicht offen** |
+
+**21.10. – Ausbau fürs nächste Level (Plan vom 21.10., Commits d9d55ec bis heute):**
+- App: Arten **Quiz / Karteikarten / Klasse** (Smartboard, 30-s-Countdown, zwei Teams),
+  „Alle Themen gemischt“ mit Anzahl 5 als Einstieg, Auswertung je Unterthema,
+  **Klassen-Codes** (`daten/zugaenge.json`, Code `2GH2B-MILCH`, ohne Code bis 06.11. Klasse 2),
+  `zugang.html?code=…` mit QR `bilder/qr-2GH2B-MILCH.svg` (mit OpenCV gegengelesen).
+- Fragetyp **OF** (offene Frage) für Karteikarten: 137 Karten aus den Fragenkatalogen Milch, Käse,
+  W4 Teil 1 und 2, LAP-Fragen Fische und Kakao, Wiederholungsblatt SA2 und den Quick-Checks.
+- Alle bestehenden Fragen überarbeitet: falsche Antworten so lang und fachlich wie die richtige.
+  „Richtige ist die längste“ jetzt 0–22 % je Datei (vorher 49–79 %), keine Längen-Position über
+  50 %. **Jede Quizfrage hat eine Erklärung.** Beides prüft `tests/csv-test.js` (Fehler, nicht
+  Warnung).
+- Probe am 21.10.: alle 917 Fragen automatisch durchgespielt, keine hängt. Blind getippt sind
+  23 % richtig – Zufallsniveau, nach der Länge raten bringt nichts mehr.
 
 **15.10. nachmittags (Überarbeitung, seit 15.10. online):** Alle SA2-Themen Frage für Frage gegen
 IB, LB, SA2-Lösung und LAP-Fragen geprüft. Keine falsche Lösung gefunden, aber korrigiert:
@@ -54,17 +74,18 @@ Zugangsblatt `zugang.html` mit QR-Code. Zugang vorerst ohne Klassen-Code: eine A
 dem letzten Commit überein (Unterschiede nur Windows-Zeilenenden), `tests/csv-test.js` grün,
 Quiz live bei 360 px ohne Konsolenfehler. QR-Code am Fr 16.10. an die 2GH1b ausgeteilt.
 
-**20.10. Milch-Entwurf:** 80 Fragen aus IB, LB, Fragenkatalog W1, SA1 und AA Milch III. LG,
-8 Unterthemen, alle sechs Typen, 73 mit Erklärung. Bei 22 % der MC-Fragen ist die richtige
-Antwort die längste (Bestand: 61 %, siehe Offene Punkte). Bei Widerspruch gilt das IB:
-Pasteurisieren 71–74 °C (AA III. LG: 72–75 °C). Nur aus dem AA III. LG: Kalorien, Laktase,
-AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalte, B-Vitamin-Verlust, MOPRO-Abteilung.
-Freischalten nach der SA2: Eintrag in `themen.json` (Klasse 2), Benedikt sieht die Fragen vorher durch.
+**20.10. Milch-Entwurf:** 80 Fragen aus IB, LB, Fragenkatalog W1, SA1 und AA Milch III. LG.
+Bei Widerspruch gilt das IB: Pasteurisieren 71–74 °C (AA III. LG: 72–75 °C). Nur aus dem AA III. LG:
+Kalorien, Laktase, AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalte, B-Vitamin-Verlust,
+MOPRO-Abteilung.
 
-**Als Nächstes:** Die Klasse nutzt das Quiz in der Woche vor der SA2 (Mo 19.10. Quiz-Duell im
-FP, Mi 21.10. Wiederholung, SA2 FP Fr 23.10.). Am Quiz in dieser Woche nichts Größeres ändern.
-Dann Phase 2 Klassen-Codes, spätestens vor dem nächsten Lehrgang (I. LG endet 6.11.), danach
-Kindernährmittel und Milch.
+**Als Nächstes:**
+1. Fr 23.10. SA2 FP. Danach sieht Benedikt die neuen Themen durch (Milch, Verkauf, Kindernährmittel,
+   Beratungsfälle, Textilien, Spielzeug) und sagt „pushen“ → Push, Live-Prüfung.
+2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
+   im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.
+3. Zugangsblatt `zugang.html?code=2GH2B-MILCH` für Mo 09.11. drucken. Ab 07.11. verlangt die
+   Startseite ohne Code einen Klassen-Code.
 
 ## Ziel
 
@@ -220,7 +241,7 @@ Ablauf für jedes neue Thema:
 | Punkt | Wann klären |
 |-------|-------------|
 | ✔ Code-Rhythmus: pro Lehrgang (10 Wochen) | entschieden 8.10. |
-| Code-Format: z. B. `FP2-KAESE` oder neutral `FP2-7K4M`? | Phase 2 |
+| ✔ Code-Format: „Klasse + Wort“, z. B. `2GH2B-MILCH` | entschieden 21.10. |
 | ✔ Zugang befristen: jetzt ohne Code, Klassen-Code pro Lehrgang mit Phase 2, keine Anmeldung | entschieden 15.10. |
 | ✔ Themen → Klasse: laut Lehrstoffverteilung, Tabelle in `docs/BESTANDSAUFNAHME.md` Abschnitt 3 | erledigt 8.10. |
 | ✔ Layout umgestellt (Aptos, #005090, Gelb #FFD600) in `css/knb-stil.css` | erledigt 8.10. |
@@ -230,6 +251,10 @@ Ablauf für jedes neue Thema:
 | ✔ Käse am Buch geprüft (digi4school, E-Book 16967, Seite = Buchseite + 2). Abweichend vom Buch, bewusst gelassen: Nr. 65 „Käsepapier“ (Buch: Folie, Dose, Originalverpackung), Nr. 68 Frischkäse kühl servieren (Buch nennt Schmelzkäse) | erledigt 15.10. |
 | ✔ Überarbeitung vom 15.10. online stellen (git push) | erledigt 15.10., geprüft 18.10. |
 | ✔ QR-Code (`zugang.html`) an 2GH1b austeilen | erledigt Fr 16.10. |
-| Milch durchsehen und in `themen.json` eintragen | Benedikt, nach SA2 (ab Sa 24.10.), spätestens vor Di 10.11. |
-| MC-Bestand: Bei 61 % ist die richtige Antwort die längste (Raten möglich). Ablenker angleichen, Warnung in `tests/csv-test.js` | nach SA2, vor II. LG |
-| Für 2GH2b fehlen noch: Mischquiz SA1 (Milch, Käse, Fleisch), Verkaufsthemen SA1 (9 Phasen, Bedarfsermittlung, CI, Verpackung), Kindernährmittel | bis 02.12. bzw. 18.01. |
+| Neue Themen durchsehen (Milch, Verkauf, Kindernährmittel, Beratungsfälle, Textilien, Spielzeug) – stehen schon in `themen.json`, sind aber nicht online | Benedikt, nach SA2 (ab Sa 24.10.), vor Di 10.11. |
+| Push nach Benedikts „pushen“, danach Live-Prüfung (360 px und Smartboard 1280 × 720) | nach SA2 |
+| Wirkung messen: Durchschnittspunkte je SA2-Aufgabe (ohne Namen) gegen Quiz-Abdeckung | nach Korrektur SA2 |
+| ✔ MC-Bestand: Ablenker angeglichen (0–22 % „längste“, keine Position über 50 %), jede Quizfrage mit Erklärung, Test scharf | erledigt 21.10. |
+| ✔ Für 2GH2b ergänzt: Mischquiz SA1, Verkaufsthemen SA1, Beratungsfälle, Kindernährmittel, Textilien, Spielzeug, Karteikarten | erledigt 21.10. |
+| ✔ Klassenmodus, Karteikarten, Einstieg mit 5 Fragen, Auswertung je Unterthema, Klassen-Codes | erledigt 21.10. |
+| Kaffee-/Küchenobers-Fettgehalte: Angaben im AA Milch III. LG widersprüchlich, daher nicht im Quiz | Benedikt bei Gelegenheit |

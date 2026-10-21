@@ -131,12 +131,12 @@ test('zugaenge.json: gültig, keine doppelten Codes, Klassen und Themen vorhande
   }
 });
 
-test('Fleisch & Rindfleisch: 82 Fragen (MC, RF, ZU, MM), alle RF mit Erklärung', function () {
+test('Fleisch & Rindfleisch: 82 Quizfragen (MC, RF, ZU, MM) und 10 Karteikarten, alle RF mit Erklärung', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'fleisch-rindfleisch.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 82);
+  assert.strictEqual(erg.fragen.length, 92);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
-  assert.deepStrictEqual(typen, { MC: 57, RF: 11, ZU: 9, MM: 5 });
+  assert.deepStrictEqual(typen, { MC: 57, RF: 11, ZU: 9, MM: 5, OF: 10 });
   erg.fragen.filter(function (f) { return f.typ === 'RF'; }).forEach(function (f) {
     assert.ok(f.erklaerung, 'RF Nr. ' + f.nr + ' ohne Erklärung');
   });
@@ -177,12 +177,22 @@ test('Windows-1252-Datei wird mit Hinweis gelesen', function () {
   assert.ok(d.hinweis && d.hinweis.indexOf('UTF-8') >= 0);
 });
 
-test('Käse: 86 Fragen, alle sechs Typen', function () {
+test('Käse: 86 Quizfragen in allen sechs Typen und 16 Karteikarten', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'kaese.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 86);
+  assert.strictEqual(erg.fragen.length, 102);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
-  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'MM', 'RF', 'RH', 'ZU']);
+  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'MM', 'OF', 'RF', 'RH', 'ZU']);
+  assert.strictEqual(typen.OF, 16);
+});
+
+test('Jede Quizfrage hat eine Erklärung (Karteikarten ausgenommen)', function () {
+  dateien.forEach(function (datei) {
+    var ohne = Q.ladeFragen(fs.readFileSync(path.join(daten, datei), 'utf8')).fragen
+      .filter(function (f) { return f.typ !== 'OF' && !f.erklaerung; })
+      .map(function (f) { return f.nr; });
+    assert.deepStrictEqual(ohne, [], datei + ': ohne Erklärung Nr. ' + ohne.join(', '));
+  });
 });
 
 test('LT: Lücken, Text und Ablenkwörter', function () {
