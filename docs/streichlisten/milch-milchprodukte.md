@@ -1,5 +1,8 @@
 # Streichliste: Milch & Milchprodukte
 
+> **Erledigt 25.10.2026:** Gruppe A gestrichen, alle Grenzfälle aus B bleiben (stehen im Buch).
+> Das Quiz hat jetzt 62 Fragen. Diese Liste ist das Protokoll der Entscheidung.
+
 Quizfragen jetzt: **80** · Kern (bleibt fix): **41** · Streichen sicher: **18** · Grenzfälle: **21**
 
 **Kern** = kommt im Fragenkatalog, im Lösungsblatt, in der Schularbeit, in der Wiederholung oder im

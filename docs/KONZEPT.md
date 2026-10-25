@@ -15,9 +15,9 @@ durch. Unterricht 2GH1b geht ab Di 27.10. weiter.
 
 | Thema | Datei | Quiz | Karten | Stand |
 |-------|-------|------|--------|-------|
-| Wiederholung zur 1. Schularbeit | `"mix"` | 298 | 59 | neu 21.10.: Milch, Käse, Fleisch, Verkauf |
+| Wiederholung zur 1. Schularbeit | `"mix"` | 280 | 59 | neu 21.10.: Milch, Käse, Fleisch, Verkauf |
 | Wiederholung zur 2. Schularbeit | `"mix"` | 494 | 59 | + Beratungsfälle (SA2 Aufgabe 8) |
-| Milch & Milchprodukte | `milch-milchprodukte.csv` | 80 | 15 | neu 20.10., **Durchsicht Benedikt offen** |
+| Milch & Milchprodukte | `milch-milchprodukte.csv` | 62 | 15 | 25.10. am Buch geprüft, auf Kern gekürzt (Gruppe A gestrichen) |
 | Käse | `kaese.csv` | 86 | 16 | überarbeitet 21.10. (Nr. 2 Temperaturen laut IB Milch) |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 10 | überarbeitet 21.10. |
 | Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 50 | 18 | neu 21.10. (SA1 ohne Warenkunde), **Durchsicht offen** |
@@ -40,9 +40,10 @@ Fragen je Thema, viel Zusatzwissen, das in der Stunde nicht vorkommt. Vorgehen: 
 komplett fertig (nächster Lehrgang wieder 2. Klasse), 1. Klasse danach. Je Thema sortiert Claude
 gegen Fragenkatalog, LB, SA, Wiederholung und Quick-Check vor; Benedikt sieht nur die Streichliste
 in `docs/streichlisten/` durch und nennt, was bleibt. Reihenfolge nach Lehrgangswoche, Milch zuerst.
-Milch: 80 → 41 Kernfragen, am Buch S. 89–95 geprüft (alle Kernfragen stimmen). Streichliste mit
-18 sicheren (nur AA III. LG, nicht im Buch) und 21 Grenzfällen (im Buch oder IB, aber in keiner
-Aufgabe) liegt vor.
+Milch: am Buch S. 89–95 geprüft (alle 41 Kernfragen stimmen). **Benedikt 25.10.: nur Gruppe A
+streichen** (18 Fragen nur aus AA III. LG, nicht im Buch), **Grenzfälle B bleiben, weil sie im Buch
+stehen.** Umgesetzt: 80 → 62 Quizfragen, Unterthema „Beratung und MOPRO-Abteilung“ heißt jetzt
+„Beratung im Verkauf“. Diese Regel gilt für alle Themen: Was im Buch steht, darf bleiben.
 Ergänzung Benedikt 25.10.: Jedes Warenkunde-Thema bekommt einen Fragenkatalog, am Warenkundebuch
 geprüft, und dessen Fragen müssen im Quiz vorkommen. Fragenkataloge gibt es in 2GH1b nur für Milch
 (W1, am Buch geprüft 17.08., alle 15 Fragen im Quiz) und Käse (W2). Es fehlen: Fleisch, Feinkost,
@@ -98,10 +99,10 @@ Kalorien, Laktase, AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalt
 MOPRO-Abteilung.
 
 **Als Nächstes:**
-1. Benedikt sieht `docs/streichlisten/milch-milchprodukte.md` durch und nennt die Nummern, die
-   bleiben. Dann streichen, Unterthemen zusammenlegen, Test, Push. Danach Verkauf (W1), Käse (W2–3),
-   Fleisch (W4) usw., jeweils ein bis zwei Wochen vor dem Lehrgang 2GH2b. Die Durchsicht der neuen
-   Themen läuft damit über die Streichlisten.
+1. ✔ Milch gekürzt und online (25.10.). Als Nächstes Käse (W2–3, Fragenkatalog vorhanden):
+   Abdeckung prüfen, am Buch prüfen, Streichliste. Danach Fleisch (W4, Fragenkatalog fehlt) usw.,
+   jeweils ein bis zwei Wochen vor dem Lehrgang 2GH2b. Verkauf (W1) ist kein Buch-Thema, dort gilt
+   der Fragenkatalog W4 Teil 1 als Kern.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
    im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.
 3. Zugangsblatt `zugang.html?code=2GH2B-MILCH` für Mo 09.11. drucken. Ab 07.11. verlangt die

@@ -56,7 +56,8 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   vorkommt. Kern = Fragenkatalog, Lösungsblatt-Aufgaben, Schularbeit, Wiederholung, Quick-Check.
   Kollegenmaterial (AA III. LG), AMA-Broschüre, LAP-Fragen und IB „Zum Nachschlagen“ nur, wenn
   Benedikt es ausdrücklich will. Themen werden mit `tools/streichliste.py` gekürzt
-  (`docs/streichlisten/`), Benedikt sieht nur die Streichliste durch.
+  (`docs/streichlisten/`), Benedikt sieht nur die Streichliste durch. Gestrichen wird nur
+  Gruppe A (weder im Buch noch im Unterricht); was im Buch steht, bleibt (Benedikt 25.10.).
 - **Fragenkatalog als Rückgrat:** Jedes Warenkunde-Thema bekommt einen Fragenkatalog
   (12–15 Kernfragen = SA-Fragen), am Warenkundebuch „Lebens- und Genussmittel“ geprüft, mit
   Buchseite. Jede Katalogfrage steht im Quiz als Karteikarte (OF) und als mindestens eine

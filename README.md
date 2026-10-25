@@ -25,7 +25,7 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
   Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH), Lückentext (LT) – alles per Antippen –
   und offene Fragen (OF) für die Karteikarten
 - **Klassen-Codes**: Jede Klasse sieht nur die Themen ihrer Klasse (`daten/zugaenge.json`)
-- Themen derzeit (2. Klasse, 917 Quizfragen und 137 Karteikarten): **Milch & Milchprodukte** (80),
+- Themen derzeit (2. Klasse, 899 Quizfragen und 137 Karteikarten): **Milch & Milchprodukte** (62),
   **Käse** (86), **Fleisch & Rindfleisch** (82), **Verkaufsgespräch, CI & Verpackung** (50),
   **Feinkost, Fertigkost & Zusatzverkauf** (77), **Eier** (48), **Fische, Krusten- & Weichtiere** (64),
   **Inventurdifferenzen** (24), **Speisefette & Speiseöle** (73), **Kakao & Schokolade** (77),
