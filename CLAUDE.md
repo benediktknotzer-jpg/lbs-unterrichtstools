@@ -43,7 +43,9 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   „Gewusst / Nochmal“), Klasse (Smartboard, nur MC/RF, 30-s-Countdown, zwei Teams).
   „Alle Themen gemischt“ stellt die App selbst zusammen.
 - Nach Änderungen an `js/` oder `css/` die `?v=`-Nummer in `index.html` erhöhen, sonst laden
-  Handys die alte Fassung aus dem Zwischenspeicher.
+  Handys die alte Fassung aus dem Zwischenspeicher. GitHub Pages lässt Browser die Startseite bis
+  zu 10 Minuten zwischenspeichern: Bei einem neuen Fragetyp erst die App pushen, die CSV-Zeilen mit
+  dem neuen Typ frühestens 10 Minuten später (sonst überspringt die alte App sie als unbekannt).
 - Qualität: Bei MC die falschen Antworten so lang wie die richtige – `tests/csv-test.js` erlaubt
   höchstens 35 % „richtige ist die längste“ je Datei. Jede Frage mit Erklärung.
 - Klassen-Codes: `daten/zugaenge.json` (Format „Klasse + Wort“, z. B. `2GH2B-MILCH`, pro Lehrgang neu,
