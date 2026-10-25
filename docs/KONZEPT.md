@@ -34,6 +34,14 @@ durch. Unterricht 2GH1b geht ab Di 27.10. weiter.
 | Textilien (Non-Food) | `textilien.csv` | 42 | 6 | neu 21.10., Flächengebilde laut IB „bitte prüfen“ |
 | Spielzeug & Prüfsiegel (Non-Food) | `spielzeug.csv` | 41 | 8 | neu 21.10., **Durchsicht offen** |
 
+**25.10. – Kürzen auf den Kernstoff (Entscheidung Benedikt):** SA2 ist schlecht ausgefallen,
+Benedikt vermutet eher fehlendes Lernen (Note war für die meisten schon sicher). Trotzdem: zu viele
+Fragen je Thema, viel Zusatzwissen, das in der Stunde nicht vorkommt. Vorgehen: 2. Klasse zuerst
+komplett fertig (nächster Lehrgang wieder 2. Klasse), 1. Klasse danach. Je Thema sortiert Claude
+gegen Fragenkatalog, LB, SA, Wiederholung und Quick-Check vor; Benedikt sieht nur die Streichliste
+in `docs/streichlisten/` durch und nennt, was bleibt. Reihenfolge nach Lehrgangswoche, Milch zuerst.
+Milch: 80 → 41 Kernfragen, Streichliste mit 22 sicheren und 17 Grenzfällen liegt vor.
+
 **21.10. – Ausbau fürs nächste Level (Plan vom 21.10., Commits d9d55ec bis heute):**
 - App: Arten **Quiz / Karteikarten / Klasse** (Smartboard, 30-s-Countdown, zwei Teams),
   „Alle Themen gemischt“ mit Anzahl 5 als Einstieg, Auswertung je Unterthema,
@@ -82,8 +90,10 @@ Kalorien, Laktase, AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalt
 MOPRO-Abteilung.
 
 **Als Nächstes:**
-1. Benedikt sieht die neuen Themen online durch (Milch, Verkauf, Kindernährmittel,
-   Beratungsfälle, Textilien, Spielzeug), Korrekturen gehen direkt in die CSVs.
+1. Benedikt sieht `docs/streichlisten/milch-milchprodukte.md` durch und nennt die Nummern, die
+   bleiben. Dann streichen, Unterthemen zusammenlegen, Test, Push. Danach Verkauf (W1), Käse (W2–3),
+   Fleisch (W4) usw., jeweils ein bis zwei Wochen vor dem Lehrgang 2GH2b. Die Durchsicht der neuen
+   Themen läuft damit über die Streichlisten.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
    im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.
 3. Zugangsblatt `zugang.html?code=2GH2B-MILCH` für Mo 09.11. drucken. Ab 07.11. verlangt die
@@ -259,4 +269,5 @@ Ablauf für jedes neue Thema:
 | ✔ MC-Bestand: Ablenker angeglichen (0–22 % „längste“, keine Position über 50 %), jede Quizfrage mit Erklärung, Test scharf | erledigt 21.10. |
 | ✔ Für 2GH2b ergänzt: Mischquiz SA1, Verkaufsthemen SA1, Beratungsfälle, Kindernährmittel, Textilien, Spielzeug, Karteikarten | erledigt 21.10. |
 | ✔ Klassenmodus, Karteikarten, Einstieg mit 5 Fragen, Auswertung je Unterthema, Klassen-Codes | erledigt 21.10. |
+| Alle 2.-Klasse-Themen auf Kernstoff kürzen (Streichliste je Thema), dazu fehlende Themen: Zeichen- und Malbedarf (W10), Verkaufsstoff W2–W9 | laufend, je Thema vor seiner Lehrgangswoche |
 | Kaffee-/Küchenobers-Fettgehalte: Angaben im AA Milch III. LG widersprüchlich, daher nicht im Quiz | Benedikt bei Gelegenheit |

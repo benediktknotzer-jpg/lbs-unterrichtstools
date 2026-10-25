@@ -52,6 +52,11 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   Benedikts Unterlagen stammen, mit „… – bitte prüfen“ markieren.
 - Fragen sollen den Unterrichtsstoff wiederholen: aus Arbeitsaufträgen, Lösungen, Infoblättern,
   Schularbeiten in VFW_Claude ableiten. Sprache: österreichisches Deutsch, Sie-Form.
+- **Nur Kernstoff (Entscheidung Benedikt 25.10.2026):** kein Zusatzwissen, das in der Stunde nicht
+  vorkommt. Kern = Fragenkatalog, Lösungsblatt-Aufgaben, Schularbeit, Wiederholung, Quick-Check.
+  Kollegenmaterial (AA III. LG), AMA-Broschüre, LAP-Fragen und IB „Zum Nachschlagen“ nur, wenn
+  Benedikt es ausdrücklich will. Themen werden mit `tools/streichliste.py` gekürzt
+  (`docs/streichlisten/`), Benedikt sieht nur die Streichliste durch.
 
 ## Stil (wie Benedikts Arbeits- und Infoblätter)
 
