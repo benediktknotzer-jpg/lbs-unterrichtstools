@@ -1,0 +1,17 @@
+{
+  "buch": "Warenkundebuch „Lebens- und Genussmittel“, Kindernährmittel S. 205–206 (geprüft 25.10.2026 in digi4school)",
+  "hinweis": [
+    "Alle 42 Quizfragen stammen aus IB oder LB Kindernährmittel W8 und stimmen mit dem Buch überein. Nichts ist zu streichen.",
+    "Fragenkatalog-Entwurf mit 13 Fragen: docs/fragenkataloge/kindernaehrmittel.md. Zu jeder Katalogfrage gibt es jetzt eine Karteikarte (neu: Nr. 48–55) und mindestens eine Quizfrage.",
+    "Das Buch hat zusätzlich einen Kasten „Regeln für die Ernährung im ersten Lebensjahr“ (S. 206, z. B. glutenhaltige Breie erst ab dem 7. Monat). Er steht nicht im IB und ist nicht im Quiz."
+  ],
+  "A": {},
+  "B": {
+    "18": "Buch S. 205, IB; Detail (ein Drittel mit Allergierisiko), in keiner Aufgabe",
+    "24": "Buch S. 206, IB; Detail (Ausgangsprodukte), in keiner Aufgabe",
+    "25": "Buch S. 206, IB; in keiner Aufgabe",
+    "29": "Buch S. 206, IB; in keiner Aufgabe",
+    "33": "Buch S. 205, IB; in keiner Aufgabe",
+    "34": "Buch S. 205, IB; in keiner Aufgabe"
+  }
+}
