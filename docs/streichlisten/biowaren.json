@@ -1,0 +1,20 @@
+{
+  "buch": "Warenkundebuch „Lebens- und Genussmittel“, Bio- bzw. Öko-Lebensmittel S. 35 (geprüft 25.10.2026 in digi4school)",
+  "hinweis": [
+    "Alle 42 Quizfragen stammen aus IB, LB, SA2, Wiederholungsblatt, Quiz-SA-Wiederholung oder Fehler-Detektiv-Karten der 2GH1b. Nichts ist zu streichen.",
+    "IB und Buch S. 35 stimmen überein. Kleinigkeit: Das Buch schreibt die Kontrollstelle O-02 „Lackon“, das IB „Lacon“ (so heißt die Firma tatsächlich). Nr. 21 nicht geändert.",
+    "Nr. 30 (EU-Bio-Logo) steht nicht im Buch, sondern nur im IB „Zum Nachschlagen“. Bleibt als Grenzfall, weil es eine Unterlage der 2GH1b ist.",
+    "Fragenkatalog-Entwurf mit 12 Fragen: docs/fragenkataloge/biowaren.md. Neue Karteikarten Nr. 46–54."
+  ],
+  "A": {},
+  "B": {
+    "2": "Buch S. 35, IB; in keiner Aufgabe", "3": "Buch S. 35, IB; in keiner Aufgabe", "4": "Buch S. 35, IB; in keiner Aufgabe",
+    "5": "Buch S. 35, IB; in keiner Aufgabe", "6": "IB; in keiner Aufgabe", "11": "IB; in keiner Aufgabe",
+    "12": "IB Merksatz", "13": "IB; in keiner Aufgabe", "21": "Buch S. 35, IB; in keiner Aufgabe",
+    "23": "Buch S. 35, IB; in keiner Aufgabe", "29": "Buch S. 35, IB; in keiner Aufgabe",
+    "30": "nur IB „Zum Nachschlagen“, nicht im Buch", "31": "Buch S. 35, IB; in keiner Aufgabe",
+    "32": "Buch S. 35, IB; in keiner Aufgabe", "33": "Buch S. 35, IB; in keiner Aufgabe", "34": "Buch S. 35, IB; in keiner Aufgabe",
+    "35": "Buch S. 35, IB; in keiner Aufgabe", "39": "IB Abschnitt 6; in keiner Aufgabe", "40": "IB Abschnitt 6; in keiner Aufgabe",
+    "42": "IB „Zum Nachschlagen“, Fair Trade im Buch S. 37"
+  }
+}
