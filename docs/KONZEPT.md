@@ -40,7 +40,9 @@ Fragen je Thema, viel Zusatzwissen, das in der Stunde nicht vorkommt. Vorgehen: 
 komplett fertig (nächster Lehrgang wieder 2. Klasse), 1. Klasse danach. Je Thema sortiert Claude
 gegen Fragenkatalog, LB, SA, Wiederholung und Quick-Check vor; Benedikt sieht nur die Streichliste
 in `docs/streichlisten/` durch und nennt, was bleibt. Reihenfolge nach Lehrgangswoche, Milch zuerst.
-Milch: 80 → 41 Kernfragen, Streichliste mit 22 sicheren und 17 Grenzfällen liegt vor.
+Milch: 80 → 41 Kernfragen, am Buch S. 89–95 geprüft (alle Kernfragen stimmen). Streichliste mit
+18 sicheren (nur AA III. LG, nicht im Buch) und 21 Grenzfällen (im Buch oder IB, aber in keiner
+Aufgabe) liegt vor.
 Ergänzung Benedikt 25.10.: Jedes Warenkunde-Thema bekommt einen Fragenkatalog, am Warenkundebuch
 geprüft, und dessen Fragen müssen im Quiz vorkommen. Fragenkataloge gibt es in 2GH1b nur für Milch
 (W1, am Buch geprüft 17.08., alle 15 Fragen im Quiz) und Käse (W2). Es fehlen: Fleisch, Feinkost,
@@ -276,4 +278,4 @@ Ablauf für jedes neue Thema:
 | ✔ Für 2GH2b ergänzt: Mischquiz SA1, Verkaufsthemen SA1, Beratungsfälle, Kindernährmittel, Textilien, Spielzeug, Karteikarten | erledigt 21.10. |
 | ✔ Klassenmodus, Karteikarten, Einstieg mit 5 Fragen, Auswertung je Unterthema, Klassen-Codes | erledigt 21.10. |
 | Alle 2.-Klasse-Themen auf Kernstoff kürzen (Streichliste je Thema), dazu fehlende Themen: Zeichen- und Malbedarf (W10), Verkaufsstoff W2–W9 | laufend, je Thema vor seiner Lehrgangswoche |
-| Kaffee-/Küchenobers-Fettgehalte: Angaben im AA Milch III. LG widersprüchlich, daher nicht im Quiz | Benedikt bei Gelegenheit |
+| ✔ Kaffee-/Küchenobers-Fettgehalte: laut Buch S. 94 Kaffeeobers 15 %, Küchenobers 20 %, Schlagobers 36 % (AA III. LG war widersprüchlich) | geklärt 25.10. |

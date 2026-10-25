@@ -1,7 +1,7 @@
 """Erzeugt eine Streichliste (Markdown) aus einer Themen-CSV und einer Einordnung je Frage.
 
 Aufruf: python streichliste.py <csv> <einordnung.json> <ausgabe.md> <titel>
-einordnung.json: {"A": {"nr": "Grund", ...}, "B": {"nr": "Grund", ...}}
+einordnung.json: {"buch": "…", "hinweis": ["…"], "A": {"nr": "Grund"}, "B": {"nr": "Grund"}} (buch, hinweis freiwillig)
 Alle anderen Quizfragen (ohne OF) gelten als Kern.
 """
 import csv, json, sys
@@ -34,21 +34,24 @@ def tabelle(gruppe):
 
 a, b = einordnung["A"], einordnung["B"]
 kern = [z for z in zeilen if z["nr"] not in a and z["nr"] not in b]
+buch = f"\n**Buchprüfung:** {einordnung['buch']}\n" if einordnung.get("buch") else ""
+hinweise = "".join(f"\n- {h}" for h in einordnung.get("hinweis", []))
 text = f"""# Streichliste: {titel}
 
 Quizfragen jetzt: **{len(zeilen)}** · Kern (bleibt fix): **{len(kern)}** · Streichen sicher: **{len(a)}** · Grenzfälle: **{len(b)}**
 
 **Kern** = kommt im Fragenkatalog, im Lösungsblatt, in der Schularbeit, in der Wiederholung oder im
 Quick-Check vor. Diese Fragen stehen hier nicht, sie bleiben.
+{buch}{hinweise}
 
 **So geht die Durchsicht:** Alles auf dieser Liste wird gestrichen. Nennen Sie nur die Nummern, die
 **bleiben** sollen, z. B. „behalten: 44, 57“. Die Karteikarten bleiben alle.
 
-## A – Streichen (nicht im Unterricht, nur Kollegenmaterial oder „nicht prüfungsrelevant“)
+## A – Streichen (weder im Buch noch im Unterricht, nur Kollegenmaterial)
 
 {tabelle("A")}
 
-## B – Grenzfälle (steht im Infoblatt, wird aber in keiner Aufgabe gefragt)
+## B – Grenzfälle (steht im Buch oder Infoblatt, wird aber in keiner Aufgabe gefragt)
 
 {tabelle("B")}
 """

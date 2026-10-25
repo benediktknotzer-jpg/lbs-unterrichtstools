@@ -60,8 +60,10 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
 - **Fragenkatalog als Rückgrat:** Jedes Warenkunde-Thema bekommt einen Fragenkatalog
   (12–15 Kernfragen = SA-Fragen), am Warenkundebuch „Lebens- und Genussmittel“ geprüft, mit
   Buchseite. Jede Katalogfrage steht im Quiz als Karteikarte (OF) und als mindestens eine
-  Quizfrage. Buch: digi4school E-Book 16967 (Seite im E-Book = Buchseite + 2), Anmeldung macht
-  Benedikt selbst im Browser. Fehlt der Katalog in VFW_Claude, entsteht der Entwurf hier in
+  Quizfrage. Buch: digi4school E-Book 16967 (Seite im E-Book = Buchseite + 2), nur über
+  **Claude in Chrome** (dort ist Benedikt angemeldet): digi4school.at → E-Books → „Warenkunde
+  Lebens- und Genussmittel“ öffnet einen Tab, dann `a.digi4school.at/ebook/16967/?page=<Buchseite+2>`.
+  Die Seiten sind Bilder, lesen per Zoom-Bildschirmfoto. Milch = Buch S. 89–95. Fehlt der Katalog in VFW_Claude, entsteht der Entwurf hier in
   `docs/fragenkataloge/`; das DOCX dazu macht eine Sitzung in VFW_Claude.
 
 ## Stil (wie Benedikts Arbeits- und Infoblätter)
