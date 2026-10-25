@@ -1,0 +1,17 @@
+{
+  "buch": "Kein Warenkunde-Thema. Rückgrat ist der Fragenkatalog W4 Teil 1 (18 Fragen, Verkaufsgespräch, Bedarfsermittlung, Corporate Identity, Verpackung), dazu IB W1/W3, LB zum Film W3 und SA1.",
+  "hinweis": [
+    "Alle 50 Quizfragen stammen aus Unterlagen der 2GH1b. Nichts ist zu streichen.",
+    "Alle 18 Katalogfragen haben eine Karteikarte (Nr. 51–68). Zur Katalogfrage 4 (Ergänzungsverkauf) fehlte eine Quizfrage, ergänzt als Nr. 69."
+  ],
+  "A": {},
+  "B": {
+    "3": "IB Neun Phasen W1, in keiner Aufgabe", "4": "IB Neun Phasen W1, in keiner Aufgabe", "6": "IB Neun Phasen W1, in keiner Aufgabe",
+    "7": "IB Neun Phasen W1, in keiner Aufgabe", "8": "IB Neun Phasen W1, in keiner Aufgabe", "9": "IB Neun Phasen W1, in keiner Aufgabe",
+    "10": "IB Neun Phasen W1, in keiner Aufgabe", "11": "IB Neun Phasen W1 Merksatz", "12": "IB Neun Phasen W1 „Aus der Praxis“",
+    "13": "IB Neun Phasen W1, in keiner Aufgabe", "20": "IB Bedarfsermittlung W1, in keiner Aufgabe", "21": "IB Bedarfsermittlung W1 „Aus der Praxis“",
+    "22": "IB Bedarfsermittlung W1 Merksatz", "23": "IB Bedarfsermittlung W1, in keiner Aufgabe", "29": "IB Corporate Identity W1, in keiner Aufgabe",
+    "30": "IB Corporate Identity W1 „Aus der Praxis“", "32": "IB Corporate Identity W1 Merksatz (Katalogfrage 9 zitiert ihn)", "35": "IB Verpackung W3, in keiner Aufgabe",
+    "38": "IB Verpackung W3, in keiner Aufgabe", "39": "IB Verpackung W3, in keiner Aufgabe", "40": "IB Verpackung W3 „Aus der Praxis“"
+  }
+}
