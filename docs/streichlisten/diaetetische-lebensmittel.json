@@ -1,0 +1,18 @@
+{
+  "buch": "Warenkundebuch „Lebens- und Genussmittel“, S. 32 (Diabetes, Unverträglichkeiten), S. 79 (Zuckeraustauschstoffe), S. 80 (Süßstoffe), geprüft 25.10.2026 in digi4school",
+  "hinweis": [
+    "Alle 62 Quizfragen stammen aus IB, LB, SA2, Wiederholungsblatt, Quiz-SA-Wiederholung oder Fehler-Detektiv-Karten der 2GH1b. Nichts ist zu streichen.",
+    "Bewusste Abweichung vom Buch (bleibt): Das Buch S. 32 nennt Dinkel als glutenfreie Alternative. IB, SA2-Lösung und Quiz (Nr. 49, 51) sagen richtig, dass Dinkel als Weizenart Gluten enthält.",
+    "Fragenkatalog-Entwurf mit 13 Fragen: docs/fragenkataloge/diaetetische-lebensmittel.md. Neue Karteikarten Nr. 67–75."
+  ],
+  "A": {},
+  "B": {
+    "15": "IB Abschnitt 2, in keiner Aufgabe", "16": "Buch S. 32, IB; in keiner Aufgabe", "22": "Buch S. 79, IB; in keiner Aufgabe",
+    "24": "Buch S. 79, IB; in keiner Aufgabe", "29": "IB; in keiner Aufgabe", "30": "Buch S. 79, IB; in keiner Aufgabe",
+    "32": "Buch S. 80 („Wussten Sie“), IB; in keiner Aufgabe", "34": "Buch S. 80, IB; in keiner Aufgabe", "37": "Buch S. 80, IB; in keiner Aufgabe",
+    "38": "Buch S. 80, IB; in keiner Aufgabe", "39": "Buch S. 80, IB; in keiner Aufgabe", "40": "Buch S. 80, IB; in keiner Aufgabe",
+    "41": "Buch S. 80, IB; in keiner Aufgabe", "45": "Buch S. 32, IB; in keiner Aufgabe", "53": "Buch S. 32, IB; in keiner Aufgabe",
+    "54": "Buch S. 32, IB; in keiner Aufgabe", "55": "IB „Zum Nachschlagen“, Allergenkennzeichnung im Buch S. 13", "56": "IB Abschnitt 6; in keiner Aufgabe",
+    "57": "IB Merksatz", "60": "IB Abschnitt 6; in keiner Aufgabe", "62": "IB Abschnitt 6; in keiner Aufgabe"
+  }
+}
