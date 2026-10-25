@@ -1,0 +1,15 @@
+{
+  "buch": "Themenübergreifend, Fälle aus den Infoblättern („Aus der Praxis“), Lösungsblättern und Schularbeiten der 2GH1b. Die Fachinhalte sind bei den einzelnen Themen am Buch geprüft.",
+  "hinweis": [
+    "Alle 27 Quizfragen stammen aus Unterlagen der 2GH1b. Nichts ist zu streichen.",
+    "Kern: SA1 (Nr. 1, 2, 4, 26), SA2 Aufgabe 8 (Nr. 19–21), LB-Aufgaben (Nr. 10, 12, 14–16, 18, 23). Die übrigen Fälle stammen aus „Aus der Praxis“ der Infoblätter und bleiben als Grenzfälle."
+  ],
+  "A": {},
+  "B": {
+    "3": "IB Käse W2 „Aus der Praxis“", "5": "IB Fleisch W4 „Aus der Praxis“", "6": "IB Rindfleisch W4 „Aus der Praxis“",
+    "7": "IB Feinkost W5 „Aus der Praxis“", "8": "IB Zusatzverkauf W5", "9": "IB Eier W6 „Aus der Praxis“",
+    "11": "IB Fische W6 „Aus der Praxis“", "13": "IB Speisefette W7 „Aus der Praxis“", "17": "IB Diät W8 / LB Aufgabe 4 (Fall aus dem IB)",
+    "22": "IB Bio W8 „Aus der Praxis“", "24": "IB Kindernährmittel W8 „Aus der Praxis“ (kein SA2-Stoff)",
+    "25": "IB Neun Phasen W1 „Aus der Praxis“", "27": "IB Verpackung W3 „Aus der Praxis“"
+  }
+}
