@@ -25,13 +25,17 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
   Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH), Lückentext (LT) – alles per Antippen –
   und offene Fragen (OF) für die Karteikarten
 - **Klassen-Codes**: Jede Klasse sieht nur die Themen ihrer Klasse (`daten/zugaenge.json`)
-- Themen derzeit (2. Klasse, 899 Quizfragen und 137 Karteikarten): **Milch & Milchprodukte** (62),
-  **Käse** (86), **Fleisch & Rindfleisch** (82), **Verkaufsgespräch, CI & Verpackung** (50),
-  **Feinkost, Fertigkost & Zusatzverkauf** (77), **Eier** (48), **Fische, Krusten- & Weichtiere** (64),
+- Themen derzeit (2. Klasse, 916 Quizfragen und 236 Karteikarten): **Milch & Milchprodukte** (62),
+  **Käse** (78), **Fleisch & Rindfleisch** (82), **Verkaufsgespräch, CI & Verpackung** (51),
+  **Feinkost, Fertigkost & Zusatzverkauf** (77), **Eier** (47), **Fische, Krusten- & Weichtiere** (64),
   **Inventurdifferenzen** (24), **Speisefette & Speiseöle** (73), **Kakao & Schokolade** (77),
   **Diätetische Lebensmittel** (62), **Biowaren** (42), **Kindernährmittel** (42),
-  **Beratungsfälle** (27), **Textilien** (42), **Spielzeug & Prüfsiegel** (41) – dazu die Mischungen
-  „Wiederholung zur 1. Schularbeit“ und „… zur 2. Schularbeit“
+  **Beratungsfälle** (27), **Textilien** (42), **Spielzeug & Prüfsiegel** (41),
+  **Zeichen- und Malbedarf** (25) – dazu die Mischungen „Wiederholung zur 1. Schularbeit“ und
+  „… zur 2. Schularbeit“
+- Jedes Warenkunde-Thema hat einen Fragenkatalog (`docs/fragenkataloge/` oder in VFW_Claude), jede
+  Katalogfrage steht als Karteikarte und als Quizfrage im Quiz. Was gekürzt wurde und warum, steht
+  in `docs/streichlisten/` (Ablauf: `docs/ABLAUF_THEMA_KUERZEN.md`).
 - Zugangsblatt mit QR-Code für Ausdruck und Smartboard: `zugang.html`
 - Gestaltet im Stil der knb-Arbeitsblätter (siehe unten „Einheitlicher Stil“)
 - Keine Anmeldung, keine Speicherung, kein Tracking, keine externen Dateien –

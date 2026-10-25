@@ -7,32 +7,50 @@ Stand: 25. Oktober 2026 · für Benedikt Knotzer (knb)
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
 
-**Woran wir arbeiten:** Das Quiz ist für den II. Lehrgang (2GH2b ab Mo 09.11.) ausgebaut und
-**seit So 25.10. online** (SA2 FP ist geschrieben und korrigiert, Benedikt hat den Push
-freigegeben). Live geprüft am 25.10.: alle 17 CSVs laden, 917 Fragen und 137 Karteikarten, keine
-Konsolenfehler, Zugangsblatt mit Code `2GH2B-MILCH` stimmt. Die neuen Themen mit „Durchsicht offen“ sind damit live, Benedikt sieht sie online
-durch. Unterricht 2GH1b geht ab Di 27.10. weiter.
+**Woran wir arbeiten:** Am 25.10. alle Themen der 2. Klasse auf den Kernstoff gebracht und
+online gestellt (Freigabe Benedikt: „das Ganze durchziehen“). Jedes Warenkunde-Thema hat jetzt
+einen am Buch geprüften Fragenkatalog, jede Katalogfrage steht als Karteikarte und Quizfrage im
+Quiz. Gestrichen wurde nur, was weder im Buch noch in den Unterlagen der 2GH1b steht (Milch 18,
+Käse 9, Eier 1 Doppelung). Neu: Thema Zeichen- und Malbedarf (W10). **Nächster Schritt:
+Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigierte offene Fragen
+(Vorschläge in `docs/IDEEN_NAECHSTE_STUFE.md`). Unterricht 2GH1b geht ab Di 27.10. weiter.
 
-| Thema | Datei | Quiz | Karten | Stand |
-|-------|-------|------|--------|-------|
-| Wiederholung zur 1. Schularbeit | `"mix"` | 280 | 59 | neu 21.10.: Milch, Käse, Fleisch, Verkauf |
-| Wiederholung zur 2. Schularbeit | `"mix"` | 494 | 59 | + Beratungsfälle (SA2 Aufgabe 8) |
-| Milch & Milchprodukte | `milch-milchprodukte.csv` | 62 | 15 | 25.10. am Buch geprüft, auf Kern gekürzt (Gruppe A gestrichen) |
-| Käse | `kaese.csv` | 86 | 16 | überarbeitet 21.10. (Nr. 2 Temperaturen laut IB Milch) |
-| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 10 | überarbeitet 21.10. |
-| Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 50 | 18 | neu 21.10. (SA1 ohne Warenkunde), **Durchsicht offen** |
-| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 3 | überarbeitet 21.10. |
-| Eier | `eier.csv` | 48 | 3 | überarbeitet 21.10. |
-| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | 18 | überarbeitet 21.10. |
-| Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | 2 | überarbeitet 21.10. |
-| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | 3 | überarbeitet 21.10. |
-| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | 20 | überarbeitet 21.10. |
-| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | 4 | überarbeitet 21.10. |
-| Biowaren | `biowaren.csv` | 42 | 3 | überarbeitet 21.10. |
-| Kindernährmittel | `kindernaehrmittel.csv` | 42 | 5 | neu 21.10. (kein SA-Stoff), **Durchsicht offen** |
-| Beratungsfälle | `beratungsfaelle.csv` | 27 | 3 | neu 21.10., **Durchsicht offen** |
-| Textilien (Non-Food) | `textilien.csv` | 42 | 6 | neu 21.10., Flächengebilde laut IB „bitte prüfen“ |
-| Spielzeug & Prüfsiegel (Non-Food) | `spielzeug.csv` | 41 | 8 | neu 21.10., **Durchsicht offen** |
+| Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
+|-------|-------|-----:|-------:|---------------|------|
+| Wiederholung zur 1. Schularbeit | `"mix"` | 273 | 65 | – | – |
+| Wiederholung zur 2. Schularbeit | `"mix"` | 493 | 117 | – | – |
+| Milch & Milchprodukte | `milch-milchprodukte.csv` | 62 | 15 | VFW W1 | S. 89–95 |
+| Käse | `kaese.csv` | 78 | 17 | VFW W2 | S. 100–113 |
+| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 15 | Entwurf (15) | S. 118–133, AMA-Broschüre |
+| Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | VFW W4 Teil 1 | kein Buch |
+| Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 15 | Entwurf (15) | S. 148, 150 |
+| Eier | `eier.csv` | 47 | 13 | Entwurf (13) | S. 114–117 |
+| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | 22 | Entwurf (15) | S. 153–165 |
+| Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | 4 | – (kein Warenkunde) | IB laut Terminal S. 88 |
+| Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | 15 | Entwurf (15) | S. 166–172 |
+| Kakao & Schokolade | `kakao-schokolade.csv` | 77 | 20 | LAP-Fragen W7 (20) | S. 248–252 |
+| Diätetische Lebensmittel | `diaetetische-lebensmittel.csv` | 62 | 13 | Entwurf (13) | S. 32, 79, 80 |
+| Biowaren | `biowaren.csv` | 42 | 12 | Entwurf (12) | S. 35 |
+| Kindernährmittel | `kindernaehrmittel.csv` | 42 | 13 | Entwurf (13) | S. 205–206 |
+| Beratungsfälle | `beratungsfaelle.csv` | 27 | 3 | – (themenübergreifend) | – |
+| Textilien (Non-Food) | `textilien.csv` | 42 | 15 | Entwurf (15) | kein Buch, IB W9 |
+| Spielzeug & Prüfsiegel (Non-Food) | `spielzeug.csv` | 41 | 14 | Entwurf (14) | kein Buch, IB W10 |
+| Zeichen- und Malbedarf (Non-Food) | `zeichen-malbedarf.csv` | 25 | 12 | Entwurf (12) | kein Buch, IB W10 |
+
+**Fragen an Benedikt aus der Durchsicht vom 25.10.** (Details im `hinweis` der Streichlisten; im
+Quiz gilt bis zur Antwort das eigene IB):
+- **Fische:** Rotbarsch und Karpfen sind in LAP-Lösung und Quiz Magerfische, laut Buch S. 154
+  mittelfett. Fischdauerkonserven: LAP und Quiz „über 120 °C“, Buch S. 158 „über 100 °C“.
+- **Fleisch:** Tiefkühl-Lagerdauer (Nr. 61) aus der AMA-Broschüre, Buch S. 124 nennt längere
+  Zeiten. Bleiben die Teilstück-Fragen 65–71 und 80 (Buch, aber keine Aufgabe)?
+- **Fette:** IB „Kaltpressung ohne Wärmezufuhr“, Buch S. 167 „unter 60 °C“.
+- **Feinkost:** Parma laut IB mindestens 14 Monate, laut Buch und Film bis zu einem Jahr.
+- **Käse:** Fragen mit Quelle „SA1 FOOD“ stammen aus der alten SA des III. LG (nicht Kern, aber
+  im Buch, daher geblieben). Wurde das Sensorik-Protokoll Käse in der 2GH1b verwendet?
+- **Eier:** Sollen Klasse A Extra oder die Schwimmprobe (Buch S. 115–116) ins Quiz?
+- **Textilien, Zeichen- und Malbedarf:** Die IB sagen selbst „bitte gegenlesen“ (kein Schulbuch).
+- **Alle Entwürfe** in `docs/fragenkataloge/` durchsehen. Die DOCX-Kataloge entstehen danach in
+  einer VFW_Claude-Sitzung.
 
 **25.10. – Kürzen auf den Kernstoff (Entscheidung Benedikt):** SA2 ist schlecht ausgefallen,
 Benedikt vermutet eher fehlendes Lernen (Note war für die meisten schon sicher). Trotzdem: zu viele
@@ -99,10 +117,11 @@ Kalorien, Laktase, AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalt
 MOPRO-Abteilung.
 
 **Als Nächstes:**
-1. ✔ Milch gekürzt und online (25.10.). Als Nächstes Käse (W2–3, Fragenkatalog vorhanden):
-   Abdeckung prüfen, am Buch prüfen, Streichliste. Danach Fleisch (W4, Fragenkatalog fehlt) usw.,
-   jeweils ein bis zwei Wochen vor dem Lehrgang 2GH2b. Verkauf (W1) ist kein Buch-Thema, dort gilt
-   der Fragenkatalog W4 Teil 1 als Kern.
+1. ✔ Alle Themen der 2. Klasse auf Kern gebracht, Fragenkataloge, Zeichen- und Malbedarf neu
+   (25.10.). Jetzt: Benedikt sieht das Quiz online durch und beantwortet die Fragen oben. Danach
+   Ideen aus `docs/IDEEN_NAECHSTE_STUFE.md` (Karteikarten zum Umdrehen, Fragetyp OA mit
+   automatischer Korrektur, SVG-Bilder, Themen nach Lehrgangswoche). Fragenkatalog-Entwürfe als
+   DOCX in einer VFW_Claude-Sitzung. Erst danach 1. Klasse.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
    im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.
 3. Zugangsblatt `zugang.html?code=2GH2B-MILCH` für Mo 09.11. drucken. Ab 07.11. verlangt die
@@ -272,11 +291,13 @@ Ablauf für jedes neue Thema:
 | ✔ Käse am Buch geprüft (digi4school, E-Book 16967, Seite = Buchseite + 2). Abweichend vom Buch, bewusst gelassen: Nr. 65 „Käsepapier“ (Buch: Folie, Dose, Originalverpackung), Nr. 68 Frischkäse kühl servieren (Buch nennt Schmelzkäse) | erledigt 15.10. |
 | ✔ Überarbeitung vom 15.10. online stellen (git push) | erledigt 15.10., geprüft 18.10. |
 | ✔ QR-Code (`zugang.html`) an 2GH1b austeilen | erledigt Fr 16.10. |
-| Neue Themen durchsehen (Milch, Verkauf, Kindernährmittel, Beratungsfälle, Textilien, Spielzeug) – seit 25.10. online | Benedikt, vor Di 10.11. |
+| Quiz online durchsehen (alle Themen, jetzt auf Kernstoff gekürzt, Karteikarten aus den Fragenkatalogen) | Benedikt, vor Mo 09.11. |
 | ✔ Push nach Benedikts Freigabe, davor lokal geprüft (360 px, Klassenmodus 1280 × 720, alle 17 CSVs laden, Test grün) | erledigt 25.10. |
 | Wirkung messen: Durchschnittspunkte je SA2-Aufgabe (ohne Namen) gegen Quiz-Abdeckung | nach Korrektur SA2 |
 | ✔ MC-Bestand: Ablenker angeglichen (0–22 % „längste“, keine Position über 50 %), jede Quizfrage mit Erklärung, Test scharf | erledigt 21.10. |
 | ✔ Für 2GH2b ergänzt: Mischquiz SA1, Verkaufsthemen SA1, Beratungsfälle, Kindernährmittel, Textilien, Spielzeug, Karteikarten | erledigt 21.10. |
 | ✔ Klassenmodus, Karteikarten, Einstieg mit 5 Fragen, Auswertung je Unterthema, Klassen-Codes | erledigt 21.10. |
-| Alle 2.-Klasse-Themen auf Kernstoff kürzen (Streichliste je Thema), dazu fehlende Themen: Zeichen- und Malbedarf (W10), Verkaufsstoff W2–W9 | laufend, je Thema vor seiner Lehrgangswoche |
+| ✔ Alle 2.-Klasse-Themen auf Kernstoff gekürzt, Fragenkatalog je Warenkunde-Thema, Zeichen- und Malbedarf neu | erledigt 25.10. |
+| Verkaufsstoff W2–W9 ohne Quiz (Öffentlichkeitsarbeit, Präsentation, Verkaufsaktionen, Reklamation, Telefon, Messen, Call Center, neue Medien) | nach Benedikts Durchsicht |
+| Fragen an Benedikt aus der Durchsicht 25.10. (siehe Stand) | Benedikt |
 | ✔ Kaffee-/Küchenobers-Fettgehalte: laut Buch S. 94 Kaffeeobers 15 %, Küchenobers 20 %, Schlagobers 36 % (AA III. LG war widersprüchlich) | geklärt 25.10. |
