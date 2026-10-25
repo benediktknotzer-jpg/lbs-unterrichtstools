@@ -23,12 +23,13 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
   - **Klasse** – Klassenquiz am Smartboard: große Schrift, nur MC und Richtig/Falsch, 30 Sekunden
     Countdown, zwei Teams mit A-B-C-D-Karten, Lehrkraft löst auf und vergibt die Punkte, am Ende
     Teamstand und die Fragen, die kein Team konnte
-- Sieben Fragetypen: Multiple Choice (MC), Mehrfachauswahl mit mehreren richtigen Antworten (MM),
-  Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH), Lückentext (LT) – alles per Antippen –
-  und offene Fragen (OF) für die Karteikarten
+- Acht Fragetypen: Multiple Choice (MC), Mehrfachauswahl mit mehreren richtigen Antworten (MM),
+  Richtig/Falsch (RF), Zuordnen (ZU), Reihenfolge (RH), Lückentext (LT) – alles per Antippen –,
+  offene Antworten (OA), die die Lehrlinge eintippen und das Quiz selbst korrigiert, und offene
+  Fragen (OF) für die Karteikarten
 - **Klassen-Codes**: Jede Klasse sieht nur die Themen ihrer Klasse (`daten/zugaenge.json`)
-- Themen derzeit (2. Klasse, 916 Quizfragen und 236 Karteikarten): **Milch & Milchprodukte** (62),
-  **Käse** (78), **Fleisch & Rindfleisch** (82), **Verkaufsgespräch, CI & Verpackung** (51),
+- Themen derzeit (2. Klasse, 936 Quizfragen und 236 Karteikarten): **Milch & Milchprodukte** (72),
+  **Käse** (88), **Fleisch & Rindfleisch** (82), **Verkaufsgespräch, CI & Verpackung** (51),
   **Feinkost, Fertigkost & Zusatzverkauf** (77), **Eier** (47), **Fische, Krusten- & Weichtiere** (64),
   **Inventurdifferenzen** (24), **Speisefette & Speiseöle** (73), **Kakao & Schokolade** (77),
   **Diätetische Lebensmittel** (62), **Biowaren** (42), **Kindernährmittel** (42),
@@ -210,6 +211,34 @@ erscheinen nur in der Art „Karteikarten“, nicht im Quiz und nicht im Klassen
 ```
 90;Hitzeverfahren;OF;Was ist H-Milch, und wie lange ist sie haltbar?;Ultrahocherhitzte Milch (135 bis 150 °C) ohne vermehrungsfähige Keime, bei Zimmertemperatur bis 6 Monate haltbar.;;;;FRAGEN Milch W1
 ```
+
+**OA – offene Antwort, vom Quiz korrigiert:** Die Lehrlinge tippen ihre Antwort in ein Feld, das
+Quiz sucht darin die **Schlüsselbegriffe** und zeigt danach, welche gefunden wurden, welche
+fehlten, und die Musterantwort. OA-Fragen erscheinen im Quiz (mit Note), nicht bei den
+Karteikarten und nicht im Klassenquiz.
+
+| Spalte | Inhalt |
+|--------|--------|
+| `richtig` | die Musterantwort (wird nach dem Prüfen angezeigt) |
+| `falsch1` | die Schlüsselbegriffe, getrennt durch `\|`; gleichwertige Schreibweisen durch `/` |
+| `falsch2` | wie viele Begriffe genügen (leer = alle), z. B. `2` bei „Nennen Sie zwei …“ |
+| `falsch3` | bleibt leer |
+
+```
+105;Sauermilch und Rahm;OA;Nennen Sie zwei Sauermilchprodukte.;Zum Beispiel Sauermilch, Joghurt, Buttermilch, Skyr, Kefir.;Joghurt/Jogurt | Buttermilch | Skyr | Sauermilch | Kefir;2;;SA1 Aufgabe 3g
+```
+
+So nachsichtig ist die Korrektur (`js/oa.js`): Groß- und Kleinschreibung, Umlaute (`ae` = `ä`),
+Satzzeichen und Bindestriche sind egal. Ein Tippfehler zählt bei Wörtern ab 5 Buchstaben, zwei ab
+9 Buchstaben, bei kürzeren keiner. Andere Endungen zählen (pasteurisiert = Pasteurisierung).
+Zahlen werden als Zahl verglichen: `1.290` = `1290`, `3,5` = `3.5`. Ein **`=` vor dem Begriff**
+heißt „genau so“, ohne Tippfehler – nötig, wenn zwei Fachwörter sich nur in einem Buchstaben
+unterscheiden (`=Laktose`, sonst zählt auch „Laktase“).
+
+**Grenze:** Das Quiz erkennt Begriffe, keinen Sinn. „Nicht pasteurisiert“ enthält auch
+„pasteurisiert“, und vertauschte Zuordnungen fallen nicht auf. OA ist deshalb für Aufzählungen,
+Fachbegriffe und Zahlen gedacht. Begründungen und Vergleiche bleiben Karteikarten (OF). Vor dem
+Einbauen jede OA-Frage mit einer richtigen und einer falschen Beispielantwort ausprobieren.
 
 **Tipp für gute Fragen:**
 - Die falschen Antworten bei MC und MM so lang und so fachlich formulieren wie die richtige.

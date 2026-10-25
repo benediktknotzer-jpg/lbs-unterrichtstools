@@ -871,6 +871,99 @@ span.feld.luecke.ist-falsch strong {
   }
 }
 
+/* ---------- Offene Antwort (OA) ---------- */
+
+/* Antwortfläche wie auf den Arbeitsblättern: grau gestrichelt */
+.oa-eingabe {
+  display: block;
+  width: 100%;
+  min-height: 7rem;
+  margin-top: 0.4rem;
+  padding: 0.7rem 0.8rem;
+  border: 2px dashed var(--knb-rahmen);
+  border-radius: var(--knb-radius);
+  background: var(--knb-antwortflaeche);
+  color: var(--knb-text);
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.oa-eingabe:focus {
+  outline: none;
+  border-color: var(--knb-blau);
+  background: var(--knb-weiss);
+}
+
+.oa-eingabe[readonly] {
+  border-style: solid;
+  background: var(--knb-zebra);
+}
+
+.oa-hinweis {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--knb-text-leise);
+}
+
+#oa-pruefen {
+  margin-top: 0.8rem;
+}
+
+.oa-begriffe {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.oa-begriffe li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--knb-radius);
+  font-weight: 700;
+}
+
+.oa-begriffe li.ist-richtig {
+  background: var(--knb-richtig-hell);
+  color: var(--knb-richtig);
+}
+
+.oa-begriffe li.ist-falsch {
+  background: var(--knb-falsch-hell);
+  color: var(--knb-falsch);
+}
+
+.oa-begriffe .zeichen {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 3px;
+  color: var(--knb-weiss);
+}
+
+.oa-begriffe li.auch-moeglich {
+  background: var(--knb-zebra);
+  color: var(--knb-text-leise);
+  font-weight: 400;
+}
+
+.oa-begriffe .auch-moeglich .zeichen { background: var(--knb-grau); }
+.oa-begriffe .ist-richtig .zeichen { background: var(--knb-richtig); }
+.oa-begriffe .ist-falsch .zeichen { background: var(--knb-falsch); }
+
+.oa-muster {
+  font-weight: 700;
+}
+
 /* ---------- Klassenquiz (Smartboard) ---------- */
 
 .klasse-leiste {

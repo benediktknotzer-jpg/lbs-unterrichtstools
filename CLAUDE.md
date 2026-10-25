@@ -34,9 +34,16 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
 - Fragetypen: MC, MM (mehrere richtige, `|`), RF (mit Berichtigung in `erklaerung`),
   ZU (`links = rechts | …`), RH (Schritte in richtiger Reihenfolge, `|`),
   LT (Text mit Lücken in `[eckigen Klammern]`, falsch1–3 = Ablenkwörter),
-  OF (offene Frage, `richtig` = Musterantwort, nur in der Art „Karteikarten“). Details: README.
-- Arten in der App: Quiz (Handy, mit Note), Karteikarten (OF), Klasse (Smartboard, nur MC/RF,
-  30-s-Countdown, zwei Teams). „Alle Themen gemischt“ stellt die App selbst zusammen.
+  OF (offene Frage, `richtig` = Musterantwort, nur in der Art „Karteikarten“),
+  OA (offene Antwort, vom Quiz korrigiert: `richtig` = Musterantwort, `falsch1` = Schlüsselbegriffe
+  mit `|`, Synonyme mit `/`, `=` davor = ohne Tippfehler-Toleranz, `falsch2` = wie viele genügen;
+  nur für Aufzählungen, Fachbegriffe, Zahlen – jede OA vorher mit richtiger und falscher
+  Beispielantwort gegen `js/oa.js` prüfen). Details: README.
+- Arten in der App: Quiz (Handy, mit Note, auch OA), Karteikarten (OF, zum Umdrehen mit
+  „Gewusst / Nochmal“), Klasse (Smartboard, nur MC/RF, 30-s-Countdown, zwei Teams).
+  „Alle Themen gemischt“ stellt die App selbst zusammen.
+- Nach Änderungen an `js/` oder `css/` die `?v=`-Nummer in `index.html` erhöhen, sonst laden
+  Handys die alte Fassung aus dem Zwischenspeicher.
 - Qualität: Bei MC die falschen Antworten so lang wie die richtige – `tests/csv-test.js` erlaubt
   höchstens 35 % „richtige ist die längste“ je Datei. Jede Frage mit Erklärung.
 - Klassen-Codes: `daten/zugaenge.json` (Format „Klasse + Wort“, z. B. `2GH2B-MILCH`, pro Lehrgang neu,

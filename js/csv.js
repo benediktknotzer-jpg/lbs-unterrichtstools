@@ -12,8 +12,8 @@
   'use strict';
 
   var PFLICHTSPALTEN = ['nr', 'thema', 'typ', 'frage', 'richtig', 'falsch1', 'falsch2', 'falsch3'];
-  var TYPEN = ['MC', 'MM', 'RF', 'ZU', 'LT', 'RH', 'OF'];
-  var TYPEN_TEXT = 'Erlaubt sind MC, MM, RF, ZU, LT, RH oder OF.';
+  var TYPEN = ['MC', 'MM', 'RF', 'ZU', 'LT', 'RH', 'OF', 'OA'];
+  var TYPEN_TEXT = 'Erlaubt sind MC, MM, RF, ZU, LT, RH, OF oder OA.';
 
   /* Bytes -> Text. Bevorzugt UTF-8; eine in Excel als „CSV (Trennzeichen-getrennt)“
      gespeicherte Datei ist meist Windows-1252 – die wird trotzdem gelesen, mit Hinweis. */
@@ -307,6 +307,31 @@
           hinweise.push('Bei OF-Fragen bleiben die Spalten falsch1 bis falsch3 leer – sie werden nicht angezeigt.');
         }
         frage.richtig = richtig;
+      } else if (typ === 'OA') {
+        // Offene Antwort, die das Quiz selbst korrigiert: „richtig“ = Musterantwort,
+        // „falsch1“ = Schlüsselbegriffe mit |, Synonyme mit / (z. B. „Obers/Sahne | 36 %“),
+        // „falsch2“ = wie viele Begriffe genügen (leer = alle)
+        if (!richtig) probleme.push('Bei OA-Fragen steht in Spalte „richtig“ die Musterantwort – die Spalte ist leer.');
+        var begriffe = f('falsch1').split('|').map(function (t) {
+          return t.split('/').map(function (v) { return v.trim(); }).filter(Boolean);
+        }).filter(function (v) { return v.length; });
+        if (!begriffe.length) {
+          probleme.push('Bei OA-Fragen stehen in Spalte „falsch1“ die Schlüsselbegriffe, getrennt durch „|“, ' +
+            'Synonyme durch „/“.');
+        }
+        var minRoh = f('falsch2');
+        var mindestens = begriffe.length;
+        if (minRoh) {
+          mindestens = parseInt(minRoh, 10);
+          if (!/^\d+$/.test(minRoh) || mindestens < 1 || mindestens > begriffe.length) {
+            probleme.push('In Spalte „falsch2“ steht bei OA-Fragen, wie viele Begriffe genügen – eine Zahl von 1 bis ' +
+              begriffe.length + ' (gefunden: ' + zitat(minRoh) + ').');
+          }
+        }
+        if (f('falsch3')) hinweise.push('Bei OA-Fragen bleibt Spalte „falsch3“ leer – sie wird nicht verwendet.');
+        frage.richtig = richtig;
+        frage.begriffe = begriffe;
+        frage.mindestens = mindestens;
       }
 
       if (probleme.length) {

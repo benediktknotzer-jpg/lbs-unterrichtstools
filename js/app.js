@@ -15,7 +15,8 @@
     ZU: 'Zuordnen',
     RH: 'Reihenfolge',
     LT: 'Lückentext',
-    OF: 'Karteikarte'
+    OF: 'Karteikarte',
+    OA: 'Offene Antwort'
   };
 
   // Klassenmodus: so viele Sekunden haben die Teams je Frage
@@ -609,7 +610,9 @@
       RH: 'Tippen Sie die Schritte unten in der richtigen Reihenfolge an. Zum Ändern einen Schritt antippen.',
       LT: 'Tippen Sie unten auf das passende Wort – es kommt in die markierte Lücke. ' +
         'Zum Ändern die Lücke antippen.' + (f.typ === 'LT' && f.ablenker.length
-          ? ' Achtung: Es gibt mehr Wörter als Lücken.' : '')
+          ? ' Achtung: Es gibt mehr Wörter als Lücken.' : ''),
+      OA: 'Schreiben Sie Ihre Antwort in das Feld. Das Quiz sucht die Fachbegriffe – ' +
+        'Groß- und Kleinschreibung und kleine Tippfehler sind egal.'
     };
     $('quiz-anleitung').textContent = anleitung[f.typ];
 
@@ -618,6 +621,7 @@
     if (f.typ === 'MC') zeigeMC(v, bereich);
     else if (f.typ === 'MM') zeigeMM(v, bereich);
     else if (f.typ === 'RF') zeigeRF(v, bereich);
+    else if (f.typ === 'OA') zeigeOA(v, bereich);
     else zeigeTipp(v, bereich);
 
     window.scrollTo(0, 0);
@@ -728,6 +732,62 @@
       });
     });
     bereich.appendChild(box);
+  }
+
+  /* Offene Antwort: frei tippen, das Quiz sucht die Schlüsselbegriffe (js/oa.js).
+     Richtig ist die Frage, wenn genug Begriffe gefunden wurden. */
+  function begriffNamen(q, indizes) {
+    return indizes.map(function (i) { return window.QuizOA.name(q.begriffe[i]); });
+  }
+
+  function zeigeOA(v, bereich) {
+    var q = v.q;
+    var feld = el('textarea', 'oa-eingabe');
+    feld.id = 'oa-eingabe';
+    feld.rows = 4;
+    feld.setAttribute('aria-labelledby', 'quiz-frage');
+    feld.setAttribute('autocomplete', 'off');
+    feld.setAttribute('autocapitalize', 'sentences');
+    feld.placeholder = 'Ihre Antwort …';
+    bereich.appendChild(feld);
+    if (q.mindestens < q.begriffe.length) {
+      bereich.appendChild(el('p', 'oa-hinweis', 'Es genügen ' + q.mindestens + ' von ' + q.begriffe.length +
+        ' möglichen Begriffen.'));
+    }
+
+    var pruefen = knopf('knopf haupt', 'Antwort prüfen');
+    pruefen.id = 'oa-pruefen';
+    pruefen.disabled = true;
+    feld.addEventListener('input', function () { pruefen.disabled = !feld.value.trim(); });
+    // Strg+Eingabe prüft, eine normale Eingabe macht nur eine neue Zeile
+    feld.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' && (ev.ctrlKey || ev.metaKey) && !pruefen.disabled) pruefen.click();
+    });
+    pruefen.addEventListener('click', function () {
+      var text = feld.value.trim();
+      var erg = window.QuizOA.pruefe(q.begriffe, q.mindestens, text);
+      feld.readOnly = true;
+      pruefen.remove();
+
+      var liste = el('ul', 'oa-begriffe');
+      // Reicht die Antwort schon, sind die übrigen Begriffe kein Fehler, sondern weitere Möglichkeiten
+      q.begriffe.forEach(function (b, i) {
+        var da = erg.gefunden.indexOf(i) >= 0;
+        var li = el('li', da ? 'ist-richtig' : erg.ok ? 'auch-moeglich' : 'ist-falsch');
+        li.appendChild(el('span', 'zeichen', da ? '✓' : erg.ok ? '+' : '✗'));
+        li.appendChild(el('span', null, window.QuizOA.name(b) + (da ? '' : erg.ok ? ' – auch möglich' : ' – fehlt')));
+        liste.appendChild(li);
+      });
+      bereich.appendChild(liste);
+
+      beantwortet(erg.ok, text, erg.gefunden.length + ' von ' + q.begriffe.length + ' Begriffen gefunden' +
+        (q.mindestens < q.begriffe.length ? ', ' + q.mindestens + ' genügen.' : '.'));
+      runde.ergebnisse[runde.ergebnisse.length - 1].oa = erg;
+      var box = $('quiz-rueckmeldung');
+      box.insertBefore(el('p', 'oa-muster', 'Musterantwort: ' + q.richtig), box.querySelector('.erklaerung'));
+    });
+    bereich.appendChild(pruefen);
+    feld.focus({ preventScroll: true });
   }
 
   /* Karteikarte zum Umdrehen: vorne die Frage, hinten die Musterantwort.
@@ -1041,6 +1101,15 @@
     } else if (q.typ === 'RF') {
       inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Antwort: ' + rfText(e.gegeben)));
       inhalt.appendChild(zeile('zeile-richtig', '✓ ' + (q.erklaerung || 'Die Aussage ist ' + rfText(q.richtig) + '.')));
+    } else if (q.typ === 'OA') {
+      inhalt.appendChild(zeile('zeile-ihre', '✗ Ihre Antwort: ' + e.gegeben));
+      if (e.oa && e.oa.gefunden.length) {
+        inhalt.appendChild(zeile('zeile-richtig', '✓ Gefunden: ' + begriffNamen(q, e.oa.gefunden).join(' · ')));
+      }
+      if (e.oa && e.oa.fehlend.length) {
+        inhalt.appendChild(zeile('zeile-ihre', '✗ Gefehlt: ' + begriffNamen(q, e.oa.fehlend).join(' · ')));
+      }
+      inhalt.appendChild(zeile('zeile-richtig', '✓ Musterantwort: ' + q.richtig));
     } else if (q.typ === 'LT') {
       var p = el('p', 'zeile-richtig lt-loesung');
       p.appendChild(document.createTextNode('✓ '));

@@ -17,10 +17,10 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 
 | Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
 |-------|-------|-----:|-------:|---------------|------|
-| Wiederholung zur 1. Schularbeit | `"mix"` | 273 | 65 | – | – |
+| Wiederholung zur 1. Schularbeit | `"mix"` | 293 | 65 | – | – |
 | Wiederholung zur 2. Schularbeit | `"mix"` | 493 | 117 | – | – |
-| Milch & Milchprodukte | `milch-milchprodukte.csv` | 62 | 15 | VFW W1 | S. 89–95 |
-| Käse | `kaese.csv` | 78 | 17 | VFW W2 | S. 100–113 |
+| Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | VFW W1 | S. 89–95 |
+| Käse | `kaese.csv` | 88 (10 OA) | 17 | VFW W2 | S. 100–113 |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 15 | Entwurf (15) | S. 118–133, AMA-Broschüre |
 | Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | VFW W4 Teil 1 | kein Buch |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 15 | Entwurf (15) | S. 148, 150 |
@@ -120,8 +120,9 @@ MOPRO-Abteilung.
 1. ✔ Alle Themen der 2. Klasse auf Kern gebracht, Fragenkataloge, Zeichen- und Malbedarf neu
    (25.10.). Jetzt: Benedikt sieht das Quiz online durch und beantwortet die Fragen oben. Danach
    Ideen aus `docs/IDEEN_NAECHSTE_STUFE.md` (✔ Karteikarten zum Umdrehen mit „Gewusst / Nochmal“
-   seit 25.10. online; offen: Fragetyp OA mit
-   automatischer Korrektur, SVG-Bilder, Themen nach Lehrgangswoche). Fragenkatalog-Entwürfe als
+   seit 25.10. online; ✔ Fragetyp OA mit automatischer Korrektur seit 25.10. online, je 10 bei
+   Milch und Käse – Benedikt probiert aus, dann weitere Themen; offen: SVG-Bilder, Themen nach
+   Lehrgangswoche). Fragenkatalog-Entwürfe als
    DOCX in einer VFW_Claude-Sitzung. Erst danach 1. Klasse.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
    im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.

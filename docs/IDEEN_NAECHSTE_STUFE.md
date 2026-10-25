@@ -56,6 +56,8 @@ auf jeden fehlenden.
 ## Empfohlene Reihenfolge
 
 1. ✔ Karteikarten zum Umdrehen mit „Gewusst / Nochmal“ – gebaut 25.10.2026.
-2. Fragetyp OA für Aufzählungen und Zahlen, zuerst bei Milch und Käse ausprobieren.
+2. ✔ Fragetyp OA für Aufzählungen und Zahlen – gebaut 25.10.2026, je 10 Fragen bei Milch und
+   Käse. Nicht umgesetzt: Teilpunkte (eine OA zählt ganz richtig oder falsch, die Rückmeldung
+   zeigt aber „3 von 4 Begriffen“) und Synonyme wie `Obers/Sahne/Rahm` als feste Liste.
 3. Bilder (SVG) für Pflegesymbole und Bio-Zeichen.
 4. Themen nach Lehrgangswoche ordnen.

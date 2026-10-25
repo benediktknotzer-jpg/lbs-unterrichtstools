@@ -177,19 +177,20 @@ test('Windows-1252-Datei wird mit Hinweis gelesen', function () {
   assert.ok(d.hinweis && d.hinweis.indexOf('UTF-8') >= 0);
 });
 
-test('Käse: 78 Quizfragen in allen sechs Typen und 17 Karteikarten', function () {
+test('Käse: 78 Quizfragen in allen sechs Typen, 10 offene Antworten und 17 Karteikarten', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'kaese.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 95);
+  assert.strictEqual(erg.fragen.length, 105);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
-  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'MM', 'OF', 'RF', 'RH', 'ZU']);
+  assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'MM', 'OA', 'OF', 'RF', 'RH', 'ZU']);
   assert.strictEqual(typen.OF, 17);
+  assert.strictEqual(typen.OA, 10);
 });
 
 test('Jede Quizfrage hat eine Erklärung (Karteikarten ausgenommen)', function () {
   dateien.forEach(function (datei) {
     var ohne = Q.ladeFragen(fs.readFileSync(path.join(daten, datei), 'utf8')).fragen
-      .filter(function (f) { return f.typ !== 'OF' && !f.erklaerung; })
+      .filter(function (f) { return f.typ !== 'OF' && f.typ !== 'OA' && !f.erklaerung; })
       .map(function (f) { return f.nr; });
     assert.deepStrictEqual(ohne, [], datei + ': ohne Erklärung Nr. ' + ohne.join(', '));
   });
@@ -357,6 +358,79 @@ test('OF ohne Musterantwort ist ein Fehler', function () {
 
 test('OF mit Antworten in falsch1 gibt einen Hinweis', function () {
   enthaelt(Q.ladeFragen(KOPF + '1;A;OF;Frage?;Antwort;Nein;;;\n').hinweise, 'leer');
+});
+
+console.log('Offene Antworten (OA, selbst korrigiert)');
+var OA = require('../js/oa.js');
+
+test('OA: Musterantwort, Begriffe mit Synonymen und Mindestzahl', function () {
+  var erg = Q.ladeFragen(KOPF + '1;Rahm;OA;Nennen Sie zwei Süßrahmsorten.;Kaffeeobers, Schlagobers;' +
+    'Kaffeeobers/Kaffeesahne | Schlagobers/Schlagsahne | Küchenobers;2;;Buch S. 94\n');
+  assert.deepStrictEqual(erg.fehler, []);
+  var q = erg.fragen[0];
+  assert.strictEqual(q.typ, 'OA');
+  assert.deepStrictEqual(q.begriffe, [['Kaffeeobers', 'Kaffeesahne'], ['Schlagobers', 'Schlagsahne'], ['Küchenobers']]);
+  assert.strictEqual(q.mindestens, 2);
+});
+
+test('OA ohne Mindestzahl verlangt alle Begriffe', function () {
+  assert.strictEqual(Q.ladeFragen(KOPF + '1;A;OA;Frage?;Antwort;eins | zwei;;;\n').fragen[0].mindestens, 2);
+});
+
+test('OA ohne Begriffe oder mit unsinniger Mindestzahl ist ein Fehler', function () {
+  enthaelt(Q.ladeFragen(KOPF + '1;A;OA;Frage?;Antwort;;;;\n').fehler, 'Schlüsselbegriffe');
+  enthaelt(Q.ladeFragen(KOPF + '1;A;OA;Frage?;Antwort;eins | zwei;3;;\n').fehler, 'von 1 bis 2');
+  enthaelt(Q.ladeFragen(KOPF + '1;A;OA;Frage?;;eins;;;\n').fehler, 'Musterantwort');
+});
+
+function findet(begriffe, antwort, mindestens) {
+  var b = begriffe.split('|').map(function (t) { return t.split('/').map(function (v) { return v.trim(); }); });
+  return OA.pruefe(b, mindestens, antwort);
+}
+
+test('OA-Korrektur: Groß-/Kleinschreibung, Umlaute, Satzzeichen', function () {
+  assert.ok(findet('Frischezustand | Reinheit | Fettgehalt', 'frischezustand, REINHEIT und fettgehalt.').ok);
+  assert.ok(findet('Kühlkette', 'die Kuehlkette einhalten').ok);
+  assert.ok(findet('Süßrahm', 'Suessrahm').ok);
+});
+
+test('OA-Korrektur: kleine Tippfehler und andere Endungen', function () {
+  assert.ok(findet('pasteurisiert', 'pasteurisirt').ok);
+  assert.ok(findet('pasteurisiert', 'Die Milch wird pasteurisieren').ok);
+  assert.ok(findet('homogenisiert', 'durch Homogenisierung').ok);
+  assert.ok(findet('bakteriologische Beschaffenheit', 'die bakteriologishe Beschafenheit').ok);
+});
+
+test('OA-Korrektur: Zahlen in jeder Schreibweise', function () {
+  assert.ok(findet('1290', 'Ich bestelle 1.290 Stück').ok);
+  assert.ok(findet('3,5 %', 'Vollmilch hat 3.5% Fett').ok);
+  assert.ok(findet('3,5', 'Vollmilch hat 3,5 Prozent').ok);
+  assert.ok(!findet('3,5', 'Vollmilch hat 35 Prozent').ok);
+  assert.ok(!findet('71', 'auf 74 Grad').ok);
+});
+
+test('OA-Korrektur: Synonyme, zusammengesetzte Wörter, Mindestzahl', function () {
+  assert.ok(findet('Obers/Sahne', 'Schlagsahne').ok);
+  assert.ok(findet('Magermilch', 'Mager-Milch').ok);
+  var e = findet('Joghurt | Buttermilch | Skyr | Sauermilch', 'Joghurt und Skyr', 2);
+  assert.ok(e.ok);
+  assert.deepStrictEqual(e.gefunden, [0, 2]);
+  assert.deepStrictEqual(e.fehlend, [1, 3]);
+  assert.ok(!findet('Joghurt | Buttermilch | Skyr', 'nur Joghurt', 2).ok);
+});
+
+test('OA-Korrektur: kurze Begriffe nur als ganzes Wort, keine falschen Treffer', function () {
+  assert.ok(findet('ESL', 'ESL-Milch').ok);
+  assert.ok(!findet('ESL', 'Esel').ok);
+  assert.ok(!findet('Kasein', 'Käse').ok);
+  assert.ok(!findet('Wasser | Fett', '').ok);
+});
+
+test('OA-Korrektur: „=“ vor dem Begriff heißt genau so (Laktose ≠ Laktase)', function () {
+  assert.ok(findet('Laktose', 'Laktase').ok, 'ohne = gilt ein Buchstabe als Tippfehler');
+  assert.ok(!findet('=Laktose', 'Laktase').ok);
+  assert.ok(findet('=Laktose', 'Die Laktose, also Milchzucker').ok);
+  assert.strictEqual(OA.name(['=Laktose', 'Milchzucker']), 'Laktose');
 });
 
 console.log('\n' + bestanden + ' Tests bestanden' + (process.exitCode ? ', es gibt FEHLER.' : '.'));
