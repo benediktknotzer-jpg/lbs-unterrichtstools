@@ -1,0 +1,18 @@
+{
+  "buch": "Kein Buch: Spielwaren stehen nicht im Warenkundebuch „Lebens- und Genussmittel“. Quelle sind die beiden IB und LB der Woche 10 (WKO-Ratgeber 2011, Broschüre des Gesundheitsministeriums, laut IB am 24.08.2026 gegen den Rechtsstand geprüft).",
+  "hinweis": [
+    "Alle 41 Quizfragen stammen aus den IB „Pädagogischer Wert des Spielens und des Spielzeugs“ und „Prüfsiegel und Sicherheit bei Spielwaren“. Nichts ist zu streichen.",
+    "Fragenkatalog-Entwurf mit 14 Fragen: docs/fragenkataloge/spielzeug.md. Neue Karteikarten Nr. 50–55.",
+    "Woche 10 hat auch ein IB „Zeichen- und Malbedarf“ (mit AB/LB). Dazu gibt es noch kein Quiz-Thema."
+  ],
+  "A": {},
+  "B": {
+    "7": "IB Spielzeug Abschnitt 3, in keiner Aufgabe", "8": "IB Spielzeug Abschnitt 6 (Faustregel 70/30), in keiner Aufgabe",
+    "10": "IB Spielzeug Abschnitt 3 (Altersgruppen), in keiner Aufgabe", "11": "IB Spielzeug Abschnitt 3, in keiner Aufgabe",
+    "17": "IB Spielzeug Abschnitt 6, in keiner Aufgabe", "18": "IB Spielzeug Abschnitt 5, in keiner Aufgabe",
+    "19": "IB Spielzeug Abschnitt 7, in keiner Aufgabe", "22": "IB Prüfsiegel Abschnitt 1 (AGES Linz), in keiner Aufgabe",
+    "30": "IB Prüfsiegel Abschnitt 3 (Öko-Test), in keiner Aufgabe", "33": "IB Prüfsiegel Abschnitt 4, in keiner Aufgabe",
+    "34": "IB Prüfsiegel Abschnitt 5 (EN 71 Teile), in keiner Aufgabe", "35": "IB Prüfsiegel Abschnitt 6, in keiner Aufgabe",
+    "36": "IB Prüfsiegel Abschnitt 6 (Azofarbstoffe), in keiner Aufgabe", "41": "IB Prüfsiegel Merksatz"
+  }
+}
