@@ -20,5 +20,6 @@
   { "titel": "Kindernährmittel", "datei": "kindernaehrmittel.csv", "klassen": ["2"] },
   { "titel": "Beratungsfälle", "datei": "beratungsfaelle.csv", "klassen": ["2"] },
   { "titel": "Textilien (Non-Food)", "datei": "textilien.csv", "klassen": ["2"] },
-  { "titel": "Spielzeug & Prüfsiegel (Non-Food)", "datei": "spielzeug.csv", "klassen": ["2"] }
+  { "titel": "Spielzeug & Prüfsiegel (Non-Food)", "datei": "spielzeug.csv", "klassen": ["2"] },
+  { "titel": "Zeichen- und Malbedarf (Non-Food)", "datei": "zeichen-malbedarf.csv", "klassen": ["2"] }
 ]
