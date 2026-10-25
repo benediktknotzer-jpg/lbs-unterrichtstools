@@ -131,12 +131,12 @@ test('zugaenge.json: gültig, keine doppelten Codes, Klassen und Themen vorhande
   }
 });
 
-test('Fleisch & Rindfleisch: 82 Quizfragen (MC, RF, ZU, MM) und 10 Karteikarten, alle RF mit Erklärung', function () {
+test('Fleisch & Rindfleisch: 82 Quizfragen (MC, RF, ZU, MM) und 15 Karteikarten, alle RF mit Erklärung', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'fleisch-rindfleisch.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 92);
+  assert.strictEqual(erg.fragen.length, 97);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
-  assert.deepStrictEqual(typen, { MC: 57, RF: 11, ZU: 9, MM: 5, OF: 10 });
+  assert.deepStrictEqual(typen, { MC: 57, RF: 11, ZU: 9, MM: 5, OF: 15 });
   erg.fragen.filter(function (f) { return f.typ === 'RF'; }).forEach(function (f) {
     assert.ok(f.erklaerung, 'RF Nr. ' + f.nr + ' ohne Erklärung');
   });
