@@ -1,0 +1,15 @@
+{
+  "buch": "Warenkundebuch „Lebens- und Genussmittel“, Kapitel Fette und Öle S. 166–172 (geprüft 25.10.2026 in digi4school; Butter S. 96–99 nicht gelesen, das IB nennt Butter nur als tierisches Fett)",
+  "hinweis": [
+    "Kein FRAGEN-Katalog in VFW_Claude: Entwurf docs/fragenkataloge/speisefette-oele.md mit 15 Kernfragen. Jede hat eine Quizfrage; Karteikarten vorher nur zu Frage 3, 8, 10 (Nr. 74–76), ergänzt Nr. 77–88 für die übrigen zwölf.",
+    "Abweichungen Buch – IB, nichts geändert (laut Benedikt gilt das Infoblatt): Kaltpressung „ohne Wärmezufuhr“ (Nr. 22, 24, 34) – Buch S. 167 „unter 60 °C“, etwas Wärme entsteht immer durch Reibung. Raffination „Reinigen, Entschleimen, Entsäuern, Bleichen, Desodorieren“ (Nr. 24, 27, 71) – Buch S. 167 Vier-Stufen-Reinigung Entschleimung, Neutralisation, Entfärbung, Desodorierung (gleiche Reihenfolge). Energie „mehr als doppelt so viel“ (Nr. 1) – Buch S. 166 „doppelt so viel“.",
+    "Nicht im Buch, nur IB/LB (Kern, bleibt): Trübung kaltgepresster Öle bei Kühlung (Nr. 53, 68), FIFO (Nr. 56, 57), ranzig = kratziger Geruch, bitterer Geschmack (Nr. 51), Schaufenster-Fall (Nr. 60, 61). Buch S. 168 nennt Licht, hohe Temperaturen und Sauerstoff als Feinde und das Ranzigwerden, S. 171 braune Glasflaschen als Lichtschutz und natives Olivenöl bis 160 °C.",
+    "Gruppe A ist leer: Die beiden Fragen aus dem Arbeitsauftrag des III. LG (Nr. 10 Glycerin und Fettsäuren, Nr. 35 Ausschmelzen) stehen im Buch (S. 166, 167), deshalb B. Doppelungen gleichen Typs gibt es nur nahe beieinander (Nr. 26 und 66, beide MC zu raffiniertem Öl), Nr. 66 ist aber die Begründung aus LB 2 b und bleibt."
+  ],
+  "A": {},
+  "B": {
+    "10": "AA III. LG, aber Buch S. 166 (Fette aus Glycerin und Fettsäuren); nicht im IB, in keiner Aufgabe",
+    "35": "AA III. LG, aber Buch S. 167 (tierische Fette durch Ausschmelzen: Schmalz, Talg); nicht im IB, in keiner Aufgabe",
+    "67": "IB nur „Zum Nachschlagen – nicht prüfungsrelevant“ (Rauchpunkt), LB 2 b nur als Zusatz gewertet; Buch S. 171 Erhitzungsgrenzen bei Olivenöl"
+  }
+}
