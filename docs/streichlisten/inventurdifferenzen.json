@@ -1,0 +1,19 @@
+{
+  "buch": "Kein Warenkunde-Thema. Quelle ist das IB W6, das laut eigener Angabe am Fachbuch „Terminal“ (HPT), Kap. 16.7/16.8, S. 88 geprüft wurde (20.08.2026).",
+  "hinweis": [
+    "Alle 24 Quizfragen stammen aus IB, LB, Fall-LB oder SA2 der 2GH1b. Nichts ist zu streichen.",
+    "Kern: Quick-Check (Nr. 1, 2, 6, 13), SA2 Aufgabe 4 a–c (Nr. 5, 6, 20), LB-Aufgaben und Fall (Nr. 8, 15–19, 22–24), Merksatz (Nr. 7).",
+    "Ergänzt: Karteikarten Nr. 27 (SA2 4c: Inventurdifferenz und Schwund) und Nr. 28 (Quick-Check: vier Inventurformen)."
+  ],
+  "A": {},
+  "B": {
+    "3": "IB Abschnitt 1 (Warenkontrolle), in keiner Aufgabe",
+    "4": "IB Abschnitt 1 (Warenpflege), in keiner Aufgabe",
+    "9": "IB „Aus der Praxis“, in keiner Aufgabe",
+    "10": "IB Abschnitt 2, in keiner Aufgabe",
+    "11": "IB Abschnitt 3, in keiner Aufgabe",
+    "12": "IB Abschnitt 3, in keiner Aufgabe",
+    "14": "IB Abschnitt 3, in keiner Aufgabe",
+    "21": "IB Abschnitt 4 (Grundsatz), Inhalt deckt SA2 4b nur teilweise"
+  }
+}
