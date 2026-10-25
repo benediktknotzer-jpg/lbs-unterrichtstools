@@ -1,0 +1,21 @@
+{
+  "buch": "Kein Buch: Textilien stehen nicht im Warenkundebuch „Lebens- und Genussmittel“, in digi4school gibt es kein Non-Food-Buch. Quelle sind die beiden IB und LB der Woche 9.",
+  "hinweis": [
+    "Alle 42 Quizfragen stammen aus den IB „Textile Rohstoffe und Flächengebilde“ und „Textilpflege, Garne und Zwirne“. Nichts ist zu streichen.",
+    "Das IB markiert den Abschnitt „Textile Flächengebilde“ selbst mit „Bitte gegenlesen“ (kein Schulbuch dahinter). Betroffen sind Nr. 14–20, 45, 46, 50, 51. Inhaltlich entsprechen sie der üblichen Textilfachkunde. Benedikt sollte den IB-Abschnitt einmal gegenlesen.",
+    "Fragenkatalog-Entwurf mit 15 Fragen: docs/fragenkataloge/textilien.md. Neue Karteikarten Nr. 49–57."
+  ],
+  "A": {},
+  "B": {
+    "7": "IB Textil Abschnitt 2 (Elasthan 2–5 %), in keiner Aufgabe",
+    "8": "IB Textil Abschnitt 2, in keiner Aufgabe",
+    "12": "IB Textil Abschnitt 3 (Mischungen), in keiner Aufgabe",
+    "13": "IB Textil Abschnitt 3, in keiner Aufgabe",
+    "21": "IB Textil Merksatz",
+    "25": "IB Textil Abschnitt 5 (Farbpartien), in keiner Aufgabe",
+    "34": "IB Textilpflege Abschnitt 2 (Beratungsregel), in keiner Aufgabe",
+    "40": "IB Textilpflege Abschnitt 4 (Heimtextilien), in keiner Aufgabe",
+    "41": "IB Textilpflege Abschnitt 4, in keiner Aufgabe",
+    "42": "IB Textilpflege Abschnitt 4, nur als Beispiel in LB Aufgabe 4"
+  }
+}
