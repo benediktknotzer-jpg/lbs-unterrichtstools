@@ -1,6 +1,6 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 21. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 25. Oktober 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
@@ -8,8 +8,10 @@ Stand: 21. Oktober 2026 · für Benedikt Knotzer (knb)
 Bei jedem Commit aktualisieren.
 
 **Woran wir arbeiten:** Das Quiz ist für den II. Lehrgang (2GH2b ab Mo 09.11.) ausgebaut und
-**lokal committet, nicht gepusht**. Online geht es erst nach der SA2 FP (Fr 23.10.), wenn Benedikt
-„pushen“ sagt (Entscheidung 21.10.).
+**seit So 25.10. online** (SA2 FP ist geschrieben und korrigiert, Benedikt hat den Push
+freigegeben). Live geprüft am 25.10.: alle 17 CSVs laden, 917 Fragen und 137 Karteikarten, keine
+Konsolenfehler, Zugangsblatt mit Code `2GH2B-MILCH` stimmt. Die neuen Themen mit „Durchsicht offen“ sind damit live, Benedikt sieht sie online
+durch. Unterricht 2GH1b geht ab Di 27.10. weiter.
 
 | Thema | Datei | Quiz | Karten | Stand |
 |-------|-------|------|--------|-------|
@@ -80,8 +82,8 @@ Kalorien, Laktase, AMA-Bio-Siegel rot, Veterinärkontrollnummer, Rahm-Fettgehalt
 MOPRO-Abteilung.
 
 **Als Nächstes:**
-1. Fr 23.10. SA2 FP. Danach sieht Benedikt die neuen Themen durch (Milch, Verkauf, Kindernährmittel,
-   Beratungsfälle, Textilien, Spielzeug) und sagt „pushen“ → Push, Live-Prüfung.
+1. Benedikt sieht die neuen Themen online durch (Milch, Verkauf, Kindernährmittel,
+   Beratungsfälle, Textilien, Spielzeug), Korrekturen gehen direkt in die CSVs.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
    im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.
 3. Zugangsblatt `zugang.html?code=2GH2B-MILCH` für Mo 09.11. drucken. Ab 07.11. verlangt die
@@ -251,8 +253,8 @@ Ablauf für jedes neue Thema:
 | ✔ Käse am Buch geprüft (digi4school, E-Book 16967, Seite = Buchseite + 2). Abweichend vom Buch, bewusst gelassen: Nr. 65 „Käsepapier“ (Buch: Folie, Dose, Originalverpackung), Nr. 68 Frischkäse kühl servieren (Buch nennt Schmelzkäse) | erledigt 15.10. |
 | ✔ Überarbeitung vom 15.10. online stellen (git push) | erledigt 15.10., geprüft 18.10. |
 | ✔ QR-Code (`zugang.html`) an 2GH1b austeilen | erledigt Fr 16.10. |
-| Neue Themen durchsehen (Milch, Verkauf, Kindernährmittel, Beratungsfälle, Textilien, Spielzeug) – stehen schon in `themen.json`, sind aber nicht online | Benedikt, nach SA2 (ab Sa 24.10.), vor Di 10.11. |
-| Push nach Benedikts „pushen“, danach Live-Prüfung (360 px und Smartboard 1280 × 720) | nach SA2 |
+| Neue Themen durchsehen (Milch, Verkauf, Kindernährmittel, Beratungsfälle, Textilien, Spielzeug) – seit 25.10. online | Benedikt, vor Di 10.11. |
+| ✔ Push nach Benedikts Freigabe, davor lokal geprüft (360 px, Klassenmodus 1280 × 720, alle 17 CSVs laden, Test grün) | erledigt 25.10. |
 | Wirkung messen: Durchschnittspunkte je SA2-Aufgabe (ohne Namen) gegen Quiz-Abdeckung | nach Korrektur SA2 |
 | ✔ MC-Bestand: Ablenker angeglichen (0–22 % „längste“, keine Position über 50 %), jede Quizfrage mit Erklärung, Test scharf | erledigt 21.10. |
 | ✔ Für 2GH2b ergänzt: Mischquiz SA1, Verkaufsthemen SA1, Beratungsfälle, Kindernährmittel, Textilien, Spielzeug, Karteikarten | erledigt 21.10. |
