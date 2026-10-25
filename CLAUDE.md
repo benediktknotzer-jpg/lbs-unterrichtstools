@@ -57,6 +57,12 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   Kollegenmaterial (AA III. LG), AMA-Broschüre, LAP-Fragen und IB „Zum Nachschlagen“ nur, wenn
   Benedikt es ausdrücklich will. Themen werden mit `tools/streichliste.py` gekürzt
   (`docs/streichlisten/`), Benedikt sieht nur die Streichliste durch.
+- **Fragenkatalog als Rückgrat:** Jedes Warenkunde-Thema bekommt einen Fragenkatalog
+  (12–15 Kernfragen = SA-Fragen), am Warenkundebuch „Lebens- und Genussmittel“ geprüft, mit
+  Buchseite. Jede Katalogfrage steht im Quiz als Karteikarte (OF) und als mindestens eine
+  Quizfrage. Buch: digi4school E-Book 16967 (Seite im E-Book = Buchseite + 2), Anmeldung macht
+  Benedikt selbst im Browser. Fehlt der Katalog in VFW_Claude, entsteht der Entwurf hier in
+  `docs/fragenkataloge/`; das DOCX dazu macht eine Sitzung in VFW_Claude.
 
 ## Stil (wie Benedikts Arbeits- und Infoblätter)
 

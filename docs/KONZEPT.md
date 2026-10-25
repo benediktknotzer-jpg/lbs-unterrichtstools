@@ -41,6 +41,12 @@ komplett fertig (nächster Lehrgang wieder 2. Klasse), 1. Klasse danach. Je Them
 gegen Fragenkatalog, LB, SA, Wiederholung und Quick-Check vor; Benedikt sieht nur die Streichliste
 in `docs/streichlisten/` durch und nennt, was bleibt. Reihenfolge nach Lehrgangswoche, Milch zuerst.
 Milch: 80 → 41 Kernfragen, Streichliste mit 22 sicheren und 17 Grenzfällen liegt vor.
+Ergänzung Benedikt 25.10.: Jedes Warenkunde-Thema bekommt einen Fragenkatalog, am Warenkundebuch
+geprüft, und dessen Fragen müssen im Quiz vorkommen. Fragenkataloge gibt es in 2GH1b nur für Milch
+(W1, am Buch geprüft 17.08., alle 15 Fragen im Quiz) und Käse (W2). Es fehlen: Fleisch, Feinkost,
+Eier, Fische, Fette, Kakao, Diät, Bio, Kindernährmittel, Textilien, Spielzeug, Zeichen-/Malbedarf.
+Ablauf je Thema: Katalog-Entwurf am Buch (hier, `docs/fragenkataloge/`) → Quiz-Kern danach
+ausrichten → Streichliste → DOCX-Katalog in einer VFW_Claude-Sitzung.
 
 **21.10. – Ausbau fürs nächste Level (Plan vom 21.10., Commits d9d55ec bis heute):**
 - App: Arten **Quiz / Karteikarten / Klasse** (Smartboard, 30-s-Countdown, zwei Teams),
