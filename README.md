@@ -17,7 +17,9 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
 - Drei **Arten** (in den Einstellungen):
   - **Quiz** – üben am Handy, mit Note
   - **Karteikarten** – offene Fragen wie im Fragenkatalog und in der Schularbeit: Antwort selbst
-    überlegen, Musterantwort aufdecken, selbst einschätzen (gewusst / teilweise / nicht gewusst)
+    überlegen, Karte umdrehen (vorne Frage, hinten Musterantwort), dann „Gewusst“ oder „Nochmal“.
+    „Nochmal“-Karten kommen am Ende der Runde wieder, bis alle sitzen. Die Auswertung zeigt, was auf
+    Anhieb saß und was mehrere Anläufe brauchte.
   - **Klasse** – Klassenquiz am Smartboard: große Schrift, nur MC und Richtig/Falsch, 30 Sekunden
     Countdown, zwei Teams mit A-B-C-D-Karten, Lehrkraft löst auf und vergibt die Punkte, am Ende
     Teamstand und die Fragen, die kein Team konnte

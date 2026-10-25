@@ -55,7 +55,7 @@ auf jeden fehlenden.
 
 ## Empfohlene Reihenfolge
 
-1. Karteikarten zum Umdrehen mit „Gewusst / Nochmal“ – kleiner Aufwand, sofort spürbar.
+1. ✔ Karteikarten zum Umdrehen mit „Gewusst / Nochmal“ – gebaut 25.10.2026.
 2. Fragetyp OA für Aufzählungen und Zahlen, zuerst bei Milch und Käse ausprobieren.
 3. Bilder (SVG) für Pflegesymbole und Bio-Zeichen.
 4. Themen nach Lehrgangswoche ordnen.

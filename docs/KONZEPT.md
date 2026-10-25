@@ -119,7 +119,8 @@ MOPRO-Abteilung.
 **Als Nächstes:**
 1. ✔ Alle Themen der 2. Klasse auf Kern gebracht, Fragenkataloge, Zeichen- und Malbedarf neu
    (25.10.). Jetzt: Benedikt sieht das Quiz online durch und beantwortet die Fragen oben. Danach
-   Ideen aus `docs/IDEEN_NAECHSTE_STUFE.md` (Karteikarten zum Umdrehen, Fragetyp OA mit
+   Ideen aus `docs/IDEEN_NAECHSTE_STUFE.md` (✔ Karteikarten zum Umdrehen mit „Gewusst / Nochmal“
+   seit 25.10. online; offen: Fragetyp OA mit
    automatischer Korrektur, SVG-Bilder, Themen nach Lehrgangswoche). Fragenkatalog-Entwürfe als
    DOCX in einer VFW_Claude-Sitzung. Erst danach 1. Klasse.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich

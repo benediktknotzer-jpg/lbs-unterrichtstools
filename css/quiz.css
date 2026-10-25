@@ -750,29 +750,126 @@ span.feld.luecke.ist-falsch strong {
 
 /* ---------- Karteikarten ---------- */
 
-#karte-zeigen {
-  margin-top: 0.4rem;
+/* Die Frage steht auf der Karte selbst – die Überschrift bleibt nur für Vorlesegeräte */
+.karten-modus .frage {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-.karte-loesung {
-  margin-bottom: 1rem;
+.karteikarte {
+  display: block;
+  width: 100%;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  perspective: 1400px;
 }
 
-.karte-loesung .tabelle-inhalt p {
-  margin: 0;
+/* Beide Seiten liegen in derselben Rasterzelle – die Karte ist so hoch wie die längere Seite */
+.karte-innen {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
 }
 
-.karte-loesung .tabelle-inhalt p + p {
-  margin-top: 0.5rem;
+.karteikarte.umgedreht .karte-innen {
+  transform: rotateY(180deg);
 }
 
-.antworten.selbst .antwort {
+.karte-seite {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-height: 14rem;
+  padding: 1.1rem 1.2rem 1rem;
+  border: 2px solid var(--knb-blau);
+  border-top: 6px solid var(--knb-gelb);
+  border-radius: 8px;
+  background: var(--knb-weiss);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.14);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.karte-hinten {
+  transform: rotateY(180deg);
+  background: var(--knb-blau-hell);
+}
+
+.karte-etikett {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--knb-blau);
+}
+
+.karte-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.karte-hinten .karte-text {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.karte-erklaerung {
+  font-size: 0.95rem;
+  color: var(--knb-text-leise);
+}
+
+.karte-tipp {
+  margin-top: auto;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--knb-text-leise);
+}
+
+.karteikarte:hover .karte-seite {
+  box-shadow: 0 5px 16px rgba(0, 80, 144, 0.25);
+}
+
+.karteikarte:focus-visible {
+  outline: none;
+}
+
+.karteikarte:focus-visible .karte-seite {
+  outline: 3px solid var(--knb-blau);
+  outline-offset: 3px;
+}
+
+.antworten.karten-wahl {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+}
+
+.karten-wahl .antwort {
+  justify-content: center;
+  min-height: 3.8rem;
   font-weight: 700;
 }
 
-.antwort.selbst-gewusst .zeichen { background: var(--knb-richtig); }
-.antwort.selbst-teilweise .zeichen { background: var(--knb-warnung); }
-.antwort.selbst-nicht .zeichen { background: var(--knb-falsch); }
+.antwort.karte-gewusst .zeichen { background: var(--knb-richtig); }
+.antwort.karte-nochmal .zeichen { background: var(--knb-warnung); }
+
+@media (prefers-reduced-motion: reduce) {
+  .karte-innen {
+    transition: none;
+  }
+}
 
 /* ---------- Klassenquiz (Smartboard) ---------- */
 

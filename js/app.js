@@ -535,11 +535,13 @@
       thema: gewaehlt,
       art: art || 'ueben',
       fragen: mische(fragen).map(bereite),
+      anzahl: fragen.length,
       pos: 0,
       ergebnisse: [],
       punkte: { 1: 0, 2: 0 }
     };
     $('quiz-klasse-leiste').hidden = runde.art !== 'klasse';
+    $('ansicht-quiz').classList.toggle('karten-modus', runde.art === 'karten');
     zeigeStand();
     zeige('quiz', verlauf);
     zeigeFrage();
@@ -557,7 +559,14 @@
 
   function setzeFortschritt(erledigt) {
     var gesamt = runde.fragen.length;
-    $('quiz-fortschritt').textContent = 'Frage ' + (runde.pos + 1) + ' von ' + gesamt;
+    if (runde.art === 'karten') {
+      // Bei Karteikarten wächst der Stapel mit jedem „Nochmal“ – gezählt werden die gewussten Karten
+      gesamt = runde.anzahl;
+      erledigt = runde.ergebnisse.length;
+      $('quiz-fortschritt').textContent = 'Gewusst: ' + erledigt + ' von ' + gesamt;
+    } else {
+      $('quiz-fortschritt').textContent = 'Frage ' + (runde.pos + 1) + ' von ' + gesamt;
+    }
     $('quiz-balken').style.width = Math.round(erledigt / gesamt * 100) + '%';
     var rahmen = $('quiz-balken-rahmen');
     rahmen.setAttribute('aria-valuemax', String(gesamt));
@@ -577,7 +586,7 @@
 
     if (runde.art === 'karten' || runde.art === 'klasse') {
       $('quiz-anleitung').textContent = runde.art === 'karten'
-        ? 'Überlegen Sie die Antwort – laut, im Kopf oder auf einem Zettel. Dann tippen Sie auf „Antwort zeigen“.'
+        ? 'Überlegen Sie die Antwort – laut, im Kopf oder auf einem Zettel. Dann drehen Sie die Karte um.'
         : f.typ === 'RF'
           ? 'Richtig oder falsch? Jedes Team hält seine Karte hoch: A = richtig, B = falsch.'
           : 'Jedes Team hält seine Karte hoch: A, B, C oder D.';
@@ -721,42 +730,66 @@
     bereich.appendChild(box);
   }
 
-  /* Karteikarte: Frage → Musterantwort aufdecken → selbst einschätzen */
-  var STUFEN = [
-    { wert: 'gewusst', text: 'Gewusst', zeichen: '✓' },
-    { wert: 'teilweise', text: 'Teilweise', zeichen: '~' },
-    { wert: 'nicht', text: 'Nicht gewusst', zeichen: '✗' }
-  ];
+  /* Karteikarte zum Umdrehen: vorne die Frage, hinten die Musterantwort.
+     „Gewusst“ legt die Karte weg, „Nochmal“ legt sie ans Ende der Runde –
+     die Runde endet erst, wenn alle Karten gewusst sind (oder mit „Beenden“). */
+  function kartenSeite(klasse, etikett) {
+    var seite = el('span', 'karte-seite ' + klasse);
+    seite.appendChild(el('span', 'karte-etikett', etikett));
+    return seite;
+  }
 
   function zeigeKarte(v, bereich) {
-    var zeigen = knopf('knopf haupt', 'Antwort zeigen');
-    zeigen.id = 'karte-zeigen';
-    zeigen.addEventListener('click', function () {
-      zeigen.remove();
-      $('quiz-anleitung').textContent = 'Vergleichen Sie mit Ihrer Antwort. Wie gut wussten Sie es?';
-      var box = el('div', 'tabelle karte-loesung');
-      box.appendChild(el('div', 'tabelle-kopf', 'Musterantwort'));
-      var inhalt = el('div', 'tabelle-inhalt');
-      inhalt.appendChild(el('p', null, v.q.richtig));
-      if (v.q.erklaerung) inhalt.appendChild(el('p', 'erklaerung', v.q.erklaerung));
-      box.appendChild(inhalt);
-      bereich.appendChild(box);
+    var karte = knopf('karteikarte');
+    var innen = el('span', 'karte-innen');
+    var vorne = kartenSeite('karte-vorne', v.versuche ? 'Frage · zum ' + (v.versuche + 1) + '. Mal' : 'Frage');
+    vorne.appendChild(el('span', 'karte-text', v.q.frage));
+    vorne.appendChild(el('span', 'karte-tipp', 'Tippen zum Umdrehen'));
+    var hinten = kartenSeite('karte-hinten', 'Musterantwort');
+    hinten.appendChild(el('span', 'karte-text', v.q.richtig));
+    if (v.q.erklaerung) hinten.appendChild(el('span', 'karte-erklaerung', v.q.erklaerung));
+    hinten.setAttribute('aria-hidden', 'true');
+    innen.appendChild(vorne);
+    innen.appendChild(hinten);
+    karte.appendChild(innen);
+    karte.setAttribute('aria-pressed', 'false');
+    bereich.appendChild(karte);
 
-      var reihe = el('div', 'antworten selbst');
-      STUFEN.forEach(function (s) {
-        var b = antwortKnopf(s.zeichen, s.text);
-        b.classList.add('selbst-' + s.wert);
-        b.addEventListener('click', function () {
-          runde.ergebnisse.push({ q: v.q, korrekt: s.wert === 'gewusst', stufe: s.wert });
-          naechsteFrage();
-        });
-        reihe.appendChild(b);
-      });
-      bereich.appendChild(reihe);
-      reihe.firstChild.focus({ preventScroll: true });
-      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    var wahl = el('div', 'antworten karten-wahl');
+    var nochmal = antwortKnopf('↻', 'Nochmal');
+    nochmal.classList.add('karte-nochmal');
+    var gewusst = antwortKnopf('✓', 'Gewusst');
+    gewusst.classList.add('karte-gewusst');
+    wahl.appendChild(nochmal);
+    wahl.appendChild(gewusst);
+    wahl.hidden = true;
+    bereich.appendChild(wahl);
+
+    karte.addEventListener('click', function () {
+      var umgedreht = karte.classList.toggle('umgedreht');
+      karte.setAttribute('aria-pressed', String(umgedreht));
+      vorne.setAttribute('aria-hidden', String(umgedreht));
+      hinten.setAttribute('aria-hidden', String(!umgedreht));
+      if (!umgedreht || !wahl.hidden) return;
+      $('quiz-anleitung').textContent = 'Vergleichen Sie mit Ihrer Antwort. Gewusst? ' +
+        'Sonst „Nochmal“ – die Karte kommt am Ende der Runde wieder.';
+      wahl.hidden = false;
+      gewusst.focus({ preventScroll: true });
+      wahl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
-    bereich.appendChild(zeigen);
+
+    gewusst.addEventListener('click', function () {
+      if (!runde) return;
+      var versuche = v.versuche || 0;
+      runde.ergebnisse.push({ q: v.q, korrekt: versuche === 0, versuche: versuche });
+      naechsteFrage();
+    });
+    nochmal.addEventListener('click', function () {
+      if (!runde) return;
+      v.versuche = (v.versuche || 0) + 1;
+      runde.fragen.push(v);
+      naechsteFrage();
+    });
   }
 
   /* Klassenquiz: Antworten nur anzeigen, die Teams antworten mit Karten,
@@ -1045,15 +1078,15 @@
   }
 
   // Karteikarte oder Klassenquiz: Frage mit Lösung (ohne „Ihre Antwort“)
-  var STUFE_TEXT = { teilweise: 'Ihre Einschätzung: teilweise gewusst', nicht: 'Ihre Einschätzung: nicht gewusst' };
-
   function loesungEintrag(e, nr) {
     var q = e.q;
     var li = el('li', 'tabelle');
     li.appendChild(el('div', 'tabelle-kopf', 'Frage ' + nr + ' · ' + q.thema));
     var inhalt = el('div', 'tabelle-inhalt');
     inhalt.appendChild(zeile('falsch-frage', q.frage));
-    if (e.stufe && STUFE_TEXT[e.stufe]) inhalt.appendChild(zeile('zeile-ihre', STUFE_TEXT[e.stufe]));
+    if (e.versuche) {
+      inhalt.appendChild(zeile('zeile-ihre', 'Gewusst nach ' + mehrzahl(e.versuche + 1, 'Anlauf', 'Anläufen')));
+    }
     var loesung = q.typ === 'RF' ? (q.erklaerung || 'Die Aussage ist ' + rfText(q.richtig) + '.') : q.richtig;
     inhalt.appendChild(zeile('zeile-richtig', '✓ ' + loesung));
     if (q.erklaerung && q.typ !== 'RF') inhalt.appendChild(zeile('erklaerung', q.erklaerung));
@@ -1104,19 +1137,17 @@
     $('erg-schluessel-tabelle').hidden = art !== 'ueben';
 
     if (art === 'karten') {
-      var teilweise = erg.filter(function (e) { return e.stufe === 'teilweise'; }).length;
       $('erg-titel').textContent = 'Karteikarten: ' + letzteRunde.thema.titel;
       $('erg-prozent').textContent = richtig + ' von ' + erg.length;
-      $('erg-anzahl').textContent = 'gewusst · teilweise: ' + teilweise + ' · nicht gewusst: ' +
-        (erg.length - richtig - teilweise);
+      $('erg-anzahl').textContent = 'Karten auf Anhieb gewusst';
       $('erg-text').textContent = richtig === erg.length
-        ? 'Alles gewusst – so sind Sie für die Schularbeit gerüstet.'
-        : 'Lesen Sie die Musterantworten unten und wiederholen Sie, was noch nicht sitzt.';
-      $('erg-falsch-titel').textContent = 'Noch üben – die Musterantworten';
-      $('erg-wiederholen').textContent = 'Noch nicht Gewusstes wiederholen (' + offen.length + ')';
+        ? 'Alles auf Anhieb gewusst – so sind Sie für die Schularbeit gerüstet.'
+        : 'Am Ende saßen alle Karten. Die unten brauchten mehrere Anläufe – üben Sie sie morgen noch einmal.';
+      $('erg-falsch-titel').textContent = 'Mehrere Anläufe gebraucht – die Musterantworten';
+      $('erg-wiederholen').textContent = 'Diese Karten nochmals üben (' + offen.length + ')';
       offen.forEach(function (e, i) { liste.appendChild(loesungEintrag(e, i + 1)); });
       zeigeUnterthemen(erg);
-      $('erg-unterthemen-spalte').textContent = 'Gewusst';
+      $('erg-unterthemen-spalte').textContent = 'Auf Anhieb';
     } else if (art === 'klasse') {
       var p1 = letzteRunde.punkte[1];
       var p2 = letzteRunde.punkte[2];
