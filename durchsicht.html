@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="noindex">
+  <title>Durchsicht · Warenkunde-Quiz</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/knb-stil.css?v=2026-10-24">
+  <style>
+    /* Durchsicht für die Lehrkraft: alle Fragen eines Themas mit Lösung auf einen Blick */
+    .ds-wahl { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; margin: 0.8rem 0 1rem; }
+    .ds-wahl label { display: flex; gap: 0.4rem; align-items: center; max-width: 100%; }
+    .ds-wahl select, .ds-wahl input[type=search] { font: inherit; padding: 0.3rem 0.4rem; min-width: 0; flex: 1 1 auto; }
+    .ds-zahl { color: var(--knb-text-leise); font-style: italic; margin: 0 0 1rem; }
+    .ds-frage { border: 1px solid var(--knb-rahmen); border-left: 5px solid var(--knb-blau);
+      border-radius: 4px; padding: 0.6rem 0.8rem; margin: 0 0 0.8rem; break-inside: avoid; }
+    .ds-frage.pruefen { border-left-color: #C00000; }
+    .ds-kopf { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; font-size: 0.85rem;
+      color: var(--knb-text-leise); margin-bottom: 0.3rem; }
+    .ds-kopf b { color: var(--knb-blau); }
+    .ds-text { font-weight: 700; margin: 0 0 0.4rem; }
+    .ds-frage ul, .ds-frage ol { margin: 0.2rem 0 0.4rem; padding-left: 1.3rem; }
+    .ds-ok { color: #1E7B34; font-weight: 700; }
+    .ds-nein { color: #6B6B6B; }
+    .ds-luecke { background: #E7EFF7; font-weight: 700; padding: 0 0.2rem; }
+    .ds-erkl { font-size: 0.92rem; margin: 0.3rem 0 0; }
+    .ds-quelle { font-size: 0.85rem; color: var(--knb-text-leise); margin: 0.3rem 0 0; }
+    .ds-quelle.warn { color: #C00000; font-weight: 700; }
+    mark.ds-num { background: #FFF3A6; padding: 0 0.1rem; }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      .ds-wahl { display: none; }
+      mark.ds-num { background: none; text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+  <header class="knb-kopf">
+    <div class="knb-kopf-inhalt">
+      <div class="knb-kopf-text">
+        <h1 class="knb-titel">Durchsicht: Warenkunde-Quiz</h1>
+        <p class="knb-kopf-fach">Für die Lehrkraft · alle Fragen mit Lösung, Erklärung und Quelle</p>
+      </div>
+      <img class="knb-logo" src="bilder/lbs-logo.png" width="286" height="109"
+           alt="Landesberufsschule Theresienfeld">
+    </div>
+  </header>
+
+  <main class="knb-inhalt">
+    <div class="ds-wahl">
+      <label>Thema <select id="ds-thema"></select></label>
+      <label>Fragetyp <select id="ds-typ"><option value="">alle</option></select></label>
+      <label><input type="checkbox" id="ds-zahlen"> nur Fragen mit Zahlen</label>
+      <label>Suche <input type="search" id="ds-suche" placeholder="z. B. Pasteur"></label>
+    </div>
+    <p class="ds-zahl" id="ds-zahl"></p>
+    <div id="ds-fehler" class="knb-hinweis" hidden></div>
+    <div id="ds-liste"></div>
+  </main>
+
+  <footer class="knb-fuss">
+    <div class="knb-fuss-inhalt">
+      <p>Benedikt Knotzer | knb</p>
+      <p>LBS Theresienfeld</p>
+    </div>
+  </footer>
+
+  <script src="js/csv.js?v=2026-11-09"></script>
+  <script>
+    // durchsicht.html?thema=milch-milchprodukte.csv – Zahlen sind gelb markiert,
+    // „bitte prüfen“ in der Quelle rot. Liest dieselben CSV-Dateien wie das Quiz.
+    (function () {
+      'use strict';
+      var TYPNAME = { MC: 'Auswahl (eine richtig)', MM: 'Mehrfachauswahl', RF: 'Richtig/Falsch',
+        ZU: 'Zuordnen', RH: 'Reihenfolge', LT: 'Lückentext', OF: 'Karteikarte', OA: 'Offene Antwort' };
+      var selThema = document.getElementById('ds-thema');
+      var selTyp = document.getElementById('ds-typ');
+      var cbZahl = document.getElementById('ds-zahlen');
+      var suche = document.getElementById('ds-suche');
+      var liste = document.getElementById('ds-liste');
+      var zahl = document.getElementById('ds-zahl');
+      var fehler = document.getElementById('ds-fehler');
+      var zeilen = [];
+      var params = new URLSearchParams(location.search);
+
+      function el(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text != null) e.textContent = text;
+        return e;
+      }
+      // Text einsetzen, Zahlen gelb markieren (sicher: nur Textknoten, kein innerHTML)
+      function mitZahlen(ziel, text) {
+        var re = /\d+(?:[.,]\d+)*/g, pos = 0, m;
+        while ((m = re.exec(text))) {
+          ziel.appendChild(document.createTextNode(text.slice(pos, m.index)));
+          ziel.appendChild(el('mark', 'ds-num', m[0]));
+          pos = m.index + m[0].length;
+        }
+        ziel.appendChild(document.createTextNode(text.slice(pos)));
+        return ziel;
+      }
+      function teile(s) { return (s || '').split('|').map(function (t) { return t.trim(); }).filter(Boolean); }
+      function punkt(ul, text, cls) { ul.appendChild(mitZahlen(el('li', cls), text)); }
+
+      function karte(z) {
+        var k = el('div', 'ds-frage');
+        var kopf = el('div', 'ds-kopf');
+        var b = el('b', null, 'Nr. ' + z.nr); kopf.appendChild(b);
+        kopf.appendChild(el('span', null, TYPNAME[z.typ] || z.typ));
+        kopf.appendChild(el('span', null, z.thema));
+        k.appendChild(kopf);
+
+        if (z.typ === 'LT') {
+          var p = el('p', 'ds-text', z.frage);
+          k.appendChild(p);
+          var lt = el('p');
+          z.richtig.split(/(\[[^\]]*\])/).forEach(function (s) {
+            if (/^\[.*\]$/.test(s)) lt.appendChild(mitZahlen(el('span', 'ds-luecke'), s.slice(1, -1)));
+            else mitZahlen(lt, s);
+          });
+          k.appendChild(lt);
+          var abl = [z.falsch1, z.falsch2, z.falsch3].filter(Boolean);
+          if (abl.length) k.appendChild(mitZahlen(el('p', 'ds-nein'), 'Ablenkwörter: ' + abl.join(' · ')));
+        } else {
+          k.appendChild(mitZahlen(el('p', 'ds-text'), z.frage));
+          var ul;
+          if (z.typ === 'MC' || z.typ === 'MM') {
+            ul = el('ul');
+            teile(z.richtig).forEach(function (t) { punkt(ul, '✔ ' + t, 'ds-ok'); });
+            var falsche = z.typ === 'MM' ? teile([z.falsch1, z.falsch2, z.falsch3].join('|'))
+              : [z.falsch1, z.falsch2, z.falsch3].filter(Boolean);
+            falsche.forEach(function (t) { punkt(ul, '✘ ' + t, 'ds-nein'); });
+            k.appendChild(ul);
+          } else if (z.typ === 'RF') {
+            k.appendChild(mitZahlen(el('p', 'ds-ok'), 'Lösung: ' + z.richtig));
+          } else if (z.typ === 'ZU') {
+            ul = el('ul');
+            teile(z.richtig).forEach(function (t) { punkt(ul, t.replace(/\s*=\s*/, ' → '), 'ds-ok'); });
+            k.appendChild(ul);
+          } else if (z.typ === 'RH') {
+            ul = el('ol');
+            teile(z.richtig).forEach(function (t) { punkt(ul, t, 'ds-ok'); });
+            k.appendChild(ul);
+          } else if (z.typ === 'OF') {
+            k.appendChild(mitZahlen(el('p', 'ds-ok'), 'Musterantwort: ' + z.richtig));
+          } else if (z.typ === 'OA') {
+            k.appendChild(mitZahlen(el('p', 'ds-ok'), 'Musterantwort: ' + z.richtig));
+            var begr = teile(z.falsch1);
+            k.appendChild(mitZahlen(el('p', 'ds-erkl'), 'Korrigiert nach: ' + begr.join(' · ') +
+              ' (genügen: ' + (z.falsch2 || begr.length) + ' von ' + begr.length + ')'));
+          }
+        }
+        if (z.erklaerung) k.appendChild(mitZahlen(el('p', 'ds-erkl'), 'Erklärung: ' + z.erklaerung));
+        var pruefen = /bitte prüfen/i.test(z.quelle);
+        if (pruefen) k.classList.add('pruefen');
+        k.appendChild(el('p', 'ds-quelle' + (pruefen ? ' warn' : ''), 'Quelle: ' + (z.quelle || '– fehlt –')));
+        return k;
+      }
+
+      function zeige() {
+        var typ = selTyp.value, nurZahl = cbZahl.checked, s = suche.value.trim().toLowerCase();
+        liste.textContent = '';
+        var n = 0;
+        zeilen.forEach(function (z) {
+          var alles = [z.frage, z.richtig, z.falsch1, z.falsch2, z.falsch3, z.erklaerung].join(' ');
+          if (typ && z.typ !== typ) return;
+          if (nurZahl && !/\d/.test(alles)) return;
+          if (s && (alles + ' ' + z.quelle + ' ' + z.thema).toLowerCase().indexOf(s) < 0) return;
+          liste.appendChild(karte(z));
+          n++;
+        });
+        zahl.textContent = n + ' von ' + zeilen.length + ' Fragen';
+      }
+
+      function ladeThema(datei) {
+        fehler.hidden = true;
+        liste.textContent = '';
+        zahl.textContent = 'Lädt …';
+        fetch('daten/' + datei, { cache: 'no-cache' }).then(function (r) {
+          if (!r.ok) throw new Error('Datei ' + datei + ' nicht gefunden (' + r.status + ').');
+          return r.arrayBuffer();
+        }).then(function (buf) {
+          var p = QuizDaten.parseCsv(QuizDaten.dekodiere(buf).text, ';');
+          var kopf = p.datensaetze[0].felder.map(function (f) { return f.trim().toLowerCase(); });
+          zeilen = p.datensaetze.slice(1).map(function (d) {
+            var o = {};
+            kopf.forEach(function (k, i) { o[k] = (d.felder[i] || '').trim(); });
+            return o;
+          });
+          var typen = {};
+          zeilen.forEach(function (z) { typen[z.typ] = (typen[z.typ] || 0) + 1; });
+          selTyp.length = 1;
+          Object.keys(typen).sort().forEach(function (t) {
+            selTyp.appendChild(new Option((TYPNAME[t] || t) + ' (' + typen[t] + ')', t));
+          });
+          var u = new URL(location.href); u.searchParams.set('thema', datei);
+          history.replaceState(null, '', u);
+          zeige();
+        }).catch(function (e) {
+          fehler.textContent = e.message; fehler.hidden = false; zahl.textContent = '';
+        });
+      }
+
+      fetch('daten/themen.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })
+        .then(function (themen) {
+          themen.filter(function (t) { return t.datei; }).forEach(function (t) {
+            selThema.appendChild(new Option(t.titel + ' (Klasse ' + (t.klassen || []).join(', ') + ')', t.datei));
+          });
+          var gewuenscht = params.get('thema');
+          if (gewuenscht && [].some.call(selThema.options, function (o) { return o.value === gewuenscht; })) {
+            selThema.value = gewuenscht;
+          }
+          ladeThema(selThema.value);
+        }).catch(function (e) { fehler.textContent = 'themen.json: ' + e.message; fehler.hidden = false; });
+
+      selThema.addEventListener('change', function () { ladeThema(selThema.value); });
+      selTyp.addEventListener('change', zeige);
+      cbZahl.addEventListener('change', zeige);
+      suche.addEventListener('input', zeige);
+    })();
+  </script>
+</body>
+</html>

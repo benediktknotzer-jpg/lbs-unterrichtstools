@@ -59,6 +59,20 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
 - `daten/fleisch-rindfleisch.csv` darf seit 15.10.2026 bearbeitet werden (Freigabe Benedikt).
 - Spalte `quelle`: woher die Frage stammt (z. B. „SA1 FOOD“, „AA Milch“). Inhalte, die nicht aus
   Benedikts Unterlagen stammen, mit „… – bitte prüfen“ markieren.
+- **Zahlen nur mit Beleg (Entscheidung Benedikt 09.11.2026):** Keine Zahl (Temperatur, Fettgehalt,
+  Dauer, Prozent, Menge) ohne Beleg. Grundlage ist das Warenkundebuch, die Seite steht in `quelle`.
+  Gibt es neuere Daten als das Buch, gilt das Neuere nur, wenn es mehrfach geprüft ist: Primärquelle
+  (EU-Verordnung, Österreichisches Lebensmittelbuch, Schutzkonsortium, AMA, AGES) **und** eine zweite
+  unabhängige Quelle; dann Quelle mit Stand in `quelle`/`erklaerung`. Zahlen, die nur in einem
+  Infoblatt, AA III. LG oder Kollegenmaterial stehen und sich so nicht belegen lassen, werden auf den
+  Buchwert gestellt oder gestrichen. Das ersetzt für Zahlen die Regel vom 15.10. („bei Widerspruch
+  gilt das eigene IB“). Ändert sich dadurch eine Zahl, die im Infoblatt anders steht, in
+  `docs/LEHRGANG_II_2GH2B.md` vermerken: Die VFW-Sitzung zieht das Infoblatt nach.
+- **Nur 2. Klasse (Benedikt 09.11.2026):** Bis die 2GH2b fertig ist, nur Themen der 2. Klasse.
+  Was wann unterrichtet wird, steht in `docs/LEHRGANG_II_2GH2B.md` (abgeleitet aus dem
+  VFW-Gerüst FP 2GH2b); bei jeder Sitzung zuerst dort und im VFW-Gerüst nachsehen.
+- Durchsicht für die Lehrkraft: `durchsicht.html?thema=<datei>.csv` zeigt alle Fragen eines Themas
+  mit Lösung, Erklärung und Quelle, Zahlen gelb, „bitte prüfen“ rot.
 - Fragen sollen den Unterrichtsstoff wiederholen: aus Arbeitsaufträgen, Lösungen, Infoblättern,
   Schularbeiten in VFW_Claude ableiten. Sprache: österreichisches Deutsch, Sie-Form.
 - **Nur Kernstoff (Entscheidung Benedikt 25.10.2026):** kein Zusatzwissen, das in der Stunde nicht

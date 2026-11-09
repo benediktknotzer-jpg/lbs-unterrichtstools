@@ -1,11 +1,25 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 25. Oktober 2026 · für Benedikt Knotzer (knb)
+Stand: 9. November 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
+
+**09.11. – II. Lehrgang läuft, nur 2. Klasse (Entscheidungen Benedikt):**
+- **Zahlen nur mit Beleg:** Grundlage ist das Buch; Neueres nur, wenn mehrfach belegt (Regel in
+  `CLAUDE.md`). Ersetzt für Zahlen „bei Widerspruch gilt das IB“ vom 15.10.
+- **Nur 2. Klasse fertig machen**, abgestimmt auf den Unterricht der 2GH2b:
+  `docs/LEHRGANG_II_2GH2B.md` (Wochenplan aus dem VFW-Gerüst, Quiz je Woche, was nicht passt).
+- Neu: `durchsicht.html` – alle Fragen eines Themas mit Lösung, Erklärung, Quelle, Zahlen gelb.
+- Milch (Unterricht Di 10.11.): alle Zahlen gegen IB und Fragenkatalog (am Buch geprüft 17.08.)
+  abgeglichen. Nr. 61 auf Buch S. 94 gestellt (Mascarpone 80 % F. i. T. statt „40 bis 45 %“ aus
+  dem AA III. LG).
+- Die fünf Widersprüche vom 25.10. sind nach der neuen Regel entschieden und im Quiz umgesetzt,
+  siehe „Widersprüche 09.11.“ unten. **Nächster Schritt:** Benedikt sieht Milch in
+  `durchsicht.html` durch; danach Quiz je Thema auf die Fragenkataloge des II. LG ausrichten
+  (Fleisch zuerst, bis 27.11.), Reihenfolge und Fristen in `docs/LEHRGANG_II_2GH2B.md`.
 
 **Woran wir arbeiten:** Am 25.10. alle Themen der 2. Klasse auf den Kernstoff gebracht und
 online gestellt (Freigabe Benedikt: „das Ganze durchziehen“). Jedes Warenkunde-Thema hat jetzt
@@ -37,14 +51,24 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 | Spielzeug & Prüfsiegel (Non-Food) | `spielzeug.csv` | 41 | 14 | Entwurf (14) | kein Buch, IB W10 |
 | Zeichen- und Malbedarf (Non-Food) | `zeichen-malbedarf.csv` | 25 | 12 | Entwurf (12) | kein Buch, IB W10 |
 
-**Fragen an Benedikt aus der Durchsicht vom 25.10.** (Details im `hinweis` der Streichlisten; im
-Quiz gilt bis zur Antwort das eigene IB):
-- **Fische:** Rotbarsch und Karpfen sind in LAP-Lösung und Quiz Magerfische, laut Buch S. 154
-  mittelfett. Fischdauerkonserven: LAP und Quiz „über 120 °C“, Buch S. 158 „über 100 °C“.
-- **Fleisch:** Tiefkühl-Lagerdauer (Nr. 61) aus der AMA-Broschüre, Buch S. 124 nennt längere
-  Zeiten. Bleiben die Teilstück-Fragen 65–71 und 80 (Buch, aber keine Aufgabe)?
-- **Fette:** IB „Kaltpressung ohne Wärmezufuhr“, Buch S. 167 „unter 60 °C“.
-- **Feinkost:** Parma laut IB mindestens 14 Monate, laut Buch und Film bis zu einem Jahr.
+**Widersprüche 09.11. – entschieden nach „Zahlen nur mit Beleg“** (Buchstellen am 09.11. selbst
+nachgelesen, neuere Daten von einem Recherche-Agenten mit Primärquellen belegt):
+
+| Punkt | Buch | IB/Quiz bisher | Neuere Quellen | Entscheidung, umgesetzt |
+|---|---|---|---|---|
+| Rotbarsch, Karpfen | S. 154: mittelfett (2–10 %) | mager | Karpfen 5–7 % (BLS 4.0, USDA, LK NÖ 2021); Rotbarsch 3,5 % (BLS 4.0), USDA 1,5 % | **Buch.** Fische Nr. 3, 60, 66 |
+| Fischdauerkonserven | S. 158: über 100 °C | über 120 °C | Codex B 35 und dt. Leitsätze 2023 nennen keine Temperatur | **Buch.** Fische Nr. 38 |
+| TK-Lagerdauer Fleisch | S. 124: Rind 8–12, Schwein mager 6, fett 4, Faschiertes 3 Monate | AMA: 8 / Kalb 6 / 5 / 2 | VKI 07/2025: Rind bis 12, Schwein mager bis 8, fett bis 4, Faschiertes bis 3; AMA-Broschüre online nicht auffindbar | **Buch** (VKI bestätigt Rind und Faschiertes, Schwein nicht einheitlich). Fleisch Nr. 61, 62 |
+| Kaltpressung | S. 167: unter 60 °C | ohne Wärmezufuhr | Lebensmittelbuch B 30 (06/2025), dt. Leitsätze 2024, AGES 2023: „ohne Wärmezufuhr“; für 60 °C keine Quelle | **Neuer Stand = IB.** Fette Nr. 22, 80 (Quelle ergänzt) |
+| Parma | S. 148: bis zu einem Jahr | mindestens 14 Monate | Spezifikation Consorzio 05/2025, EU-DVO 2023/461, drei Fachmedien | **Neuer Stand = IB.** Feinkost Nr. 10, 39 |
+| San Daniele | S. 148: bis zu 14 Monate | (nicht im Quiz) | ABl. C/2025/4198, EU-DVO 2023/467: mindestens 400 Tage | nichts im Quiz zu ändern; IB in VFW prüfen |
+
+Damit widersprechen jetzt **IB/LAP-Lösungen in VFW** dem Quiz bei Rotbarsch/Karpfen, 120 °C und
+der TK-Tabelle (AMA-Frageblatt Fleisch). Nachziehen in einer VFW-Sitzung, Liste in
+`docs/LEHRGANG_II_2GH2B.md`.
+
+**Noch offen aus der Durchsicht vom 25.10.:**
+- **Fleisch:** Bleiben die Teilstück-Fragen 65–71 und 80 (Buch, aber keine Aufgabe)?
 - **Käse:** Fragen mit Quelle „SA1 FOOD“ stammen aus der alten SA des III. LG (nicht Kern, aber
   im Buch, daher geblieben). Wurde das Sensorik-Protokoll Käse in der 2GH1b verwendet?
 - **Eier:** Sollen Klasse A Extra oder die Schwimmprobe (Buch S. 115–116) ins Quiz?
