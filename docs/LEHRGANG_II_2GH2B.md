@@ -64,5 +64,11 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
      fett 4, Faschiertes 3 Monate) – AMA-Frageblatt mit Lösung bzw. Fragenkatalog Fleisch Frage 6.
    - Feinkost (W5, Mi 09.12.): San Daniele **mindestens 400 Tage, rund 13 Monate** (EU-Spezifikation
      2025) statt „bis zu 14 Monate“ im Buch – IB Feinkost, falls dort übernommen. Parma 14 Monate stimmt.
+   - Milch (W1, Prüfung 10.11., Auftrag an eine VFW-Sitzung geschickt): A2-Milch enthält
+     gleich viel Milchzucker wie normale Milch (a2 Milk Company, Max-Rubner-Institut) – Buch S. 91
+     ist überholt; IB Abschnitt 5 und „Zum Nachschlagen“, Lösung Fragenkatalog Frage 12. Buttermilch
+     „gehört zu den Milcherzeugnissen mit dem niedrigsten Energiegehalt“ (Buch S. 92) statt „den
+     niedrigsten aller“ – IB, PRÄ Folie 10. PRÄ-Notizen um eine Folie verrutscht. Quiz: Nr. 4, 57,
+     63, 65, 69, 74, 92, 104 angepasst.
    - Fette (W8): „ohne Wärmezufuhr“ im IB stimmt (Lebensmittelbuch B 30); das Buch S. 167 sagt
      „unter 60 °C“ – mündlich als veraltet erwähnen.
