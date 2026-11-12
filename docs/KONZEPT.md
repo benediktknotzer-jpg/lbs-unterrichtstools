@@ -16,7 +16,9 @@ erwartet Karpfen = Magerfisch – die Materialsammlung ersetzt den Karpfen. **12
 Verkostungsblatt und Karte 103 raus, 16 Karten im Wortlaut des Fragenkatalogs W2, u. a. LMIV statt
 „Verbraucherinformationsverordnung“), Milch MC 74 („nicht laktosefrei“), Entwürfe als überholt
 markiert, Zugang mit Code lokal bei 360 px geprüft. Das Quiz kommt **Mo 16.11.** zum ersten Mal mit
-Code in die 2GH2b. **Nächster Schritt:** Mischquiz nur SA-Stoff (bis 20.11.), dann Fleisch (bis 27.11.).
+Code in die 2GH2b. **Ebenfalls 12.11.:** Mischquiz nur mit SA-Stoff laut Stoffbekanntgabe SA1/SA2
+II. LG – neue Angabe `auswahl` in `themen.json` (je Datei `nur`/`ohne` Unterthemen oder Nummern),
+vom Test geprüft. **Nächster Schritt:** Fleisch auf Katalog W4 (bis 27.11.).
 
 **09.11. – II. Lehrgang läuft, nur 2. Klasse (Entscheidungen Benedikt):**
 - **Zahlen nur mit Beleg:** Grundlage ist das Buch; Neueres nur, wenn mehrfach belegt (Regel in
@@ -42,8 +44,8 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 
 | Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
 |-------|-------|-----:|-------:|---------------|------|
-| Wiederholung zur 1. Schularbeit | `"mix"` | 290 | 64 | – | – |
-| Wiederholung zur 2. Schularbeit | `"mix"` | 493 | 117 | – | – |
+| Wiederholung zur 1. Schularbeit | `"mix"` + `auswahl` | 266 | 65 | – (Stoff SA1 II. LG) | – |
+| Wiederholung zur 2. Schularbeit | `"mix"` + `auswahl` | 466 | 114 | – (Stoff SA2 II. LG) | – |
 | Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | Katalog W1 | S. 89–95 |
 | Käse | `kaese.csv` | 85 (10 OA) | 16 = Katalog W2 II. LG | Katalog W2 | S. 100–113 |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 15 | Entwurf (15) | S. 118–133, AMA-Broschüre |

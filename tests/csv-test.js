@@ -38,6 +38,24 @@ themen.forEach(function (t) {
         assert.ok(themen.some(function (x) { return x.datei === datei; }), datei + ' fehlt in themen.json');
       });
     });
+    if (t.auswahl) {
+      test(t.titel + ': „auswahl“ nennt nur vorhandene Unterthemen und Nummern', function () {
+        Object.keys(t.auswahl).forEach(function (datei) {
+          assert.ok(t.mix.indexOf(datei) >= 0, datei + ' steht in „auswahl“, aber nicht in „mix“');
+          var fragen = Q.ladeFragen(fs.readFileSync(path.join(daten, datei), 'utf8')).fragen;
+          var w = t.auswahl[datei];
+          Object.keys(w).forEach(function (k) {
+            assert.ok(k === 'nur' || k === 'ohne', datei + ': nur „nur“ oder „ohne“ erlaubt, nicht „' + k + '“');
+            w[k].forEach(function (x) {
+              var da = fragen.some(function (f) {
+                return typeof x === 'number' ? String(f.nr) === String(x) : f.thema === x;
+              });
+              assert.ok(da, datei + ': „' + x + '“ gibt es nicht (Tippfehler im Unterthema?)');
+            });
+          });
+        });
+      });
+    }
     return;
   }
   test(t.titel + ' (' + t.datei + ') lädt ohne Fehler', function () {

@@ -176,6 +176,7 @@
         typeof eintrag.titel === 'string' && eintrag.titel.trim()) {
       thema.titel = eintrag.titel.trim();
       thema.mix = eintrag.mix;
+      if (eintrag.auswahl && typeof eintrag.auswahl === 'object') thema.auswahl = eintrag.auswahl;
       return Promise.resolve(thema);
     }
     if (!eintrag || typeof eintrag !== 'object' ||
@@ -202,7 +203,15 @@
     });
   }
 
-  // Fragen der genannten Themen übernehmen; Unterthema ist dann das ursprüngliche Thema
+  // Trifft ein Eintrag aus „nur“/„ohne“ die Frage? Text = Unterthema, Zahl = Fragennummer
+  function trifft(liste, f) {
+    return liste.some(function (x) {
+      return typeof x === 'number' ? String(x) === String(f.nr) : x === f.thema;
+    });
+  }
+
+  // Fragen der genannten Themen übernehmen; Unterthema ist dann das ursprüngliche Thema.
+  // „auswahl“: { "datei.csv": { "nur": [...] } oder { "ohne": [...] } } schränkt eine Datei ein.
   function stelleMischungZusammen(mischung, alle) {
     mischung.mix.forEach(function (datei) {
       var quelle = alle.filter(function (t) { return t.datei === datei; })[0];
@@ -210,7 +219,12 @@
         mischung.fehler.push('Das Thema „' + datei + '“ aus „mix“ steht nicht in themen.json.');
         return;
       }
+      var wahl = (mischung.auswahl && mischung.auswahl[datei]) || {};
+      var nur = Array.isArray(wahl.nur) ? wahl.nur : null;
+      var ohne = Array.isArray(wahl.ohne) ? wahl.ohne : [];
       quelle.fragen.forEach(function (f) {
+        if (nur && !trifft(nur, f)) return;
+        if (trifft(ohne, f)) return;
         var kopie = {};
         for (var k in f) if (Object.prototype.hasOwnProperty.call(f, k)) kopie[k] = f[k];
         kopie.thema = quelle.titel;

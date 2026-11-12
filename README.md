@@ -287,6 +287,20 @@ Auf der Startseite hat die Karte einen gelben Rand.
 { "titel": "Wiederholung zur 2. Schularbeit", "mix": ["eier.csv", "fische.csv"] }
 ```
 
+Nur Schularbeitsstoff: Mit `"auswahl"` lässt sich je Datei einschränken – `"nur"` nimmt nur die
+genannten Unterthemen, `"ohne"` lässt sie weg. Eine Zahl statt eines Textes meint die Fragennummer.
+`tests/csv-test.js` meldet Unterthemen und Nummern, die es nicht gibt (Tippfehler).
+
+```json
+{ "titel": "Wiederholung zur 1. Schularbeit",
+  "mix": ["fleisch-rindfleisch.csv", "beratungsfaelle.csv"],
+  "auswahl": { "fleisch-rindfleisch.csv": { "ohne": ["Teilstücke Rind", 72] },
+               "beratungsfaelle.csv": { "nur": ["Milch", "Käse", "Fleisch"] } } }
+```
+
+Ältere App-Fassungen übersehen `"auswahl"` einfach und mischen ganze Dateien; es geht also nichts
+kaputt, wenn ein Handy kurz noch die alte Fassung hat.
+
 „Alle Themen gemischt“ braucht keinen Eintrag: Die App stellt diese Mischung aus allen Themen der
 Klasse selbst zusammen (blauer Rand).
 

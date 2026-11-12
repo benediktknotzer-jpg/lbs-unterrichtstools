@@ -1,10 +1,23 @@
 [
   { "titel": "Wiederholung zur 1. Schularbeit", "klassen": ["2"],
-    "mix": ["milch-milchprodukte.csv", "kaese.csv", "fleisch-rindfleisch.csv", "verkauf-marketing.csv"] },
+    "mix": ["milch-milchprodukte.csv", "kaese.csv", "fleisch-rindfleisch.csv", "verkauf-marketing.csv",
+            "beratungsfaelle.csv"],
+    "auswahl": {
+      "milch-milchprodukte.csv": { "ohne": ["Zusammensetzung", "Sauermilch und Rahm"] },
+      "kaese.csv": { "ohne": ["Lagerung & Service"] },
+      "fleisch-rindfleisch.csv": { "ohne": ["Teilstücke Rind", 72] },
+      "beratungsfaelle.csv": { "nur": ["Milch", "Käse", "Fleisch", "Verkaufsgespräch"] }
+    } },
   { "titel": "Wiederholung zur 2. Schularbeit", "klassen": ["2"],
     "mix": ["feinkost-zusatzverkauf.csv", "eier.csv", "fische.csv", "inventurdifferenzen.csv",
             "speisefette-oele.csv", "kakao-schokolade.csv", "diaetetische-lebensmittel.csv", "biowaren.csv",
-            "beratungsfaelle.csv"] },
+            "beratungsfaelle.csv"],
+    "auswahl": {
+      "feinkost-zusatzverkauf.csv": { "ohne": ["Film Parma und Kochschinken"] },
+      "biowaren.csv": { "ohne": ["Kontrollnummer"] },
+      "beratungsfaelle.csv": { "nur": ["Feinkost", "Eier", "Fische", "Speisefette", "Kakao und Schokolade",
+                                       "Diätetische Lebensmittel", "Biowaren"] }
+    } },
   { "titel": "Milch & Milchprodukte", "datei": "milch-milchprodukte.csv", "klassen": ["2"] },
   { "titel": "Käse", "datei": "kaese.csv", "klassen": ["2"] },
   { "titel": "Fleisch & Rindfleisch", "datei": "fleisch-rindfleisch.csv", "klassen": ["2"] },

@@ -34,7 +34,7 @@ Zeilen werden abgehakt (✔ mit Datum).
 | Bis | Was | Nr. |
 |---|---|---|
 | ✔ 12.11. (vor dem ersten Einsatz Mo 16.11.) | Käse: 3 Verkostungsfragen und Karte 103 streichen, Karten gegen Fragenkatalog W2 (16 Fragen) prüfen. Milch MC 74 eindeutig formulieren. Zugang `?code=2GH2B-MILCH` lokal und online prüfen. Entwürfe als überholt markieren. | 2, 4, 5, 18 |
-| **Fr 20.11.** | Mischquiz je SA nach Unterthemen: erst App pushen, Daten frühestens 10 Minuten später. Beratungsfälle aufteilen. | 8, 7, 12 |
+| ✔ 12.11. | Mischquiz je SA nach der Stoffbekanntgabe in SA1/SA2 II. LG (`auswahl` in `themen.json`). **1. SA** (266 Fragen, 65 Karten): ohne Milch „Zusammensetzung“ und „Sauermilch und Rahm“ (nicht im Katalog), ohne Käse „Lagerung & Service“, ohne Fleisch „Teilstücke Rind“ und Garstufen (72); dazu Beratungsfälle Milch, Käse, Fleisch, Verkaufsgespräch. **2. SA** (466 Fragen, 114 Karten): ohne Feinkost-Film (nicht in der Stoffbekanntgabe), ohne Bio „Kontrollnummer“; Beratungsfälle nur der SA2-Themen (ohne Milch, Käse, Fleisch, Kindernährmittel, Verkaufsgespräch). Alte App-Fassungen übersehen `auswahl`, darum ging App und Daten in einem Push. | 8, 7, 11, 12 |
 | **Fr 27.11.** | Fleisch: Karten 1 : 1 auf Katalog W4 (12 Fragen; 4, 7, 12 vervollständigen; 86, 96 streichen), AMA-Zahlen mit zweiter Quelle belegen oder streichen, 5–8 OA. | 2, 6, 13 |
 | Mi 02.12. | Mischquiz zur 1. SA gegen SA1 II. LG und Stoffbekanntgabe prüfen. | 8 |
 | Fr 04.12. | Feinkost: Karten auf Katalog W5 (7, 8 neu, 1 vervollständigen, 80, 81, 91–93 streichen). | 2 |
