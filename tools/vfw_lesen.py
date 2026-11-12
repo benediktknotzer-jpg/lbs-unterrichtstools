@@ -1,11 +1,11 @@
-"""Text aus Word- und PowerPoint-Dateien in VFW_Claude lesen – nur lesen, nie schreiben.
+"""Text aus Word- und PowerPoint-Dateien der Materialsammlung lesen – nur lesen, nie schreiben.
 
-Aufruf (Pfad relativ zum Ordner VFW_Claude):
+Aufruf (Pfad relativ zur Materialsammlung):
     python tools/vfw_lesen.py "01_Lehrgang_I_2026-27/FP_Food_2GH1b/Woche_02_07-09_bis_11-09/08_FRAGEN_FP_W2_Käse.docx"
 
 - Unterstützt .docx und .pptx (beides sind ZIP-Archive mit XML).
 - Öffnet die Datei ausschließlich lesend und gibt den Text auf dem Bildschirm aus.
-- Legt keine Dateien an, ändert nichts, verlässt den Ordner VFW_Claude nicht.
+- Legt keine Dateien an, ändert nichts, verlässt die Materialsammlung nicht.
 - Nur Python-Standardbibliothek, keine Zusatzpakete.
 """
 
@@ -15,7 +15,7 @@ import zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-VFW = Path(r"C:\Users\bened\VFW_Claude").resolve()
+ORDNER = Path(r"C:\Users\bened\VFW_Claude").resolve()
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
@@ -101,9 +101,9 @@ def main():
         print(__doc__)
         return 2
 
-    pfad = (VFW / sys.argv[1]).resolve()
-    if not pfad.is_relative_to(VFW):
-        print("Abgelehnt: Der Pfad liegt außerhalb von VFW_Claude.")
+    pfad = (ORDNER / sys.argv[1]).resolve()
+    if not pfad.is_relative_to(ORDNER):
+        print("Abgelehnt: Der Pfad liegt außerhalb der Materialsammlung.")
         return 1
     if not pfad.is_file():
         print(f"Datei nicht gefunden: {sys.argv[1]}")
@@ -117,7 +117,7 @@ def main():
     with zipfile.ZipFile(pfad, "r") as z:
         zeilen = docx_lesen(z) if endung == ".docx" else pptx_lesen(z)
 
-    print(f"# {pfad.relative_to(VFW)}\n")
+    print(f"# {pfad.relative_to(ORDNER)}\n")
     print("\n".join(zeilen))
     return 0
 

@@ -1,11 +1,11 @@
 # Quiz und Unterricht: FP Food 2GH2b, II. Lehrgang 2026/27
 
 Stand: 09.11.2026 · Quelle für Termine und Themen: `VFW_Claude/01_Lehrgang_II_2026-27/FP_Food_2GH2b/00_GERUEST_FP_2GH2b_W1-W10.md`
-(nur gelesen). Maßgeblich sind laut VFW die Wochenpläne in `VFW_Claude/_tools/wochenplan_II_w*_fp.py`
+(nur gelesen). Maßgeblich sind laut Materialsammlung die Wochenpläne in `VFW_Claude/_tools/wochenplan_II_w*_fp.py`
 und die Dokumente in den Wochenordnern. Ändert sich dort etwas, wird diese Tabelle nachgezogen.
 
-**Für VFW-Sitzungen:** Diese Datei ist der Quiz-Stand für die 2GH2b. Die Spalte „Quiz“ in den
-VFW-Gerüsten (Stand 22.10., „Milch nur lokal“) ist überholt: **alles unten Genannte ist seit 25.10.
+**Für Sitzungen in der Materialsammlung:** Diese Datei ist der Quiz-Stand für die 2GH2b. Die Spalte „Quiz“ in den
+Wochengerüsten (Stand 22.10., „Milch nur lokal“) ist überholt: **alles unten Genannte ist seit 25.10.
 online.** Quiz: <https://benediktknotzer-jpg.github.io/lbs-unterrichtstools/?code=2GH2B-MILCH>,
 Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung für die Lehrkraft:
 <https://benediktknotzer-jpg.github.io/lbs-unterrichtstools/durchsicht.html>.
@@ -45,26 +45,28 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
 
 ## Was nicht zusammenpasst (zu erledigen, Reihenfolge nach Unterrichtswoche)
 
-1. **Fragenkataloge II. LG gegen Quiz-Entwürfe:** VFW hat am 31.10. eigene Fragenkataloge gebaut
+1. **Fragenkataloge II. LG gegen Quiz-Entwürfe:** Die Materialsammlung hat am 31.10. eigene Fragenkataloge gebaut
    (Fleisch, Feinkost, Eier, Fische, Fette, Kakao, Diät + Bio, Kindernährmittel). Die Quiz-Entwürfe
-   in `docs/fragenkataloge/` sind davon unabhängig entstanden (Fleisch: VFW 12 Fragen, Quiz-Entwurf 15).
-   Was die Lehrlinge in die Hand bekommen, ist der VFW-Katalog. Darum: Karteikarten und Quizfragen
-   je Thema auf den VFW-Katalog ausrichten, **Fleisch bis Fr 27.11.**, Feinkost bis 04.12., Eier und
+   in `docs/fragenkataloge/` sind davon unabhängig entstanden (Fleisch: Katalog 12 Fragen, Quiz-Entwurf 15).
+   Was die Lehrlinge in die Hand bekommen, ist der Fragenkatalog. Darum: Karteikarten und Quizfragen
+   je Thema auf den Fragenkatalog ausrichten, **Fleisch bis Fr 27.11.**, Feinkost bis 04.12., Eier und
    Fische bis 11.12., Fette, Kakao, Diät, Bio, Kindernährmittel bis 08.01.
 2. **Mischquiz:** „Wiederholung zur 1. Schularbeit“ und „… 2. Schularbeit“ sind nach dem I. LG
    zusammengestellt. Gegen die SA1 II. LG (`Woche_06…/13_SA1_FP_W6.docx`, Stoff W1–W4) und die SA2
    II. LG (`Woche_09…/13_SA2_FP_W9.docx`) prüfen, spätestens zur Stoffbekanntgabe (02.12. bzw. 12.01.).
-3. **Bio-Kontrollnummer:** VFW entscheidet bis 13.01. (Befund 9). Das Quiz Biowaren danach angleichen.
+3. **Bio-Kontrollnummer:** Die Materialsammlung entscheidet bis 13.01. (Befund 9). Das Quiz Biowaren danach angleichen.
 4. **Widersprüche Infoblatt gegen Buch** (entschieden 09.11., Belege in `docs/KONZEPT.md`). Das Quiz
-   ist angepasst; **in VFW nachziehen** (Unterlagen der Mappe I. LG, eingesetzt im II. LG):
+   ist angepasst; **in der Materialsammlung nachziehen** (Unterlagen der Mappe I. LG, eingesetzt im II. LG):
    - Fische (W6, Mi 16.12.): Rotbarsch und Karpfen sind **mittelfett** (Buch S. 154), nicht mager –
      IB Fische, Lösung „Fragen zum Ausarbeiten“ Teil 1. Fischdauerkonserven **über 100 °C**
-     (Buch S. 158) statt 120 °C – Lösung Teil 2.
+     (Buch S. 158) statt 120 °C – Lösung Teil 2. **Auch SA2 II. LG Aufgabe 3a** erwartet Karpfen =
+     Magerfisch (Abgleich 10.11.). Entschieden 12.11.: In der SA2 den Karpfen durch einen eindeutigen
+     Fisch ersetzen (z. B. Dorsch mager, Hering fett), Lösung mitziehen (`docs/ENTSCHEIDUNGEN_2GH2B.md` Nr. 9).
    - Fleisch (W4, Mo 30.11.): Tiefkühl-Lagerdauer nach **Buch S. 124** (Rind 8–12, Schwein mager 6,
      fett 4, Faschiertes 3 Monate) – AMA-Frageblatt mit Lösung bzw. Fragenkatalog Fleisch Frage 6.
    - Feinkost (W5, Mi 09.12.): San Daniele **mindestens 400 Tage, rund 13 Monate** (EU-Spezifikation
      2025) statt „bis zu 14 Monate“ im Buch – IB Feinkost, falls dort übernommen. Parma 14 Monate stimmt.
-   - Milch (W1, Prüfung 10.11., Auftrag an eine VFW-Sitzung geschickt): A2-Milch enthält
+   - Milch (W1, Prüfung 10.11., Auftrag an eine Sitzung in der Materialsammlung geschickt): A2-Milch enthält
      gleich viel Milchzucker wie normale Milch (a2 Milk Company, Max-Rubner-Institut) – Buch S. 91
      ist überholt; IB Abschnitt 5 und „Zum Nachschlagen“, Lösung Fragenkatalog Frage 12. Buttermilch
      „gehört zu den Milcherzeugnissen mit dem niedrigsten Energiegehalt“ (Buch S. 92) statt „den

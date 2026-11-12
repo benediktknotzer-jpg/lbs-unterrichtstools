@@ -1,8 +1,8 @@
-# Bestandsaufnahme VFW_Claude für das Warenkunde-Quiz
+# Bestandsaufnahme der Materialsammlung für das Warenkunde-Quiz
 
 Stand: 8. Oktober 2026 · für Benedikt Knotzer (knb) · Phase 1 laut `docs/KONZEPT.md`
 
-VFW_Claude wurde nur gelesen (Glob, Grep, Read). Es gibt keine Schülerdaten in diesem Dokument.
+Die Materialsammlung (Ordner `VFW_Claude`) wurde nur gelesen (Glob, Grep, Read). Es gibt keine Schülerdaten in diesem Dokument.
 Pfade sind relativ zu `C:\Users\bened\VFW_Claude`.
 
 ---
@@ -12,11 +12,11 @@ Pfade sind relativ zu `C:\Users\bened\VFW_Claude`.
 | Test | Erwartung | Ergebnis |
 |------|-----------|----------|
 | Ordner auflisten mit Glob/Read | erlaubt | funktioniert |
-| `ls` auf VFW_Claude (Bash) | abgelehnt | abgelehnt |
-| `Get-ChildItem` auf VFW_Claude (PowerShell) | abgelehnt | abgelehnt |
-| Edit auf eine (nicht vorhandene) Datei in VFW_Claude | abgelehnt | abgelehnt („denied by your permission settings“) |
+| `ls` auf die Materialsammlung (Bash) | abgelehnt | abgelehnt |
+| `Get-ChildItem` auf die Materialsammlung (PowerShell) | abgelehnt | abgelehnt |
+| Edit auf eine (nicht vorhandene) Datei in der Materialsammlung | abgelehnt | abgelehnt („denied by your permission settings“) |
 
-Es wurde keine Datei in VFW_Claude angelegt.
+Es wurde keine Datei in der Materialsammlung angelegt.
 
 **Grenzen der Sperre:**
 
@@ -27,13 +27,13 @@ Es wurde keine Datei in VFW_Claude angelegt.
 - **Word und PowerPoint:** `.docx` und `.pptx` lassen sich nur über die Shell auslesen. Dafür
   gibt es seit 8.10. eine einzige Ausnahme: das reine Lese-Skript `tools/vfw_lesen.py` (nur
   Standardbibliothek, öffnet lesend, Ausgabe nur am Bildschirm, lehnt Pfade außerhalb von
-  VFW_Claude ab). Alte `.doc`/`.ppt` kann es nicht lesen.
+  Materialsammlung ab). Alte `.doc`/`.ppt` kann es nicht lesen.
 - PDF-Seiten als Bild ansehen geht derzeit nicht, weil `pdftoppm` (poppler) nicht installiert ist.
   PDF-Text ist lesbar.
 
 ---
 
-## 2. Ordnerstruktur VFW_Claude (relevant für das Quiz)
+## 2. Ordnerstruktur der Materialsammlung (relevant für das Quiz)
 
 | Ordner | Inhalt | Nutzen fürs Quiz |
 |--------|--------|------------------|

@@ -10,7 +10,7 @@ Quick-Check vor. Diese Fragen stehen hier nicht, sie bleiben.
 
 **Buchprüfung:** Warenkundebuch „Lebens- und Genussmittel“, Kapitel Eier S. 114–117 (geprüft 25.10.2026 in digi4school)
 
-- Einen FRAGEN-Katalog zu Eiern gibt es in VFW_Claude nicht. Entwurf mit 13 Kernfragen: docs/fragenkataloge/eier.md (Grundlage IB, LB, SA2 Aufgabe 2, Wiederholungsblatt, Quiz-Duell und Stationskarten W8).
+- Einen FRAGEN-Katalog zu Eiern gibt es in der Materialsammlung nicht. Entwurf mit 13 Kernfragen: docs/fragenkataloge/eier.md (Grundlage IB, LB, SA2 Aufgabe 2, Wiederholungsblatt, Quiz-Duell und Stationskarten W8).
 - Alle Kernfragen stimmen mit dem Buch überein (S. 114–115). Einzige Abweichung: Dass Eier der Güteklasse B an die Industrie gehen, steht nur im IB und in der SA2-Lösung. Das Buch S. 115 sagt nur, dass gewaschene oder gekühlte Eier nicht als Klasse A vermarktet werden dürfen. Kern bleibt unverändert (IB gilt).
 - Korrigiert Nr. 11: Wachtel und Taube sind laut Buch S. 114 und IB „Wildvögel“, nicht „Wildgeflügel“. Text und Erklärung angepasst, Lücken unverändert.
 - Buch S. 114–117 bringt zusätzlich Klasse A Extra, Mindestmerkmale der Klasse A (Luftkammer höchstens 6 mm), Enten-, Gänse- und Wachteleier, Eiprodukte, Haltungsformen mit Platzangaben, Schüttelprobe und „Fit für die Verkaufspraxis“. Das kommt im IB nicht vor, dazu gibt es im Quiz keine Fragen und es wurden keine ergänzt.

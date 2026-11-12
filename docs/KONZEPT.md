@@ -1,17 +1,28 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 9. November 2026 · für Benedikt Knotzer (knb)
+Stand: 12. November 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
 
+**12.11. – alle offenen Fragen entschieden (18 Punkte, Benedikt):** `docs/ENTSCHEIDUNGEN_2GH2B.md`
+ist jetzt der Umsetzungsplan mit Fristen. Kern: Karteikarten = Fragenkatalog II. LG 1 : 1 (28 Karten
+fallen weg), Quizfragen aus Buch/IB bleiben, Mischquiz nur SA-Stoff (App-Änderung), AMA-Zahlen nur
+mit zweiter Quelle, OA auf Fleisch, Eier, Fette, Kakao, Diät, Textilien mit zwei Quellen prüfen.
+Milch-Durchsicht: passt (10.11. am Buch geprüft, a5ac0ca). **Neu gefunden:** SA2 II. LG Aufgabe 3a
+erwartet Karpfen = Magerfisch – die Materialsammlung ersetzt den Karpfen. **12.11. umgesetzt:** Käse (3 Fragen zum
+Verkostungsblatt und Karte 103 raus, 16 Karten im Wortlaut des Fragenkatalogs W2, u. a. LMIV statt
+„Verbraucherinformationsverordnung“), Milch MC 74 („nicht laktosefrei“), Entwürfe als überholt
+markiert, Zugang mit Code lokal bei 360 px geprüft. Das Quiz kommt **Mo 16.11.** zum ersten Mal mit
+Code in die 2GH2b. **Nächster Schritt:** Mischquiz nur SA-Stoff (bis 20.11.), dann Fleisch (bis 27.11.).
+
 **09.11. – II. Lehrgang läuft, nur 2. Klasse (Entscheidungen Benedikt):**
 - **Zahlen nur mit Beleg:** Grundlage ist das Buch; Neueres nur, wenn mehrfach belegt (Regel in
   `CLAUDE.md`). Ersetzt für Zahlen „bei Widerspruch gilt das IB“ vom 15.10.
 - **Nur 2. Klasse fertig machen**, abgestimmt auf den Unterricht der 2GH2b:
-  `docs/LEHRGANG_II_2GH2B.md` (Wochenplan aus dem VFW-Gerüst, Quiz je Woche, was nicht passt).
+  `docs/LEHRGANG_II_2GH2B.md` (Wochenplan aus dem Wochengerüst, Quiz je Woche, was nicht passt).
 - Neu: `durchsicht.html` – alle Fragen eines Themas mit Lösung, Erklärung, Quelle, Zahlen gelb.
 - Milch (Unterricht Di 10.11.): alle Zahlen gegen IB und Fragenkatalog (am Buch geprüft 17.08.)
   abgeglichen. Nr. 61 auf Buch S. 94 gestellt (Mascarpone 80 % F. i. T. statt „40 bis 45 %“ aus
@@ -31,12 +42,12 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 
 | Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
 |-------|-------|-----:|-------:|---------------|------|
-| Wiederholung zur 1. Schularbeit | `"mix"` | 293 | 65 | – | – |
+| Wiederholung zur 1. Schularbeit | `"mix"` | 290 | 64 | – | – |
 | Wiederholung zur 2. Schularbeit | `"mix"` | 493 | 117 | – | – |
-| Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | VFW W1 | S. 89–95 |
-| Käse | `kaese.csv` | 88 (10 OA) | 17 | VFW W2 | S. 100–113 |
+| Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | Katalog W1 | S. 89–95 |
+| Käse | `kaese.csv` | 85 (10 OA) | 16 = Katalog W2 II. LG | Katalog W2 | S. 100–113 |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 15 | Entwurf (15) | S. 118–133, AMA-Broschüre |
-| Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | VFW W4 Teil 1 | kein Buch |
+| Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | Katalog W4 Teil 1 | kein Buch |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 15 | Entwurf (15) | S. 148, 150 |
 | Eier | `eier.csv` | 47 | 13 | Entwurf (13) | S. 114–117 |
 | Fische, Krusten- & Weichtiere | `fische.csv` | 64 | 22 | Entwurf (15) | S. 153–165 |
@@ -61,10 +72,10 @@ nachgelesen, neuere Daten von einem Recherche-Agenten mit Primärquellen belegt)
 | TK-Lagerdauer Fleisch | S. 124: Rind 8–12, Schwein mager 6, fett 4, Faschiertes 3 Monate | AMA: 8 / Kalb 6 / 5 / 2 | VKI 07/2025: Rind bis 12, Schwein mager bis 8, fett bis 4, Faschiertes bis 3; AMA-Broschüre online nicht auffindbar | **Buch** (VKI bestätigt Rind und Faschiertes, Schwein nicht einheitlich). Fleisch Nr. 61, 62 |
 | Kaltpressung | S. 167: unter 60 °C | ohne Wärmezufuhr | Lebensmittelbuch B 30 (06/2025), dt. Leitsätze 2024, AGES 2023: „ohne Wärmezufuhr“; für 60 °C keine Quelle | **Neuer Stand = IB.** Fette Nr. 22, 80 (Quelle ergänzt) |
 | Parma | S. 148: bis zu einem Jahr | mindestens 14 Monate | Spezifikation Consorzio 05/2025, EU-DVO 2023/461, drei Fachmedien | **Neuer Stand = IB.** Feinkost Nr. 10, 39 |
-| San Daniele | S. 148: bis zu 14 Monate | (nicht im Quiz) | ABl. C/2025/4198, EU-DVO 2023/467: mindestens 400 Tage | nichts im Quiz zu ändern; IB in VFW prüfen |
+| San Daniele | S. 148: bis zu 14 Monate | (nicht im Quiz) | ABl. C/2025/4198, EU-DVO 2023/467: mindestens 400 Tage | nichts im Quiz zu ändern; IB in der Materialsammlung prüfen |
 
-Damit widersprechen jetzt **IB/LAP-Lösungen in VFW** dem Quiz bei Rotbarsch/Karpfen, 120 °C und
-der TK-Tabelle (AMA-Frageblatt Fleisch). Nachziehen in einer VFW-Sitzung, Liste in
+Damit widersprechen jetzt **IB/LAP-Lösungen in der Materialsammlung** dem Quiz bei Rotbarsch/Karpfen, 120 °C und
+der TK-Tabelle (AMA-Frageblatt Fleisch). Nachziehen in einer Sitzung in der Materialsammlung, Liste in
 `docs/LEHRGANG_II_2GH2B.md`.
 
 **Noch offen aus der Durchsicht vom 25.10.:**
@@ -74,7 +85,7 @@ der TK-Tabelle (AMA-Frageblatt Fleisch). Nachziehen in einer VFW-Sitzung, Liste 
 - **Eier:** Sollen Klasse A Extra oder die Schwimmprobe (Buch S. 115–116) ins Quiz?
 - **Textilien, Zeichen- und Malbedarf:** Die IB sagen selbst „bitte gegenlesen“ (kein Schulbuch).
 - **Alle Entwürfe** in `docs/fragenkataloge/` durchsehen. Die DOCX-Kataloge entstehen danach in
-  einer VFW_Claude-Sitzung.
+  einer Sitzung in der Materialsammlung.
 
 **25.10. – Kürzen auf den Kernstoff (Entscheidung Benedikt):** SA2 ist schlecht ausgefallen,
 Benedikt vermutet eher fehlendes Lernen (Note war für die meisten schon sicher). Trotzdem: zu viele
@@ -91,7 +102,7 @@ geprüft, und dessen Fragen müssen im Quiz vorkommen. Fragenkataloge gibt es in
 (W1, am Buch geprüft 17.08., alle 15 Fragen im Quiz) und Käse (W2). Es fehlen: Fleisch, Feinkost,
 Eier, Fische, Fette, Kakao, Diät, Bio, Kindernährmittel, Textilien, Spielzeug, Zeichen-/Malbedarf.
 Ablauf je Thema: Katalog-Entwurf am Buch (hier, `docs/fragenkataloge/`) → Quiz-Kern danach
-ausrichten → Streichliste → DOCX-Katalog in einer VFW_Claude-Sitzung.
+ausrichten → Streichliste → DOCX-Katalog in einer Sitzung in der Materialsammlung.
 
 **21.10. – Ausbau fürs nächste Level (Plan vom 21.10., Commits d9d55ec bis heute):**
 - App: Arten **Quiz / Karteikarten / Klasse** (Smartboard, 30-s-Countdown, zwei Teams),
@@ -147,7 +158,7 @@ MOPRO-Abteilung.
    seit 25.10. online; ✔ Fragetyp OA mit automatischer Korrektur seit 25.10. online, je 10 bei
    Milch und Käse – Benedikt probiert aus, dann weitere Themen; offen: SVG-Bilder, Themen nach
    Lehrgangswoche). Fragenkatalog-Entwürfe als
-   DOCX in einer VFW_Claude-Sitzung. Erst danach 1. Klasse.
+   DOCX in einer Sitzung in der Materialsammlung. Erst danach 1. Klasse.
 2. **Wirkung messen:** Benedikt nennt die Durchschnittspunkte je SA2-Aufgabe ohne Namen, Vergleich
    im Chat (Themen mit Quiz gegen Beratungsfall). Nichts davon ins Repository.
 3. Zugangsblatt `zugang.html?code=2GH2B-MILCH` für Mo 09.11. drucken. Ab 07.11. verlangt die
@@ -181,17 +192,17 @@ Klassen-Code, den die Lehrkraft austeilt.
 **Einrichtung** (Anleitung im Chat vom 8.10.):
 
 1. `git clone` des Quiz nach `C:\Users\bened\Claude-Projekte\lbs-unterrichtstools`. Das Quiz
-   liegt außerhalb von VFW_Claude, nicht darin. ✔ erledigt 8.10.
+   liegt außerhalb der Materialsammlung, nicht darin. ✔ erledigt 8.10.
 2. `.claude\settings.local.json` (nicht im Repository, steht in `.gitignore`) mit Lesezugriff
-   auf VFW_Claude und Schreibsperre: `deny` für Edit/Write/NotebookEdit sowie für **jeden**
-   Bash- oder PowerShell-Befehl, der VFW_Claude enthält. ✔ erledigt 8.10.
+   auf die Materialsammlung und Schreibsperre: `deny` für Edit/Write/NotebookEdit sowie für **jeden**
+   Bash- oder PowerShell-Befehl, der den Ordnernamen `VFW_Claude` enthält. ✔ erledigt 8.10.
 3. Test: Ordner auflisten → muss funktionieren. Schreibtest bewusst **nicht** durch Anlegen
-   einer Datei in VFW_Claude, sondern durch einen harmlosen Shell-Befehl (z. B. `ls` auf
-   VFW_Claude), der abgelehnt werden muss. ✔ erledigt 8.10. (Ergebnis in `docs/BESTANDSAUFNAHME.md`)
+   einer Datei in der Materialsammlung, sondern durch einen harmlosen Shell-Befehl (z. B. `ls` auf
+   `VFW_Claude`), der abgelehnt werden muss. ✔ erledigt 8.10. (Ergebnis in `docs/BESTANDSAUFNAHME.md`)
 4. Node.js installieren (`winget install OpenJS.NodeJS.LTS`) für `tests/csv-test.js`.
    ✔ erledigt (Node v24, geprüft 14.10.)
 
-**Bestandsaufnahme VFW_Claude**, nur lesen. Ergebnis kommt als `docs/BESTANDSAUFNAHME.md` ins
+**Bestandsaufnahme der Materialsammlung**, nur lesen. Ergebnis kommt als `docs/BESTANDSAUFNAHME.md` ins
 Quiz-Projekt, **ohne Schülerdaten**:
 
 - Welche Klassen und Lehrgänge gibt es (1., 2., 3. Klasse, FP FOOD, BLAM, …)?
@@ -319,11 +330,12 @@ Ablauf für jedes neue Thema:
 | ✔ QR-Code (`zugang.html`) an 2GH1b austeilen | erledigt Fr 16.10. |
 | Quiz online durchsehen (alle Themen, jetzt auf Kernstoff gekürzt, Karteikarten aus den Fragenkatalogen) | Benedikt, vor Mo 09.11. |
 | ✔ Push nach Benedikts Freigabe, davor lokal geprüft (360 px, Klassenmodus 1280 × 720, alle 17 CSVs laden, Test grün) | erledigt 25.10. |
-| Wirkung messen: Durchschnittspunkte je SA2-Aufgabe (ohne Namen) gegen Quiz-Abdeckung | nach Korrektur SA2 |
+| Wirkung messen: verlegt auf SA1 II. LG – Durchschnittspunkte je Aufgabe (ohne Namen) gegen Quiz-Abdeckung, im Chat | nach Korrektur SA1 (14.12.) |
 | ✔ MC-Bestand: Ablenker angeglichen (0–22 % „längste“, keine Position über 50 %), jede Quizfrage mit Erklärung, Test scharf | erledigt 21.10. |
 | ✔ Für 2GH2b ergänzt: Mischquiz SA1, Verkaufsthemen SA1, Beratungsfälle, Kindernährmittel, Textilien, Spielzeug, Karteikarten | erledigt 21.10. |
 | ✔ Klassenmodus, Karteikarten, Einstieg mit 5 Fragen, Auswertung je Unterthema, Klassen-Codes | erledigt 21.10. |
 | ✔ Alle 2.-Klasse-Themen auf Kernstoff gekürzt, Fragenkatalog je Warenkunde-Thema, Zeichen- und Malbedarf neu | erledigt 25.10. |
-| Verkaufsstoff W2–W9 ohne Quiz (Öffentlichkeitsarbeit, Präsentation, Verkaufsaktionen, Reklamation, Telefon, Messen, Call Center, neue Medien) | nach Benedikts Durchsicht |
-| Fragen an Benedikt aus der Durchsicht 25.10. (siehe Stand) | Benedikt |
+| ✔ Verkaufsstoff W2–W9 ohne Quiz: kein Quiz, kein SA-Stoff | entschieden 12.11. |
+| ✔ Fragen an Benedikt aus der Durchsicht 25.10. und Abgleich 10.11. | entschieden 12.11., `docs/ENTSCHEIDUNGEN_2GH2B.md` |
+| Umsetzung der Entscheidungen 12.11. (Käse bis 13.11., Mischquiz bis 20.11., Fleisch bis 27.11. …) | laut `docs/ENTSCHEIDUNGEN_2GH2B.md` |
 | ✔ Kaffee-/Küchenobers-Fettgehalte: laut Buch S. 94 Kaffeeobers 15 %, Küchenobers 20 %, Schlagobers 36 % (AA III. LG war widersprüchlich) | geklärt 25.10. |

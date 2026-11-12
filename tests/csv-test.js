@@ -177,13 +177,13 @@ test('Windows-1252-Datei wird mit Hinweis gelesen', function () {
   assert.ok(d.hinweis && d.hinweis.indexOf('UTF-8') >= 0);
 });
 
-test('Käse: 78 Quizfragen in allen sechs Typen, 10 offene Antworten und 17 Karteikarten', function () {
+test('Käse: 75 Quizfragen in allen sechs Typen, 10 offene Antworten und 16 Karteikarten (= Fragenkatalog W2)', function () {
   var erg = Q.ladeFragen(fs.readFileSync(path.join(daten, 'kaese.csv'), 'utf8'));
-  assert.strictEqual(erg.fragen.length, 105);
+  assert.strictEqual(erg.fragen.length, 101);
   var typen = {};
   erg.fragen.forEach(function (f) { typen[f.typ] = (typen[f.typ] || 0) + 1; });
   assert.deepStrictEqual(Object.keys(typen).sort(), ['LT', 'MC', 'MM', 'OA', 'OF', 'RF', 'RH', 'ZU']);
-  assert.strictEqual(typen.OF, 17);
+  assert.strictEqual(typen.OF, 16);
   assert.strictEqual(typen.OA, 10);
 });
 

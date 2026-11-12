@@ -1,7 +1,7 @@
 # Fragenkatalog: Textilien (Non-Food)
 
-> **Entwurf, DOCX entsteht in einer VFW_Claude-Sitzung.** Erstellt 25.10.2026 für das Quiz
-> (`daten/textilien.csv`). Woche 9, 2GH1b (Di 27.10. „Textilien kompakt“). In VFW_Claude gibt es zu
+> **Entwurf, DOCX entsteht in einer Sitzung in der Materialsammlung.** Erstellt 25.10.2026 für das Quiz
+> (`daten/textilien.csv`). Woche 9, 2GH1b (Di 27.10. „Textilien kompakt“). In der Materialsammlung gibt es zu
 > diesem Thema keinen FRAGEN-Katalog.
 
 **Grundlage:** IB „Textile Rohstoffe und Flächengebilde“ W9 und IB „Textilpflege, Garne und

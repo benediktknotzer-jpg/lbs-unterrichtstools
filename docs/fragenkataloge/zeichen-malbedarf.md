@@ -1,6 +1,6 @@
 # Fragenkatalog: Zeichen- und Malbedarf (Non-Food)
 
-> **Entwurf, DOCX entsteht in einer VFW_Claude-Sitzung.** Erstellt 25.10.2026 zusammen mit dem neuen
+> **Entwurf, DOCX entsteht in einer Sitzung in der Materialsammlung.** Erstellt 25.10.2026 zusammen mit dem neuen
 > Quiz-Thema (`daten/zeichen-malbedarf.csv`, 25 Quizfragen, 12 Karteikarten). Woche 10, 2GH1b.
 
 **Grundlage:** IB „Zeichen- und Malbedarf“ W10 (Hauptteil, Quick-Check, „Aus der Praxis“,

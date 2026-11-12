@@ -36,7 +36,7 @@ Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), o
   **Beratungsfälle** (27), **Textilien** (42), **Spielzeug & Prüfsiegel** (41),
   **Zeichen- und Malbedarf** (25) – dazu die Mischungen „Wiederholung zur 1. Schularbeit“ und
   „… zur 2. Schularbeit“
-- Jedes Warenkunde-Thema hat einen Fragenkatalog (`docs/fragenkataloge/` oder in VFW_Claude), jede
+- Jedes Warenkunde-Thema hat einen Fragenkatalog (`docs/fragenkataloge/` oder in der Materialsammlung), jede
   Katalogfrage steht als Karteikarte und als Quizfrage im Quiz. Was gekürzt wurde und warum, steht
   in `docs/streichlisten/` (Ablauf: `docs/ABLAUF_THEMA_KUERZEN.md`).
 - Zugangsblatt mit QR-Code für Ausdruck und Smartboard: `zugang.html`
@@ -62,7 +62,7 @@ daten/zugaenge.json     Klassen-Codes
 daten/*.csv             Fragen, eine Datei pro Thema
 tests/csv-test.js       Automatische Prüfung der Fragen-Dateien
 tools/qr_code.py        QR-Code als SVG erzeugen (nur Python, ohne Zusatzpakete)
-tools/vfw_lesen.py      Unterlagen aus VFW_Claude lesen (nur lesen)
+tools/vfw_lesen.py      Unterlagen aus der Materialsammlung lesen (nur lesen)
 ```
 
 ---

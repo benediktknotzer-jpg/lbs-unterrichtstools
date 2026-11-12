@@ -16,7 +16,7 @@ Quick-Check vor. Diese Fragen stehen hier nicht, sie bleiben.
 - Kleine Abweichung ohne Folgen: Bei der Fleischreifung sagt das Buch S. 120 nur „das Glykogen wird umgewandelt“, das Infoblatt (Quick-Check) und Nr. 35 ergänzen „in Milchsäure“.
 - Teilstücke (Nr. 65–71, 80) und Garstufen (Nr. 72) stehen im Buch S. 121–124 und in der AMA-Broschüre S. 20–21 und 34, werden aber in keiner Aufgabe der 2GH1b gefragt – deshalb Grenzfälle.
 - Qualitätskorrektur ohne Inhaltsänderung: Nr. 73 hatte zwei fast gleiche Ablenker („Am Vortag, damit das Salz …“), Nr. 75 zwei fast gleiche („Sautieren“ / „Sautieren in der Pfanne“). Je ein Ablenker wurde ersetzt.
-- Fragenkatalog: In VFW_Claude gibt es keinen FRAGEN-Katalog Fleisch. Entwurf mit 15 Fragen in docs/fragenkataloge/fleisch-rindfleisch.md. Für fünf Katalogfragen fehlten Karteikarten, sie wurden ergänzt (Nr. 93–97).
+- Fragenkatalog: In der Materialsammlung gibt es keinen FRAGEN-Katalog Fleisch. Entwurf mit 15 Fragen in docs/fragenkataloge/fleisch-rindfleisch.md. Für fünf Katalogfragen fehlten Karteikarten, sie wurden ergänzt (Nr. 93–97).
 
 **So geht die Durchsicht:** Alles auf dieser Liste wird gestrichen. Nennen Sie nur die Nummern, die
 **bleiben** sollen, z. B. „behalten: 44, 57“. Die Karteikarten bleiben alle.

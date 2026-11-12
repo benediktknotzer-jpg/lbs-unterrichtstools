@@ -1,7 +1,9 @@
 # Fragenkatalog: Diätetische Lebensmittel
 
-> **Entwurf, DOCX entsteht in einer VFW_Claude-Sitzung.** Erstellt 25.10.2026 für das Quiz
-> (`daten/diaetetische-lebensmittel.csv`). Woche 8, 2GH1b. In VFW_Claude gibt es zu diesem Thema
+> **Überholt (Entscheidung Benedikt 12.11.2026):** Maßgeblich ist der Fragenkatalog des II. LG (2GH2b). Die Karteikarten im Quiz folgen ihm 1 : 1. Dieser Entwurf bleibt nur zum Nachlesen; aus ihm entsteht kein DOCX mehr. Siehe `docs/ENTSCHEIDUNGEN_2GH2B.md`.
+
+> **Entwurf, DOCX entsteht in einer Sitzung in der Materialsammlung.** Erstellt 25.10.2026 für das Quiz
+> (`daten/diaetetische-lebensmittel.csv`). Woche 8, 2GH1b. In der Materialsammlung gibt es zu diesem Thema
 > keinen FRAGEN-Katalog.
 
 **Grundlage:** IB „Diätetische Lebensmittel“ W8 (Hauptteil, Quick-Check, „Aus der Praxis“), LB Diät

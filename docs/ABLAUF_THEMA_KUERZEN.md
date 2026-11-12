@@ -5,10 +5,10 @@ Festgelegt mit Benedikt am 25.10.2026, zuerst an Milch erprobt
 
 ## Grundregeln
 
-- **VFW_Claude ist schreibgeschützt.** Dort nur lesen: .docx/.pptx ausschließlich mit
+- **Die Materialsammlung (Ordner `VFW_Claude`) ist schreibgeschützt.** Dort nur lesen: .docx/.pptx ausschließlich mit
   `python tools/vfw_lesen.py "<Pfad relativ zu VFW_Claude>"` (aus dem Repository-Ordner aufrufen),
   .pdf/.md/Bilder mit dem Read-Werkzeug, Dateien finden mit Glob. Keine anderen Shell-Befehle auf
-  VFW_Claude, nichts dort anlegen oder ändern.
+  Materialsammlung, nichts dort anlegen oder ändern.
 - Unterlagen des laufenden Lehrgangs: `VFW_Claude/01_Lehrgang_I_2026-27/FP_Food_2GH1b/Woche_*`
   (IB = Infoblatt, AB/LB = Arbeitsblatt/Lösungsblatt, FRAGEN = Fragenkatalog, SA = Schularbeit,
   Wiederholungsblatt, Quiz-SA-Wiederholung, Frageblätter, LAP-Fragen, Film-Arbeitsblätter).
@@ -45,13 +45,13 @@ Non-Food (Textilien, Spielzeug) und Verkaufsthemen stehen nicht in diesem Buch.
 2. **Unterlagen lesen**: IB, AB/LB, FRAGEN (falls vorhanden), passende SA-Aufgaben und Lösung,
    Wiederholung, Quick-Check, Frageblätter. Notieren, was in welcher Aufgabe gefragt wird.
 3. **Buch lesen** (Kapitelseiten oben), wenn das Thema im Buch steht.
-4. **Fragenkatalog** (Rückgrat): Gibt es in VFW_Claude einen FRAGEN-Katalog, ist er die Vorlage.
+4. **Fragenkatalog** (Rückgrat): Gibt es in der Materialsammlung einen FRAGEN-Katalog, ist er die Vorlage.
    Gibt es keinen und ist es ein Warenkunde-Thema, einen **Entwurf** schreiben:
    `docs/fragenkataloge/<datei-ohne-.csv>.md`, 12–15 Kernfragen wie in einem Fragenkatalog von
    Benedikt (offene Fragen, die auch SA-Fragen sein können: was SA2 gefragt hat, was IB-Hauptteil,
    LB-Aufgaben und Quick-Check betonen). Jede Frage mit Musterantwort, **Buchseite** (am Buch
    geprüft) und Unterlage. Bei Non-Food ohne Buch: IB als Quelle. Kopf der Datei:
-   „Entwurf, DOCX entsteht in einer VFW_Claude-Sitzung“.
+   „Entwurf, DOCX entsteht in einer Sitzung in der Materialsammlung“.
 5. **Einordnen** jeder Quizfrage:
    - **Kern**: kommt im Fragenkatalog, in LB-Aufgaben, SA1/SA2, Wiederholung, Quick-Check oder
      einem im Unterricht verwendeten Frageblatt (z. B. AMA-Frageblatt, LAP-Fragen) vor.

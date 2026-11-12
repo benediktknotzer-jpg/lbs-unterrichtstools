@@ -1,7 +1,7 @@
 # Fragenkatalog: Spielzeug und Prüfsiegel (Non-Food)
 
-> **Entwurf, DOCX entsteht in einer VFW_Claude-Sitzung.** Erstellt 25.10.2026 für das Quiz
-> (`daten/spielzeug.csv`). Woche 10, 2GH1b. In VFW_Claude gibt es zu diesem Thema keinen
+> **Entwurf, DOCX entsteht in einer Sitzung in der Materialsammlung.** Erstellt 25.10.2026 für das Quiz
+> (`daten/spielzeug.csv`). Woche 10, 2GH1b. In der Materialsammlung gibt es zu diesem Thema keinen
 > FRAGEN-Katalog.
 
 **Grundlage:** IB „Pädagogischer Wert des Spielens und des Spielzeugs“ W10 und IB „Prüfsiegel und

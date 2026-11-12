@@ -5,24 +5,32 @@ Interaktive Web-Tools für den Unterricht von Benedikt Knotzer (knb) an der LBS 
 
 ## Aktueller Plan
 
-Siehe **`docs/KONZEPT.md`**: 1. PC einrichten und Bestandsaufnahme von VFW_Claude →
+Siehe **`docs/KONZEPT.md`**: 1. PC einrichten und Bestandsaufnahme der Materialsammlung →
 2. Freigabe-System mit Klassen-Codes und QR-Codes (Variante A: Ordnung, keine Geheimhaltung) →
 3. weitere Themen (zuerst Milch & Milchprodukte). Dort stehen auch die offenen Punkte.
 
-## Oberste Regel: VFW_Claude ist schreibgeschützt
+## Oberste Regel: Die Materialsammlung ist schreibgeschützt
 
-Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Projekt) darf nur
-**gelesen und durchsucht** werden – als Quelle für Fragen, Layout und Fachinhalte.
+Die **Materialsammlung** (Benedikts Unterrichtsmaterial, eigenes Projekt, Ordner
+`C:\Users\bened\VFW_Claude`) darf nur **gelesen und durchsucht** werden – als Quelle für Fragen,
+Layout und Fachinhalte.
+
+**Name (Benedikt 12.11.2026):** „VFW“ ist ein anderer Unterrichtsgegenstand und hat mit den
+Großhandelsklassen nichts zu tun; der Ordnername ist ein alter Fehler, der vorerst bleiben muss,
+weil Leserechte und Sperren daran hängen. Darum **im Text nie „VFW“ schreiben** – nicht in Doku,
+Daten, Tests, Commits oder Antworten an Benedikt. Sagen: „Materialsammlung“, „Fragenkatalog
+II. LG“, „Katalog-Lösung“, „Wochengerüst“, „Sitzung in der Materialsammlung“. Der Ordnerpfad
+steht nur dort, wo ein Befehl oder Pfad ihn braucht (in Backticks), dazu `tools/vfw_lesen.py`.
 
 - Dort **nie** Dateien anlegen, ändern, verschieben, umbenennen oder löschen – auch keine
   temporären Dateien, keine Konvertierungen „neben“ den Originalen, kein `git` in diesem Ordner.
-- .docx/.pptx **nur** mit dem Lese-Skript auslesen (Pfad relativ zu VFW_Claude, Ausgabe nur am
+- .docx/.pptx **nur** mit dem Lese-Skript auslesen (Pfad relativ zur Materialsammlung, Ausgabe nur am
   Bildschirm): `python tools/vfw_lesen.py "01_Lehrgang_…/Woche_…/datei.docx"`. Das ist die
   einzige freigegebene Shell-Ausnahme (`.claude/settings.local.json`). Alle anderen
-  Shell-Befehle auf VFW_Claude bleiben gesperrt – nicht umgehen. Das Skript darf nie schreiben.
+  Shell-Befehle auf die Materialsammlung bleiben gesperrt – nicht umgehen. Das Skript darf nie schreiben.
 - .pdf, .md, .txt und Bilder mit dem Read-Werkzeug lesen. Alte .doc/.ppt gehen nicht.
 - Geschrieben wird ausschließlich in diesem Repository (`lbs-unterrichtstools`).
-- Schülerdaten (Namen, Noten, Beurteilungen) aus VFW_Claude **nie** in dieses Repository
+- Schülerdaten (Namen, Noten, Beurteilungen) aus der Materialsammlung **nie** in dieses Repository
   übernehmen – das Repository ist öffentlich.
 
 ## Warenkunde-Quiz
@@ -67,14 +75,19 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   Infoblatt, AA III. LG oder Kollegenmaterial stehen und sich so nicht belegen lassen, werden auf den
   Buchwert gestellt oder gestrichen. Das ersetzt für Zahlen die Regel vom 15.10. („bei Widerspruch
   gilt das eigene IB“). Ändert sich dadurch eine Zahl, die im Infoblatt anders steht, in
-  `docs/LEHRGANG_II_2GH2B.md` vermerken: Die VFW-Sitzung zieht das Infoblatt nach.
+  `docs/LEHRGANG_II_2GH2B.md` vermerken: Die Sitzung in der Materialsammlung zieht das Infoblatt nach.
 - **Nur 2. Klasse (Benedikt 09.11.2026):** Bis die 2GH2b fertig ist, nur Themen der 2. Klasse.
   Was wann unterrichtet wird, steht in `docs/LEHRGANG_II_2GH2B.md` (abgeleitet aus dem
-  VFW-Gerüst FP 2GH2b); bei jeder Sitzung zuerst dort und im VFW-Gerüst nachsehen.
+  Wochengerüst FP 2GH2b); bei jeder Sitzung zuerst dort und im Wochengerüst nachsehen.
+- **Karteikarten = Fragenkatalog des laufenden Lehrgangs, 1 : 1 (Benedikt 12.11.2026):** je
+  Katalogfrage eine OF-Karte im Wortlaut der Katalog-Lösung (Zahlen nach Buch), Karten ohne Katalogfrage
+  fallen weg. Quizfragen außerhalb des Katalogs bleiben, wenn sie im Buch oder IB stehen. Die
+  Mischquiz „Wiederholung zur 1./2. Schularbeit“ enthalten nur SA-Stoff (Unterthemen je SA).
+  Alle Entscheidungen vom 12.11. und der Umsetzungsplan: `docs/ENTSCHEIDUNGEN_2GH2B.md`.
 - Durchsicht für die Lehrkraft: `durchsicht.html?thema=<datei>.csv` zeigt alle Fragen eines Themas
   mit Lösung, Erklärung und Quelle, Zahlen gelb, „bitte prüfen“ rot.
 - Fragen sollen den Unterrichtsstoff wiederholen: aus Arbeitsaufträgen, Lösungen, Infoblättern,
-  Schularbeiten in VFW_Claude ableiten. Sprache: österreichisches Deutsch, Sie-Form.
+  Schularbeiten in der Materialsammlung ableiten. Sprache: österreichisches Deutsch, Sie-Form.
 - **Nur Kernstoff (Entscheidung Benedikt 25.10.2026):** kein Zusatzwissen, das in der Stunde nicht
   vorkommt. Kern = Fragenkatalog, Lösungsblatt-Aufgaben, Schularbeit, Wiederholung, Quick-Check.
   Kollegenmaterial (AA III. LG), AMA-Broschüre, LAP-Fragen und IB „Zum Nachschlagen“ nur, wenn
@@ -87,8 +100,8 @@ Der Ordner **VFW_Claude** (Benedikts Unterrichtsmaterial-Sammlung, eigenes Proje
   Quizfrage. Buch: digi4school E-Book 16967 (Seite im E-Book = Buchseite + 2), nur über
   **Claude in Chrome** (dort ist Benedikt angemeldet): digi4school.at → E-Books → „Warenkunde
   Lebens- und Genussmittel“ öffnet einen Tab, dann `a.digi4school.at/ebook/16967/?page=<Buchseite+2>`.
-  Die Seiten sind Bilder, lesen per Zoom-Bildschirmfoto. Milch = Buch S. 89–95. Fehlt der Katalog in VFW_Claude, entsteht der Entwurf hier in
-  `docs/fragenkataloge/`; das DOCX dazu macht eine Sitzung in VFW_Claude.
+  Die Seiten sind Bilder, lesen per Zoom-Bildschirmfoto. Milch = Buch S. 89–95. Fehlt der Katalog in der Materialsammlung, entsteht der Entwurf hier in
+  `docs/fragenkataloge/`; das DOCX dazu macht eine Sitzung in der Materialsammlung.
 
 ## Stil (wie Benedikts Arbeits- und Infoblätter)
 
@@ -98,7 +111,7 @@ Aptos (Fallback Calibri, Arial), Titel/Überschriften fett Logo-Blau #005090, ge
 Anleitungen kursiv, Tabellenkopf fett blau auf Hellblau #E7EFF7 mit grauem Rahmen #BFBFBF,
 Antwortflächen grau gestrichelt, Callouts Tipp/Merke/Hinweis, Fußzeile „Benedikt Knotzer | knb“.
 Quelle: `VFW_Claude/Markenkit/` und `lbs-lehrer-plugin/skills/dokument-stil/` (Stand 8.10.2026).
-Wenn sich das Layout in den aktuellen Unterlagen (VFW_Claude) geändert hat, gilt das aktuelle
+Wenn sich das Layout in den aktuellen Unterlagen (Materialsammlung) geändert hat, gilt das aktuelle
 Layout – dann `css/knb-stil.css` anpassen.
 
 ## Prüfen vor jedem Commit
