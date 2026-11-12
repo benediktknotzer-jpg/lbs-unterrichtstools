@@ -55,7 +55,8 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
    zusammengestellt. Gegen die SA1 II. LG (`Woche_06…/13_SA1_FP_W6.docx`, Stoff W1–W4) und die SA2
    II. LG (`Woche_09…/13_SA2_FP_W9.docx`) prüfen, spätestens zur Stoffbekanntgabe (02.12. bzw. 12.01.).
 3. **Bio-Kontrollnummer:** Die Materialsammlung entscheidet bis 13.01. (Befund 9). Das Quiz Biowaren danach angleichen.
-4. **Widersprüche Infoblatt gegen Buch** (entschieden 09.11., Belege in `docs/KONZEPT.md`). Das Quiz
+4. **Widersprüche Infoblatt gegen Buch** – vollständiger Auftrag mit Dateien, Fundstellen und Fristen:
+   `docs/AUFTRAG_MATERIALSAMMLUNG_2GH2B.md` (12.11.). (entschieden 09.11., Belege in `docs/KONZEPT.md`). Das Quiz
    ist angepasst; **in der Materialsammlung nachziehen** (Unterlagen der Mappe I. LG, eingesetzt im II. LG):
    - Fische (W6, Mi 16.12.): Rotbarsch und Karpfen sind **mittelfett** (Buch S. 154), nicht mager –
      IB Fische, Lösung „Fragen zum Ausarbeiten“ Teil 1. Fischdauerkonserven **über 100 °C**
