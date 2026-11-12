@@ -63,7 +63,17 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
      Magerfisch (Abgleich 10.11.). Entschieden 12.11.: In der SA2 den Karpfen durch einen eindeutigen
      Fisch ersetzen (z. B. Dorsch mager, Hering fett), Lösung mitziehen (`docs/ENTSCHEIDUNGEN_2GH2B.md` Nr. 9).
    - Fleisch (W4, Mo 30.11.): Tiefkühl-Lagerdauer nach **Buch S. 124** (Rind 8–12, Schwein mager 6,
-     fett 4, Faschiertes 3 Monate) – AMA-Frageblatt mit Lösung bzw. Fragenkatalog Fleisch Frage 6.
+     fett 4, Faschiertes 3 Monate) – AMA-Frageblatt mit Lösung (die Katalog-Lösung Frage 6 nennt keine
+     TK-Monate, sie stimmt: „höchstens drei Tage“ im Kühlschrank steht auch im Buch S. 124).
+   - Fleisch, Zahlen aus der AMA-Broschüre (geprüft 12.11. gegen Codex B 14, LMIV, EU-Bio-VO 2018/848):
+     **Gemischtes Faschiertes** (Rind und Schwein) höchstens **30 %** Fett, 20 % gilt nur für reines
+     Rinderfaschiertes – AMA-Frageblatt, IB, falls dort 20 % steht. **Bio-Rinder „180 Tage Auslauf“**
+     ist veraltet und galt nur für Anbindehaltung in Kleinbetrieben, heute Weide „wann immer möglich“
+     ohne Tageszahl – im Quiz gestrichen. **Nährstoffe:** rund 20 % Eiweiß (Codex 19–20 %, AMA 21 %),
+     rund drei Viertel Wasser, 1 % Mineralstoffe, Fett je nach Stück, kaum Kohlenhydrate; „2 % Fett“
+     und „1 % Kohlenhydrate“ sind nicht belegt – Katalog-Lösung Frage 4 und Frageblatt angleichen.
+     SA1 Aufgabe 6b („laut AMA-Broschüre rund 21 % Eiweiß“ = richtig) kann bleiben, weil die Aussage die
+     Broschüre zitiert. Umstellung auf Bio „2 Jahre“ gilt für Acker- und Grünland.
    - Feinkost (W5, Mi 09.12.): San Daniele **mindestens 400 Tage, rund 13 Monate** (EU-Spezifikation
      2025) statt „bis zu 14 Monate“ im Buch – IB Feinkost, falls dort übernommen. Parma 14 Monate stimmt.
    - Milch (W1, Prüfung 10.11., Auftrag an eine Sitzung in der Materialsammlung geschickt): A2-Milch enthält

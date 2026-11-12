@@ -18,7 +18,10 @@ Verkostungsblatt und Karte 103 raus, 16 Karten im Wortlaut des Fragenkatalogs W2
 markiert, Zugang mit Code lokal bei 360 px geprüft. Das Quiz kommt **Mo 16.11.** zum ersten Mal mit
 Code in die 2GH2b. **Ebenfalls 12.11.:** Mischquiz nur mit SA-Stoff laut Stoffbekanntgabe SA1/SA2
 II. LG – neue Angabe `auswahl` in `themen.json` (je Datei `nur`/`ohne` Unterthemen oder Nummern),
-vom Test geprüft. **Nächster Schritt:** Fleisch auf Katalog W4 (bis 27.11.).
+vom Test geprüft. **Fleisch (12.11.):** 12 Karten = Katalog W4, 8 OA, AMA-Zahlen gegen Codex B 14,
+LMIV, EU-Bio-VO und Buch S. 124 geprüft (gemischtes Faschiertes höchstens 30 %, nicht 20 %; „180 Tage
+Auslauf“ gestrichen; Eiweiß rund 20 %). Auftrag an die Materialsammlung in `docs/LEHRGANG_II_2GH2B.md`.
+**Nächster Schritt:** Feinkost auf Katalog W5 (bis 04.12.), dann Eier und Fische (bis 11.12.).
 
 **09.11. – II. Lehrgang läuft, nur 2. Klasse (Entscheidungen Benedikt):**
 - **Zahlen nur mit Beleg:** Grundlage ist das Buch; Neueres nur, wenn mehrfach belegt (Regel in
@@ -44,11 +47,11 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 
 | Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
 |-------|-------|-----:|-------:|---------------|------|
-| Wiederholung zur 1. Schularbeit | `"mix"` + `auswahl` | 266 | 65 | – (Stoff SA1 II. LG) | – |
+| Wiederholung zur 1. Schularbeit | `"mix"` + `auswahl` | 273 | 62 | – (Stoff SA1 II. LG) | – |
 | Wiederholung zur 2. Schularbeit | `"mix"` + `auswahl` | 466 | 114 | – (Stoff SA2 II. LG) | – |
 | Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | Katalog W1 | S. 89–95 |
 | Käse | `kaese.csv` | 85 (10 OA) | 16 = Katalog W2 II. LG | Katalog W2 | S. 100–113 |
-| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 82 | 15 | Entwurf (15) | S. 118–133, AMA-Broschüre |
+| Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 89 (8 OA) | 12 = Katalog W4 II. LG | Katalog W4 | S. 118–133, AMA-Broschüre |
 | Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | Katalog W4 Teil 1 | kein Buch |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 15 | Entwurf (15) | S. 148, 150 |
 | Eier | `eier.csv` | 47 | 13 | Entwurf (13) | S. 114–117 |
