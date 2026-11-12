@@ -38,7 +38,8 @@ Zeilen werden abgehakt (✔ mit Datum).
 | ✔ 12.11. | Fleisch: 12 Karten im Wortlaut der Katalog-Lösung W4 (86, 88, 96 gestrichen), 8 OA (98–105, je mit richtiger und falscher Probe gegen `js/oa.js`). AMA-Zahlen geprüft: Nr. 52 (180 Tage Auslauf) gestrichen, Nr. 58 auf „falsch“ gestellt (gemischtes Faschiertes höchstens 30 %, Codex B 14 und LMIV), Nr. 43 und Karte 4 auf rund 20 % Eiweiß (Codex B 14, FAO), Nr. 53 auf Acker- und Grünland eingeschränkt (EU-Bio-VO), Nr. 59 und Karte 6 mit Buch S. 124 belegt, Nr. 75 ohne Temperatur. Danach: Fleisch 89 Fragen, 12 Karten; Mischquiz zur 1. SA 273 Fragen, 62 Karten. | 2, 6, 13 |
 | Mi 02.12. | Mischquiz zur 1. SA gegen SA1 II. LG und Stoffbekanntgabe prüfen (Stoffbekanntgabe ist in der SA1-Lösung schon abgebildet). | 8 |
 | ✔ 12.11. | Feinkost: 12 Karten im Wortlaut der Katalog-Lösung W5. Katalog 2, 5, 7, 8 neu (Nr. 94–97), 1 vervollständigt (79); gestrichen 80, 81, 85 (in Karte 9), 90 (in Karte 12), 91, 92, 93. Die Quizfragen zu Zusatzverkauf bleiben (SA2-Stoff). | 2 |
-| Fr 11.12. | Eier (Karte 1 neu, 61 streichen, OA). Fische: 8 Katalogfragen als Karte und Quizfrage, 81–86 streichen, Wortlaut am Buch. | 2, 10, 13 |
+| ✔ 12.11. | Eier: 12 Karten im Wortlaut der Katalog-Lösung W6 (Karte 1 neu als 62; 50 in Karte 10, 61 gestrichen), 7 OA (63–69, je mit Proben gegen `js/oa.js`). | 2, 13 |
+| Fr 11.12. | Fische: 8 Katalogfragen als Karte und Quizfrage, 81–86 streichen, Wortlaut am Buch. | 2, 10, 13 |
 | Fr 08.01. | Fette (Karte 4 neu, 79, 85, 88 streichen, OA), Kakao (OA), Diät (74, 75 streichen, OF 66 Hafer am Buch, OA), Bio (11, 12 vervollständigen, 45, 47, 51–54 streichen, Kontrollnummer auf 2), Kindernährmittel (6, 11 vervollständigen, 50, 55 streichen, „ab dem 4. Monat“). | 2, 12, 13 |
 | Di 12.01. | Mischquiz zur 2. SA gegen SA2 II. LG und Stoffbekanntgabe (Feinkost-Film und Großhandel danach). | 8, 11 |
 | Fr 22.01. | Textilien: 11 Fragen mit zwei Quellen prüfen. | 14 |

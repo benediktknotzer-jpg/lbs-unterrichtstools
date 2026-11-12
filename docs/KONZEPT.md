@@ -23,7 +23,9 @@ LMIV, EU-Bio-VO und Buch S. 124 geprüft (gemischtes Faschiertes höchstens 30 %
 Auslauf“ gestrichen; Eiweiß rund 20 %). Auftrag an die Materialsammlung in `docs/LEHRGANG_II_2GH2B.md`.
 **Feinkost (12.11.):** 12 Karten = Katalog W5 (Nr. 2, 5, 7, 8 neu als 94–97; die Karten zu
 Zusatzverkauf, Großhandel und Gulasch/Fleischschmalz einzeln gestrichen bzw. in Karte 12).
-**Nächster Schritt:** Eier und Fische auf die Kataloge W6 (bis 11.12.).
+**Eier (12.11.):** 12 Karten = Katalog W6 (Karte 1 neu, 50 und 61 gestrichen), 7 OA.
+**Nächster Schritt:** Fische auf Katalog W6 Teil 1 und 2 (bis 11.12.): 8 Katalogfragen ohne Quizfrage
+am Buch S. 153–165 ergänzen, Wortlaut Hering und Kaviar am Buch prüfen.
 
 **09.11. – II. Lehrgang läuft, nur 2. Klasse (Entscheidungen Benedikt):**
 - **Zahlen nur mit Beleg:** Grundlage ist das Buch; Neueres nur, wenn mehrfach belegt (Regel in
@@ -50,13 +52,13 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 | Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
 |-------|-------|-----:|-------:|---------------|------|
 | Wiederholung zur 1. Schularbeit | `"mix"` + `auswahl` | 273 | 62 | – (Stoff SA1 II. LG) | – |
-| Wiederholung zur 2. Schularbeit | `"mix"` + `auswahl` | 466 | 111 | – (Stoff SA2 II. LG) | – |
+| Wiederholung zur 2. Schularbeit | `"mix"` + `auswahl` | 473 | 110 | – (Stoff SA2 II. LG) | – |
 | Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | Katalog W1 | S. 89–95 |
 | Käse | `kaese.csv` | 85 (10 OA) | 16 = Katalog W2 II. LG | Katalog W2 | S. 100–113 |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 89 (8 OA) | 12 = Katalog W4 II. LG | Katalog W4 | S. 118–133, AMA-Broschüre |
 | Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | Katalog W4 Teil 1 | kein Buch |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 12 = Katalog W5 II. LG | Katalog W5 | S. 148, 150 |
-| Eier | `eier.csv` | 47 | 13 | Entwurf (13) | S. 114–117 |
+| Eier | `eier.csv` | 54 (7 OA) | 12 = Katalog W6 II. LG | Katalog W6 | S. 114–117 |
 | Fische, Krusten- & Weichtiere | `fische.csv` | 64 | 22 | Entwurf (15) | S. 153–165 |
 | Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | 4 | – (kein Warenkunde) | IB laut Terminal S. 88 |
 | Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | 15 | Entwurf (15) | S. 166–172 |
