@@ -8,6 +8,13 @@ sind. Die Karteikarten stehen im Wortlaut der Katalog-Lösungen, also gilt der n
 
 ## 1. Was das Quiz nachziehen muss
 
+**Nachgezogen 13.11. (Quiz-Repository):** Fleisch 83 im Wortlaut 2a (mit Zusatz „AMA-Broschüre:
+21 %“), Fische 47 und 78 auf Scherg (Sternhausen) und Keta-Lachs, dazu die Erklärung von Fische 45
+nach Lebensmittelbuch B 35 („nur mit der Fischart in der Bezeichnung“ statt „Ersatzprodukte“).
+Mischquiz zur 2. SA: nichts zu ändern, Fische 3 und 60 fragen Seelachs schon als Magerfisch ab,
+keine Quizfrage nennt den Karpfen mager. Karteikarten Fische nach 2b: Frist bleibt **Fr 11.12.**
+(Umsetzungsplan in `docs/ENTSCHEIDUNGEN_2GH2B.md`, nicht 08.01.).
+
 | Quiz-Zeile | Steht jetzt | Ändern auf | Grund |
 |---|---|---|---|
 | `fleisch-rindfleisch.csv` Nr. 83 (Karteikarte Fleisch Frage 4) | „Fleisch liefert rund 20 % hochwertiges Eiweiß, …“ | Wortlaut der Katalog-Lösung, siehe 2a. Inhaltlich gleich, neu ist der Zusatz „(AMA-Broschüre: 21 %)“. Kann auch so bleiben, wenn der Zusatz auf der Karte stört. | Katalog-Lösung W4 Frage 4 geändert |

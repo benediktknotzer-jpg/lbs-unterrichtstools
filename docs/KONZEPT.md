@@ -1,11 +1,19 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 12. November 2026 · für Benedikt Knotzer (knb)
+Stand: 13. November 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
+
+**13.11. – Rückmeldung der Materialsammlung nachgezogen:** Die Materialsammlung hat den Auftrag
+vom 12.11. abgearbeitet (`docs/RUECKMELDUNG_MATERIALSAMMLUNG_2GH2B.md`, u. a. SA2 Aufgabe 3a jetzt
+Seelachs statt Karpfen). Im Quiz geändert: Fleisch Karte 4 (83) im neuen Wortlaut, Fische 47 und 78
+„Scherg (Sternhausen)“ statt „Schörg“ und „Keta-Lachs“ statt „Lachs“, Erklärung 45 nach
+Lebensmittelbuch B 35. Für die Fisch-Karten bis 11.12. gilt der neue Wortlaut der Katalog-Lösungen
+(Rückmeldung 2b, auch „Deutscher Kaviar aus Seehasenrogen“). Offen in der Materialsammlung nur noch
+die Bio-Kontrollnummer (bis 13.01.).
 
 **12.11. – alle offenen Fragen entschieden (18 Punkte, Benedikt):** `docs/ENTSCHEIDUNGEN_2GH2B.md`
 ist jetzt der Umsetzungsplan mit Fristen. Kern: Karteikarten = Fragenkatalog II. LG 1 : 1 (28 Karten
