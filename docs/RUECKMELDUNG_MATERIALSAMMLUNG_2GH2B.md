@@ -130,3 +130,9 @@ Das Quiz Käse ist für Mo 16.11. im Unterricht eingeplant. Bitte vor dem nächs
 | 81 | MM | „Verbraucherinformationsverordnung“ | „Lebensmittelinformationsverordnung (LMIV)“ |
 
 Nicht betroffen: Fragen zum Salzbad (18, 91, 106) nennen „Frischkäse“ nicht als Ergebnis. Frage 28, 83, 92, 107 nennen für Hartkäse „3 bis 12 Monate“ (Katalog-Lösung Frage 6, Buch S. 102); die Tabelle im Buch S. 103 sagt „3–36 Mon.“ — kein Fehler, nur zur Kenntnis.
+
+### 5b. Nachtrag 16.11.2026 (Abschluss der Prüfung von Woche 2)
+
+- **Frage 4 des Fragenkatalogs Käse** („An welchem Schritt entscheidet sich, ob ein Käse hart oder weich wird?“): Die Katalog-Lösung lässt jetzt drei Antworten gelten, je mit Begründung: Bearbeitung der Feststoffe (Schritt 3), Brennen und Rühren (Schritt 4), Formen und Pressen (Schritt 5). Eine Quizfrage mit nur einer richtigen Antwort dazu bitte prüfen.
+- **Reifezeiten** bleiben wie bisher: Buch S. 102 „Hartkäse 3 bis 12 Monate (Parmesan bis zu 2 1/2 Jahren), Schnittkäse 4 bis 10 Wochen, Weichkäse einige Wochen“ (am 16.11.2026 am Buch gelesen).
+- Der Zugangszettel sagt jetzt: „Fehlt ein Thema noch, kommt es im Lauf des Lehrgangs dazu.“ Die Tabelle nennt Fleisch und die gemischte Wiederholung als „im Quiz“; bitte melden, falls diese Themen noch fehlen.
