@@ -1,11 +1,17 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 13. November 2026 · für Benedikt Knotzer (knb)
+Stand: 16. November 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
+
+**16.11. – Käse „leicht“ neu (Rückmeldung Abschnitt 5):** Ein Käse darf „leicht“ heißen, wenn er
+mindestens 30 % weniger Fett enthält als der vergleichbare Käse – Lebensmittelbuch B 32 Abschnitt 9
+und VO (EG) 1924/2006, beide selbst geprüft. Das Buch S. 100 („25 % F. i. T. und weniger“) ist
+überholt; die Zahl steht nur noch als überholt in der Erklärung. Geändert: Käse 79, 102 (Karte im
+Wortlaut der Katalog-Lösung 16), 111 (OA), 81 (LMIV statt „Verbraucherinformationsverordnung“).
 
 **13.11. – Rückmeldung der Materialsammlung nachgezogen:** Die Materialsammlung hat den Auftrag
 vom 12.11. abgearbeitet (`docs/RUECKMELDUNG_MATERIALSAMMLUNG_2GH2B.md`, u. a. SA2 Aufgabe 3a jetzt

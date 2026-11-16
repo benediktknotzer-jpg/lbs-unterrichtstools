@@ -93,6 +93,15 @@ Magerfisch oder Fettfisch: Hering Fettfisch · Dorsch Magerfisch · Makrele Fett
 
 Betrifft Quizfragen zum Thema Käse. Bitte gegen diese Punkte prüfen und nachziehen.
 
+**Nachgezogen 16.11. (Quiz-Repository):** 30-%-Regel selbst gegengeprüft: Lebensmittelbuch B 32
+Abschnitt 9 (lebensmittelbuch.at, Stand 2026: „zumindest 30 %ige Reduktion des absoluten
+Fettgehalts“) und VO (EG) 1924/2006 Anhang („leicht“ = Bedingungen wie „reduziert“, mindestens
+30 %). Geändert: 79 (MC, neue Frage und Ablenker, „25 % F. i. T.“ nur noch in der Erklärung als
+überholt), 102 (Karte im Wortlaut der Katalog-Lösung Frage 16, ohne den Lehrkraft-Satz „zählt“),
+111 (OA: Begriffe „30“ und „weniger/reduziert/verringert“, beide nötig; gegen `js/oa.js` geprüft,
+„Bei 25 % F.i.T. und weniger“ und „30 % F.i.T.“ gelten als falsch), 81 (LMIV). Salzbad und
+Emmentaler: nichts zu ändern.
+
 - **„leicht“ bei Käse (Fragenkatalog Käse Frage 16, Arbeitsblatt 2d, 1. Schularbeit 1e):**
   Frage neu: „Wann darf ein Käse als ‚leicht‘ bezeichnet werden?“ Antwort neu: wenn er
   mindestens 30 % weniger Fett enthält als der vergleichbare Käse. Beleg: Österreichisches
