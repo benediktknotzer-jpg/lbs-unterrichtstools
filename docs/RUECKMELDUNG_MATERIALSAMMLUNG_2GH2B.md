@@ -88,3 +88,23 @@ Magerfisch oder Fettfisch: Hering Fettfisch · Dorsch Magerfisch · Makrele Fett
 ## 4. Noch offen
 
 - **Bio-Kontrollnummer (E):** Entscheidung Benedikt bis Mi 13.01. Danach folgt eine eigene Meldung.
+
+## 5. Nachtrag 15./16.11.2026 — Käse (Woche 2), aus dem Prüfgremium der Materialsammlung
+
+Betrifft Quizfragen zum Thema Käse. Bitte gegen diese Punkte prüfen und nachziehen.
+
+- **„leicht“ bei Käse (Fragenkatalog Käse Frage 16, Arbeitsblatt 2d, 1. Schularbeit 1e):**
+  Frage neu: „Wann darf ein Käse als ‚leicht‘ bezeichnet werden?“ Antwort neu: wenn er
+  mindestens 30 % weniger Fett enthält als der vergleichbare Käse. Beleg: Österreichisches
+  Lebensmittelbuch, Codexkapitel B 32, Abschnitt 9 (Leitlinien „leicht“/„light“), und
+  EU-Verordnung 1924/2006; geprüft am 15.11.2026. Der Satz im Warenkundebuch S. 100
+  („25 % F. i. T. und weniger“) ist überholt; im Unterricht zählt die Buchantwort noch,
+  wird aber richtiggestellt. Eine Quizfrage mit „25 % F. i. T.“ als einzig richtiger Antwort
+  bitte ändern.
+- **Salzbad (Infoblatt Käse Schritt 6):** „Das Ergebnis ist der junge, noch ungereifte Käse
+  (das Buch nennt ihn hier Frischkäse).“ Keine Quizfrage, die „Frischkäse“ als Ergebnis des
+  Salzbads verlangt.
+- **Emmentaler** im Arbeitsblatt: „4 Monate gereift“ (Hartkäse reift laut Buch S. 103
+  3 bis 36 Monate).
+- **Lebensmittelinformationsverordnung (LMIV)** statt „Verbraucherinformationsverordnung“,
+  auch in der Präsentation.
