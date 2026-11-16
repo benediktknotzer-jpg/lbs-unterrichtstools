@@ -108,3 +108,16 @@ Betrifft Quizfragen zum Thema Käse. Bitte gegen diese Punkte prüfen und nachzi
   3 bis 36 Monate).
 - **Lebensmittelinformationsverordnung (LMIV)** statt „Verbraucherinformationsverordnung“,
   auch in der Präsentation.
+
+### 5a. Betroffene Fragen in `daten/kaese.csv` (Stand 16.11.2026, von der Sitzung in der Materialsammlung nur gelesen)
+
+Das Quiz Käse ist für Mo 16.11. im Unterricht eingeplant. Bitte vor dem nächsten Einsatz ändern:
+
+| Nr | Typ | Jetzt | Soll |
+|---|---|---|---|
+| 79 | MC | „Ab welchem F.i.T.-Wert darf ein Käse als ‚leicht‘ bezeichnet werden?“ → „Bei 25 % F.i.T. und weniger“ | Frage: „Wann darf ein Käse als ‚leicht‘ bezeichnet werden?“ Richtig: „Wenn er mindestens 30 % weniger Fett enthält als der vergleichbare Käse“. Falsche Antworten neu, eine davon „Bei 25 % F. i. T. und weniger (ältere Faustregel aus dem Buch S. 100)“ nur, wenn die Erklärung das auflöst; sonst weglassen |
+| 102 | OF | Antwort „25 % F. i. T. und weniger“ | Antwort wie Katalog-Lösung Frage 16 neu; Quelle: Lebensmittelbuch B 32 Abschnitt 9, Buch S. 100 als überholt nennen |
+| 111 | OA | verlangt die Zahl 25 | Zahl 30 („mindestens … % weniger Fett als der vergleichbare Käse“) oder Frage streichen |
+| 81 | MM | „Verbraucherinformationsverordnung“ | „Lebensmittelinformationsverordnung (LMIV)“ |
+
+Nicht betroffen: Fragen zum Salzbad (18, 91, 106) nennen „Frischkäse“ nicht als Ergebnis. Frage 28, 83, 92, 107 nennen für Hartkäse „3 bis 12 Monate“ (Katalog-Lösung Frage 6, Buch S. 102); die Tabelle im Buch S. 103 sagt „3–36 Mon.“ — kein Fehler, nur zur Kenntnis.
