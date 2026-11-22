@@ -12,6 +12,13 @@ Katalog-Lösung Frage 4 (drei richtige Schritte: Bearbeitung der Feststoffe, Bre
 Formen und Pressen). Der Code `2GH2B-MILCH` wurde am 16.11. **nicht** ausgeteilt; das Zugangsblatt
 geht **Mo 23.11.** (Käsepräsentationen) an die 2GH2b. Online am 22.11. bei 375 px geprüft: mit Code
 alle 20 Einträge, keine Konsolenfehler. Fleisch und die Mischquiz sind im Quiz (Frage aus 5b).
+**Fische (22.11.):** 40 Karten = Katalog W6 Teil 1 (17) und Teil 2 (23), am Buch S. 153–159 gelesen.
+Lachs (Katalog 30 kg, 7. Lebensjahr) und Glasaale (ca. 8 Jahre) auf Buch S. 156 gestellt: 36 kg, ab dem
+4. Lebensjahr ins Küstengewässer, Rückkehr nach 3 bis 6 Jahren. Dorsch-Rogen als „Kaviarersatz“ statt
+„Skandinavischer Kaviar“ (nicht im Buch). Karten 81–86 gestrichen, 9 neue Quizfragen (111–119) zu den
+Katalogfragen ohne Quizfrage, neues Unterthema „Fang und Verarbeitung“. Abweichungen an die
+Materialsammlung: `docs/AUFTRAG_MATERIALSAMMLUNG_2GH2B.md` Block I. **Nächster Schritt:** Mischquiz zur
+1. SA gegen SA1 II. LG (bis Mi 02.12.).
 
 **16.11. – Käse „leicht“ neu (Rückmeldung Abschnitt 5):** Ein Käse darf „leicht“ heißen, wenn er
 mindestens 30 % weniger Fett enthält als der vergleichbare Käse – Lebensmittelbuch B 32 Abschnitt 9
@@ -72,14 +79,14 @@ Benedikt sieht das Quiz online durch**, dann Format, Effekte und selbst korrigie
 | Thema | Datei | Quiz | Karten | Fragenkatalog | Buch |
 |-------|-------|-----:|-------:|---------------|------|
 | Wiederholung zur 1. Schularbeit | `"mix"` + `auswahl` | 273 | 62 | – (Stoff SA1 II. LG) | – |
-| Wiederholung zur 2. Schularbeit | `"mix"` + `auswahl` | 473 | 110 | – (Stoff SA2 II. LG) | – |
+| Wiederholung zur 2. Schularbeit | `"mix"` + `auswahl` | 482 | 128 | – (Stoff SA2 II. LG) | – |
 | Milch & Milchprodukte | `milch-milchprodukte.csv` | 72 (10 OA) | 15 | Katalog W1 | S. 89–95 |
 | Käse | `kaese.csv` | 85 (10 OA) | 16 = Katalog W2 II. LG | Katalog W2 | S. 100–113 |
 | Fleisch & Rindfleisch | `fleisch-rindfleisch.csv` | 89 (8 OA) | 12 = Katalog W4 II. LG | Katalog W4 | S. 118–133, AMA-Broschüre |
 | Verkaufsgespräch, CI & Verpackung | `verkauf-marketing.csv` | 51 | 18 | Katalog W4 Teil 1 | kein Buch |
 | Feinkost, Fertigkost & Zusatzverkauf | `feinkost-zusatzverkauf.csv` | 77 | 12 = Katalog W5 II. LG | Katalog W5 | S. 148, 150 |
 | Eier | `eier.csv` | 54 (7 OA) | 12 = Katalog W6 II. LG | Katalog W6 | S. 114–117 |
-| Fische, Krusten- & Weichtiere | `fische.csv` | 64 | 22 | Entwurf (15) | S. 153–165 |
+| Fische, Krusten- & Weichtiere | `fische.csv` | 73 | 40 = Katalog W6 Teil 1 und 2 II. LG | Katalog W6 Teil 1 und 2 | S. 153–159 |
 | Inventurdifferenzen | `inventurdifferenzen.csv` | 24 | 4 | – (kein Warenkunde) | IB laut Terminal S. 88 |
 | Speisefette & Speiseöle | `speisefette-oele.csv` | 73 | 15 | Entwurf (15) | S. 166–172 |
 | Kakao & Schokolade | `kakao-schokolade.csv` | 77 | 20 | LAP-Fragen W7 (20) | S. 248–252 |

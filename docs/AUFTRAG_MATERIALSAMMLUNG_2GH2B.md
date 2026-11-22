@@ -145,3 +145,21 @@ Am 10.11. ging dieser Auftrag schon hinaus. Bitte prüfen, ob er umgesetzt ist:
 | **Mi 13.01.** | E | Bio-Kontrollnummer entscheiden, dem Quiz melden |
 | sofort prüfen | F | Milch-Auftrag vom 10.11. erledigt? |
 | laufend | G | Gerüst-Spalte „Quiz“, Meldeweg ans Quiz, SA2-Datum |
+
+---
+
+## I · Nachtrag 22.11.2026: Katalog-Lösungen Fische W6 gegen das Buch (bis Fr 11.12.)
+
+Beim Ausrichten der Fisch-Karten am Buch S. 153–159 gelesen. Das Quiz steht schon auf dem
+Buchstand; bitte die Katalog-Lösungen (`…/Woche_06_14-12_bis_18-12/09_FRAGEN_Lösung_FP_W6_Fische_Teil_1.docx`
+und `…_Teil_2.docx`) nachziehen.
+
+| Datei, Frage | Steht jetzt | Buch | Ändern auf |
+|---|---|---|---|
+| Teil 1 „Was wissen Sie vom Lachs?“ | „bis zu 1,5 m lang und 30 kg schwer“ · „mit Laichreife (7. Lebensjahr)“ | S. 156: „1,5 m lang, bis 36 kg schwer“ · „wandert aber ab seinem 4. Lebensjahr in die Küstengewässer ab. Mit Laichreife kommt er wieder ins Süßwasser“ | 36 kg; „ab dem 4. Lebensjahr in die Küstengewässer“; „7. Lebensjahr“ streichen |
+| Teil 2 „Was wissen Sie vom Aal?“ | „Die Brut (Glasaale) kehren nach ca. 8 Jahren wieder ins Süßwasser zurück“ | S. 156: „kehren nach 3 bis 6 Jahren wieder ins Süßwasser zurück“ | 3 bis 6 Jahre |
+| Teil 1 „Was wissen Sie vom Dorsch?“ | „Der Rogen wird zum ‚Skandinavischen Kaviar‘ gewürzt und gesalzen.“ | S. 158 nennt Kabeljau (Tarako) nur als Rogenlieferant für Kaviarersatz; „Skandinavischer Kaviar“ steht nicht im Buch und passt nicht zu Lebensmittelbuch B 35 (Rogen anderer Fische nur mit der Fischart) | „Sein Rogen wird gesalzen als Kaviarersatz angeboten.“ (so im Quiz) |
+| Teil 1 „Kabeljau und Dorsch“ | „Kalbeljau“ | – | Tippfehler: „Kabeljau“ |
+| Teil 2 „Was ist Kochfischware?“ | Antwort ohne Buchstelle | Das Buch (S. 158) nennt Kochfischware nicht | nur zur Kenntnis; die Karte bleibt im Katalog-Wortlaut |
+
+Kleinigkeiten, die das Quiz schon richtig hat: „Meistgekaufter Konsumfisch“, „reich an Mineralstoffen“.

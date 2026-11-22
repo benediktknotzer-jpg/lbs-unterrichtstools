@@ -41,7 +41,7 @@ Zeilen werden abgehakt (✔ mit Datum).
 | ✔ 12.11. | Eier: 12 Karten im Wortlaut der Katalog-Lösung W6 (Karte 1 neu als 62; 50 in Karte 10, 61 gestrichen), 7 OA (63–69, je mit Proben gegen `js/oa.js`). | 2, 13 |
 | ✔ 13.11. | Rückmeldung der Materialsammlung (`docs/RUECKMELDUNG_MATERIALSAMMLUNG_2GH2B.md`) nachgezogen: Fleisch Karte 4 (83) im neuen Wortlaut der Katalog-Lösung, Fische 47 und 78 Scherg (Sternhausen) und Keta-Lachs, Erklärung 45 nach Lebensmittelbuch B 35. | 2, 10 |
 | ✔ 16.11. | Käse nach Rückmeldung Abschnitt 5: „leicht“ = mindestens 30 % weniger Fett als der vergleichbare Käse (Lebensmittelbuch B 32 Abschnitt 9 und VO 1924/2006, Buch S. 100 überholt) in 79, 102, 111; 81 LMIV. | 2, 13 |
-| Fr 11.12. | Fische: 8 Katalogfragen als Karte und Quizfrage, 81–86 streichen, Karten im Wortlaut der Katalog-Lösungen Teil 1 und 2 (neu seit 13.11., Rückmeldung 2b). | 2, 10, 13 |
+| ✔ 22.11. | Fische: 40 Karten im Wortlaut der Katalog-Lösungen Teil 1 und 2 (Zahlen nach Buch S. 153–159: Lachs 36 kg und 4. Lebensjahr, Glasaale 3 bis 6 Jahre), 81–86 gestrichen, 9 Katalogfragen ohne Quizfrage neu als 111–119. Abweichungen gemeldet (Auftrag Block I). | 2, 10, 13 |
 | Fr 08.01. | Fette (Karte 4 neu, 79, 85, 88 streichen, OA), Kakao (OA), Diät (74, 75 streichen, OF 66 Hafer am Buch, OA), Bio (11, 12 vervollständigen, 45, 47, 51–54 streichen, Kontrollnummer auf 2), Kindernährmittel (6, 11 vervollständigen, 50, 55 streichen, „ab dem 4. Monat“). | 2, 12, 13 |
 | Di 12.01. | Mischquiz zur 2. SA gegen SA2 II. LG und Stoffbekanntgabe (Feinkost-Film und Großhandel danach). | 8, 11 |
 | Fr 22.01. | Textilien: 11 Fragen mit zwei Quellen prüfen. | 14 |
