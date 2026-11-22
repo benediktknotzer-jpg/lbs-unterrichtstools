@@ -1,11 +1,17 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 16. November 2026 · für Benedikt Knotzer (knb)
+Stand: 22. November 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
+
+**22.11. – Nachtrag 5b umgesetzt, Zugang verschoben:** Karte Käse 90 im neuen Wortlaut der
+Katalog-Lösung Frage 4 (drei richtige Schritte: Bearbeitung der Feststoffe, Brennen und Rühren,
+Formen und Pressen). Der Code `2GH2B-MILCH` wurde am 16.11. **nicht** ausgeteilt; das Zugangsblatt
+geht **Mo 23.11.** (Käsepräsentationen) an die 2GH2b. Online am 22.11. bei 375 px geprüft: mit Code
+alle 20 Einträge, keine Konsolenfehler. Fleisch und die Mischquiz sind im Quiz (Frage aus 5b).
 
 **16.11. – Käse „leicht“ neu (Rückmeldung Abschnitt 5):** Ein Käse darf „leicht“ heißen, wenn er
 mindestens 30 % weniger Fett enthält als der vergleichbare Käse – Lebensmittelbuch B 32 Abschnitt 9
