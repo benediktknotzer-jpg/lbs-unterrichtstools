@@ -11,7 +11,7 @@ Zeilen werden abgehakt (✔ mit Datum).
 |---|---|---|
 | 1 | Durchsicht Milch | **Passt.** Milch ist fertig (bis auf MC 74, siehe unten). |
 | 2 | Karteikarten | **Karteikarten = Fragenkatalog II. LG, 1 : 1.** Eine Karte je Katalogfrage, Wortlaut der Katalog-Lösung, Zahlen nach Buch. Die 28 Karten ohne Katalogfrage werden gestrichen: Käse 103 · Fleisch 86, 96 · Feinkost 80, 81, 91, 92, 93 · Eier 61 · Fische 81–86 · Fette 79, 85, 88 · Diät 74, 75 · Bio 45, 47, 51–54 · Kindernährmittel 50, 55. Fehlende oder halbe Karten kommen dazu. |
-| 3 | Quizfragen außerhalb des Katalogs | **Bleiben**, wenn Buch oder IB. Keine neue Streichrunde; ergänzt wird nur, wo eine Katalogfrage keine Quizfrage hat. |
+| 3 | Quizfragen außerhalb des Katalogs | ~~Bleiben, wenn Buch oder IB.~~ **Geändert 27.11.** nach der Rückmeldung der Klasse („900 Fragen?“): je Thema auf rund 30–40 Quizfragen kürzen (je Katalogfrage OA und ein bis zwei geschlossene Fragen, dazu SA-Stoff). Themen erscheinen erst ab dem Unterrichtstag (`freigabe` in `zugaenge.json`). |
 | 4 | Eigene Katalog-Entwürfe | **Als überholt markieren** (Fleisch, Feinkost, Eier, Fische, Fette, Diät, Bio, Kindernährmittel). Kein DOCX mehr daraus. |
 | 5a | Käse, 27 Fragen „SA1 FOOD“ | **Bleiben** (Buch). |
 | 5b | Käse, Verkostungsblatt | **Wird im II. LG nicht verwendet** → die 3 Fragen „Verkostungsblatt Käse-Sensorik“ fallen weg. |
@@ -42,6 +42,9 @@ Zeilen werden abgehakt (✔ mit Datum).
 | ✔ 13.11. | Rückmeldung der Materialsammlung (`docs/RUECKMELDUNG_MATERIALSAMMLUNG_2GH2B.md`) nachgezogen: Fleisch Karte 4 (83) im neuen Wortlaut der Katalog-Lösung, Fische 47 und 78 Scherg (Sternhausen) und Keta-Lachs, Erklärung 45 nach Lebensmittelbuch B 35. | 2, 10 |
 | ✔ 16.11. | Käse nach Rückmeldung Abschnitt 5: „leicht“ = mindestens 30 % weniger Fett als der vergleichbare Käse (Lebensmittelbuch B 32 Abschnitt 9 und VO 1924/2006, Buch S. 100 überholt) in 79, 102, 111; 81 LMIV. | 2, 13 |
 | ✔ 22.11. | Fische: 40 Karten im Wortlaut der Katalog-Lösungen Teil 1 und 2 (Zahlen nach Buch S. 153–159: Lachs 36 kg und 4. Lebensjahr, Glasaale 3 bis 6 Jahre), 81–86 gestrichen, 9 Katalogfragen ohne Quizfrage neu als 111–119. Abweichungen gemeldet (Auftrag Block I). | 2, 10, 13 |
+| ✔ 27.11. | Freischalten nach Wochenplan (`freigabe` in `zugaenge.json`), Anzahl 30/50, Themen in Mischungen anhakbar. Käse „leicht“ = Fett insgesamt, nicht F.i.T. (79, 102, 111), Erklärung Mozzarella (113). | 3, 8 |
+| ✔ 28.11. | Rückmeldung Nachtrag 6: Reklamation und Umtausch (Verkauf 70–79) für SA1 und Mischquiz, Freigabe Feinkost vorläufig 14.12. (Lehrausgang Vöslauer Mi 09.12.). | 8 |
+| offen | Kürzung Milch (72 → 31), Käse (85 → 38), Fleisch (89 → 30): Listen `docs/streichlisten/*-kuerzung-2026-11-27.md`, warten auf Benedikt (Fleisch vor der Freigabe Mo 30.11.; Teilstücke und Garstufen stehen trotz Nr. 7 auf der Liste). Danach die übrigen Themen, jeweils vor ihrer Freigabe. | 3, 7 |
 | Fr 08.01. | Fette (Karte 4 neu, 79, 85, 88 streichen, OA), Kakao (OA), Diät (74, 75 streichen, OF 66 Hafer am Buch, OA), Bio (11, 12 vervollständigen, 45, 47, 51–54 streichen, Kontrollnummer auf 2), Kindernährmittel (6, 11 vervollständigen, 50, 55 streichen, „ab dem 4. Monat“). | 2, 12, 13 |
 | Di 12.01. | Mischquiz zur 2. SA gegen SA2 II. LG und Stoffbekanntgabe (Feinkost-Film und Großhandel danach). | 8, 11 |
 | Fr 22.01. | Textilien: 11 Fragen mit zwei Quellen prüfen. | 14 |

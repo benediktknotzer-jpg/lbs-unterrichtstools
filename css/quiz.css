@@ -192,6 +192,53 @@
   outline-offset: 2px;
 }
 
+/* Themen einer Mischung an- und abhaken */
+.themenwahl-knoepfe {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.themenwahl-liste {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.themenwahl-eintrag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--knb-blau);
+  border-radius: var(--knb-radius);
+  background: var(--knb-weiss);
+  cursor: pointer;
+}
+
+.themenwahl-eintrag input {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+  margin: 0;
+  accent-color: var(--knb-blau);
+}
+
+.themenwahl-name {
+  flex: 1;
+  min-width: 0;
+}
+
+.themenwahl-zahl {
+  color: var(--knb-blau);
+  font-weight: 700;
+}
+
+.themenwahl-eintrag:has(input:not(:checked)) {
+  border-color: #BFBFBF;
+  color: #6b6b6b;
+}
+
 #einst-info {
   margin: 1rem 0;
 }

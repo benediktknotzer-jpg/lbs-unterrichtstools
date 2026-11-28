@@ -59,6 +59,13 @@ steht nur dort, wo ein Befehl oder Pfad ihn braucht (in Backticks), dazu `tools/
 - Klassen-Codes: `daten/zugaenge.json` (Format „Klasse + Wort“, z. B. `2GH2B-MILCH`, pro Lehrgang neu,
   alter Code `aktiv: false`). Jedes Thema in `themen.json` braucht `klassen`. QR je Code:
   `bilder/qr-<CODE>.svg` mit `tools/qr_code.py`, Blatt: `zugang.html?code=<CODE>`.
+- **Freischalten nach Wochenplan (Benedikt 27.11.2026):** Je Code in `zugaenge.json` steht unter
+  `freigabe` für jedes Thema das Datum der Unterrichtsstunde (aus `docs/LEHRGANG_II_2GH2B.md`).
+  Ändert sich der Wochenplan, die Daten dort nachziehen. Neuer Code = neue Freigabe-Daten.
+- **Kürzen auf Kern (Benedikt 27.11.2026, ersetzt Nr. 3 vom 12.11.):** je Katalogfrage die OA und ein
+  bis zwei geschlossene Fragen, dazu SA-Stoff und einzelne Beratungsfragen; doppelte und Stoff außerhalb
+  von Katalog und SA fallen weg, rund 30–40 Quizfragen je Thema. Liste vor dem Streichen:
+  `docs/streichlisten/<thema>-kuerzung-<datum>.md`, Benedikt nennt nur, was bleibt.
 - Notenschlüssel der LBS (wie Schularbeit, nicht ändern): 100–91 / 90–81 / 80–61 / 60–51 / 50–0 %,
   Prozent abgerundet. Quelle: `VFW_Claude/00_START_NEUER_LEHRGANG_I_2026-27.md`.
 - Zugang für die Lehrlinge: `zugang.html` (QR-Code `bilder/qr-quiz.svg`, erzeugt mit

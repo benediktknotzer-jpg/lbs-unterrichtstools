@@ -1,6 +1,27 @@
 {
   "ohneCode": { "klasse": "2", "bis": "2026-11-06" },
   "zugaenge": [
-    { "code": "2GH2B-MILCH", "name": "2GH2b · II. Lehrgang 2026/27", "klasse": "2", "aktiv": true }
+    { "code": "2GH2B-MILCH", "name": "2GH2b · II. Lehrgang 2026/27", "klasse": "2", "aktiv": true,
+      "freigabe": {
+        "Milch & Milchprodukte": "2026-11-10",
+        "Verkaufsgespräch, CI & Verpackung": "2026-11-11",
+        "Käse": "2026-11-16",
+        "Fleisch & Rindfleisch": "2026-11-30",
+        "Wiederholung zur 1. Schularbeit": "2026-12-02",
+        "Feinkost, Fertigkost & Zusatzverkauf": "2026-12-14",
+        "Beratungsfälle": "2026-12-14",
+        "Eier": "2026-12-15",
+        "Fische, Krusten- & Weichtiere": "2026-12-16",
+        "Inventurdifferenzen": "2027-01-11",
+        "Speisefette & Speiseöle": "2027-01-12",
+        "Kakao & Schokolade": "2027-01-12",
+        "Diätetische Lebensmittel": "2027-01-13",
+        "Biowaren": "2027-01-13",
+        "Kindernährmittel": "2027-01-18",
+        "Wiederholung zur 2. Schularbeit": "2027-01-18",
+        "Textilien (Non-Food)": "2027-01-26",
+        "Spielzeug & Prüfsiegel (Non-Food)": "2027-01-27",
+        "Zeichen- und Malbedarf (Non-Food)": "2027-01-27"
+      } }
   ]
 }

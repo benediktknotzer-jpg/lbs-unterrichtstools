@@ -140,6 +140,10 @@ test('zugaenge.json: gültig, keine doppelten Codes, Klassen und Themen vorhande
     (zug.themen || []).forEach(function (t) {
       assert.ok(titel.indexOf(t) >= 0, 'Code „' + code + '“: Thema „' + t + '“ steht nicht in themen.json');
     });
+    Object.keys(zug.freigabe || {}).forEach(function (t) {
+      assert.ok(titel.indexOf(t) >= 0, 'Code „' + code + '“, freigabe: Thema „' + t + '“ steht nicht in themen.json');
+      assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(zug.freigabe[t]), 'Code „' + code + '“, freigabe „' + t + '“: Datum JJJJ-MM-TT');
+    });
     assert.ok(fs.existsSync(path.join(__dirname, '..', 'bilder', 'qr-' + code + '.svg')),
       'Code „' + code + '“: QR-Code bilder/qr-' + code + '.svg fehlt');
   });

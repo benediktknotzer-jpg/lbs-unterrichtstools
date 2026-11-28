@@ -1,11 +1,28 @@
 # Konzept: Warenkunde-Quiz mit Klassen-Freigabe
 
-Stand: 22. November 2026 · für Benedikt Knotzer (knb)
+Stand: 27. November 2026 · für Benedikt Knotzer (knb)
 
 ## Stand
 
 Übergabe für einen neuen Chat (`/uebergabe` liest diesen Abschnitt und „Offene Punkte“).
 Bei jedem Commit aktualisieren.
+
+**28.11. – Nachtrag 6 der Materialsammlung umgesetzt:** SA1 umgebaut (neu Reklamation und Umtausch,
+Lehrausgang Vöslauer Mi 09.12.). Neues Unterthema Reklamation (Verkauf 70–79, 10 Fragen aus IB und LB
+W3), damit auch im Mischquiz zur 1. SA. Feinkost-Freigabe vorläufig 14.12., neuer Termin offen
+(Benedikt). Frist war Mi 02.12., 12:50.
+
+**27.11. – Rückmeldung aus dem Unterricht (2GH2b, Käsequiz):** Zugang per QR-Code ging ohne
+Code-Eingabe. Neu: Anzahl 30 und 50; in jeder Mischung (Alle Themen, Wiederholung SA1/SA2) Themen per
+Häkchen wählen, z. B. nur Milch und Käse. Käse 79, 102, 111: „leicht“ = insgesamt mindestens 30 %
+weniger Fett, gemeint ist der Fettgehalt im ganzen Käse, nicht F.i.T. (Lebensmittelbuch B 32
+Abschnitt 9: „Reduktion des absoluten Fettgehalts“). Käse 113 (zwei Weichkäse): Mozzarella zählt zu
+Recht nicht, er ist ungereift und gehört zu den Frischkäsen (Buch S. 104–107, Lebensmittelbuch B 32
+3.3); Erklärung ergänzt. **Zu viele Fragen („900 Fragen?“), entschieden 27.11.: freischalten und
+kürzen.** Themen erscheinen erst am Unterrichtstag laut Wochenplan (`freigabe` in `zugaenge.json`, am
+27.11. sieht die Klasse Milch, CI und Käse, 208 Fragen). Kürzungslisten Milch (72 → 31), Käse
+(85 → 38) und Fleisch (89 → 30) in `docs/streichlisten/*-kuerzung-2026-11-27.md`, **warten auf
+Benedikt** (Fleisch vor der Freigabe Mo 30.11.). Danach die übrigen Themen jeweils vor ihrer Freigabe.
 
 **22.11. – Nachtrag 5b umgesetzt, Zugang verschoben:** Karte Käse 90 im neuen Wortlaut der
 Katalog-Lösung Frage 4 (drei richtige Schritte: Bearbeitung der Feststoffe, Brennen und Rühren,

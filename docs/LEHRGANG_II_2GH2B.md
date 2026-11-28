@@ -13,7 +13,7 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
 ## Eckdaten
 
 - Klasse 2GH2b, 10 Lehrlinge, Mo–Mi je Std. 7–10, 09.11.2026 bis 27.01.2027.
-- **SA1 Mo 14.12.**, Stoff W1–W4 (Milch, Käse, Fleisch, CI, Verpackung; Stoffbekanntgabe bis Mi 02.12.).
+- **SA1 Mo 14.12.**, Stoff W1–W5 (Verkaufsgespräch, CI, Reklamation und Umtausch, Milch, Käse, Verpackung, Lehrausgang Vöslauer, Fleisch; Stoffbekanntgabe bis Mi 02.12.; umgebaut 28.11., Rückmeldung Nachtrag 6).
 - **SA2 Di 19.01.**, Stoff W5–W8 (Feinkost bis Bio, Inventur; Stoffbekanntgabe bis Di 12.01.).
 - Klassen-Code `2GH2B-MILCH`, seit 07.11. nur noch mit Code.
 
@@ -27,11 +27,12 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
 | 2 | Mo 16.11. | Käse (WKB S. 100–113) | Käse | I. LG W2 | SA1 |
 | 2 | Di 17.11., Mi 18.11. | Präsentationstechniken, Käseprojekt, Verkaufsaktionen | – | – | nein |
 | 3 | Mo 23.11. | Käsepräsentationen | Käse | – | eigener Käse |
-| 3 | Di 24.11. | Reklamation (4. UE: Wiederholung W1–W2 mit Quiz) | Milch, Käse | – | nein |
+| 3 | Di 24.11. | Reklamation (4. UE: Wiederholung W1–W2 mit Quiz) | Milch, Käse · Verkaufsgespräch (Unterthema Reklamation und Umtausch, seit 28.11.) | – | **SA1** (seit 28.11.) |
 | 3 | Mi 25.11. | Käse sichern, Verpackung, Film | Verkaufsgespräch, CI & Verpackung | – | SA1 |
 | 4 | Mo 30.11., Di 01.12. | Fleisch, AMA, Rindfleisch, Kennzeichnung | Fleisch & Rindfleisch | **II. LG neu, 12 Fragen** (W4) | SA1 |
-| 4 | Mi 02.12. | Telefon · Wiederholung SA1 | Wiederholung zur 1. Schularbeit | – | Stoffbekanntgabe |
-| 5 | Mi 09.12. | Fragestunde SA1 · Feinkost | Feinkost, Fertigkost & Zusatzverkauf | **II. LG neu** (W5) | SA2 |
+| 4 | Mi 02.12. | Telefon · Wiederholung und Fragestunde SA1 (Mischquiz am Smartboard, dann am Handy) | Wiederholung zur 1. Schularbeit | – | Stoffbekanntgabe |
+| 5 | Mi 09.12. | **Lehrausgang Vöslauer** (FP-Block entfällt; keine Quizfragen) | – | – | SA1 (6 P) |
+| 5/6 | **offen** | Feinkost, Fertigkost (neuer Termin entscheidet Benedikt) | Feinkost, Fertigkost & Zusatzverkauf, Freigabe vorläufig Mo 14.12. | **II. LG neu** (W5) | SA2 |
 | 6 | Mo 14.12. | **SA1** · Zusatzverkauf | Feinkost · Beratungsfälle | – | SA2 |
 | 6 | Di 15.12. | Eier (Quiz am Beamer) | Eier | **II. LG neu** (W6) | SA2 |
 | 6 | Mi 16.12. | Rückgabe SA1 · Fische | Fische | II. LG Teil 1 + 2 (W6) | SA2 |

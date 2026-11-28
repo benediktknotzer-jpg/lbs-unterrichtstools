@@ -299,10 +299,21 @@
           return;
         }
         if (zugang.name) $('kopf-fach').textContent = 'Fachpraktikum · ' + zugang.name;
+        var spaeter = 0;
         themen = geladen.filter(function (t) {
           if (zugang.alle) return true;
-          return t.klassen.indexOf(zugang.klasse) >= 0 && (!zugang.themen || zugang.themen.indexOf(t.titel) >= 0);
+          if (t.klassen.indexOf(zugang.klasse) < 0) return false;
+          if (zugang.themen && zugang.themen.indexOf(t.titel) < 0) return false;
+          // „freigabe“: Thema erst ab dem Tag, an dem es im Unterricht dran ist
+          var ab = zugang.freigabe && zugang.freigabe[t.titel];
+          if (ab && heute() < ab) { spaeter++; return false; }
+          return true;
         });
+        if (spaeter) {
+          $('start-spaeter').textContent = 'Weitere ' + mehrzahl(spaeter, 'Thema kommt', 'Themen kommen') +
+            ' dazu, sobald sie im Unterricht dran waren.';
+          $('start-spaeter').hidden = false;
+        }
         ergaenzeGesamtMischung();
         zeigeThemen();
       })
@@ -330,7 +341,8 @@
       })[0];
       if (!zug) return { sperre: 'Den Klassen-Code „' + code + '“ gibt es nicht. Bitte prüfen Sie die Schreibweise.' };
       if (zug.aktiv !== true) return { sperre: 'Dieser Zugang ist derzeit nicht freigegeben.' };
-      return { klasse: String(zug.klasse), themen: zug.themen || null, name: zug.name || '' };
+      return { klasse: String(zug.klasse), themen: zug.themen || null, name: zug.name || '',
+        freigabe: (zug.freigabe && typeof zug.freigabe === 'object') ? zug.freigabe : null };
     }
     var oc = z.ohneCode;
     if (oc && oc.klasse && (!oc.bis || heute() <= oc.bis)) {
@@ -392,7 +404,7 @@
       }
       if (karten.length) teile.push(mehrzahl(karten.length, 'Karteikarte', 'Karteikarten'));
       var info = t.fragen.length ? teile.join(' · ') : 'Derzeit nicht verfügbar';
-      if (t.gesamt && t.fragen.length) info += ' · ideal als Einstieg mit 5 Fragen';
+      if (t.gesamt && t.fragen.length) info += ' · Themen selbst auswählen, z. B. nur Milch und Käse';
       b.appendChild(el('span', 'thema-anzahl', info));
       if (t.fragen.length) {
         b.appendChild(el('span', 'thema-los', 'Quiz starten ›'));
@@ -434,8 +446,45 @@
     document.querySelector('input[name="modus"][value="' + art + '"]').checked = true;
   }
 
+  // Mischungen: Themen zum An- und Abhaken (z. B. nur Milch und Käse)
+  var abgewaehlt = {};      // Themenname → true, wenn abgehakt
+
+  function fuelleThemenwahl() {
+    var liste = $('themenwahl-liste');
+    leere(liste);
+    unterthemen(poolFuer(gewaehlt.fragen, gewaehlteArt())).forEach(function (u) {
+      var l = el('label', 'themenwahl-eintrag');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.value = u.name;
+      cb.checked = !abgewaehlt[u.name];
+      cb.addEventListener('change', function () {
+        if (cb.checked) delete abgewaehlt[u.name]; else abgewaehlt[u.name] = true;
+        aktualisiereInfo();
+      });
+      l.appendChild(cb);
+      l.appendChild(el('span', 'themenwahl-name', u.name));
+      l.appendChild(el('span', 'themenwahl-zahl', String(u.anzahl)));
+      liste.appendChild(l);
+    });
+  }
+
+  function setzeAlleThemen(an) {
+    Array.prototype.forEach.call($('themenwahl-liste').querySelectorAll('input'), function (cb) {
+      cb.checked = an;
+      if (an) delete abgewaehlt[cb.value]; else abgewaehlt[cb.value] = true;
+    });
+    aktualisiereInfo();
+  }
+
+  $('themenwahl-alle').addEventListener('click', function () { setzeAlleThemen(true); });
+  $('themenwahl-keine').addEventListener('click', function () { setzeAlleThemen(false); });
+
   function fuelleUnterthemen() {
     var t = gewaehlt;
+    $('einst-themenwahl').hidden = !t.mix;
+    $('einst-unterthema-feld').hidden = !!t.mix;
+    if (t.mix) { fuelleThemenwahl(); return; }
     var pool = poolFuer(t.fragen, gewaehlteArt());
     var sel = $('einst-unterthema');
     var vorher = sel.value;
@@ -466,15 +515,17 @@
     setzeArt(hatQuiz ? 'ueben' : 'karten');
 
     $('einst-unterthema').value = '';
+    abgewaehlt = {};
     fuelleUnterthemen();
     aktualisiereInfo();
     zeige('einstellungen', 'push');
   }
 
   function gefilterteFragen() {
+    var pool = poolFuer(gewaehlt.fragen, gewaehlteArt());
+    if (gewaehlt.mix) return pool.filter(function (f) { return !abgewaehlt[f.thema]; });
     var filter = $('einst-unterthema').value;
-    return poolFuer(gewaehlt.fragen, gewaehlteArt())
-      .filter(function (f) { return !filter || f.thema === filter; });
+    return pool.filter(function (f) { return !filter || f.thema === filter; });
   }
 
   function gewaehlteAnzahl(verfuegbar) {
@@ -498,6 +549,7 @@
       text += ' Für das Smartboard: nur Multiple Choice und Richtig/Falsch, ' + KLASSE_SEKUNDEN +
         ' Sekunden je Frage, zwei Teams mit A-B-C-D-Karten.';
     }
+    if (!n && gewaehlt.mix) text = 'Bitte haken Sie mindestens ein Thema an.';
     $('einst-info').textContent = text;
     $('einst-start').textContent = art === 'karten' ? 'Karteikarten starten'
       : art === 'klasse' ? 'Klassenquiz starten' : 'Quiz starten';

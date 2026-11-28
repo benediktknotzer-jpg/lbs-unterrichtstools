@@ -141,3 +141,47 @@ Nicht betroffen: Fragen zum Salzbad (18, 91, 106) nennen „Frischkäse“ nicht
 Frage 4 (alle drei Schritte mit Begründung). MC 14 fragt nur, wie der Bruch geschnitten wird, und
 bleibt. Reifezeiten: nichts zu tun. Zugangszettel: Fleisch und beide Mischquiz („Wiederholung zur
 1./2. Schularbeit“) sind im Quiz, die Tabelle stimmt.
+
+## 6. Nachtrag 28.11.2026 — 1. Schularbeit umgebaut, Lehrausgang, Termine (bis Mi 02.12.)
+
+Aus der Sitzung in der Materialsammlung, Auftrag von Benedikt vom 28.11.2026: „mit den
+LBS-Unterrichtstools kommunizieren bezüglich … des Quiz … welche Unterkapitel … dass das alles
+wirklich fertig ist, spätestens am Mittwoch.“ **Frist: Mi 02.12.2026, 12:50** (Wiederholungs-
+nachmittag, das Mischquiz läuft am Smartboard und ab dann am Handy zum Üben).
+
+**Nachgezogen 28.11. (Quiz-Repository):** Neues Unterthema „Reklamation und Umtausch“ im Thema
+„Verkaufsgespräch, CI & Verpackung“ (`verkauf-marketing.csv` Nr. 70–79, 10 Fragen: MC, 2 ZU, RH,
+RF, MM, OA; Quelle IB und LB Reklamation W3, neue Fälle, keiner aus der SA1). Das Mischquiz
+„Wiederholung zur 1. Schularbeit“ nimmt die Datei ganz auf, Reklamation ist damit drin. Freigabe
+Feinkost vorläufig Mo 14.12., `docs/LEHRGANG_II_2GH2B.md` W3–W5 nachgezogen. Zum Lehrausgang keine
+Fragen. Hinweis: Das Mischquiz wird am Mi 02.12. freigeschaltet (Freigabe nach Wochenplan seit 27.11.);
+am Smartboard läuft es ab 0 Uhr des Tages.
+
+### 6a. Was sich geändert hat
+
+- **Lehrausgang Vöslauer** ist von Mi 16.12. auf **Mi 09.12.** vorverlegt. Der FP-Block am 09.12.
+  entfällt ganz (Werksführung 13:30 bis 15:45). Fragestunde und Quiz zur 1. SA sind auf
+  **Mi 02.12.** gewandert. **Feinkost und Fertigkost hat noch keinen neuen Termin** (Benedikt
+  entscheidet). Mi 16.12. ist wieder normal (Rückgabe SA1, Fische).
+- **1. Schularbeit Mo 14.12.** neu gebaut (`Woche_06_14-12_bis_18-12/13_SA1_FP_W6.docx`, Lösung
+  `14_SA1_Lösung_FP_W6.docx`, Stoffbekanntgabe `00_Stoffbekanntgabe_1_SA_FP_II.md`). Neu Stoff:
+  **Reklamation und Umtausch** (W3 Di, 8 P) und **Lehrausgang Vöslauer** (6 P). Gewichtung jetzt
+  Verkaufsgespräch 12 · CI 8 · Reklamation 8 · Milch 18 · Käse 18 · Verpackung/Recycling 10 ·
+  Lehrausgang 6 · Fleisch 20. Nicht mehr in der SA: Bestandteile des Corporate Design, Abrechnung
+  der Rohmilch, H-Milch, Reifung Hart-/Weichkäse, Milchsorten für Käse, Definition Fleisch — als
+  Katalogstoff bleiben sie im Quiz, sie sind nur nicht mehr SA-Aufgabe.
+
+### 6b. Was das Quiz bis Mi 02.12. braucht
+
+| Was | Jetzt | Soll |
+|---|---|---|
+| Unterthema **Reklamation und Umtausch** | fehlt (`verkauf-marketing.csv` hat Neun Phasen, Bedarfsermittlung, CI, Verpackung, Recycling) | 8 bis 10 Fragen, Quelle Infoblatt und Arbeitsblatt/Lösungsblatt `Woche_03_23-11_bis_27-11/03_IB_FP_W3_Reklamation_Umtausch.docx`, `05_LB_FP_W3_Reklamation_Umtausch.docx`: Reklamation, Beschwerde, Kulanz unterscheiden (mit neuen Fällen, nicht denen der SA); die sechs Schritte der Annahme (RH); welche Maßnahme bei welchem Mangel (Frischware: Geschwindigkeit); welche Angaben für die Prüfung nötig sind. Kein Buch (eigenes Material), Quelle „IB Reklamation W3“. |
+| Mischquiz „Wiederholung zur 1. Schularbeit“ | Mix ohne Reklamation | Reklamation in den Mix aufnehmen |
+| Freigabe `2GH2B-MILCH` | „Feinkost, Fertigkost & Zusatzverkauf“: 2026-12-09 | Datum offen lassen bis Benedikt entscheidet; vorläufig 2026-12-14 (Zusatzverkauf nach der SA), Feinkost-Fragen sind SA2-Stoff |
+| `docs/LEHRGANG_II_2GH2B.md` Zeilen W4/W5 | W5 „Fragestunde SA1 · Feinkost“ | W4 Mi „Telefon · Wiederholung und Fragestunde SA1“, W5 Mi „Lehrausgang Vöslauer“, Feinkost offen |
+
+Lehrausgang: **keine Quizfragen** (was gezeigt wird, steht erst am 09.12. fest).
+
+Antwortmuster (Regel Benedikt 27.11.2026, Lernlog Teil B Nr. 6): In den Mischquiz bitte darauf
+achten, dass Zuordnungen und Richtig/Falsch-Folgen nicht regelmäßig wechseln; die App mischt die
+Antworten, die Reihenfolge der Fragen in Kartenstapeln aber nicht immer.

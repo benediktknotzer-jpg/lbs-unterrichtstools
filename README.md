@@ -5,8 +5,9 @@ Interaktive Web-Tools für den Unterricht an der LBS Theresienfeld (BLAM, FP)
 
 Ein Quiz für Lehrlinge im Lebensmittel-Großhandel (2. Klasse Fachpraktikum), optimiert fürs Handy.
 
-- Themenauswahl, optional Filter nach Unterthema, 5 / 10 / 20 / alle Fragen
-- **„Alle Themen gemischt“** steht automatisch oben – mit 5 Fragen ideal als Einstieg in die Stunde
+- Themenauswahl, optional Filter nach Unterthema, 5 / 10 / 20 / 30 / 50 / alle Fragen
+- **„Alle Themen gemischt“** steht automatisch oben. Bei allen Mischungen (auch den
+  Schularbeits-Wiederholungen) hakt man die Themen an, die drankommen sollen, z. B. nur Milch und Käse
 - Fragen und Antworten werden bei jedem Durchgang gemischt
 - Sofortige Rückmeldung mit richtiger Lösung und Erklärung (Spalte `erklaerung`)
 - Auswertung in Prozent mit Note laut Notenschlüssel der LBS Theresienfeld wie bei der
@@ -302,7 +303,8 @@ genannten Unterthemen, `"ohne"` lässt sie weg. Eine Zahl statt eines Textes mei
 kaputt, wenn ein Handy kurz noch die alte Fassung hat.
 
 „Alle Themen gemischt“ braucht keinen Eintrag: Die App stellt diese Mischung aus allen Themen der
-Klasse selbst zusammen (blauer Rand).
+Klasse selbst zusammen (blauer Rand). In jeder Mischung wählen die Lehrlinge in den Einstellungen
+per Häkchen, welche Themen drankommen (statt der Unterthemen-Liste).
 
 **Achtung bei Lückentexten (LT):** Jede Lücke wird an ihrer Stelle geprüft. Wörter, die man
 fachlich vertauschen könnte („aus [Samen], [Früchten] oder Keimen“), nicht beide als Lücke setzen –
@@ -326,6 +328,11 @@ Jedes Thema in `themen.json` hat `"klassen"`, z. B. `["2"]`. Die Codes stehen in
 - `"aktiv": false` sperrt einen Code („Dieser Zugang ist derzeit nicht freigegeben.“).
 - Optional `"themen": ["Milch & Milchprodukte", "Käse"]`: Die Klasse sieht nur diese Themen –
   so lässt sich Thema für Thema freischalten.
+- Optional `"freigabe": { "Käse": "2026-11-16", … }`: Ein Thema erscheint erst ab diesem Tag (Datum
+  aus dem Wochenplan, Tag der Unterrichtsstunde). Themen ohne Eintrag sind sofort da. Die Startseite
+  sagt den Lehrlingen, wie viele Themen noch dazukommen. Eine Mischung (Wiederholung zur SA) hat ein
+  eigenes Datum und enthält dann ihren ganzen Stoff. Ältere App-Fassungen übersehen `freigabe` und
+  zeigen alles.
 - `ohneCode`: Bis zum Datum `bis` sieht man ohne Code die Themen dieser Klasse. Danach verlangt die
   Startseite einen Code. Ohne `ohneCode` braucht man immer einen Code.
 - **Neuer Lehrgang:** neuen Code eintragen (Klasse + Wort, z. B. `2GH3B-KAESE`), den alten auf

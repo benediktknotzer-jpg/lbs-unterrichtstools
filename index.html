@@ -9,7 +9,7 @@
   <title>Warenkunde-Quiz · LBS Theresienfeld</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="css/knb-stil.css?v=2026-10-24">
-  <link rel="stylesheet" href="css/quiz.css?v=2026-10-25b">
+  <link rel="stylesheet" href="css/quiz.css?v=2026-11-27">
 </head>
 <body>
   <header class="knb-kopf">
@@ -45,6 +45,7 @@
         </div>
       </form>
       <div id="themen-liste" class="themen-liste"></div>
+      <p id="start-spaeter" class="knb-anleitung" hidden></p>
     </section>
 
     <!-- Einstellungen für das gewählte Thema -->
@@ -61,8 +62,20 @@
         </div>
       </fieldset>
 
-      <label class="knb-abschnitt feld-titel" for="einst-unterthema">Unterthema</label>
-      <select id="einst-unterthema" class="auswahl"></select>
+      <div id="einst-unterthema-feld">
+        <label class="knb-abschnitt feld-titel" for="einst-unterthema">Unterthema</label>
+        <select id="einst-unterthema" class="auswahl"></select>
+      </div>
+
+      <fieldset class="anzahl" id="einst-themenwahl" hidden>
+        <legend class="knb-abschnitt feld-titel">Themen</legend>
+        <p class="knb-anleitung">Haken Sie die Themen an, die drankommen sollen.</p>
+        <div class="themenwahl-knoepfe">
+          <button type="button" class="link-knopf" id="themenwahl-alle">Alle</button>
+          <button type="button" class="link-knopf" id="themenwahl-keine">Keine</button>
+        </div>
+        <div id="themenwahl-liste" class="themenwahl-liste"></div>
+      </fieldset>
 
       <fieldset class="anzahl">
         <legend class="knb-abschnitt feld-titel">Anzahl der Fragen</legend>
@@ -70,6 +83,8 @@
           <label><input type="radio" name="anzahl" value="5"><span>5</span></label>
           <label><input type="radio" name="anzahl" value="10" checked><span>10</span></label>
           <label><input type="radio" name="anzahl" value="20"><span>20</span></label>
+          <label><input type="radio" name="anzahl" value="30"><span>30</span></label>
+          <label><input type="radio" name="anzahl" value="50"><span>50</span></label>
           <label><input type="radio" name="anzahl" value="alle"><span>Alle</span></label>
         </div>
       </fieldset>
@@ -151,6 +166,6 @@
 
   <script src="js/csv.js?v=2026-10-25b"></script>
   <script src="js/oa.js?v=2026-10-25b"></script>
-  <script src="js/app.js?v=2026-11-12"></script>
+  <script src="js/app.js?v=2026-11-27b"></script>
 </body>
 </html>
