@@ -32,9 +32,8 @@ Zugangsblatt `zugang.html?code=2GH2B-MILCH`. Durchsicht aller Fragen mit Lösung
 | 4 | Mo 30.11., Di 01.12. | Fleisch, AMA, Rindfleisch, Kennzeichnung | Fleisch & Rindfleisch | **II. LG neu, 12 Fragen** (W4) | SA1 |
 | 4 | Mi 02.12. | Telefon · Wiederholung und Fragestunde SA1 (Mischquiz am Smartboard, dann am Handy) | Wiederholung zur 1. Schularbeit | – | Stoffbekanntgabe |
 | 5 | Mi 09.12. | **Lehrausgang Vöslauer** (FP-Block entfällt; keine Quizfragen) | – | – | SA1 (6 P) |
-| 5/6 | **offen** | Feinkost, Fertigkost (neuer Termin entscheidet Benedikt) | Feinkost, Fertigkost & Zusatzverkauf, Freigabe vorläufig Mo 14.12. | **II. LG neu** (W5) | SA2 |
-| 6 | Mo 14.12. | **SA1** · Zusatzverkauf | Feinkost · Beratungsfälle | – | SA2 |
-| 6 | Di 15.12. | Eier (Quiz am Beamer) | Eier | **II. LG neu** (W6) | SA2 |
+| 6 | Mo 14.12. | **SA1** · danach Feinkost und Fertigkost (Termin fest seit 28.11.) | Feinkost, Fertigkost & Zusatzverkauf (Freigabe 14.12.) · Beratungsfälle | **II. LG neu** (W5) | SA2 |
+| 6 | Di 15.12. | Zusatzverkauf kompakt (ohne Expertengruppen und Warenkorb-Challenge) · Eier (Quiz am Beamer, ohne Turnus-Blatt) | Feinkost, Fertigkost & Zusatzverkauf · Eier | **II. LG neu** (W6) | SA2 |
 | 6 | Mi 16.12. | Rückgabe SA1 · Fische | Fische | II. LG Teil 1 + 2 (W6) | SA2 |
 | 8 | Mo 11.01. | Inventurdifferenzen · Projektstart | Inventurdifferenzen | – | SA2 |
 | 8 | Di 12.01. | Fette · Kakao | Speisefette & Speiseöle · Kakao & Schokolade | **II. LG neu** (W8) | SA2 |
